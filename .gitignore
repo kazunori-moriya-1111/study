@@ -1,2 +1,8 @@
 .idea
 
+django_docker/mysql/
+django_docker/src/app/__pycache__/
+django_docker/src/node_modules/
+django_docker/src/view_html/__pycache__/
+django_docker/static/admin/
+django_docker/src/view_html/migrations/
