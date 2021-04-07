@@ -4,8 +4,8 @@
     <p>{{ message }}</p>
     <hr>
     <div>
-        <input class="form-control" type="text" v-model="input">
-        <button class="btn btn-info mt-2" v-on:click="doAction">Click</button>
+      <input class="form-control" type="text" v-model="input">
+      <button class="btn btn-info mt-2" v-on:click="doAction">Click</button>
     </div>
   </div>
 </template>
