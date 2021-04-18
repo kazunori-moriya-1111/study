@@ -1,11 +1,6 @@
-<template>
-    <div class="alert alert-info">
-        <h2>{{ title }}</h2>
-        <p>{{ message }}</p>
-    </div>
-</template>
-
 <script>
+import { h } from 'vue'
+
 export default {
     name: 'HelloWorld',
     data() {
@@ -13,6 +8,15 @@ export default {
             title: 'HelloWorld',
             message: 'This is sample message.',
         }
+    },
+    render() {
+        return h('dev',{
+            class :'alert alert-warning'
+        },
+        [
+            h('h2', this.title),
+            h('p', this.message)
+        ])
     }
 }
 </script>
