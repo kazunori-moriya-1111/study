@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-        <HelloWorld />
+        <HelloJSX/>
     </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloJSX from './components/HelloJSX.jsx'
 
 export default {
     name: 'App',
     components: {
-        HelloWorld
+        HelloJSX
     }
 }
 </script>
