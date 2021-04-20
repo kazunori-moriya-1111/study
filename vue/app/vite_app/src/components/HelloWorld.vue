@@ -1,22 +1,23 @@
-<script>
-import { h } from 'vue'
+<template>
+    <div class="alert alert-primary">
+        <h2>{{ title }}</h2>
+        <p>{{ message }}</p>
+        <hr>
+        <p>Number:{{ num }}</p>
+    </div>
+</template>
 
+<script>
 export default {
     name: 'HelloWorld',
+    props: {
+        title: String,
+        num: Number,
+    },
     data() {
         return{
-            title: 'HelloWorld',
-            message: 'This is sample message.',
+            message: 'バリデーション・チェック',
         }
     },
-    render() {
-        return h('dev',{
-            class :'alert alert-warning'
-        },
-        [
-            h('h2', this.title),
-            h('p', this.message)
-        ])
-    }
 }
 </script>
