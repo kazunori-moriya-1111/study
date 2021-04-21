@@ -1,7 +1,5 @@
 <template>
-    <div id="app">
-        <HelloWorld v-bind:title="message" v-bind:num=123 />
-    </div>
+    <HelloWorld title="computed" />
 </template>
 
 <script>

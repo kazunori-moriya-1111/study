@@ -1,9 +1,17 @@
 <template>
     <div class="alert alert-primary">
-        <h2>{{ title }}</h2>
+        <h1>{{ title }}</h1>
         <p>{{ message }}</p>
         <hr>
-        <p>Number:{{ num }}</p>
+        <p class="h5">val:{{ val }}</p>
+        <div class="form-group text-left">
+            <label>* 2:</label>
+            <input type="number" v-model="a" class="form-control">
+        </div>
+        <div class="form-group text-left">
+            <label>^ 2:</label>
+            <input type="number" v-model="b" class="form-control">
+        </div>
     </div>
 </template>
 
@@ -12,19 +20,33 @@ export default {
     name: 'HelloWorld',
     props: {
         title: String,
-        num: {
-            type: Number,
-            default: 100,
-            validator: (value)=>{
-                return value == parseInt(value)
-                && value >= 0 && value <= 100
-            },
-        },
     },
     data() {
         return{
-            message: 'バリデーション・チェック',
+            message: '算術プロパティの使用',
+            val: 0,
         }
     },
+    computed:{
+        a: {
+            get(){
+                return this.val *2
+            },
+            set(value){
+                this.val = Math.floor(value)/2
+            },
+        },
+        b: {
+            get(){
+                return this.val * this.val
+            },
+            set(value){
+                this.val = Math.floor(Math.sqrt(value))
+            },
+        },
+        created(){
+            this.val = 10
+        },
+    }
 }
 </script>
