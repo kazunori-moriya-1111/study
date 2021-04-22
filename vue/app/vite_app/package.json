@@ -1,6 +1,7 @@
 {
   "name": "vite_app",
   "version": "0.0.0",
+  "dev": "webpack-dev-server --open --hot",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
