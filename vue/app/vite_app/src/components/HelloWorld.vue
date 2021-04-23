@@ -1,7 +1,7 @@
 <template>
     <div class="alert alert-primary">
         <h1>{{ title }}</h1>
-        <pre v-on:click="click">{{ message }}</pre>
+        <pre v-on:click="clear">{{ message }}</pre>
         <hr>
         <div id="out" class="out" v-on:click="a_event">A
             <div id="mid" class="mid" v-on:click.self="b_event">B
