@@ -4,7 +4,7 @@
         <pre v-on:click="click">{{ message }}</pre>
         <hr>
         <div id="out" class="out" v-on:click="a_event">A
-            <div id="mid" class="mid" v-on:click="b_event">B
+            <div id="mid" class="mid" v-on:click.stop="b_event">B
                 <div id="in" class="in" v-on:click="c_event">C
                 </div>
             </div>
