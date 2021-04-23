@@ -1,48 +1,64 @@
 <template>
     <div class="alert alert-primary">
         <h1>{{ title }}</h1>
-        <p>{{ message }}</p>
+        <pre v-on:click="click">{{ message }}</pre>
         <hr>
-        <div class="form-group text-left">
-            <label>Value:</label>
-            <input type="number" v-model="val" class="form-control">
+        <div id="out" class="out" v-on:click="a_event">A
+            <div id="mid" class="mid" v-on:click="b_event">B
+                <div id="in" class="in" v-on:click="c_event">C
+                </div>
+            </div>
         </div>
-        <table>
-            <tr><th>add:</th><td>{{ add }}</td></tr>
-            <tr><th>sub:</th><td>{{ sub }}</td></tr>
-            <tr><th>multiple:</th><td>{{ multiple }}</td></tr>
-            <tr><th>divide:</th><td>{{ div }}</td></tr>
-        </table>
     </div>
 </template>
 
 <script>
 export default {
     name: 'HelloWorld',
-    data() {
+    data: function() {
         return{
-            title: 'Watchers',
-            message: '値の監視',
-            val: 0,
-            add: 0,
-            sub: 0,
-            multiple: 0,
-            div:0,
+            title: 'Event',
+            message: 'イベントの伝播について。\n',
         }
     },
-    watch:{
-        val(newValue, oldValue){
-            console.log(oldValue + '-> ' + newValue)
-            this.val = newValue
-            var val = parseInt(this.val)
-            this.add = Math.floor(val + 2)
-            this.sub = Math.floor(val - 2)
-            this.multiple = Math.floor(val * 2)
-            this.div = Math.floor(val / 2)
+    methods:{
+        a_event(event){
+            this.message += "A-Event [" + event.target.id + '→' + event.currentTarget .id + "]\n"
+        },
+        b_event(event){
+            this.message += "B-Event [" + event.target.id + '→' + event.currentTarget .id + "]\n"
+        },
+        c_event(event){
+            this.message += "C-Event [" + event.target.id + '→' + event.currentTarget .id + "]\n"
+        },
+        clear(){
+            this.message = "イベントの伝播について。\n"
         }
-    },
-    created(){
-        this.val = 6
     },
 }
 </script>
+
+<style>
+pre {
+    font-size:16pt;
+    line-height: 1.25;
+}
+div.out {
+    padding: 0px;
+    background-color: #eee;
+    width:300px;
+    height:200px;
+}
+div.mid {
+    padding: 0px;
+    background-color: #ddd;
+    width:200px;
+    height:170px;
+}
+div.in {
+    padding: 0px;
+    background-color: #ccc;
+    width:100px;
+    height:140px;
+}
+</style>
