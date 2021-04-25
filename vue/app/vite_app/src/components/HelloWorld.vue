@@ -1,13 +1,11 @@
 <template>
     <div class="alert alert-primary">
-        <h1>{{ title }}</h1>
-        <pre>{{ message }}</pre>
+        <h2>{{ title }}</h2>
+        <p>{{ message }}</p>
         <hr>
-        <div class="area"
-            v-on:click.left.prevent="left"
-            v-on:click.middle.prevent="middle"
-            v-on:click.right.prevent="right">
-            click here!
+        <div class="alert alert-light">
+            <h3>Inner Slot</h3>
+            <slot />
         </div>
     </div>
 </template>
@@ -17,19 +15,8 @@ export default {
     name: 'HelloWorld',
     data: function() {
         return{
-            title: 'Event',
-            message: '',
-        }
-    },
-    methods:{
-        left(){
-            this.message = '[left button]'
-        },
-        right(){
-            this.message += '[right button]'
-        },
-        middle(){
-            this.message += '[middle button]'
+            title: 'Slot',
+            message: 'This is message.',
         }
     },
 }

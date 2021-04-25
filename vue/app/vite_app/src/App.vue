@@ -1,5 +1,7 @@
 <template>
-    <HelloWorld title="computed" />
+    <HelloWorld title="slot">
+        <P>*** this is default text ***</P>
+    </HelloWorld>
 </template>
 
 <script>
