@@ -1,6 +1,17 @@
 <template>
     <HelloWorld title="slot">
-        <P>*** this is default text ***</P>
+        <p>Begin!..</p>
+        <template v-slot:first>
+        ***First message***
+        </template>
+        <P>..Middle..</P>
+        <template v-slot:second>
+        ***Second message***
+        </template>
+        <P>..End</P>
+        <template v-slot:third>
+        ***Third message***
+        </template>
     </HelloWorld>
 </template>
 

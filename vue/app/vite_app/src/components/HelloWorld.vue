@@ -5,7 +5,14 @@
         <hr>
         <div class="alert alert-light">
             <h3>Inner Slot</h3>
-            <slot />
+            <div class="alert alert-warning h5">
+                <slot />
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><slot name="first"/></li>
+                <li class="list-group-item"><slot name="second"/></li>
+                <li class="list-group-item"><slot name="third"/></li>
+            </ul>
         </div>
     </div>
 </template>
