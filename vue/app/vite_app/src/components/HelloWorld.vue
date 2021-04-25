@@ -1,13 +1,16 @@
 <template>
     <div class="alert alert-primary">
         <h1>{{ title }}</h1>
-        <pre v-on:click="clear">{{ message }}</pre>
+        <pre>{{ message }}</pre>
         <hr>
-        <div><input type="text" class="form-control"
-            v-on:keypress="type"
-            v-on:keydown.delete="clear"
-            v-on:keydown.space="space"
-            v-on:keydown.enter="enter"></div>
+        <div class="area"
+            v-on:click="click"
+            v-on:click.exact="exact"
+            v-on:click.shift="shift"
+            v-on:click.ctrl="ctrl"
+            v-on:click.alt="alt">
+            click here!
+        </div>
     </div>
 </template>
 
@@ -21,22 +24,53 @@ export default {
         }
     },
     methods:{
-        type(event){
-            if (event.key == "Enter"){ return }
-            this.message += event.key + ' '
-            event.target.value = ''
+        click(){
+            this.message = 'click '
         },
-        clear(){
-            this.message = ""
+        exact(){
+            this.message += "**no any key**"
         },
-        space(){
-            this.message += "_ "
+        shift(){
+            this.message += "[shift]"
         },
-        enter(event){
-            var res = this.message.split(' ').join('')
-            this.message = res.split('_').join(' ')
-            event.target.value = ''
+        ctrl(){
+            this.message += "[ctrl]"
+        },
+        alt(){
+            this.message += "[alt]"
         }
     },
 }
 </script>
+
+<style>
+pre {
+  font-size:16pt;
+  line-height: 1.25;
+}
+div.out {
+  padding: 0px;
+  background-color: #eee;
+  width:300px;
+  height:200px;
+}
+div.mid {
+  padding: 0px;
+  background-color: #ddd;
+  width:200px;
+  height:170px;
+}
+div.in {
+  padding: 0px;
+  background-color: #ccc;
+  width:100px;
+  height:140px;
+}
+.area {
+  width:300px;
+  height:100px;
+  background-color: #fff;
+  padding:10px;
+  font-size:20pt;
+}
+</style>
