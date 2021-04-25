@@ -1,17 +1,10 @@
 <template>
     <HelloWorld title="slot">
-        <p>Begin!..</p>
-        <template v-slot:first>
-        ***First message***
-        </template>
-        <P>..Middle..</P>
-        <template v-slot:second>
-        ***Second message***
-        </template>
-        <P>..End</P>
-        <template v-slot:third>
-        ***Third message***
-        </template>
+        <li class="list-group-item"
+            v-for="obj in slotobjs"
+            v-bind:key="obj.name">
+            {{obj.name}} ({{obj.mail}})
+        </li>
     </HelloWorld>
 </template>
 
@@ -25,8 +18,11 @@ export default {
     },
     data(){
         return{
-            message:'validate',
-            num:'abc',
+            slotobjs:[
+                {name:'Taro', mail:'taro@yamada'},
+                {name:'Hanako', mail:'hanako@flower'},
+                {name:'Sachiko', mail:'sachiko@happy'},
+            ],
         }
     }
 }
