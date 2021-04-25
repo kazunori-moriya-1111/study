@@ -3,7 +3,11 @@
         <h1>{{ title }}</h1>
         <pre v-on:click="clear">{{ message }}</pre>
         <hr>
-        <div><input type="text" v-on:keydown="type" class="form-control"></div>
+        <div><input type="text" class="form-control"
+            v-on:keypress="type"
+            v-on:keydown.delete="clear"
+            v-on:keydown.space="space"
+            v-on:keydown.enter="enter"></div>
     </div>
 </template>
 
@@ -18,14 +22,20 @@ export default {
     },
     methods:{
         type(event){
+            if (event.key == "Enter"){ return }
             this.message += event.key + ' '
-            if (event.key == "Escape"){
-                this.message = ''
-            }
             event.target.value = ''
         },
         clear(){
-            this.message = "イベントの伝播について。\n"
+            this.message = ""
+        },
+        space(){
+            this.message += "_ "
+        },
+        enter(event){
+            var res = this.message.split(' ').join('')
+            this.message = res.split('_').join(' ')
+            event.target.value = ''
         }
     },
 }
