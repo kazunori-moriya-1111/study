@@ -1,11 +1,5 @@
 <template>
-    <HelloWorld title="slot">
-        <li class="list-group-item"
-            v-for="obj in slotobjs"
-            v-bind:key="obj.name">
-            {{obj.name}} ({{obj.mail}})
-        </li>
-    </HelloWorld>
+    <HelloWorld />
 </template>
 
 <script>
