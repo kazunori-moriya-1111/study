@@ -2,24 +2,32 @@
     <div class="alert alert-primary">
         <h2>{{ title }}</h2>
         <p>{{ message }}</p>
-        <hr>
-        <div class="alert alert-light">
-            <h3>Inner Slot</h3>
-            <ol class="list-group text-left">
-                <slot/>
-            </ol>
-        </div>
+        <button class="btn btn-primary m-3" v-on:click="doAction">
+        {{ btn }}
+        </button>
+        <trasition name="transit">
+            <p v-if="flg" class="alert alert-light h5">
+                Transition content!
+            </p>
+        </trasition>
     </div>
 </template>
 
 <script>
 export default {
     name: 'HelloWorld',
-    data: function() {
+    data() {
         return{
-            title: 'Slot',
-            message: 'This is message.',
+            title: 'Trans&Anim',
+            message: 'This is Transition sample!',
+            flg:true,
+            btn:'Show/Hide',
         }
+    },
+    methods:{
+        doAction(){
+            this.flg = !this.flg
+        },
     },
 }
 </script>
