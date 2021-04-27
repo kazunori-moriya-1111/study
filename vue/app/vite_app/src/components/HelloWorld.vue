@@ -65,7 +65,7 @@ export default {
   transition: opacity 0.5s;
 }
 .transit-leave-active {
-  transition: opacity 10.0s;
+  transition: opacity 5.0s;
 }
 .transit-enter {
   opacity: 0;
@@ -82,4 +82,9 @@ export default {
 .transit-leave-to {
   opacity: 0;
 }
+.transit-enter, .transit-leave-to {
+  transform: translateX(200px) translateY(-200px);
+  opacity: 0.1;
+}
+
 </style>
