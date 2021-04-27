@@ -1,5 +1,5 @@
 <template>
-    <HelloWorld />
+    <HelloWorld title="Composition API" msg="This is Composition API sample" />
 </template>
 
 <script>
@@ -10,14 +10,5 @@ export default {
     components: {
         HelloWorld
     },
-    data(){
-        return{
-            slotobjs:[
-                {name:'Taro', mail:'taro@yamada'},
-                {name:'Hanako', mail:'hanako@flower'},
-                {name:'Sachiko', mail:'sachiko@happy'},
-            ],
-        }
-    }
 }
 </script>
