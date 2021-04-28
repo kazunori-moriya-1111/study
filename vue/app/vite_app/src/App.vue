@@ -1,5 +1,5 @@
 <template>
-    <HelloWorld title="Composition API"/>
+    <HelloWorld title="Composition API" msg="This is Composition API sample"/>
 </template>
 
 <script>
