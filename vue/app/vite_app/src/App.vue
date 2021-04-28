@@ -1,14 +1,29 @@
 <template>
-    <HelloWorld title="Composition API" msg="This is Composition API sample"/>
+    <div>
+        <router-link to="/" class="btn btn-primary mx-2">
+            Go to Top
+        </router-link>
+        <router-link to="/jsx" class="btn btn-warning">
+            Go to JSX
+        </router-link>
+    </div>
+    <hr>
+    <router-view></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
     name: 'App',
-    components: {
-        HelloWorld
+    created() {
+        console.log("** App Created! **")
     },
+    mounted() {
+        console.log("-- App Mounted!--")
+    },
+    data() {
+        return {
+            title:'Router'
+        }
+    }
 }
 </script>
