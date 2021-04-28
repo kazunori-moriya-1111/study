@@ -6,19 +6,19 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 export default {
     props: {
         title:String
     },
     setup(props){
-        const data = ref({
+        const data = reactive({
             msg: 'This is ref-value!',
             count: 0
         })
         setInterval(()=>{
-            data.value.count++
+            data.count++
         }, 1000)
         return{
             data
