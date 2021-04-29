@@ -1,29 +1,14 @@
 <template>
-    <div>
-        <router-link to="/index/taro" class="btn btn-primary mx-2">
-            Go to Top
-        </router-link>
-        <router-link to="/jsx/hanako" class="btn btn-warning">
-            Go to JSX
-        </router-link>
-    </div>
-    <hr>
-    <router-view></router-view>
+    <HelloWorld/>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
-    name: 'App',
-    created() {
-        console.log("** App Created! **")
+    name: 'app',
+    components: {
+        HelloWorld
     },
-    mounted() {
-        console.log("-- App Mounted!--")
-    },
-    data() {
-        return {
-            title:'Router'
-        }
-    }
 }
 </script>

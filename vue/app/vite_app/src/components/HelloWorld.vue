@@ -1,7 +1,7 @@
 <template>
     <div class="alert alert-primary">
-        <h1>{{data.title + '[' + name + ']'}}</h1>
-        <p class="mt-3 h5">{{data.msg}}</p>
+        <h1>{{data.title}}</h1>
+        <p class="mt-3 h5">{{$store.state.message}}</p>
     </div>
 </template>
 
@@ -9,14 +9,9 @@
 import { ref, reactive } from 'vue'
 
 export default {
-    name: 'HelloWorld',
-    props:{
-        name: String,
-    },
-    setup(props, context){
+    setup(props){
         const data = reactive({
-            title: 'Router',
-            msg: 'This is HelloWorld component.',
+            title: 'Vuex',
         })
         return{
             data
