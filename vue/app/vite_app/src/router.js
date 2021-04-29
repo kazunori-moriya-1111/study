@@ -7,21 +7,19 @@ export const router = createRouter({
     routes:[
         {
             path: '/',
-            name: 'index',
-            components: {
-                default: HelloWorld,
-                first: HelloWorld,
-                second: HelloJSX
-            },
+            redirect: '/index/taro'
         },
         {
-            path: '/jsx',
+            path: '/index/:name',
+            name: 'index',
+            component: HelloWorld,
+            props: true
+        },
+        {
+            path: '/jsx/:name',
             name: 'jsx',
-            components: {
-                default: HelloJSX,
-                first: HelloJSX,
-                second: HelloWorld
-            },
+            component: HelloJSX,
+            props: true
         },
     ],
 })
