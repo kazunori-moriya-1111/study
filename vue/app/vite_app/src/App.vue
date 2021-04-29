@@ -8,7 +8,12 @@
         </router-link>
     </div>
     <hr>
-    <router-view></router-view>
+    <h5>default view</h5>
+    <router-view/>
+    <hr>
+    <h5>A & B</h5>
+    <router-view name="first"></router-view>
+    <router-view name="second"></router-view>
 </template>
 
 <script>

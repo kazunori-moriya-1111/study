@@ -8,12 +8,20 @@ export const router = createRouter({
         {
             path: '/',
             name: 'index',
-            component: HelloWorld,
+            components: {
+                default: HelloWorld,
+                first: HelloWorld,
+                second: HelloJSX
+            },
         },
         {
             path: '/jsx',
             name: 'jsx',
-            component: HelloJSX,
+            components: {
+                default: HelloJSX,
+                first: HelloJSX,
+                second: HelloWorld
+            },
         },
     ],
 })
