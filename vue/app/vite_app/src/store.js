@@ -1,4 +1,5 @@
 import {createStore} from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 export const store = createStore({
     state :()=> {
@@ -8,22 +9,17 @@ export const store = createStore({
         }
     },
     mutations: {
-        count: (state, n)=>{
+        doit: (state, n)=>{
+            var n = Math.floor(Math.random() * 10)
             state.counter += n
-        },
-        say: (state, msg)=>{
-            state.message = msg
+            state.message = 'add ' + n + ' !';
         },
         reset: (state)=>{
-            state.message = "reset!"
+            state.message = "reset now"
             state.counter = 0
         },
     },
-    actions: {
-        doit: (context)=>{
-            var n = Math.floor(Math.random() * 10)
-            context.commit('count', n)
-            context.commit('say', 'add ' + n + ' !')
-        },
-    }
+    plugins:[
+        createPersistedState(),
+    ],
 })
