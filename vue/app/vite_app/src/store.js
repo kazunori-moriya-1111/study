@@ -8,8 +8,8 @@ export const store = createStore({
         }
     },
     mutations: {
-        count: (state)=>{
-            state.counter++
+        count: (state, n)=>{
+            state.counter += n
         },
         reset: (state)=>{
             state.counter = 0
