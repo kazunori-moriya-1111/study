@@ -8,3 +8,4 @@ django_docker/static/admin/
 django_docker/src/view_html/migrations/
 django_docker/nginx/log/
 django_docker/python/log/
+django_docker/src/api/__pycache__/
