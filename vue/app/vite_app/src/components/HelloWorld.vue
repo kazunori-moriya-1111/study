@@ -10,8 +10,6 @@
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 
-const url = "http://127.0.0.1:8000/v1/"
-
 export default {
     setup(props){
         const data = reactive({
@@ -20,8 +18,10 @@ export default {
             json_data: '',
         })
         const getData = async()=>{
-            let result = await axios.get(url)
-            data.json_data = result.data
+            const url = "http://127.0.0.1:8000/v1/"
+            axios.get(url).then((result)=>{
+                data.json_data = result.data
+            })
         }
         onMounted(()=>{
             getData()
