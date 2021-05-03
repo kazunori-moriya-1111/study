@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
 import json
 
 
@@ -7,9 +7,9 @@ import json
 
 def test(request):
     params = {
-        'a': 1,
-        'b': 2,
+        'a': "aがkeyのvalue",
+        'b': 4,
     }
 
-    json_str = json.dumps(params, ensure_ascii=False, indent=2)
-    return HttpResponse(json_str)
+    response = JsonResponse(params)
+    return response

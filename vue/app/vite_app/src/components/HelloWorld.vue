@@ -2,7 +2,7 @@
     <section class="alert alert-primary">
         <h1>{{data.title}}</h1>
         <p>{{data.message}}</p>
-        <textarea v-model="data.mydata" rows="5" class="form-control"></textarea>
+        <p>{{data.json_data.a}} ({{data.json_data.b}})</p>
     </section>
 </template>
 
@@ -17,12 +17,11 @@ export default {
         const data = reactive({
             title: 'Axios',
             message: 'This is axios sample.',
-            mydata: '',
+            json_data: '',
         })
         const getData = async()=>{
             let result = await axios.get(url)
-            console.log(result.data)
-            data.mydata = result.data
+            data.json_data = result.data
         }
         onMounted(()=>{
             getData()
