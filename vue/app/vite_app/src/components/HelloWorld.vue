@@ -26,6 +26,9 @@
                 </tr>
             </tbody>
         </table>
+        <p>User ID</p>
+        <input type="text" name="user_id" placeholder="User IDを入力してください" v-model="form_data.user_id">
+        <button class="btn btn-primary m-2" @click="doAdd">追加する</button>
     </section>
 </template>
 
@@ -43,6 +46,11 @@ export default {
             id:0,
             json_data: '',
         })
+        // フォームデータ
+        const form_data = reactive({
+            user_id : ''
+        })
+        // 検索
         const doClick = ()=>{
             axios.get(url + data.id).then((result)=>{
                 data.json_data = result.data
@@ -51,7 +59,11 @@ export default {
                 data.json_data = null
             })
         }
-        return{ data, doClick }
+        // 追加
+        const doAdd = ()=>{
+            console.log(form_data.user_id)
+        }
+        return{ data, form_data, doClick, doAdd }
     },
 }
 </script>
