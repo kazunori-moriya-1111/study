@@ -27,8 +27,12 @@
             </tbody>
         </table>
         <p>User ID</p>
-        <input type="text" name="user_id" placeholder="User IDを入力してください" v-model="form_data.user_id">
-        <button class="btn btn-primary m-2" @click="doAdd">追加する</button>
+        <div class="form-group">
+            <input type="text" name="user_id" placeholder="User IDを入力してください" v-model="form_data.user_id">
+            <input type="text" name="title" placeholder="titleを入力してください" v-model="form_data.title">
+            <input type="text" name="body" placeholder="bodyを入力してください" v-model="form_data.body">
+            <button class="btn btn-primary m-2" @click="doAdd">追加する</button>
+        </div>
     </section>
 </template>
 
@@ -37,6 +41,7 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 
 let url = "http://127.0.0.1:8000/v1/"
+let add_url = "http://127.0.0.1:8000/v1/add"
 
 export default {
     setup(props){
@@ -48,7 +53,9 @@ export default {
         })
         // フォームデータ
         const form_data = reactive({
-            user_id : ''
+            user_id : '3',
+            title : '',
+            body : '',
         })
         // 検索
         const doClick = ()=>{
@@ -61,7 +68,15 @@ export default {
         }
         // 追加
         const doAdd = ()=>{
+            //URLSearchParamsを使用してpostデータ送信する
+            let params = new URLSearchParams();
+            params.append('user_id', form_data.user_id);
             console.log(form_data.user_id)
+            axios.post(add_url, params).then((result)=>{
+                console.log(result.data)
+            }).catch((error)=>{
+                console.log('error')
+            })
         }
         return{ data, form_data, doClick, doAdd }
     },
