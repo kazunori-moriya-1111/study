@@ -28,9 +28,13 @@
         </table>
         <p>User ID</p>
         <div class="form-group">
+            <p>user_id</p>
             <input type="text" name="user_id" placeholder="User IDを入力してください" v-model="form_data.user_id">
+            <p>title</p>
             <input type="text" name="title" placeholder="titleを入力してください" v-model="form_data.title">
+            <p>body</p>
             <input type="text" name="body" placeholder="bodyを入力してください" v-model="form_data.body">
+            <br>
             <button class="btn btn-primary m-2" @click="doAdd">追加する</button>
         </div>
     </section>
@@ -74,6 +78,8 @@ export default {
             console.log(form_data.user_id)
             axios.post(add_url, params).then((result)=>{
                 console.log(result.data)
+                //キーを指定して特定のデータを抽出
+                console.log(result.data.result)
             }).catch((error)=>{
                 console.log('error')
             })
