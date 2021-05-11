@@ -37,12 +37,15 @@ def index(request):
 
 # 追加機能
 def add(request):
+    # try-catchしてだめならエラーjsonを返却する
     print(request.POST)
-    post_data = int(request.POST['user_id'])
-    post_data += 1
+    user_id = int(request.POST['user_id'])
+    title = request.POST['title']
+    body = request.POST['body']
+    s = SampleModel(user_id=user_id, title=title, body=body)
+    s.save()
     params = {
-        'result': post_data
+        'result': 'ok'
     }
-
     response = JsonResponse(params)
     return response
