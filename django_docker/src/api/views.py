@@ -49,3 +49,14 @@ def add(request):
     }
     response = JsonResponse(params)
     return response
+
+
+# 　削除機能
+def delete(request):
+    user_id = int(request.POST['user_id'])
+    SampleModel.objects.filter(user_id=user_id).delete()
+    params = {
+        'result': 'ok'
+    }
+    response = JsonResponse(params)
+    return response
