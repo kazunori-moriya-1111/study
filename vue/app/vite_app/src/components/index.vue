@@ -12,7 +12,7 @@
         </table>
     </section>
     <div>
-        <router-link to="/hello" class="btn btn-primary mx-2">
+        <router-link to="/add" class="btn btn-primary mx-2">
             Go to add
         </router-link>
         <router-link to="/hello" class="btn btn-primary mx-2">
@@ -42,20 +42,6 @@ export default {
             data.message = 'ERROR'
             data.json_data = null
         })
-        // 追加
-        const doAdd = ()=>{
-            //URLSearchParamsを使用してpostデータ送信する
-            let params = new URLSearchParams();
-            params.append('user_id', form_data.user_id);
-            console.log(form_data.user_id)
-            axios.post(add_url, params).then((result)=>{
-                console.log(result.data)
-                //キーを指定して特定のデータを抽出
-                console.log(result.data.result)
-            }).catch((error)=>{
-                console.log('error')
-            })
-        }
         return{ data }
     },
 }
