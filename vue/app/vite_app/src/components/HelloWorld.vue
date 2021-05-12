@@ -38,6 +38,9 @@
             <button class="btn btn-primary m-2" @click="doAdd">追加する</button>
         </div>
     </section>
+    <router-link to="/index" class="btn btn-primary mx-2">
+        Go to index
+    </router-link>
 </template>
 
 <script>

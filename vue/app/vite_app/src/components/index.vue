@@ -1,21 +1,19 @@
 <template>
     <section class="alert alert-primary">
-        <h1>{{data.title}} index index index</h1>
+        <h1>{{data.title}}</h1>
         <p>{{data.message}}</p>
-        <div class="form-group">
-            <input type="number" class="form-control" v-model="data.id">
-            <button class="btn btn-primary m-2" @click="doClick">click</button>
-        </div>
         <table class="table table-light table-striped">
             <tbody class="text-left">
                 <tr v-for="tmp in data.json_data">
                     <th style="width:200px;">ID</th>
-                    <td>{{tmp ? tmp.user_id : '-'}}</td>
+                    <td><router-link to="/hello">{{tmp ? tmp.user_id : '-'}}</router-link></td>
                 </tr>
             </tbody>
         </table>
-
     </section>
+    <router-link to="/hello" class="btn btn-primary mx-2">
+        Go to hello
+    </router-link>
 </template>
 
 <script>
@@ -26,28 +24,23 @@ let url = "http://127.0.0.1:8000/v1/index"
 
 export default {
     setup(props){
+        // データ定義
         const data = reactive({
-            title: 'Axios',
-            message: 'This is axios sample.',
-            id:0,
+            title: 'index page',
+            message: 'data list',
             json_data: '',
+            getPaginateCount: '',
         })
-        // フォームデータ
-        const form_data = reactive({
-            user_id : '3',
-            title : '',
-            body : '',
+        // 一覧表示
+        console.log("setup内でもメソッドを使用する")
+        axios.get(url).then((result)=>{
+            data.json_data = result.data
+            console.log(result.data[0])
+            console.log(result.data[0].body)
+        }).catch((error)=>{
+            data.message = 'ERROR'
+            data.json_data = null
         })
-        // 検索
-        const doClick = ()=>{
-            axios.get(url).then((result)=>{
-                data.json_data = result.data
-                console.log(result.data)
-            }).catch((error)=>{
-                data.message = 'ERROR'
-                data.json_data = null
-            })
-        }
         // 追加
         const doAdd = ()=>{
             //URLSearchParamsを使用してpostデータ送信する
@@ -62,7 +55,7 @@ export default {
                 console.log('error')
             })
         }
-        return{ data, doClick }
+        return{ data }
     },
 }
 </script>
