@@ -5,8 +5,8 @@ import json
 
 
 # Create your views here.
-# 検索機能
-def test(request, id):
+# 詳細機能
+def detail(request, id):
     data_query_set = SampleModel.objects.filter(id=id)
     data = list(data_query_set.values())[0]
     params = {
