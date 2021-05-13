@@ -53,8 +53,9 @@ def add(request):
 
 # 　削除機能
 def delete(request):
-    user_id = int(request.POST['user_id'])
-    SampleModel.objects.filter(user_id=user_id).delete()
+    user_id_list = request.POST['user_id_list'].split(',')
+    for delete_user_id in user_id_list:
+        SampleModel.objects.filter(user_id=delete_user_id).delete()
     params = {
         'result': 'ok'
     }

@@ -3,6 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import index from './components/index.vue'
 import detail from './components/detail.vue'
 import add from './components/add.vue'
+import delete_vue from './components/delete.vue'
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -31,6 +32,12 @@ export const router = createRouter({
             path: '/add',
             name: 'add',
             component: add,
+            props: true
+        },
+        {
+            path: '/delete',
+            name: 'delete_vue',
+            component: delete_vue,
             props: true
         },
         {

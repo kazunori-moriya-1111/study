@@ -15,7 +15,7 @@
         <router-link to="/add" class="btn btn-primary mx-2">
             Go to add
         </router-link>
-        <router-link to="/hello" class="btn btn-primary mx-2">
+        <router-link to="/delete" class="btn btn-primary mx-2">
             Go to delete
         </router-link>
     </div>
