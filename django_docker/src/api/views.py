@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from .models import SampleModel, User
 import json
+import decimal
 
 
 # Create your views here.
@@ -85,5 +86,20 @@ def login(request):
         params['result'] = 'ok'
     else:
         params['result'] = 'ng'
+    response = JsonResponse(params)
+    return response
+
+
+# 目標設定
+def set_goal(request):
+    user_id = request.POST['user_id']
+    goal_weight = float(request.POST['goal_weight'])
+    day_calorie = int(request.POST['day_calorie'])
+    print("type(goal_weight):", type(goal_weight))
+    print("type(day_calorie):", type(day_calorie))
+    # 更新処理
+    User.objects.filter(user_id=user_id).update(goal_weight=goal_weight)
+    User.objects.filter(user_id=user_id).update(day_calorie=day_calorie)
+    params = {'result': 'ok'}
     response = JsonResponse(params)
     return response
