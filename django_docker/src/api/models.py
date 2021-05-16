@@ -6,8 +6,8 @@ import uuid
 # Create your models here.
 class SampleModel(models.Model):
     user_id = models.IntegerField()
-    title = models.CharField(max_length=200)
-    body = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, null=True)
+    body = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.user_id
