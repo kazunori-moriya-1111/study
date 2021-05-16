@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
-from .models import SampleModel
+from .models import SampleModel, User
 import json
 
 
@@ -56,6 +56,20 @@ def delete(request):
     user_id_list = request.POST['user_id_list'].split(',')
     for delete_user_id in user_id_list:
         SampleModel.objects.filter(user_id=delete_user_id).delete()
+    params = {
+        'result': 'ok'
+    }
+    response = JsonResponse(params)
+    return response
+
+
+# ユーザ登録
+def entry(request):
+    print("アプリない確認")
+    user_id = request.POST['user_id']
+    password = request.POST['password']
+    s = User(user_id=user_id, password=password)
+    s.save()
     params = {
         'result': 'ok'
     }
