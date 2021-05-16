@@ -65,7 +65,6 @@ def delete(request):
 
 # ユーザ登録
 def entry(request):
-    print("アプリない確認")
     user_id = request.POST['user_id']
     password = request.POST['password']
     s = User(user_id=user_id, password=password)
@@ -73,5 +72,22 @@ def entry(request):
     params = {
         'result': 'ok'
     }
+    response = JsonResponse(params)
+    return response
+
+
+# ユーザ認証
+def login(request):
+    post_password = request.POST['password']
+    db_password = User.objects.filter(user_id=request.POST['user_id']).values()[0]['password']
+    print(post_password, ': post_password')
+    print(db_password, ': db_password')
+    # レスポンス用配列定義
+    params = {}
+    # パスワード一致確認
+    if post_password == db_password:
+        params['result'] = 'ok'
+    else:
+        params['result'] = 'ng'
     response = JsonResponse(params)
     return response
