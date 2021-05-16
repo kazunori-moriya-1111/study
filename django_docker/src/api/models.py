@@ -16,8 +16,8 @@ class SampleModel(models.Model):
 class User(models.Model):
     user_id = models.CharField(max_length=200, primary_key=True)
     password = models.CharField(max_length=200)
-    goal_weight = models.IntegerField()
-    day_calorie = models.IntegerField()
+    goal_weight = models.IntegerField(null=True)
+    day_calorie = models.IntegerField(null=True)
 
 
 class Body(models.Model):
