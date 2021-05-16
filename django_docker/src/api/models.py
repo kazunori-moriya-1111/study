@@ -16,7 +16,7 @@ class SampleModel(models.Model):
 class User(models.Model):
     user_id = models.CharField(max_length=200, primary_key=True)
     password = models.CharField(max_length=200)
-    goal_weight = models.IntegerField(null=True)
+    goal_weight = models.FloatField(null=True)
     day_calorie = models.IntegerField(null=True)
 
 
@@ -35,7 +35,7 @@ class Body(models.Model):
 
 
 class Menu(models.Model):
-    menu_id = models.UUIDField(primary_key=True, default=uuid.uuid4())
+    menu_id = models.UUIDField(primary_key=True)
     # Userテーブルの主キーと1対他のリレーションを定義
     user_id = models.ForeignKey(User, db_column='user_id', on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
@@ -51,7 +51,7 @@ class Menu(models.Model):
 
 
 class Meal(models.Model):
-    meal_id = models.UUIDField(primary_key=True, default=uuid.uuid4())
+    meal_id = models.UUIDField(primary_key=True)
     menu_id = models.ForeignKey(Menu, db_column='menu_id', on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     choices = ((1, '朝食'), (2, '昼食'), (3, '夜食'))
