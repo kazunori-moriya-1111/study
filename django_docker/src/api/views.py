@@ -6,8 +6,8 @@ import json
 
 # Create your views here.
 # 詳細機能
-def detail(request, id):
-    data_query_set = SampleModel.objects.filter(id=id)
+def detail(request, param_id):
+    data_query_set = SampleModel.objects.filter(id=param_id)
     data = list(data_query_set.values())[0]
     params = {
         'id': data["id"],
@@ -25,11 +25,7 @@ def index(request):
     response_data = []
     data = SampleModel.objects.all().values()
     for record in data:
-        params = {}
-        params['id'] = record["id"]
-        params['user_id'] = record["user_id"]
-        params['title'] = record["title"]
-        params['body'] = record["body"]
+        params = {'id': record["id"], 'user_id': record["user_id"], 'title': record["title"], 'body': record["body"]}
         response_data.append(params)
     json_str = json.dumps(response_data, ensure_ascii=False, indent=2)
     return HttpResponse(json_str)
