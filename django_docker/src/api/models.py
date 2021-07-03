@@ -24,7 +24,7 @@ class Body(models.Model):
     # Userテーブルの主キーと1対他のリレーションを定義
     user_id = models.ForeignKey(User, db_column='user_id', on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
-    weight = models.DecimalField(max_digits="3", decimal_places="1")
+    weight = models.FloatField()
 
     # 複合ユニークキーを設定
     class Meta:
