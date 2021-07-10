@@ -1,0 +1,5 @@
+DBNAME = 'sql'
+USER = 'user'
+PASSWORD = 'password'
+HOST = ''
+CHARSET = 'utf8mb4'
