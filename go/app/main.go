@@ -26,6 +26,11 @@ func main() {
 	fmt.Printf("%T:%d\n", u32, u32)
 	//ラップアラウンド　オーバーフロー対策のための最大値確認
 	fmt.Printf("unit32 max value = %d\n", math.MaxUint32)
+	//浮動小数点リテラル
+	fmt.Println(1.0e2)
+	//浮動小数点の範囲
+	fmt.Println(float32(1.0) / float32(3.0))
+	fmt.Println(float64(1.0) / float64(3.0))
 }
 
 func one() int {
