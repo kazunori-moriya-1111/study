@@ -31,6 +31,13 @@ func main() {
 	//浮動小数点の範囲
 	fmt.Println(float32(1.0) / float32(3.0))
 	fmt.Println(float64(1.0) / float64(3.0))
+	//複素数型
+	c1 := 1.0 + 3i
+	c2 := complex(1.0, 3)
+	fmt.Println(c1, c2)
+	//実部と虚部の取り出し
+	fmt.Println("real(c1):", real(c1))
+	fmt.Println("imag(c1):", imag(c1))
 }
 
 func one() int {
