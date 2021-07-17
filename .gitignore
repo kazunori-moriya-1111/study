@@ -12,3 +12,4 @@ django_docker/src/api/__pycache__/
 django_docker/src/api/migrations/
 sql/logs
 sql/2chapter/__pycache__
+sql/__pycache__
