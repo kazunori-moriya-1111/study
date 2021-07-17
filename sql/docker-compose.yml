@@ -1,0 +1,19 @@
+version: "3"
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - db-store:/var/lib/mysql
+      - ./logs:/var/log/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/init_sql:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_DATABASE=sql_study
+      - MYSQL_USER=study_user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - TZ=Asia/Tokyo
+    ports:
+      - 3306:3306
+volumes:
+  db-store:
