@@ -1,0 +1,12 @@
+emp_id,team_id,emp_name,team
+201,1,Joe,商品企画
+201,2,Joe,開発
+201,3,Joe,営業
+202,2,Jim,開発
+203,3,Carl,営業
+204,1,Bree,商品企画
+204,2,Bree,開発
+204,3,Bree,営業
+204,4,Bree,管理
+205,1,Kim,商品企画
+205,2,Kim,開発
