@@ -9,20 +9,16 @@ conn = pymysql.connect(host=const.HOST,
                        cursorclass=pymysql.cursors.DictCursor)
 
 # テーブル作成処理(もし存在したらテーブルを削除する)
-create_table_name = 'PostalHistory2'
+create_table_name = 'Employees'
 
 with conn.cursor() as cursor:
     drop_table_sql = "drop table if exists {0}".format(create_table_name)
     cursor.execute(drop_table_sql)
     create_table_sql = """CREATE TABLE {0} (
-                          name VARCHAR(1),
-                          pcode VARCHAR(7),
-                          lft REAL NOT NULL,
-                          rgt REAL NOT NULL,
-                          primary key(name, pcode),
-                          unique(name, lft),
-                          unique(name, rgt),
-                          check(lft < rgt)
+                          emp_id VARCHAR(8),
+                          emp_name VARCHAR(32),
+                          dept_id VARCHAR(2),
+                          primary key(emp_id)
                           )""".format(create_table_name)
     cursor.execute(create_table_sql)
 
