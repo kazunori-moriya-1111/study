@@ -116,6 +116,11 @@ func main() {
 	n5 := 0
 	n5 += 10
 	fmt.Println("n5:", n5)
+	//比較演算子
+	fmt.Println("1 == 1：", 1 == 1)
+	fmt.Println("5 >= 7：", 5 >= 7)
+	fmt.Println("6 != 2：", 6 != 2)
+	fmt.Println("true != false：", true != false)
 }
 
 func one() int {
