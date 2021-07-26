@@ -121,6 +121,13 @@ func main() {
 	fmt.Println("5 >= 7：", 5 >= 7)
 	fmt.Println("6 != 2：", 6 != 2)
 	fmt.Println("true != false：", true != false)
+	//論理演算子
+	T := true
+	F := false
+	fmt.Println("T && F:", T && F)
+	fmt.Println("T || F:", T || F)
+	fmt.Println("!T:", !T)
+
 }
 
 func one() int {
