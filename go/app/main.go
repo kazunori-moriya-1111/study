@@ -129,6 +129,7 @@ func main() {
 	fmt.Println("!T:", !T)
 	//定義した関数を使用
 	fmt.Println(puls(1, 2))
+	hello()
 }
 
 //関数定義
@@ -136,6 +137,11 @@ func puls(x, y int) int {
 	return x + y
 }
 
+//戻り値がない関数
+func hello() {
+	fmt.Println("Hello kansu")
+	return
+}
 func one() int {
 	return 1
 }
