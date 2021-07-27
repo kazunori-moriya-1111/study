@@ -127,7 +127,13 @@ func main() {
 	fmt.Println("T && F:", T && F)
 	fmt.Println("T || F:", T || F)
 	fmt.Println("!T:", !T)
+	//定義した関数を使用
+	fmt.Println(puls(1, 2))
+}
 
+//関数定義
+func puls(x, y int) int {
+	return x + y
 }
 
 func one() int {
