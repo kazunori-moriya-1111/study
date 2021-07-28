@@ -138,7 +138,10 @@ func main() {
 	fmt.Printf("章 =%d 剰余 =%d\n", q2, r2)
 	x2, y2 := doSomething()
 	fmt.Println("x2", x2, "y2", y2)
-
+	//無名関数
+	f := func(x, y int) int { return x + y }
+	fmt.Println("f(2,3):", f(2, 3))
+	fmt.Printf("%T\n", f)
 }
 
 //関数定義
