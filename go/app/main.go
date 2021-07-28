@@ -148,6 +148,9 @@ func main() {
 	fmt.Printf("plusAlias(10, 5): %#v\n", plusAlias(10, 5))
 	f1 := returnFunc()
 	f1()
+	callFunction(func() {
+		fmt.Println("I'm a function")
+	})
 }
 
 //関数定義
@@ -179,6 +182,11 @@ func returnFunc() func() {
 	return func() {
 		fmt.Println("I'm a function")
 	}
+}
+
+//関数を引数に取る関数
+func callFunction(f func()) {
+	f()
 }
 
 func one() int {
