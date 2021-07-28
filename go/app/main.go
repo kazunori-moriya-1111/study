@@ -142,6 +142,10 @@ func main() {
 	f := func(x, y int) int { return x + y }
 	fmt.Println("f(2,3):", f(2, 3))
 	fmt.Printf("%T\n", f)
+	fmt.Printf("%#v\n", func(x, y int) int { return x + y })
+	fmt.Printf("%#v\n", func(x, y int) int { return x + y }(2, 3))
+	var plusAlias = puls
+	fmt.Printf("plusAlias(10, 5): %#v\n", plusAlias(10, 5))
 }
 
 //関数定義
