@@ -149,7 +149,7 @@ func hello() {
 	return
 }
 
-//
+//戻り値が複数の関数
 func div(a, b int) (int, int) {
 	q := a / b
 	r := a % b
