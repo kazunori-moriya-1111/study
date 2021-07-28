@@ -130,6 +130,8 @@ func main() {
 	//定義した関数を使用
 	fmt.Println(puls(1, 2))
 	hello()
+	q1, r1 := div(19, 7)
+	fmt.Printf("章 =%d 剰余 =%d\n", q1, r1)
 }
 
 //関数定義
@@ -142,6 +144,14 @@ func hello() {
 	fmt.Println("Hello kansu")
 	return
 }
+
+//
+func div(a, b int) (int, int) {
+	q := a / b
+	r := a % b
+	return q, r
+}
+
 func one() int {
 	return 1
 }
