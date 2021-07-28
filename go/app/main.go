@@ -132,6 +132,10 @@ func main() {
 	hello()
 	q1, r1 := div(19, 7)
 	fmt.Printf("章 =%d 剰余 =%d\n", q1, r1)
+	//戻り値の破棄
+	q2, _ := div(19, 7)
+	_, r2 := div(19, 7)
+	fmt.Printf("章 =%d 剰余 =%d\n", q2, r2)
 }
 
 //関数定義
