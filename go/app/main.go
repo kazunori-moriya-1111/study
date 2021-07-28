@@ -146,6 +146,8 @@ func main() {
 	fmt.Printf("%#v\n", func(x, y int) int { return x + y }(2, 3))
 	var plusAlias = puls
 	fmt.Printf("plusAlias(10, 5): %#v\n", plusAlias(10, 5))
+	f1 := returnFunc()
+	f1()
 }
 
 //関数定義
@@ -170,6 +172,13 @@ func div(a, b int) (int, int) {
 func doSomething() (x, y int) {
 	y = 5
 	return
+}
+
+//関数を返す関数
+func returnFunc() func() {
+	return func() {
+		fmt.Println("I'm a function")
+	}
 }
 
 func one() int {
