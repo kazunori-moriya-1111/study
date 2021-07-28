@@ -136,6 +136,9 @@ func main() {
 	q2, _ := div(19, 7)
 	_, r2 := div(19, 7)
 	fmt.Printf("章 =%d 剰余 =%d\n", q2, r2)
+	x2, y2 := doSomething()
+	fmt.Println("x2", x2, "y2", y2)
+
 }
 
 //関数定義
@@ -154,6 +157,12 @@ func div(a, b int) (int, int) {
 	q := a / b
 	r := a % b
 	return q, r
+}
+
+//戻り値を表す変数
+func doSomething() (x, y int) {
+	y = 5
+	return
 }
 
 func one() int {
