@@ -156,6 +156,14 @@ func main() {
 	fmt.Println("f2(\"Golang\"):", f2("Golang"))
 	fmt.Println("f2(\"is\"):", f2("is"))
 	fmt.Println("f2(\"awesome!\")", f2("awesome!"))
+
+	ints := intergers()
+	fmt.Println(ints())
+	fmt.Println(ints())
+	fmt.Println(ints())
+
+	otherints := intergers()
+	fmt.Println(otherints())
 }
 
 //関数定義
@@ -205,6 +213,16 @@ func later() func(string) string {
 		return s
 	}
 }
+
+//ジェネレーターの振る舞いをしたクロージャー
+func intergers() func() int {
+	i := 0
+	return func() int {
+		i += 1
+		return i
+	}
+}
+
 func one() int {
 	return 1
 }
