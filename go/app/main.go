@@ -142,7 +142,7 @@ func main() {
 	f := func(x, y int) int { return x + y }
 	fmt.Println("f(2,3):", f(2, 3))
 	fmt.Printf("%T\n", f)
-	fmt.Printf("%#v\n", func(x, y int) int { return x + y })
+	//fmt.Printf("%#v\n", func(x, y int) int { return x + y })
 	fmt.Printf("%#v\n", func(x, y int) int { return x + y }(2, 3))
 	var plusAlias = puls
 	fmt.Printf("plusAlias(10, 5): %#v\n", plusAlias(10, 5))
@@ -151,6 +151,11 @@ func main() {
 	callFunction(func() {
 		fmt.Println("I'm a function")
 	})
+	f2 := later()
+
+	fmt.Println("f2(\"Golang\"):", f2("Golang"))
+	fmt.Println("f2(\"is\"):", f2("is"))
+	fmt.Println("f2(\"awesome!\")", f2("awesome!"))
 }
 
 //関数定義
@@ -189,6 +194,17 @@ func callFunction(f func()) {
 	f()
 }
 
+//クロージャーとしての無名関数
+func later() func(string) string {
+	//一つ前に与えられた文字列を保存するための変数
+	var store string
+	//引数に文字列をとり文字列を返す関数を返す
+	return func(next string) string {
+		s := store
+		store = next
+		return s
+	}
+}
 func one() int {
 	return 1
 }
