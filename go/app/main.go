@@ -164,6 +164,22 @@ func main() {
 
 	otherints := intergers()
 	fmt.Println(otherints())
+	//定数定義
+	const X = 1
+	const (
+		Y = 2
+		Z = 3
+	)
+	fmt.Println("X=", X, "Y=", Y, "Z=", Z)
+	//定数の値省略
+	const (
+		X1 = 2
+		Y1
+		Z1
+		S1 = "あ"
+		S2
+	)
+	fmt.Println("X1=", X1, "Y1=", Y1, "Z=", Z1, "S1=", S1, "S2=", S2)
 }
 
 //関数定義
