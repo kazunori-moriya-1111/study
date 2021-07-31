@@ -183,6 +183,31 @@ func main() {
 	//定数式
 	const Z2 = X + Y + Z
 	fmt.Println("Z2=", Z2)
+	//iota
+	const (
+		A = iota
+		B
+		C
+	)
+	fmt.Println("A =", A, "B =", B, "C =", C)
+	//iotaの増分確認
+	const (
+		A1 = 1 + iota
+		B1
+		C1
+		N = iota
+	)
+	fmt.Println("A1 =", A1, "B1 =", B1, "C1 =", C1, "N = ", N)
+	//iotaの中断動作
+	const (
+		A2 = iota
+		B2
+		C2
+		D2 = 17
+		E2 = iota
+		F2
+	)
+	fmt.Println("A2 =", A2, "B2 =", B2, "C2 =", C2, "D2 = ", D2, "E2 = ", E2, "F2 =", F2)
 }
 
 //関数定義
