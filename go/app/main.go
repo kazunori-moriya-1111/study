@@ -179,7 +179,10 @@ func main() {
 		S1 = "あ"
 		S2
 	)
-	fmt.Println("X1=", X1, "Y1=", Y1, "Z=", Z1, "S1=", S1, "S2=", S2)
+	fmt.Println("X1=", X1, "Y1=", Y1, "Z1=", Z1, "S1=", S1, "S2=", S2)
+	//定数式
+	const Z2 = X + Y + Z
+	fmt.Println("Z2=", Z2)
 }
 
 //関数定義
