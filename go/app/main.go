@@ -1,6 +1,7 @@
 package main
 
 import (
+	"app/foo"
 	"fmt"
 	"math"
 )
@@ -208,6 +209,7 @@ func main() {
 		F2
 	)
 	fmt.Println("A2 =", A2, "B2 =", B2, "C2 =", C2, "D2 = ", D2, "E2 = ", E2, "F2 =", F2)
+	fmt.Println(foo.MAX)
 }
 
 //関数定義
