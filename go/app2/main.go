@@ -1,7 +1,7 @@
 package main
 
 import (
-	"app/foo"
+	"app2/foo"
 	"fmt"
 	"math"
 )
