@@ -210,6 +210,9 @@ func main() {
 	)
 	fmt.Println("A2 =", A2, "B2 =", B2, "C2 =", C2, "D2 = ", D2, "E2 = ", E2, "F2 =", F2)
 	fmt.Println(foo.MAX)
+	// fmt.Println(foo.internal_const)　コンパイルエラー
+	fmt.Println(foo.FooFuunc(5))
+	// fmt.Println(foo.internalFunc(5)) コンパイルエラー
 }
 
 //関数定義
