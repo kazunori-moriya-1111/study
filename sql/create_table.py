@@ -9,16 +9,17 @@ conn = pymysql.connect(host=const.HOST,
                        cursorclass=pymysql.cursors.DictCursor)
 
 # テーブル作成処理(もし存在したらテーブルを削除する)
-create_table_name = 'Receipts'
+create_table_name = 'Shops'
 
 with conn.cursor() as cursor:
     drop_table_sql = "drop table if exists {0}".format(create_table_name)
     cursor.execute(drop_table_sql)
     create_table_sql = """CREATE TABLE {0} (
-                          cust_id CHAR(1) NOT NULL,
-                          seq INTEGER NOT NULL,
-                          price INTEGER NOT NULL,
-                          primary key(cust_id, seq)
+                          co_cd CHAR(3) NOT NULL,
+                          shop_id CHAR(3) NOT NULL,
+                          emp_nbr INTEGER NOT NULL,
+                          main_flag CHAR(1) NOT NULL,
+                          constraint pk_Shops primary key(co_cd, shop_id)
                           )""".format(create_table_name)
     cursor.execute(create_table_sql)
 
