@@ -9,16 +9,16 @@ conn = pymysql.connect(host=const.HOST,
                        cursorclass=pymysql.cursors.DictCursor)
 
 # テーブル作成処理(もし存在したらテーブルを削除する)
-create_table_name = 'OmitTbl'
+create_table_name = 'ScoreRows'
 
 with conn.cursor() as cursor:
     drop_table_sql = "drop table if exists {0}".format(create_table_name)
     cursor.execute(drop_table_sql)
     create_table_sql = """CREATE TABLE {0} (
-                          keycol CHAR(8) NOT NULL,
-                          seq INTEGER NOT NULL,
-                          val INTEGER,
-                          constraint pk_OmitTbl primary key(keycol, seq)
+                          student_id CHAR(4) NOT NULL,
+                          subject VARCHAR(8) NOT NULL,
+                          score INTEGER,
+                          constraint pk_ScoreRows primary key(student_id, subject)
                           )""".format(create_table_name)
     cursor.execute(create_table_sql)
 
