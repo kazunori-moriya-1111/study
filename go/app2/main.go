@@ -213,6 +213,15 @@ func main() {
 	// fmt.Println(foo.internal_const)　コンパイルエラー
 	fmt.Println(foo.FooFuunc(5))
 	// fmt.Println(foo.internalFunc(5)) コンパイルエラー
+	//for文の使い方
+	i1 := 0
+	for {
+		fmt.Println(i1)
+		i1++
+		if i1 == 100 {
+			break
+		}
+	}
 }
 
 //関数定義
