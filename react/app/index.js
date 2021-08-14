@@ -84,3 +84,24 @@ const func3 = (num1, num2) => {
     return num1 + num2
 }
 console.log(func3(10,20))
+
+//分割代入
+const myProfile = {
+    name1: "J",
+    age1:28,
+}
+const message3 = `名前は${myProfile.name1}です。年齢は${myProfile.age1}歳です。`
+console.log(message3)
+
+const { name1, age1 } = myProfile;
+const message4 = `名前は${name1}です。年齢は${age1}歳です。`
+console.log(message4)
+
+const myProfile1 = ["J", 28];
+const message5 = `名前は${myProfile1[0]}です。年齢は${myProfile1[1]}歳です。`
+console.log(message5)
+
+//配列の分割代入は順番が重要
+const [name2, age2] = myProfile1;
+const message6 = `名前は${name2}です。年齢は${age2}歳です。`
+console.log(message6)
