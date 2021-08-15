@@ -197,3 +197,24 @@ const checkSum = (num1, num2) => {
 }
 console.log(checkSum(50,40))
 console.log(checkSum(50,60))
+
+//論理演算子の本当の意味 && ||
+const flag1 = true
+const flag2 = false
+
+if (flag1 || flag2){
+    console.log("1か2はtrueになります")
+}
+if (flag1 && flag2){
+    console.log("1も2はtrueになります")
+}
+
+// ||の左側がfalseとなら右側を返す
+const num3 = null
+const fee = num3 || "金額未設定です"
+console.log(fee)
+
+// &&は左側がtrueなら右側を返す
+const num4 = 100
+const fee2 = num4 && '何か設定されました'
+console.log(fee2)
