@@ -14,11 +14,11 @@ CONNECT_STR = '{}://{}:{}@{}:{}/{}'.format(DATABASE, USER, PASSWORD, HOST, PORT,
 ENGINE = sqlalchemy.create_engine(CONNECT_STR)
 
 # dml_csv読み込み
-dml_csv_path = r'./9chapter/dml/9_6.csv'
+dml_csv_path = r'./9chapter/dml/9_7.csv'
 df = pd.read_csv(dml_csv_path, encoding='utf-8')
 
 # import処理
-tbl_name = 'Orders'
+tbl_name = 'OrdersReceipts'
 df.to_sql(con=ENGINE, name=tbl_name, if_exists='append', index=None)
 
 print('insert complete')
