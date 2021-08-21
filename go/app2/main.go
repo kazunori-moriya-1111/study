@@ -306,6 +306,8 @@ func main() {
 	default:
 		fmt.Println("unknown type:", v)
 	}
+	//defer
+	runDefer()
 }
 
 //関数定義
@@ -367,4 +369,11 @@ func intergers() func() int {
 
 func one() int {
 	return 1
+}
+
+func runDefer(){
+	defer fmt.Println("1")
+	defer fmt.Println("2")
+	defer fmt.Println("3")
+	fmt.Println("done")
 }
