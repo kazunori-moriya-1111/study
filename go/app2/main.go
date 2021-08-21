@@ -246,6 +246,48 @@ func main() {
 		// s : インデックスに対応した文字列の値
 		fmt.Printf("fruits[%d]=%s\n",i,s)
 	}
+	//switch文
+	num := 3
+	switch num {
+	case 1,2:
+		fmt.Println("1 or 2")
+	case 3,4:
+		fmt.Println("3 or 4")
+	default:
+		fmt.Println("unknown")
+	}
+	//fallthrough
+	str := "A"
+	switch str {
+	case "A":
+		str += "B"
+		fallthrough
+	case "B":
+		str += "C"
+		fallthrough
+	case "C":
+		str += "D"
+		fallthrough
+	default:
+		str += "E"
+	}
+	fmt.Println("fallthroughの動作確認:",str)
+	//switch文の変数局所化
+	switch n := 2; n {
+	case 1,3,5,7,9:
+		fmt.Printf("%d is odd\n",n)
+	case 2,4,6,8,10:
+		fmt.Printf("%d is even\n",n)
+	}
+	//式を伴うcase 返却値がbool型なので、switch式に与える式もbool型にする必要がある。bool型を与えても意味がないため、省略が基本
+	n6 := 4
+	switch{
+	case n6 > 0 && n6 < 3:
+		fmt.Println("0 < n < 3")
+	case n6 > 3 && n6 < 6:
+		fmt.Println("3 < n < 6")
+	}
+
 }
 
 //関数定義
