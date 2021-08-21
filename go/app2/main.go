@@ -222,6 +222,30 @@ func main() {
 			break
 		}
 	}
+	//条件付きfor文
+	i2 := 0
+	for i2 < 100 {
+		fmt.Println(i2)
+		i2++
+	}
+	//古典的for文
+	for i := 0; i < 100 ; i++{
+		fmt.Println("古典的for",i)
+	}
+	//continue
+	for i := 0; i < 100; i++{
+		if(i % 2 == 1){
+			continue
+		}
+		fmt.Println("continue:",i)
+	}
+	//範囲節によるfor文
+	fruits := [3]string{"Aplee", "Banana", "Cherry"}
+	for i,s = range fruits{
+		// i : 文字列のインデックス
+		// s : インデックスに対応した文字列の値
+		fmt.Printf("fruits[%d]=%s\n",i,s)
+	}
 }
 
 //関数定義
