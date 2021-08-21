@@ -287,7 +287,25 @@ func main() {
 	case n6 > 3 && n6 < 6:
 		fmt.Println("3 < n < 6")
 	}
-
+	//型アサーション
+	var x3 interface{} = 3.14
+	i, isInt := x3.(int)
+	fmt.Printf("i == %d, isInt == %t\n",i, isInt)
+	f3, isFloat64 := x3.(float64)
+	fmt.Printf("f3 == %g, isFloat64 == %t\n",f3, isFloat64)
+	str1, isString := x3.(string)
+	fmt.Printf("str1 == %s, isString == %t\n", str1, isString)
+	//型によるswitch x3はinterface型
+	switch v := x3.(type) {
+	case bool:
+		fmt.Println("bool:", v)
+	case int, uint:
+		fmt.Println("integer or unsigned integer:", v)
+	case float32, float64:
+		fmt.Println("float:", v)
+	default:
+		fmt.Println("unknown type:", v)
+	}
 }
 
 //関数定義
