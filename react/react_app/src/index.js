@@ -1,17 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.jsx';
 // import './index.css';
-// import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
-const App = () =>{
-  return (
-    <React.Fragment>
-      <h1>こんにちは</h1>
-      <p>お元気ですか</p>
-    </React.Fragment>
-  );
-};
 
 ReactDOM.render(
     <App />,document.getElementById('root')
