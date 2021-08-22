@@ -25,7 +25,9 @@ const onClickAdd = () => {
     const deleteButton = document.createElement("button")
     deleteButton.innerText = "削除"
     deleteButton.addEventListener("click", () => {
-        alert("削除")
+        // 押された削除ボタンを親タグを未完了リストから削除
+        const deleteTarget = deleteButton.parentNode.parentNode
+        document.getElementById("incomplete-list").removeChild(deleteTarget)
     })
 
     // divタグの子要素を設定する
