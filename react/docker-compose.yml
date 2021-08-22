@@ -5,8 +5,10 @@ services:
     build: ./node
     ports:
       - 8080:8080
+      - 3000:3000
     volumes:
       - ./app:/usr/src/app
+      - ./react_app:/usr/src/react_app
     tty: true
     stdin_open: true
     command: /bin/sh

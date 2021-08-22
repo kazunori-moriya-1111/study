@@ -13,3 +13,4 @@ django_docker/src/api/migrations/
 sql/logs
 sql/2chapter/__pycache__
 sql/__pycache__
+react/react_app/node_modules/
