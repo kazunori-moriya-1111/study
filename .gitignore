@@ -14,3 +14,4 @@ sql/logs
 sql/2chapter/__pycache__
 sql/__pycache__
 react/react_app/node_modules/
+react/react_todo/node_modules/

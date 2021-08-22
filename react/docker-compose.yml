@@ -9,6 +9,7 @@ services:
     volumes:
       - ./app:/usr/src/app
       - ./react_app:/usr/src/react_app
+      - ./react_todo:/usr/src/react_todo
     tty: true
     stdin_open: true
     command: /bin/sh
