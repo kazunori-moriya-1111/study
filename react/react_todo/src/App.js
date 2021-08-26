@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./styles.css";
+import {InputTodo} from './components/InputTodo.jsx'
 
 export const App = () => {
   // inputエリアに入力された、todoTextを管理する
@@ -47,12 +48,9 @@ export const App = () => {
   }
   return (
     <>
-      <div className="input-area">
-        <input placeholder="TODOを入力" value={todoText} onChange={onChangeTodoText}/>
-        <button　onClick={onClickAdd}>追加</button>
-      </div>
+      <InputTodo todoText={todoText} onChange={onChangeTodoText} onClick={onClickAdd}/>
       <div className="incomplete-area">
-        <p>未完了のTODO</p>
+        <p className="title">未完了のTODO</p>
         <ul>
           {incompleteTodos.map((todo, index) => {
             return(
@@ -67,6 +65,7 @@ export const App = () => {
         </ul>
       </div>
       <div className="complete-area">
+        <p className="title">完了のTODO</p>
         <ul>
         {completeTodos.map((todo, index) => {
             return(
