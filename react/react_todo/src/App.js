@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import "./styles.css";
 
 export const App = () => {
-  // eslint-disable-next-line
+  // inputエリアに入力された、todoTextを管理する
   const [todoText, setTodotext] = useState('')
-  // eslint-disable-next-line
+  // 未完了タスクの項目を管理する
   const [incompleteTodos, setIncompleteTodos] = useState([
     "あああああ",
     "いいいいい"
   ])
+  // 管理タスクの項目を管理する
   // eslint-disable-next-line
   const [completeTodos, setCompleteTodos] = useState(["ううううう"])
 
@@ -16,13 +17,19 @@ export const App = () => {
   const onChangeTodoText = (event) => {
     setTodotext(event.target.value)
   }
-  //todoTextの値をimcompleteTodosへ追加する
+  //追加ボタンの動作
   const onClickAdd = () => {
     //inputがからの場合は処理しない
     if (todoText === '') return
     const newTodos = [...incompleteTodos, todoText];
     setIncompleteTodos(newTodos)
     setTodotext('')
+  }
+  // 削除ボタンの動作
+  const onClickDelete = (index) => {
+    const newTodos = [...incompleteTodos]
+    newTodos.splice(index, 1)
+    setIncompleteTodos(newTodos)
   }
   return (
     <>
@@ -33,12 +40,13 @@ export const App = () => {
       <div className="incomplete-area">
         <p>未完了のTODO</p>
         <ul>
-          {incompleteTodos.map((todo) => {
+          {incompleteTodos.map((todo, index) => {
             return(
               <div key={todo} className="list-row">
                 <li>{todo}</li>
                 <button>完了</button>
-                <button>削除</button>
+                {/* onCllickで関数に引数を渡したい場合アロー関数で書かないと引数を渡すごとに動作してしまう */}
+                <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             )
           })}
