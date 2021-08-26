@@ -5,13 +5,9 @@ export const App = () => {
   // inputエリアに入力された、todoTextを管理する
   const [todoText, setTodotext] = useState('')
   // 未完了タスクの項目を管理する
-  const [incompleteTodos, setIncompleteTodos] = useState([
-    "あああああ",
-    "いいいいい"
-  ])
+  const [incompleteTodos, setIncompleteTodos] = useState([])
   // 管理タスクの項目を管理する
-  // eslint-disable-next-line
-  const [completeTodos, setCompleteTodos] = useState(["ううううう"])
+  const [completeTodos, setCompleteTodos] = useState([])
 
   //inputの値を入力の度にstateを変更する
   const onChangeTodoText = (event) => {
@@ -40,6 +36,15 @@ export const App = () => {
     setIncompleteTodos(newIncompleteTodos)
     setCompleteTodos(newCompleteTodos)
   }
+  // 戻すボタンの実装
+  const onClickBack = (index) => {
+    const newCompleteTodos = [...completeTodos]
+    newCompleteTodos.splice(index, 1)
+
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]]
+    setCompleteTodos(newCompleteTodos)
+    setIncompleteTodos(newIncompleteTodos)
+  }
   return (
     <>
       <div className="input-area">
@@ -63,11 +68,11 @@ export const App = () => {
       </div>
       <div className="complete-area">
         <ul>
-        {completeTodos.map((todo) => {
+        {completeTodos.map((todo, index) => {
             return(
               <div key={todo} className="list-row">
                 <li>{todo}</li>
-                <button>戻す</button>
+                <button onClick={() => onClickBack(index)}>戻す</button>
               </div>
             )
           })}
