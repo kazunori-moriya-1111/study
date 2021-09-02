@@ -1,34 +1,34 @@
-import PropTypes from 'prop-types'
+import React, {Component} from 'react'
 
 const App = () =>  {
-  const profiles = [
-    { name: "Taro", age: 10 },
-    { name: "Hanako", age: 5 },
-    { name: "Noname"}
-  ]
-  return (
-    <>
-      {
-          profiles.map((profile, index) => {
-            return <User name={profile.name} age={profile.age} key={index}/>
-          })
-      }
-    </>
-  );
-}
-// コンポーネントを定義
-const User = (props) => {
-  return <div>Hi, I am {props.name}, and {props.age} years old!</div>
+  return (<Counter></Counter>)
 }
 
-// コンポーネント引数のデフォルト値を設定
-User.defaultProps = {
-  age: 1
+// クラスコンポーネントを定義
+class Counter extends Component {
+  // 初期化処理で実行されるメソッド
+  constructor(props){
+    super(props)
+    this.state = {count: 0}
+  }
+  // プラスカウントボタン setStateを使用すると関連するDOMが再レンダリングされる
+  handlePlusButton = () => {
+    this.setState({count: this.state.count + 1})
+  }
+  // マイナスカウントボタン
+  handleMinusButton = () => {
+    this.setState({count: this.state.count - 1})
+  }
+
+  render(){
+    return (
+      <React.Fragment>
+        <div>count: {this.state.count}</div>
+        <button onClick={this.handlePlusButton}>+1</button>
+        <button onClick={this.handleMinusButton}>-1</button>
+      </React.Fragment>
+    )
+  }
 }
 
-// Userコンポーネントに対して型を定義する isRequiredを付与するとpropsに定義されていないとwarningを発生させる
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
-}
 export default App
