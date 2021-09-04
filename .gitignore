@@ -15,3 +15,10 @@ sql/2chapter/__pycache__
 sql/__pycache__
 react/react_app/node_modules/
 react/react_todo/node_modules/
+api/nginx/log/
+api/python/log/
+api/python/src/mysite/__pycache__/
+api/python/src/api/__pycache__/
+api/python/src/api/migrations/
+api/mysql/data/
+api/mysql/logs/
