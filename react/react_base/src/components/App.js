@@ -1,34 +1,30 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 
-const App = () =>  {
-  return (<Counter></Counter>)
-}
+import { increment, decrement } from '../actions'
 
 // クラスコンポーネントを定義
-class Counter extends Component {
-  // 初期化処理で実行されるメソッド
-  constructor(props){
-    super(props)
-    this.state = {count: 0}
-  }
-  // プラスカウントボタン setStateを使用すると関連するDOMが再レンダリングされる
-  handlePlusButton = () => {
-    this.setState({count: this.state.count + 1})
-  }
-  // マイナスカウントボタン
-  handleMinusButton = () => {
-    this.setState({count: this.state.count - 1})
-  }
-
+class App extends Component {
   render(){
+    const props = this.props
     return (
       <React.Fragment>
-        <div>count: {this.state.count}</div>
-        <button onClick={this.handlePlusButton}>+1</button>
-        <button onClick={this.handleMinusButton}>-1</button>
+        <div>value: {props.value}</div>
+        <button onClick={props.increment}>+1</button>
+        <button onClick={props.decrement}>-1</button>
       </React.Fragment>
     )
   }
 }
+//コンポーネント内の値をpropsとして定義する
+const mapStateToProps = state => ({ value: state.count.value })
 
-export default App
+//アクションを紐付けする
+const mapDispatchProps = dispatch => ({
+  increment: ()=> dispatch(increment()),
+  decrement: ()=> dispatch(decrement())
+})
+// stateとactionを関連付する
+export default connect(mapStateToProps, mapDispatchProps)(App)
+
+// export default App
