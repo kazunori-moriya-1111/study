@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 
-import { increment, decrement } from '../actions'
+import { readEvents } from '../actions'
 
 // クラスコンポーネントを定義
-class App extends Component {
+class EventsIndex extends Component {
+  // コンポーネントがマウントされた時に実行されるメソッド
+  componentDidMount (){
+    this.props.readEvents()
+  }
   render(){
     const props = this.props
     return (
@@ -17,14 +21,12 @@ class App extends Component {
   }
 }
 //コンポーネント内の値をpropsとして定義する
-const mapStateToProps = state => ({ value: state.count.value })
+const mapStateToProps = state => ({})
 
 //アクションを紐付けする
-const mapDispatchProps = dispatch => ({
-  increment: ()=> dispatch(increment()),
-  decrement: ()=> dispatch(decrement())
-})
+const mapDispatchProps = ({ readEvents })
+
 // stateとactionを関連付する
-export default connect(mapStateToProps, mapDispatchProps)(App)
+export default connect(mapStateToProps, mapDispatchProps)(EventsIndex)
 
 // export default App
