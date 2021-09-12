@@ -1,17 +1,19 @@
 import React, {useState} from 'react'
 
 const Basic1 = (props) =>{
-    const clickHandler = () =>{
-        console.log("click")
-    }
 
-    const [count, setCount] = useState(0)
+    const [product, setProducts] = useState({name: '', price:''})
 
     return(
         <div>
-            <button onClick={() => {setCount(prevCount => prevCount + 1); setCount(prevCount => prevCount + 1);}}>Click {count}</button>
-            <h1>Hello {props.name}</h1>
-            <h1>Hello React2</h1>
+            <form >
+                <input type="text" value={product.name}
+                onChange={env => setProducts({...product, name:env.target.value})}/>
+                <input type="text" value={product.price}
+                onChange={env => setProducts({...product, price:env.target.value})}/>
+            </form>
+            <h3>product name is {product.name}</h3>
+            <h3>product price is {product.price}</h3>
         </div>
     )
 }
