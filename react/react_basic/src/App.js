@@ -6,6 +6,7 @@ import './App.css';
 import ApiFetch from './components/ApiFetch';
 import AppContext from './contexts/AppContext';
 import B from './components/B'
+import BasicReducer from './components/BasicReducer';
 
 function App() {
   return (
@@ -14,9 +15,9 @@ function App() {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {/* <TimerContainer/> */}
-          <ApiFetch/>
-          <B />
-
+          {/* <ApiFetch/>
+          <B /> */}
+          <BasicReducer />
         </header>
       </div>
     </AppContext.Provider>
