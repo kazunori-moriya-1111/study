@@ -10,6 +10,7 @@ django_docker/nginx/log/
 django_docker/python/log/
 django_docker/src/api/__pycache__/
 django_docker/src/api/migrations/
+django_docker/src/app/static/
 sql/logs
 sql/2chapter/__pycache__
 sql/__pycache__
