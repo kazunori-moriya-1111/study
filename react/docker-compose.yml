@@ -12,6 +12,7 @@ services:
       - ./react_todo:/usr/src/react_todo
       - ./react_base:/usr/src/react_base
       - ./react_basic:/usr/src/react_basic
+      - ./react_basic_drf:/usr/src/react_basic_drf
       - ./redux:/usr/src/redux
     tty: true
     stdin_open: true
