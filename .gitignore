@@ -21,5 +21,6 @@ api/python/log/
 api/python/src/mysite/__pycache__/
 api/python/src/api/__pycache__/
 api/python/src/api/migrations/
+api/python/src/static/
 api/mysql/data/
 api/mysql/logs/

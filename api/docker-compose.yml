@@ -9,6 +9,7 @@ services:
         - ./nginx/conf:/etc/nginx/conf.d
         - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
         - ./nginx/log:/var/log/nginx
+        - ./python/src/static:/static
       depends_on:
         - python
 
