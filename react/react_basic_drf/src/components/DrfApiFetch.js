@@ -26,25 +26,31 @@ const DrfApiFetch = () =>{
         .then(res => {setSelectedTask(res.data)})
     }
 
-    const deleteTask = () => {
+    const deleteTask = (id) => {
         axios.delete(`http://localhost:8000/api/tasks/${id}/`,{
             headers:{
                 'Authorization' : 'Token 1b0734ef46b2790a8512679604d6592c276181e2'
             }
         })
-        .then(res => console.log(res.data))
+        .then(res => {setTasks(tasks.filter(task => task.id !== id)); setSelectedTask([])})
     }
 
     return(
         <div>
             <ul>
-                {tasks.map(task => <li key={task.id}>{task.title} {task.id}</li>)}
+                {
+                    tasks.map(task => <li key={task.id}>{task.title} {task.id}
+                    <button onClick={()=>deleteTask(task.id)}>
+                        <i className="fas fa-trash-alt"></i>
+                    </button>
+                    </li>)
+                }
             </ul>
             Set ID<br />
             <input type='text' value={id} onChange={env => (setId(env.target.value))}></input>
             <br />
             <button type='button' onClick={() => getTask()}>Get tasks</button>
-            <button type='button' onClick={() => deleteTask()}>Delete tasks</button>
+            {/* <button type='button' onClick={() => deleteTask()}>Delete tasks</button> */}
             <br />
             <h3>{ selectedTask.title }</h3>
         </div>
