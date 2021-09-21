@@ -5,6 +5,7 @@ const DrfApiFetch = () =>{
 
     const [tasks, setTasks] = useState([])
     const [selectedTask, setSelectedTask] = useState([])
+    const [editedTask, setEditedTask] = useState({id:'',title:''})
     const [id, setId] = useState(2)
 
     // useEffectの第二引数を空にすることで最初のレンダリング時のみに実行する関数を表現
@@ -34,6 +35,25 @@ const DrfApiFetch = () =>{
         })
         .then(res => {setTasks(tasks.filter(task => task.id !== id)); setSelectedTask([])})
     }
+    
+    const newTask = (task) => {
+        const data = {
+            title: task.title
+        }
+        axios.post(`http://localhost:8000/api/tasks/`, data ,{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : 'Token 1b0734ef46b2790a8512679604d6592c276181e2'
+            }
+        })
+        .then(res => {setTasks([...tasks, res.data]);setEditedTask({id: '', title: ''})})
+    }
+
+    const handleInputChange = () => evt => {
+        const value = evt.target.value;
+        const name = evt.target.name;
+        setEditedTask({...editedTask, [name]:value})
+    }
 
     return(
         <div>
@@ -52,7 +72,13 @@ const DrfApiFetch = () =>{
             <button type='button' onClick={() => getTask()}>Get tasks</button>
             {/* <button type='button' onClick={() => deleteTask()}>Delete tasks</button> */}
             <br />
-            <h3>{ selectedTask.title }</h3>
+            <h3>{ selectedTask.title } { selectedTask.id }</h3>
+            <input type="text" name="title"
+            value = {editedTask.title}
+            onChange={handleInputChange()}
+            placeholder="New task ?" required/>
+
+            <button onClick={() => newTask(editedTask)}>Create</button>
         </div>
     )
 }
