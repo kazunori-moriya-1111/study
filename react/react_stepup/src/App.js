@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useCallback} from 'react'
+import { useState, useCallback, useMemo} from 'react'
 import { ChildArea } from './ChildArea';
 
 function App() {
@@ -12,6 +12,10 @@ function App() {
 
   // propsで渡す関数を常に同じものにして、props変化によるレンダリングを防ぐ
   const onClickClose = useCallback(() => setOpen(false), [])
+
+  // 変数のMemo化
+  const temp = useMemo(() => 1 + 3, [])
+  console.log(temp)
 
   return (
     <div className="App">
