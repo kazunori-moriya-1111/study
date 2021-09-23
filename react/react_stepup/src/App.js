@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from 'react'
+import { useState, useCallback} from 'react'
 import { ChildArea } from './ChildArea';
 
 function App() {
@@ -10,6 +10,9 @@ function App() {
   const onChnegetext = (e) => setText(e.target.value)
   const onClickOpen = () => setOpen(!open)
 
+  // propsで渡す関数を常に同じものにして、props変化によるレンダリングを防ぐ
+  const onClickClose = useCallback(() => setOpen(false), [])
+
   return (
     <div className="App">
       {console.log("Appのレンダリング")}
@@ -17,7 +20,7 @@ function App() {
       <br />
       <br />
       <button onClick={onClickOpen}>表示</button>
-      <ChildArea open={open}/>
+      <ChildArea open={open} onClickClose={onClickClose}/>
     </div>
   );
 }

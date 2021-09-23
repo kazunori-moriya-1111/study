@@ -8,7 +8,7 @@ const style = {
 
 // 親コンポーネントが変更されてもpropsが変更されなければ、レンダリングしない
 export const ChildArea = memo((props) => {
-    const {open} = props
+    const { open, onClickClose } = props
     console.log("ChildAreaレンダリング確認")
     const data = [...Array(2000).keys()]
     data.forEach(() => {
@@ -18,7 +18,12 @@ export const ChildArea = memo((props) => {
     console.log(data)
     return(
         <>
-        {open ? (<div style={style}><p>子コンポーネント</p></div>) : (null)} 
+        {open ? 
+        (<div style={style}>
+            <p>子コンポーネント</p>
+            <button onClick={onClickClose}>閉じる</button>
+        </div>) :
+        (null)} 
         </>
     )
 })
