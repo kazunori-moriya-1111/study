@@ -12,6 +12,7 @@ function App() {
 
   return (
     <div className="App">
+      {console.log("Appのレンダリング")}
       <input value={text} onChange={onChnegetext}/>
       <br />
       <br />

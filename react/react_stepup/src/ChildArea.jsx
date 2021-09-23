@@ -1,12 +1,15 @@
+import { memo } from "react"
+
 const style = {
     width: "100%",
     height: "200px",
     backgroundColor: 'khaki'
 }
 
-export const ChildArea = (props) => {
+// 親コンポーネントが変更されてもpropsが変更されなければ、レンダリングしない
+export const ChildArea = memo((props) => {
     const {open} = props
-    console.log("レンダリング確認")
+    console.log("ChildAreaレンダリング確認")
     const data = [...Array(2000).keys()]
     data.forEach(() => {
         console.log("...")
@@ -18,4 +21,4 @@ export const ChildArea = (props) => {
         {open ? (<div style={style}><p>子コンポーネント</p></div>) : (null)} 
         </>
     )
-}
+})
