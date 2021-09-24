@@ -17,13 +17,18 @@ function App() {
   const temp = useMemo(() => 1 + 3, [])
   console.log(temp)
 
+  //インラインスタイル適用
+  const style = {
+    border: 'solid'
+  }
+
   return (
     <div className="App">
       {console.log("Appのレンダリング")}
       <input value={text} onChange={onChnegetext}/>
       <br />
       <br />
-      <button onClick={onClickOpen}>表示</button>
+      <button style={style} onClick={onClickOpen}>表示</button>
       <ChildArea open={open} onClickClose={onClickClose}/>
     </div>
   );
