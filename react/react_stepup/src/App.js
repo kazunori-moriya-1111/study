@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useCallback, useMemo} from 'react'
 import { ChildArea } from './ChildArea';
+import { InlineStyle } from './components/InlineStyle';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
       <br />
       <button style={style} onClick={onClickOpen}>表示</button>
       <ChildArea open={open} onClickClose={onClickClose}/>
+      <InlineStyle />
     </div>
   );
 }
