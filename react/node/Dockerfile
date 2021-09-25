@@ -6,4 +6,4 @@ RUN yarn add axios
 RUN yarn add redux-thunk
 RUN yarn add react-router-dom
 RUN yarn add redux-form
-RUN yarn add node-sass
+RUN yarn add node-sass@^5.0.0
