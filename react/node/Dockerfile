@@ -8,3 +8,4 @@ RUN yarn add react-router-dom
 RUN yarn add redux-form
 RUN yarn add node-sass@^5.0.0
 RUN yarn add styled-jsx
+RUN yarn add styled-components
