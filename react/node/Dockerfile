@@ -11,3 +11,4 @@ RUN yarn add styled-jsx
 RUN yarn add styled-components
 RUN yarn add @emotion/react
 RUN yarn add @emotion/styled
+RUN yarn add react-router-dom
