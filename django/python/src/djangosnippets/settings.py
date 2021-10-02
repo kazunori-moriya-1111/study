@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'snippets.apps.SnippetsConfig'
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,9 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': 'db',
         'PORT': '3306',
+        'TEST': {
+            'MIRROR': "default",
+        },
     }
 }
 
