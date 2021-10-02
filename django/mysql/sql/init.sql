@@ -1,0 +1,3 @@
+CREATE USER 'user'@'%';
+GRANT ALL PRIVILEGES ON api.* TO 'user'@'%';
+FLUSH PRIVILEGES;

@@ -24,3 +24,7 @@ api/python/src/api/migrations/
 api/python/src/static/
 api/mysql/data/
 api/mysql/logs/
+django/mysql/data/
+django/mysql/logs/
+django/python/log/
+django/python/src/djangosnippets/__pycache__/
