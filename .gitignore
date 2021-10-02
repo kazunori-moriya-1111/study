@@ -28,3 +28,5 @@ django/mysql/data/
 django/mysql/logs/
 django/python/log/
 django/python/src/djangosnippets/__pycache__/
+django/python/src/snippets/__pycache__/
+django/python/src/snippets/migrations/
