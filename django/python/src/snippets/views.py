@@ -1,9 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from snippets.models import Snippet
 # Create your views here.
+import logging
+logging.basicConfig(filename='test.log', level=logging.DEBUG)
 
 def top(request):
-    return render(request, 'snippets/top.html')
+    snippets = Snippet.objects.all()
+    context = {'snippets': snippets}
+    logging.debug(context)
+    return render(request, 'snippets/top.html', context)
 
 def snippet_new(request):
     return HttpResponse('スニペットの登録')
