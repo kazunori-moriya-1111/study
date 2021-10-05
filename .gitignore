@@ -31,3 +31,4 @@ django/python/src/djangosnippets/__pycache__/
 django/python/src/snippets/__pycache__/
 django/python/src/snippets/migrations/
 django/python/src/debug.log
+django/python/src/test.log
