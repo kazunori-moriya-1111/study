@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from snippets.models import Snippet
 # Create your views here.
@@ -18,4 +18,5 @@ def snippet_edit(request, snippet_id):
     return HttpResponse('スニペットの編集')
 
 def snippet_detail(request, snippet_id):
-    return HttpResponse('スニペットの詳細閲覧')
+    snippets = get_object_or_404(Snippet, pk=snippet_id)
+    return render(request, 'snippets/snippet_detail.html', {'snippets': snippets})
