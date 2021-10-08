@@ -14,31 +14,19 @@
 <body>
     <h1 class="bg-secondary text-white h4 p-3">Vue</h1>
     <div id="app">
-        <p>{{ message + "[" + new Date().toLocaleString() + "]"}}</p>
-        <hr>
-        <button onClick="doAction()">Stop</button>
+        <div v-html="message"></div>
     </div>
     <script>
-        let timer = null
-
-        function doAction(){
-            clearInterval(timer)
-        }
+        const list = ['One', 'Two', 'Three']
         const appdata = {
             data(){
                 return{
-                    message: ''
+                    message: `<ul>
+                        <li>${list[0]}</li>
+                        <li>${list[1]}</li>
+                        <li>${list[2]}</li>
+                    </ul>`
                 }
-            },
-            created(){
-                this.message = 'Hello Vue'
-                this.count = 0
-            },
-            mounted(){
-                timer = setInterval(() => {
-                    this.count++
-                    this.message = "Count: " + this.count
-                }, 100)
             }
         }
     Vue.createApp(appdata).mount('#app')
