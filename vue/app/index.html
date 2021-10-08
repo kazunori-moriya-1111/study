@@ -14,14 +14,31 @@
 <body>
     <h1 class="bg-secondary text-white h4 p-3">Vue</h1>
     <div id="app">
-        {{ message }}
+        <p>{{ message }}</p>
+        <hr>
+        <button onClick="doAction()">Stop</button>
     </div>
     <script>
+        let timer = null
+
+        function doAction(){
+            clearInterval(timer)
+        }
         const appdata = {
             data(){
                 return{
-                    message: 'hello world',
+                    message: ''
                 }
+            },
+            created(){
+                this.message = 'Hello Vue'
+                this.count = 0
+            },
+            mounted(){
+                timer = setInterval(() => {
+                    this.count++
+                    this.message = "Count: " + this.count
+                }, 100)
             }
         }
     Vue.createApp(appdata).mount('#app')
