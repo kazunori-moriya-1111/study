@@ -12,16 +12,16 @@
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-    <h1 class="bg-secondary text-white h4 p-3">Vue</h1>
+    <h1 class="bg-secondary text-white h4 p-3">Vue3</h1>
     <div id="app">
-        <div>{{ num + 'は、' + (num % 2 == 0 ? '偶数' : '奇数') + 'です。'}}</div>
+        <pre>{{ data.map((value, key) => key + ':[' + value + ']').join('\n') }}</pre>
     </div>
     <script>
-        const list = ['One', 'Two', 'Three']
+        const data = ['Windows', 'macOS', 'Linux', 'iOS', 'Android']
         const appdata = {
             data(){
                 return{
-                    num: Math.floor(Math.random() * 100)
+                    data: data
                 }
             }
         }
