@@ -14,15 +14,19 @@
 <body>
     <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
     <div id="app" class="container">
-        <pre>{{ data.map((value, key) => key + ':[' + value + ']').join('\n') }}</pre>
+        <p v-bind:style="style">{{ message }}</p>
     </div>
     <script>
         const data = ['Windows', 'macOS', 'Linux', 'iOS', 'Android']
         const appdata = {
             data(){
                 return{
-                    data: data
+                    message: null,
+                    style: 'font-size:32pt; color:red;'
                 }
+            },
+            mounted(){
+                this.message = "this is sample page"
             }
         }
     Vue.createApp(appdata).mount('#app')
