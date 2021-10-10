@@ -26,39 +26,34 @@
     </style>
     <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
     <div id="app" class="container">
-        <template v-if="flag">
-            <p>※データをテーブルに表示する</p>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr><th>Name</th><th>mail</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Taro</td><td>taro@gmail</td></tr>
-                    <tr><td>Hanako</td><td>hanako@gmail</td></tr>
-                    <tr><td>Saji</td><td>Saji@gmail</td></tr>
-                </tbody>
-            </table>
-        </template>
-        <template  v-else>
-            <p>※データをテーブルに表示する</p>
-            <ul class="list-group">
-                <li class="list-group-item">Taroのメールアドレス</li>
-                <li class="list-group-item">Hanakoのメールアドレス</li>
-                <li class="list-group-item">Sajiのメールアドレス</li>
-            </ul>
-        </template>
+        <p>{{ message }}</p>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>mail</th>
+                    <th>tel</th>
+                </tr>
+            </thead>
+            <tr v-for="item in items">
+                <td>{{ item.name }}</td>
+                <td>{{ item.mail }}</td>
+                <td>{{ item.tel }}</td>
+            </tr>
+        </table>
     </div>
     <script>
         const appdata = {
             data(){
                 return{
-                    flag: true
+                    message: '※データをテーブル表示する',
+                    items:[
+                        {name:'Taro', mail:'taro@gmail', tel:'999-999'},
+                        {name:'Jiro', mail:'jiro@gmail', tel:'888-888'},
+                        {name:'Toshi', mail:'toshi@gmail', tel:'777-777'},
+                        {name:'Masa', mail:'masa@gmail', tel:'666-666'},
+                    ]
                 }
-            },
-            mounted(){
-                setInterval(() => {
-                    this.flag = !this.flag
-                }, 500)
             }
         }
     Vue.createApp(appdata).mount('#app')
