@@ -13,33 +13,34 @@
 </head>
 <body>
     <style>
-        .red{
+        .ok{
             font-size: 32pt;
             font-weight: plain;
             font-style: normal;
             color: red;
         }
-        .blue{
+        .ng{
             font-size: 24pt;
-            font-weight: bold;
-            font-style: italic;
-            color: blue;
+            color: gray;
         }
     </style>
     <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
     <div id="app" class="container">
-        <p v-bind:style="styles">{{ message }}</p>
+        <p v-if="flag" class="ok">{{ message }}</p>
+        <p v-else class="ng">※現在問題が発生中です・・・</p>
     </div>
     <script>
         const appdata = {
             data(){
                 return{
                     message: "this is sample page",
-                    styles: {
-                        margin: '10px',
-                        padding: '5px 20px'
-                    }
+                    flag: true
                 }
+            },
+            mounted(){
+                setInterval(() => {
+                    this.flag = !this.flag
+                }, 500)
             }
         }
     Vue.createApp(appdata).mount('#app')
