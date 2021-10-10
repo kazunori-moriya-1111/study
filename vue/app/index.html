@@ -27,15 +27,17 @@
     <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
     <div id="app" class="container">
         <p>{{ message }}</p>
-        <!-- v-forで取り出したitemをv-bindでname属性に値として設定 -->
-        <hello v-for="item in data" v-bind:name="item"/>
+        <div><hello v-bind:name="name"/></div>
+        <div class="form-froup">
+            <input type="text" v-model="name" class="form-control">
+        </div>
     </div>
     <script>
         const appdata = {
             data(){
                 return{
                     message: '※コンポーネントを表示する',
-                    data: ['Taro', 'Hanako', 'Sachiko', 'Jiro']
+                    name: 'no-name'
                 }
             }
         }
