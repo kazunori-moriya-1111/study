@@ -40,7 +40,12 @@
     let app = Vue.createApp(appdata)
 
     app.component('hello', {
-        template: '<p class="alert alert-primary">Hello!</p>'
+        data(){
+            return {
+                message: 'これは新しいメッセージです'
+            }
+        },
+        template: '<p class="alert alert-primary">{{ message }}</p>'
     })
 
     app.mount('#app')
