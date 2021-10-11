@@ -27,10 +27,7 @@
     <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
     <div id="app" class="container">
         <p>{{ message }}</p>
-        <div><hello v-bind:name="name"/></div>
-        <div class="form-froup">
-            <input type="text" v-model="name" class="form-control">
-        </div>
+        <hello />
     </div>
     <script>
         const appdata = {
@@ -47,10 +44,10 @@
         props:{ name:String },
         data(){
             return {
-                message: 'これは新しいメッセージです'
+                counter: 0
             }
         },
-        template: '<p class="alert alert-primary">{{ message }} : {{ name }}</p>'
+        template: '<p v-on:click="counter++" class="alert alert-info">clicked : {{ counter }}</p>'
     })
 
     app.mount('#app')
