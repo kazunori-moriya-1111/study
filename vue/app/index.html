@@ -44,10 +44,27 @@
         props:{ name:String },
         data(){
             return {
-                counter: 0
+                counter : 0,
+                inInfo : true,
+                isDark : false
             }
         },
-        template: '<p v-on:click="counter++" class="alert alert-info">clicked : {{ counter }}</p>'
+        methods:{
+            doAction(){
+                this.counter++
+                console.log("counter")
+                if (this.counter % 2 == 0){
+                    this.inInfo = true
+                    this.isDark = false
+                    console.log("true")
+                } else {
+                    this.isInfo = false
+                    this.isDark = true
+                    console.log("false")
+                }
+            },
+        },
+        template: '<p v-on:click="doAction" v-bind:class="{\'alert-warning\':isInfo, \'alert-dark\':isDark}" class="alert">clicked : {{ counter }}</p>'
     })
 
     app.mount('#app')
