@@ -1,5 +1,5 @@
 <template>
-  <HelloWorld title="Hello" message="※これは、Vue3のサンプルプロジェクトです。" />
+  <HelloWorld title="Hello" />
 </template>
 
 <script>
