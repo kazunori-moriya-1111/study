@@ -47,8 +47,16 @@
                             counter:0,
                         }
                     },
+                    methods:{
+                        calc(){
+                            this.counter++
+                        },
+                        calc2(){
+                            this.counter += 2
+                        },
+                    },
                     template: `
-                    <p v-on:click="counter++" class="alert alert-info h5"> counter : {{ counter }}</p>
+                    <p v-on:click="calc2" class="alert alert-info h5"> counter : {{ counter }}</p>
                     `
                 }
             }
