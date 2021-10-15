@@ -1,7 +1,7 @@
 <template>
-  <HelloWorld v-bind:title="message" />
+  <HelloWorld v-bind:title="message" v-on:result-event="appAction" />
   <hr>
-  <button class="btn btn-primary" v-on:click="doAction">change title</button>
+  <p>{{ result }}</p>
 </template>
 
 <script>
@@ -14,13 +14,13 @@ export default {
   },
   data(){
     return {
-      message: "HELLO"
+      message: "HELLO",
+      result: "no event."
     }
   },
   methods:{
-    doAction(){
-      var input = prompt("new title")
-      this.message = input
+    appAction(message){
+      this.result = '(*** you send:"' + message + '" ***)'
     }
   }
 }
