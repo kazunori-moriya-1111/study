@@ -1,12 +1,8 @@
 <template>
   <div class="alert alert-info">
     <h2>{{ title }}</h2>
-    <p>{{ message }}</p>
-    <hr>
-    <div>
-      <input class="form-control" type="text" v-model="input">
-      <button class="btn btn-info mt-2" v-on:click="doAction">Click</button>  
-    </div>
+    <p ref="msg">{{ message }}</p>
+    <button class="btn btn-primary mt-2" v-on:click="doAction">Click</button>  
   </div>
 </template>
 
@@ -18,14 +14,17 @@ export default {
   },
   data(){
     return {
-      message: 'お名前は',
-      input: 'no-name',
+      message: 'this is sample message',
+      title: 'Hello World',
     }
+  },
+  mounted(){
+    this.counter = 0
   },
   methods: {
     doAction(){
-      this.message = 'こんにちは' + this.input + 'さん'
-      this.$emit('result-event', this.input)
+      this.counter++
+      this.$refs.msg.innerHTML += '<h6>counted: ' + this.counter + '</h6>'
     }
   }
 }
