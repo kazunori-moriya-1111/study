@@ -1,9 +1,12 @@
 <template>
   <div class="alert alert-primary">
     <h1>{{ title }}</h1>
-    <pre v-on:click="clear">{{ message }}</pre>
+    <p>{{ message }}</p>
     <hr>
-    <div><input type="text" v-on:keydown="type" class="form-control"></div>
+    <div class="alert alert-light">
+      <h3>Inner Slot</h3>
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -12,21 +15,8 @@ export default {
   name: 'HelloWorld',
   data: function() {
     return {
-      title: 'Event',
-      message: '',
-    }
-  },
-  methods: {
-    type(event) {
-      console.log(event)
-      this.message += event.key + ' '
-      if (event.key == "Escape") {
-        this.message = ''
-      }
-      event.target.value = ''
-    },
-    clear() {
-      this.message = ''
+      title: 'Slot',
+      message: 'This is message.',
     }
   },
 }

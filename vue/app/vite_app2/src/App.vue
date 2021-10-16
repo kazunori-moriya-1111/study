@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <HelloWorld />
+    <HelloWorld title="slot">
+      <p>*** this is default text ***</p>
+    </HelloWorld>
   </div>
 </template>
 
