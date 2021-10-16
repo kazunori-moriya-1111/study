@@ -1,18 +1,7 @@
 <template>
   <div id="app">
-    <HelloWorld>
-      <p>Begin!..</p>
-      <template v-slot:first>
-        *** First message ***
-      </template>
-      <p>..Middle..</p>
-      <template v-slot:second>
-        *** Second message ***
-      </template>
-      <p>..End</p>
-      <template v-slot:third>
-        *** Third message ***
-      </template>
+    <HelloWorld title="slot">
+      <li class="list-group-item" v-for="obj in slotobjs" v-bind:key="obj.name">{{ obj.name }} ({{ obj.mail }})</li>
     </HelloWorld>
   </div>
 </template>
@@ -24,6 +13,15 @@ export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      slotobjs: [
+        {name:'Taro', mail:'taro@yamada'},
+        {name:'Hanako', mail:'hanako@flower'},
+        {name:'Jiro', mail:'jiro@ika'},
+      ],
+    }
   }
 }
 </script>
