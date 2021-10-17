@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HelloWorld title="Composition API" msg="This is Composition API sample"/>
+    <HelloWorld title="Composition API" />
   </div>
 </template>
 
