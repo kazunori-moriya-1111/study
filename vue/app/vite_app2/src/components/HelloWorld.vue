@@ -4,12 +4,20 @@
     <p class="mt-3 h5">{{ $store.state.message }}</p>
     <hr>
     <!-- eslint-disable vue/use-v-on-exact -->
-    <div class="btn btn-secondary" @click="$store.commit('count')" @click.shift="$store.commit('reset')">
-    <!-- eslint-enable -->
-      <a class="h5">
-        clickd: {{ $store.state.counter }}
-      </a>
+    <div>
+      <button class="btn btn-secondary" @click="$store.commit('count',1)">+1</button>
     </div>
+    <div>
+      <button class="btn btn-secondary" @click="$store.commit('count',2)">+2</button>
+    </div>    
+    <div>
+      <button class="btn btn-secondary" @click="$store.commit('count',3)">+3</button>
+    </div>
+    <hr>
+    <!-- eslint-enable -->
+    <a class="h5">
+      clickd: {{ $store.state.counter }}
+    </a>
   </div>
 </template>
 
