@@ -5,7 +5,10 @@
     <hr>
     <!-- eslint-disable vue/use-v-on-exact -->
     <div>
-      <button class="btn btn-secondary" @click="$store.dispatch('doit')">random add</button>
+      <button class="btn btn-secondary" @click="$store.commit('doit')">random add</button>
+    </div>
+    <div>
+      <button class="btn btn-secondary" @click="$store.commit('reset')">reset</button>
     </div>
     <hr>
     <!-- eslint-enable -->
