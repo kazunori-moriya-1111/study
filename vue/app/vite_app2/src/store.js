@@ -3,7 +3,7 @@ import {createStore} from 'vuex'
 export const store = createStore({
   state () {
     return {
-      message: 'This is store data.',
+      message: 'count number.',
       counter: 0,
     }
   },
@@ -11,8 +11,18 @@ export const store = createStore({
     count: (state, n) => {
       state.counter += n
     },
+    say: (state, msg) => {
+      state.message = msg
+    },
     reset: (state) => {
       state.counter = 0
+    }
+  },
+  actions: {
+    doit: (context) => {
+      var n = Math.floor(Math.random() * 10)
+      context.commit('count', n)
+      context.commit('say', 'add' + n + '!')
     }
   }
 })

@@ -5,13 +5,7 @@
     <hr>
     <!-- eslint-disable vue/use-v-on-exact -->
     <div>
-      <button class="btn btn-secondary" @click="$store.commit('count',1)">+1</button>
-    </div>
-    <div>
-      <button class="btn btn-secondary" @click="$store.commit('count',2)">+2</button>
-    </div>    
-    <div>
-      <button class="btn btn-secondary" @click="$store.commit('count',3)">+3</button>
+      <button class="btn btn-secondary" @click="$store.dispatch('doit')">random add</button>
     </div>
     <hr>
     <!-- eslint-enable -->
