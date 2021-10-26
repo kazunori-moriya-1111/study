@@ -57,6 +57,7 @@ module.exports = {
   router: {
     middleware: [
       'auth'
-    ]
+    ],
+    plugins: ['~/plugins/logger']
   }
 }
