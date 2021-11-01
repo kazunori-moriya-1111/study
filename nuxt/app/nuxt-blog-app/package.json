@@ -14,7 +14,8 @@
     "element-ui": "^2.15.6",
     "nuxt": "^2.15.7",
     "sass": "^1.43.4",
-    "sass-loader": "^12.3.0"
+    "sass-loader": "^12.3.0",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {}
 }
