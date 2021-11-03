@@ -25,11 +25,18 @@
         </el-table-column>
       </el-table>
     </el-card>
+  <button type="button" @click="logoutbuttom">logout</button>
   </section>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+import Cookies from 'universal-cookie'
+
 export default {
+  asyncData({ store }){
+    console.log("storeのuserの値",store.getters['user'])
+  },
   computed: {
     showPosts() {
       return [
@@ -53,7 +60,20 @@ export default {
         },
       ]
     }
-  }
+  },
+  methods: {
+    async logoutbuttom() {
+      await this.logout()
+      const cookies = new Cookies()
+      const aaa = cookies.get('user')
+      console.log("削除前",aaa)
+      cookies.remove('user')
+      const bbb = cookies.get('user')
+      console.log("削除後",bbb)
+    },
+    ...mapActions(['logout'])
+    
+  },
 }
 </script>
 
