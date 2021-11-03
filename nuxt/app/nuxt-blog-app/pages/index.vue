@@ -13,7 +13,7 @@
           <el-checkbox v-model="isCreateMode">アカウントを作成する</el-checkbox>
         </div>
         <div class="text-rigth">
-          <el-button type="primary">{{ buttonText }}</el-button>
+          <el-button type="primary" @click="handleClickSubmit">{{ buttonText }}</el-button>
         </div>
       </form>
       <button type="button" @click="buttontest">console.log</button>
@@ -22,8 +22,14 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import Cookies from 'universal-cookie'
+
 export default {
-  asyncData() {
+  asyncData({ redirect, store }) {
+    if (store.getters['user']) {
+      redirect('/posts/')
+    }
     return {
       isCreateMode: false,
       formData: {
@@ -34,14 +40,60 @@ export default {
   computed: {
     buttonText() {
       return this.isCreateMode ? '新規登録' : 'ログイン'
-    }
+    },
+    ...mapGetters(['user'])
   },
   methods: {
     async buttontest() {
       const user = await this.$axios.$get(`http://localhost:8000/api/nuxt/2/`)
       console.log(user)
       console.log(`user.idは${user.id}`)
-    }
+    },
+    async handleClickSubmit() {
+      const cookies = new Cookies()
+      if (this.isCreateMode) {
+        try {
+          await this.register({...this.formData})
+          this.$notify({
+            type: 'success',
+            title: 'アカウント作成完了',
+            message: `${this.formData.id}として登録しました`,
+            position: 'bottom-right',
+            duration: 1000
+          })
+          cookies.set('user', JSON.stringify(this.user))
+          this.$router.push('/posts/')
+        } catch (e) {
+          this.$notify.error({
+            title: 'アカウント作成失敗',
+            message: '既に登録されているか、不正なユーザーです',
+            position: 'bottom-right',
+            duration: 1000
+          })
+        }
+      } else {
+        try {
+          await this.login({...this.formData})
+          this.$notify({
+            type: 'success',
+            title: 'ログイン成功',
+            message: `${this.formData.id}としてログインしました`,
+            position: 'bottom-right',
+            duration: 1000
+          })
+          cookies.set('user', JSON.stringify(this.user))
+          this.$router.push('/posts/')
+        } catch (e) {
+          this.$notify.error({
+            title: 'ログイン失敗',
+            message: '不正なユーザーIDです',
+            position: 'bottom-right',
+            duration: 1000
+          })
+        }
+      }
+    },
+    ...mapActions(['login', 'register'])
   }
 }
 </script>
