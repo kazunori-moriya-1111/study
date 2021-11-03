@@ -14,7 +14,7 @@ export const mutations = {
     state.isLoggedIn = true
   },
   removeUser(state) {
-    state.user = {}
+    state.user = null
     state.idLoggedIn = false
   }
 }
