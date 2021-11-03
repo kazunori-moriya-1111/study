@@ -9,7 +9,7 @@ export const getters = {
 }
 
 export const mutations = {
-  serUser(state, { user }) {
+  setUser(state, { user }) {
     state.user = user
     state.isLoggedIn = true
   }
