@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     async buttontest() {
-      const user = await this.$axios.$get(`http://localhost:8000/api/nuxt/2/`)
+      const user = await this.$axios.$get(`/api/nuxt/2/`)
       console.log(user)
       console.log(`user.idは${user.id}`)
     },

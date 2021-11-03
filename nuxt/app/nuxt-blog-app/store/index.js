@@ -21,15 +21,15 @@ export const mutations = {
 
 export const actions = {
   async login({ commit }, { id }) {
-    const user = await this.$axios.$get(`http://localhost:8000/api/nuxt/${id}/`)
+    const user = await this.$axios.$get(`/api/nuxt/${id}/`)
     if (!user.id) throw new Error('Invalid user')
     commit('setUser', { user })
   },
   async register({ commit }, { id }) {
     const payload = {}
     payload['id'] = { id }
-    await this.$axios.$patch(`http://localhost:8000/api/nuxt/${id}/`, payload)
-    const user = await this.$axios.$get(`http://localhost:8000/api/nuxt/${id}/`)
+    await this.$axios.$patch(`/api/nuxt/${id}/`, payload)
+    const user = await this.$axios.$get(`/api/nuxt/${id}/`)
     if (!user.id) throw new Error('Invalid user')
     commit('setUser', { user })
   },
