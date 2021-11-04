@@ -42,7 +42,7 @@ export default {
   modules: [
     '@nuxtjs/axios'
   ],
-  axios : {
+  axios: {
     baseURL: 'http://localhost:8000'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
