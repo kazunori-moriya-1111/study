@@ -12,6 +12,8 @@
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.15.1",
     "element-ui": "^2.15.6",
+    "lodash.clonedeep": "^4.5.0",
+    "moment": "^2.29.1",
     "nuxt": "^2.15.7",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
