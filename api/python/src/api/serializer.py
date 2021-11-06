@@ -1,6 +1,6 @@
 from rest_framework import serializers
 # from .models import ApiModel
-from .models import Task, NuxtUser
+from .models import Task, NuxtUser, Post
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
@@ -35,3 +35,9 @@ class NuxtUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = NuxtUser
         fields = ['id', 'created_at', 'updated_at']
+
+class PostSerializer(serializers.ModelSerializer):
+    user = NuxtUserSerializer(many=False, read_only=True)
+    class Meta:
+        model = Post
+        fields = ['id', 'title', 'body', 'create_at', 'user']
