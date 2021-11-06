@@ -37,7 +37,9 @@ class NuxtUserSerializer(serializers.ModelSerializer):
         fields = ['id', 'created_at', 'updated_at']
 
 class PostSerializer(serializers.ModelSerializer):
+    # read_only, write_onlyでGET時とpost時のパラメータを指定できる
     user = NuxtUserSerializer(many=False, read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(queryset=NuxtUser.objects.all(), write_only=True)
     class Meta:
         model = Post
-        fields = ['id', 'title', 'body', 'create_at', 'user']
+        fields = ['id', 'title', 'body', 'create_at', 'user', 'user_id']
