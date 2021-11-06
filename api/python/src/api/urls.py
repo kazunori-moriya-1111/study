@@ -9,15 +9,14 @@
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from api.views import TaskViewSet, UserViewSet, ManageUserView, NuxtViewSet
+from api.views import TaskViewSet, UserViewSet, ManageUserView, NuxtUserViewSet
 
 router = routers.DefaultRouter()
 router.register('tasks', TaskViewSet)
 router.register('users', UserViewSet)
-router.register('nuxt', NuxtViewSet)
+router.register('nuxtuser', NuxtUserViewSet)
 
 urlpatterns = [
     path('myself/', ManageUserView.as_view(), name='myself'),
-    # path('nuxt/', NuxtViewSet.as_view(), name="nuxt"),
     path('', include(router.urls)),
 ]

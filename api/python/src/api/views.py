@@ -6,11 +6,12 @@
 # import json
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework import generics, viewsets, status
 from django.contrib.auth.models import User
-from .models import Task, Nuxt
-from rest_framework import viewsets
-from .serializer import TaskSerializer, UserSerializer, NuxtSerializer
+from .models import Task, NuxtUser
+from .serializer import TaskSerializer, UserSerializer, NuxtUserSerializer
 from .ownpermissions import ProfilePermission
 
 # mixinsでPUT,DELETEメソッドを追加
@@ -47,6 +48,6 @@ class TaskViewSet(viewsets.ModelViewSet):
     authentication_classes = TokenAuthentication,
     permission_classes = (IsAuthenticated,)
 
-class NuxtViewSet(viewsets.ModelViewSet):
-    queryset = Nuxt.objects.all()
-    serializer_class = NuxtSerializer
+class NuxtUserViewSet(viewsets.ModelViewSet):
+    queryset = NuxtUser.objects.all()
+    serializer_class = NuxtUserSerializer

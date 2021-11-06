@@ -1,6 +1,6 @@
 from rest_framework import serializers
 # from .models import ApiModel
-from .models import Task, Nuxt
+from .models import Task, NuxtUser
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
@@ -28,9 +28,10 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = ['id', 'title', 'created_at', 'updated_at']
 
-class NuxtSerializer(serializers.ModelSerializer):
+class NuxtUserSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M", read_only=True)
-
+    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M", read_only=True)
+    
     class Meta:
-        model = Nuxt
-        fields = ['id', 'title', 'body', 'created_at']
+        model = NuxtUser
+        fields = ['user_id', 'created_at', 'updated_at']
