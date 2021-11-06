@@ -34,4 +34,4 @@ class NuxtUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = NuxtUser
-        fields = ['user_id', 'created_at', 'updated_at']
+        fields = ['id', 'created_at', 'updated_at']
