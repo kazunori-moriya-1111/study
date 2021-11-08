@@ -19,7 +19,7 @@
           width="180">
         </el-table-column>
         <el-table-column
-          prop="created_at"
+          prop="create_at"
           label="投稿日時"
           width="240">
         </el-table-column>
@@ -30,35 +30,27 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Cookies from 'universal-cookie'
+import moment from '~/plugins/moment.js'
 
 export default {
+  async asyncData({ store }){
+    await store.dispatch('posts/fetchPosts')
+  },
   computed: {
     showPosts() {
-      return [
-        {
-          id: '001',
-          title: 'How to development Nuxt.js Application',
-          boby: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-          created_at: '2018/08/10 12:00:00',
-          user: {
-            id: 'potato4d'
-          }
-        },
-        {
-          id: '002',
-          title: 'Deployment Nuxt.js App',
-          body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-          created_at: '2018/08/10 13:00:00',
-          user: {
-            id: 'potato4d'
-          }
-        },
-      ]
-    }
+      return this.posts.map(post => {
+        // post.create_at = moment(post.create_at).format('YYYY/MM/DD HH:mm:ss')
+        return post
+      })
+    },
+    ...mapGetters('posts', ['posts'])
   },
   methods: {
+    handleClick(post){
+      this.$router.push(`api/${post.id}`)
+    },
     async logoutbuttom() {
       await this.logout()
       const cookies = new Cookies()

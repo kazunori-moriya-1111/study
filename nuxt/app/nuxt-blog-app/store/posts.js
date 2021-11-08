@@ -21,6 +21,13 @@ export const mutations = {
 }
 
 export const actions = {
+  async fetchPosts({ commit }){
+    const posts = await this.$axios.$get(`/api/post/`)
+    commit('clearPosts')
+    for (let key in posts){
+      commit('addPost', { post:posts[key] })
+    }
+  },
   async publishPost({ commit }, { payload }){
     const user = await this.$axios.$get(`/api/nuxtuser/${payload.user_id}`)
     const post_id = await this.$axios.$post(`/api/post/`, payload)
