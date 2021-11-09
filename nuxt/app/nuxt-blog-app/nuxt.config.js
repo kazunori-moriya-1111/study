@@ -51,5 +51,10 @@ export default {
 
   router: {
     middleware : ['auth-cookie']
+  },
+
+  server: {
+    host: '0',
+    port: 3000,
   }
 }
