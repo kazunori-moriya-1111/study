@@ -22,15 +22,13 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   async asyncData({ store, route, error }) {
-    console.log(route)
     const { id } = route.params
-    console.log(id)
     if (store.getters['posts/posts'].find(p => p.id === id)){
       return
     }
     try {
       await store.dispatch('posts/fetchPost', { id })
-      if (!(store.getters['posts/posts'].find(p => p.id === this.$route.params.id))) {
+      if (!(store.getters['posts/posts'].find(p => p.user.id === route.params.id))) {
         throw new Error('post not found')
       }
     } catch (e) {
@@ -39,7 +37,8 @@ export default {
   },
   computed: {
     post() {
-      return this.posts.find(p => p.id === this.$route.params.id)
+      // そもそもfindが最初にみつけたひとつを返す構文
+      return this.posts.find(p => p.user.id === this.$route.params.id)
     },
     ...mapGetters('posts', ['posts'])
   },
