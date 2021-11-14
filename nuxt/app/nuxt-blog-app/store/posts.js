@@ -22,11 +22,9 @@ export const mutations = {
 
 export const actions = {
   async fetchPost({ commit }, { id }){
-    const posts = await this.$axios.$get(`/api/post/${id}`)
+    const post = await this.$axios.$get(`/api/post/${id}`)
     commit('clearPosts')
-    for (let key in posts){
-      commit('addPost', { post:posts[key] })
-    }
+    commit('addPost', { post:post })
   },
   async fetchPosts({ commit }){
     const posts = await this.$axios.$get(`/api/post/`)

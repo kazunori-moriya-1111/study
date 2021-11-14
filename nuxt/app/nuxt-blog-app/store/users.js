@@ -20,7 +20,7 @@ export const mutations = {
 
 export const actions = {
   async fetchUser({ commit }, { id }){
-    const user = await this.$axios.$get(`api/post/${id}`)
+    const user = await this.$axios.$get(`api/user/${id}`)
     commit('addUser', { user }) 
   }
 }

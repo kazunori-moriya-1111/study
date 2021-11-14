@@ -28,7 +28,7 @@ export default {
     }
     try {
       await store.dispatch('posts/fetchPost', { id })
-      if (!(store.getters['posts/posts'].find(p => p.user.id === route.params.id))) {
+      if (!(store.getters['posts/posts'].find(p => p.id === Number(route.params.id)))) {
         throw new Error('post not found')
       }
     } catch (e) {
@@ -37,8 +37,7 @@ export default {
   },
   computed: {
     post() {
-      // そもそもfindが最初にみつけたひとつを返す構文
-      return this.posts.find(p => p.user.id === this.$route.params.id)
+      return this.posts.find(p => p.id === Number(this.$route.params.id))
     },
     ...mapGetters('posts', ['posts'])
   },

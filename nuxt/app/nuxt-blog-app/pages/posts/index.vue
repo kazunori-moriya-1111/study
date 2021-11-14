@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     handleClick(post){
-      this.$router.push(`api/${post.id}`)
+      this.$router.push(`/posts/${post.id}`)
     },
     async logoutbuttom() {
       await this.logout()
