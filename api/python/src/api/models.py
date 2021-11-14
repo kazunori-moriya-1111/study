@@ -26,7 +26,7 @@ class NuxtUser(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    body = models.CharField(max_length=50)
+    body = models.CharField(max_length=250)
     create_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(NuxtUser, on_delete=models.CASCADE)
     

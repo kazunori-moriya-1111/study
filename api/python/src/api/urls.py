@@ -19,6 +19,6 @@ router.register('post', PostViewSet)
 
 urlpatterns = [
     path('myself/', ManageUserView.as_view(), name='myself'),
-    path('post/<str:user_id>', NestedListView.as_view(), name="UsersPost"),
+    path('user/<str:user_id>', NestedListView.as_view(), name="UsersPost"),
     path('', include(router.urls)),
 ]
