@@ -55,15 +55,21 @@ export default {
   },
   computed: {
     userPosts() {
+      console.log("userPosts")
       return Object.entries(this.user.posts).map(([id, post]) => {
         post.created_at = moment(post.created_at).format('YYYY/MM/DD HH:mm:ss')
         return { id, ...post }
       })
     },
     user() {
-      const user = this.users.find(u => u.id === this.$route.params.id)
-      if (!user) return null
-      return Object.assign({ posts: [] }, user)
+      console.log("this.users:",this.users)
+      console.log("this.users[0][0].user.id:",this.users[0][0].user.id)
+      console.log("this.$route.params.id",this.$route.params.id)
+      // const user = this.users.find(user => user.id === this.$route.params.id)
+      // console.log(user)
+      // if (!user) return null
+      // return Object.assign({ posts: [] }, user)
+      return this.users[0][0].user
     },
     ...mapGetters('users', ['users'])
   }
