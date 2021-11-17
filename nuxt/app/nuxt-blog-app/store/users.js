@@ -10,7 +10,9 @@ export const mutations = {
   addUser(state, { user }) {
     state.users.push(user)
   },
-  // clearUserが必要
+  clearUser(state) {
+    state.users = []
+  },
   addUserPost(state, { user, post }) {
     state.userPosts[user.id].push(post)
   },
@@ -21,7 +23,7 @@ export const mutations = {
 
 export const actions = {
   async fetchUser({ commit }, { id }){
-    // clearUserが必要
+    commit('clearUser')
     const user = await this.$axios.$get(`api/user/${id}`)
     commit('addUser', { user }) 
   }
