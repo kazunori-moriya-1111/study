@@ -5,7 +5,7 @@ export const state = ()=> ({
 })
 
 export const getters = {
-  posts: (state) => state.posts
+  posts: (state) => state.posts.map((post) => Object.assign({ likes: [] }, post))
 }
 
 export const mutations = {
@@ -32,6 +32,15 @@ export const actions = {
     for (let key in posts){
       commit('addPost', { post:posts[key] })
     }
+  },
+  async addLikeToPost({ commit }, { user, post }) {
+    post.likes.push({
+      created_at: moment().format(),
+      user_id: user_id,
+      post_id: post_id
+    })
+    const newPost = await this.$axios.$put(`/post/${post.id}`, post)
+    commit('updatePost', { post: newPost })
   },
   async publishPost({ commit }, { payload }){
     const user = await this.$axios.$get(`/api/nuxtuser/${payload.user_id}`)
