@@ -42,6 +42,11 @@ export const actions = {
     const newPost = await this.$axios.$put(`/post/${post.id}`, post)
     commit('updatePost', { post: newPost })
   },
+  async removeLikeToPost({ commit }, { user, post }) {
+    post.likes = post.likes.filter(like => like.user_id !== user.id) || []
+    const newPost = await this.$axios.$put(`/posts/${post.id}.json`, post)
+    commit('updatePost', { post: newPost })
+  },
   async publishPost({ commit }, { payload }){
     const user = await this.$axios.$get(`/api/nuxtuser/${payload.user_id}`)
     const post_id = await this.$axios.$post(`/api/post/`, payload)
