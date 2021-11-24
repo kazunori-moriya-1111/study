@@ -16,3 +16,6 @@ const person = {
   },
   age: 21
 }
+
+// 要素を取り出した時も型が有効、any union型で複数の型を配列に組み込める。
+const fruits = ['Apple', 'Banana', 'Grape']
