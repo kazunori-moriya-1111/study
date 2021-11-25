@@ -19,3 +19,6 @@ const person = {
 
 // 要素を取り出した時も型が有効、any union型で複数の型を配列に組み込める。
 const fruits = ['Apple', 'Banana', 'Grape']
+
+// Tuple型を使用して要素の型を決めた配列を定義する
+const book: [string, number, boolean] = ['business', 1500, false];
