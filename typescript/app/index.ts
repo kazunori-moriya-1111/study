@@ -22,3 +22,16 @@ const fruits = ['Apple', 'Banana', 'Grape']
 
 // Tuple型を使用して要素の型を決めた配列を定義する
 const book: [string, number, boolean] = ['business', 1500, false];
+
+// Enum型
+enum CoffeeSize {
+  SHORT = 'SHORT',
+  TALL = 'TALL',
+  GRANDE = 'GRANDE',
+  VENTI = 'VENTI'
+ }
+
+const coffee = {
+  hot: true,
+  size: CoffeeSize.SHORT
+}
