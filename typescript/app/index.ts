@@ -35,3 +35,13 @@ const coffee = {
   hot: true,
   size: CoffeeSize.SHORT
 }
+
+// any型
+let anything : any = true
+anything = 'hello'
+anything = ['hello', 33, true]
+anything = {}
+anything.abc = 'abc'
+// string型にany型を代入可能
+let banana = 'banana'
+banana = anything
