@@ -45,3 +45,9 @@ anything.abc = 'abc'
 // string型にany型を代入可能
 let banana = 'banana'
 banana = anything
+// union型 複数の型を受け入れる
+let unionType: number | string = 10
+unionType = 'hello'
+unionType.toUpperCase()
+// 配列でunion型を定義
+let unionTypes: (number | string)[] = [21, 'hello']
