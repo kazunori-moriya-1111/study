@@ -15,6 +15,7 @@ services:
       - ./react_basic_drf:/usr/src/react_basic_drf
       - ./redux:/usr/src/redux
       - ./react_stepup:/usr/src/react_stepup
+    # Tele-TYpewriter、コンテナ起動後に終了させないための設定
     tty: true
     stdin_open: true
-    command: /bin/sh
+    command: sh -c "cd react_stepup && yarn start"
