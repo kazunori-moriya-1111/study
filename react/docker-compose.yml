@@ -13,12 +13,13 @@ services:
       - ./react_base:/usr/src/react_base
       - ./react_basic:/usr/src/react_basic
       - ./react_basic_drf:/usr/src/react_basic_drf
+      - ./react_design:/usr/src/react_design
       - ./redux:/usr/src/redux
       - ./react_stepup:/usr/src/react_stepup
     # Tele-TYpewriter、コンテナ起動後に終了させないための設定
     tty: true
     stdin_open: true
-    command: sh -c "cd react_stepup && yarn start"
+    command: sh -c "cd react_design && yarn start"
     # ホットリロードの有効化
     environment:
       - CHOKIDAR_USEPOLLING=true
