@@ -1,5 +1,6 @@
 import { Switch, Route } from 'react-router-dom'
 import { Home } from '../Home';
+import { Page404 } from '../page404';
 import { page1Routes } from './Page1Routes';
 import { page2Routes } from './Page2Routes';
 
@@ -20,9 +21,6 @@ export const Router = () => {
           </Switch>
         )}>
         </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
         <Route path="/page2" render={({match: { url } }) => (
           <Switch>
             {page2Routes.map((route) => (
@@ -32,6 +30,9 @@ export const Router = () => {
             ))}
           </Switch>
         )}>
+        </Route>
+        <Route path="*">
+          <Page404 />
         </Route>
       </Switch>
   )
