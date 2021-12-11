@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom'
 export const Top = () => {
   const navigate = useNavigate();
 
-  const onClickAdmin = () => navigate("/users", {isAdmin : true})
-  const onClickGeneral = () => navigate("/users", {isAdmin : false})
+  const onClickAdmin = () => navigate("/users", {state : {isAdmin : true}});
+  const onClickGeneral = () => navigate("/users", {state : {isAdmin : false}})
 
   return(
     <SContainer>
