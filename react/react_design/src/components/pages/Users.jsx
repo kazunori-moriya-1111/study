@@ -19,6 +19,7 @@ const users = [...Array(10).keys()].map(((val) => {
 
 export const Users = () => {
   const { state } = useLocation();
+  // stateが存在する場合isAdminの値を参照、存在しない場合falseを設定する三項演算子
   const isAdmin = state ? state.isAdmin : false
   
   return(
