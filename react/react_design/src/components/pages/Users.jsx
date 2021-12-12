@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { SearchInput } from "../molecules/SearchInput"
 import { UserCard } from "../organisms/user/UserCard"
-import { useLocation } from "react-router-dom"
 
 const users = [...Array(10).keys()].map(((val) => {
   return{
@@ -18,17 +17,13 @@ const users = [...Array(10).keys()].map(((val) => {
 }))
 
 export const Users = () => {
-  const { state } = useLocation();
-  // stateが存在する場合isAdminの値を参照、存在しない場合falseを設定する三項演算子
-  const isAdmin = state ? state.isAdmin : false
-  
   return(
     <SContainer>
       <h2>ユーザ一覧</h2>
       <SearchInput />
       <SUserArea>
         {users.map((user) => (
-          <UserCard key={user.id} user={user} isAdmin={isAdmin}/>
+          <UserCard key={user.id} user={user} />
           ))}
       </SUserArea>
     </SContainer>
