@@ -3,10 +3,17 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Todo } from './Todo';
 
+type TodoType = {
+  userId: number;
+  id: number;
+  title: string;
+  conpleted: boolean;
+};
+
 function App() {
-  const [todos, setTodos] = useState<any>([]);
+  const [todos, setTodos] = useState<Array<TodoType>>([]);
   const onClickFetchData = () => {
-    axios.get("https://jsonplaceholder.typicode.com/todos").then((response) => {
+    axios.get<Array<TodoType>>("https://jsonplaceholder.typicode.com/todos").then((response) => {
       setTodos(response.data)
     })
   }
