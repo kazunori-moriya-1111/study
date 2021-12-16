@@ -1,4 +1,11 @@
-export const Todo = (props:any) => {
-  const { title, userid} = props;
-  return<p>{`${title}(ユーザー:${userid})`}</p>
+type TodoType = {
+  userId: number;
+  title: string;
+  completed?: boolean; //末尾に?を付与することで必須の引数ではなくなる
+}
+
+export const Todo = (props:TodoType) => {
+  const { title, userId, completed = false } = props;
+  const completedMark = completed ? "[完]" : "[未]"
+  return<p>{`${title}(ユーザー:${userId})`}</p>
 }

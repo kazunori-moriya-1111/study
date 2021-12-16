@@ -7,7 +7,7 @@ type TodoType = {
   userId: number;
   id: number;
   title: string;
-  conpleted: boolean;
+  completed: boolean;
 };
 
 function App() {
@@ -21,8 +21,8 @@ function App() {
   return (
     <div className="App">
       <button onClick={onClickFetchData}>データ取得</button>
-      {todos.map((todo: any) => (
-        <Todo title={todo.title} userid={todo.userId} key={todo.title}/>
+      {todos.map((todo: TodoType) => (
+        <Todo title={todo.title} userId={todo.userId} completed={todo.completed} key={todo.title}/>
       ))}
     </div>
   );
