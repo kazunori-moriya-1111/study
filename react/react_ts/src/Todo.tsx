@@ -7,5 +7,5 @@ type TodoType = {
 export const Todo = (props:TodoType) => {
   const { title, userId, completed = false } = props;
   const completedMark = completed ? "[完]" : "[未]"
-  return<p>{`${title}(ユーザー:${userId})`}</p>
+  return<p>{`${completedMark}${title}(ユーザー:${userId})`}</p>
 }
