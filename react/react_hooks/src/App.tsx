@@ -5,14 +5,6 @@ import { UserCard } from './components/UserCard';
 import { User } from './types/api/user';
 import { userProfile } from './types/userProfile';
 
-const user = {
-  id : 1,
-  name : 'kazu',
-  email: 'kazu@gmail.com',
-  address: 'kazu@sai',
-}
-
-
 function App() {
   const [userProfiles, setUserProfiles] = useState<Array<userProfile>>([])
   const onCLickFetchUsr = () => {
