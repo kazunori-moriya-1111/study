@@ -7,8 +7,9 @@ import { userProfile } from './types/userProfile';
 
 function App() {
   const [userProfiles, setUserProfiles] = useState<Array<userProfile>>([])
-  const onCLickFetchUsr = () => {
+  const onCLickFetchUser = () => {
     axios.get<Array<User>>('https://jsonplaceholder.typicode.com/users').then((response) => {
+      //取得したデータを整形してdataへ格納
       const data = response.data.map((user) => ({
         id : user.id,
         name : `${user.name}(${user.username})`,
@@ -20,7 +21,7 @@ function App() {
   }
   return (
     <div className="App">
-      <button onClick={onCLickFetchUsr}>データ取得</button>
+      <button onClick={onCLickFetchUser}>データ取得</button>
       {userProfiles.map((user) => (
         <UserCard key={user.id} user={user}></UserCard>
       ))}
