@@ -7,7 +7,9 @@ import { userProfile } from './types/userProfile';
 
 function App() {
   const [userProfiles, setUserProfiles] = useState<Array<userProfile>>([])
+  // 読み込み中か判定するstate
   const [loading, setLoading] = useState(false);
+  // API取得結果がerrorか判定するstate
   const [error, setError] = useState(false);
 
   const onCLickFetchUser = () => {
@@ -24,8 +26,10 @@ function App() {
       }))
       setUserProfiles(data)
     }).catch(() => {
+      // エラーをキャッチしたら実行される
       setError(true)
     }).finally(() => {
+      // then or catchの後実行される
       setLoading(false);
     })
   }
@@ -33,6 +37,7 @@ function App() {
     <div className="App">
       <button onClick={onCLickFetchUser}>データ取得</button>
       <br />
+      {/* 三項演算子をネストすることでloading error状態を表現 */}
       {error ? (
         <p style={{ color: "red" }}>データの取得に失敗しました。</p>
       ) : loading ? (
