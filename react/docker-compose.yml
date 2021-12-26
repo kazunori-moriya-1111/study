@@ -16,12 +16,13 @@ services:
       - ./react_design:/usr/src/react_design
       - ./react_ts:/usr/src/react_ts
       - ./react_hooks:/usr/src/react_hooks
+      - ./react_chakra:/usr/src/react_chakra
       - ./redux:/usr/src/redux
       - ./react_stepup:/usr/src/react_stepup
     # Tele-TYpewriter、コンテナ起動後に終了させないための設定
     tty: true
     stdin_open: true
-    command: sh -c "cd react_hooks && yarn start"
+    command: sh -c "cd react_chakra && yarn start"
     # ホットリロードの有効化
     environment:
       - CHOKIDAR_USEPOLLING=true
