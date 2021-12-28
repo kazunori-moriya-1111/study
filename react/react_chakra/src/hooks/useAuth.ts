@@ -3,9 +3,11 @@ import { useCallback, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { User } from "../types/api/user"
+import { useMessage } from "./useMessage"
 
 export const useAuth = () => {
   const navigate = useNavigate();
+  const { showMessage } = useMessage();
 
   const [loading, setLoading] = useState(false)
   
@@ -14,11 +16,12 @@ export const useAuth = () => {
     setLoading(true)
     axios.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`).then((response) => {
       if (response.data) {
+        showMessage({ title: "ログインしました", status: "success"})
         navigate("/home")
       } else {
-        alert("ユーザが見つかりません")
+        showMessage({ title: "ユーザが見つかりません", status: "error"})
       }
-    }).catch(() => alert("ログインできません")).finally(() => setLoading(false))
+    }).catch(() => showMessage({ title: "ログインできません", status: "error"})).finally(() => setLoading(false))
   }, [navigate])
   return { login, loading }
 }
