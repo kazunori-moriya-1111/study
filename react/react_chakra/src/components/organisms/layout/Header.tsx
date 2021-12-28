@@ -9,9 +9,9 @@ export const Header: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
-  const onClickHome = useCallback(() => navigate("/home"), [])
-  const onClickUserManegement = useCallback(() => navigate("/home/user_manegement"), [])
-  const onClickSetting = useCallback(() => navigate("/home/setting"), [])
+  const onClickHome = useCallback(() => navigate("/home"), [navigate])
+  const onClickUserManegement = useCallback(() => navigate("/home/user_manegement"), [navigate])
+  const onClickSetting = useCallback(() => navigate("/home/setting"), [navigate])
   return (
     <>
     <Flex as="nav" bg="teal.500" color="gray.50" align="center" justify="space-between" padding={{ base: 3 , md: 5 }}>
