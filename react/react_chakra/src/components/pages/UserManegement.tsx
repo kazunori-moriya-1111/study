@@ -1,13 +1,17 @@
-import { memo, useEffect, VFC } from 'react'
-import { Center, Spinner, Wrap, WrapItem } from '@chakra-ui/react'
+import { memo, useCallback, useEffect, VFC } from 'react'
+import { Center, Spinner, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react'
+
 import { UserCard } from '../organisms/user/UserCard'
 import { useAllUsers } from '../../hooks/useAllUsers'
+import { UserDetailModal } from '../organisms/user/UserDetailModal'
 
 export const UserManegement: VFC = memo(() => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const { getUsers, users, loading } = useAllUsers()
-
   //第二引数を空配列にすることで最初の一回のみ動作するようになる
-  useEffect(() => getUsers(), [])
+  useEffect(() => getUsers(), [getUsers])
+
+  const onClickUser = useCallback(() => onOpen(), [onOpen])
 
   return(
     <>
@@ -25,11 +29,13 @@ export const UserManegement: VFC = memo(() => {
                 ImageUrl={"https://source.unsplash.com/random"}
                 userName={user.username}
                 fullName={user.name}
+                onClick={onClickUser}
               />
             </WrapItem>
           ))}
         </Wrap>
       )}
+      <UserDetailModal isOpen={isOpen} onClose={onClose}/>
     </>
   )
 })
