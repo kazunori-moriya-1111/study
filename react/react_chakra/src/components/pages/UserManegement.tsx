@@ -12,7 +12,6 @@ export const UserManegement: VFC = memo(() => {
   const { getUsers, users, loading } = useAllUsers()
   const { onSelectUser, selectedUser } = useSelectUser()
   const { loginUser } = useLoginUser()
-  console.log(loginUser)
   
   //第二引数を空配列にすることで最初の一回のみ動作するようになる
   useEffect(() => getUsers(), [getUsers])
@@ -44,7 +43,7 @@ export const UserManegement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose}/>
+      <UserDetailModal user={selectedUser} isAdmin={loginUser?.isAdmin} isOpen={isOpen} onClose={onClose}/>
     </>
   )
 })
