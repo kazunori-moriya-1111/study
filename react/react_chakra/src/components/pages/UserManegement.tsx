@@ -4,14 +4,19 @@ import { Center, Spinner, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react
 import { UserCard } from '../organisms/user/UserCard'
 import { useAllUsers } from '../../hooks/useAllUsers'
 import { UserDetailModal } from '../organisms/user/UserDetailModal'
+import { useSelectUser } from '../../hooks/useSelectUser'
 
 export const UserManegement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { getUsers, users, loading } = useAllUsers()
+  const { onSelectUser, selectedUser } = useSelectUser()
+  
   //第二引数を空配列にすることで最初の一回のみ動作するようになる
   useEffect(() => getUsers(), [getUsers])
 
-  const onClickUser = useCallback(() => onOpen(), [onOpen])
+  const onClickUser = useCallback((id: number) => {
+    onSelectUser({ id, users, onOpen })
+  }, [onOpen, users, onSelectUser])
 
   return(
     <>
@@ -26,6 +31,7 @@ export const UserManegement: VFC = memo(() => {
           {users.map((user) => (
             <WrapItem key={user.id}>
               <UserCard
+                id={user.id}
                 ImageUrl={"https://source.unsplash.com/random"}
                 userName={user.username}
                 fullName={user.name}
@@ -35,7 +41,7 @@ export const UserManegement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal isOpen={isOpen} onClose={onClose}/>
+      <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose}/>
     </>
   )
 })
