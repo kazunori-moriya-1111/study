@@ -1,3 +1,4 @@
+import { Button, Checkbox, Stack } from "@chakra-ui/react"
 import { useDispatch } from "react-redux"
 
 import { completeTask, deleteTask, task } from "./taskSlice"
@@ -10,14 +11,13 @@ export const TaskItem = (props : Props) => {
   const { task } = props
   const dispatch = useDispatch()
   return(
-    <>
-      <input
-        type="checkbox"
+    <Stack direction="row" mx={10} py={2}>
+      <Checkbox
+        colorScheme='green'
         onClick={() => dispatch(completeTask(task))}
-        defaultChecked={task.completed}
-      />
-      <span>{task.title}</span>
-      <button onClick={() => dispatch(deleteTask(task))}>DELETE</button>
-    </>
+        defaultIsChecked={task.completed}
+      >{task.title}</Checkbox>
+      <Button colorScheme='teal' onClick={() => dispatch(deleteTask(task))}>DELETE</Button>
+    </Stack>
   )
 }
