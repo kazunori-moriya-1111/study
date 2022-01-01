@@ -2,6 +2,7 @@ import { Counter } from './features/counter/Counter';
 import './App.css';
 import { TaskList } from './features/task/TaskList';
 import { ChakraProvider } from '@chakra-ui/react';
+import { TaskInput } from './features/task/TaskInput';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <header className="App-header">
       <ChakraProvider>
         <Counter />
+        <TaskInput />
         <TaskList />
       </ChakraProvider>
       </header>
