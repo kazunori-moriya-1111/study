@@ -1,5 +1,5 @@
-import { Button, FormControl, Input, Stack } from "@chakra-ui/react"
-import { ChangeEvent, FormEvent, useState } from "react"
+import { Button, Input, Stack } from "@chakra-ui/react"
+import { ChangeEvent, MouseEvent, useState } from "react"
 import { useDispatch } from "react-redux"
 
 
@@ -11,18 +11,15 @@ export const TaskInput = () => {
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEditTitle(e.target.value)
   }
-  const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e : MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     dispatch(newTask(editTitle))
     setEditTitle("")
   }
   return(
-    // formの一部飲みをchakra-ui適用すると正常に動作しなくなる
     <Stack direction="row" ml={2} py={2}>
-      <form onSubmit={handleSubmit}>
-        <input value={editTitle} onChange={handleTitleChange} placeholder="please type task-name"></input>
-        <button>NEW</button>
-      </form>
+      <Input value={editTitle} onChange={(e) => handleTitleChange(e)} placeholder="please type task-name"></Input>
+      <Button onClick={(e) => handleSubmit(e)}>NEW</Button>
     </Stack>
   )
 }
