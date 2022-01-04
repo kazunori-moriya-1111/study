@@ -23,6 +23,7 @@ services:
     # Tele-TYpewriter、コンテナ起動後に終了させないための設定
     tty: true
     stdin_open: true
+    # コンテナが立ち上がらない場合commandをコメントアウトしてコンテナを立ち上げてnpm installを実行する
     command: sh -c "cd react_rtk && yarn start"
     # ホットリロードの有効化
     environment:
