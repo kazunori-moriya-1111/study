@@ -33,3 +33,4 @@ django/python/src/snippets/migrations/
 django/python/src/debug.log
 django/python/src/test.log
 django_api/python/api/__pycache__/
+django_api/python/task_base_api/__pycache__/
