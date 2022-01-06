@@ -3,6 +3,7 @@ import './App.css';
 import { TaskList } from './features/task/TaskList';
 import { ChakraProvider } from '@chakra-ui/react';
 import { TaskInput } from './features/task/TaskInput';
+import { Fetch } from './features/fetch/Fetch';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Counter />
         <TaskInput />
         <TaskList />
+        <Fetch />
       </ChakraProvider>
       </header>
     </div>

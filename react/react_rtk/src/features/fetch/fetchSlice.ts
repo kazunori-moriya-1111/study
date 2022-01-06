@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from "axios"
+import { RootState } from '../../app/store';
 
 const apiUrl = "https://jsonplaceholder.typicode.com/users"
 
@@ -21,5 +22,5 @@ const fetchSlice = createSlice({
     })
   }
 })
-export const selectUsers = (state:any) => state.fetchSlice.users
+export const selectUsers = (state:RootState) => state.fetch.users
 export default fetchSlice.reducer;
