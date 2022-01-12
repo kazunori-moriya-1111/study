@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'task_base_api.apps.TaskBaseApiConfig',
+    'app.apps.AppConfig',
     'corsheaders',
     'djoser',
 ]
