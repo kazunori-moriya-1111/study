@@ -1,9 +1,48 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from "axios"
+import { RootState } from '../../app/store';
 
 const apiurl = "http://localhost:8000/api/tasks";
 const token = localStorage.localJWT;
 
+export const fetchAsyncGet = createAsyncThunk<any, any>('task/get', async() => {
+  const res = await axios.get(apiurl, {
+    headers: {
+      Authorization: `JWT ${token}`, 
+    },
+  })
+  return res.data
+})
+
+export const fetchAsyncCreate = createAsyncThunk<any, any>('task/post', async(task) => {
+  const res = await axios.post(apiurl, task, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `JWT ${token}`, 
+    },
+  })
+  return res.data
+})
+
+export const fetchAsyncUpdate = createAsyncThunk<any, any>('task/put', async(task) => {
+  const res = await axios.put(`${apiurl}${task.id}/`, task, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `JWT ${token}`, 
+    },
+  })
+  return res.data
+})
+
+export const fetchAsyncDelete = createAsyncThunk<any, any>('task/delete', async(id) => {
+  await axios.delete(`${apiurl}${id}/`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `JWT ${token}`, 
+    },
+  })
+  return id
+})
 
 export interface taskState{
   tasks: [
@@ -60,5 +99,42 @@ const taskSlice = createSlice({
     selectedTask(state, action){
       state.selectedTask = action.payload
     }
+  },
+  // createAsyncThunk処理が成功した後の処理を記載
+  extraReducers: (builder) => {
+    builder.addCase(fetchAsyncGet.fulfilled, (state, action) => {
+      return {
+        ...state,
+        task: action.payload
+      }
+    })
+    builder.addCase(fetchAsyncCreate.fulfilled, (state, action) => {
+      return {
+        ...state,
+        task: [action.payload, ...state.tasks]
+      }
+    })
+    builder.addCase(fetchAsyncUpdate.fulfilled, (state, action) => {
+      return {
+        ...state,
+        task: state.tasks.map((t) => 
+          t.id === action.payload.id ? action.payload : t
+        ),
+        selectedTask: action.payload
+      }
+    })
+    builder.addCase(fetchAsyncDelete.fulfilled, (state, action) => {
+      return {
+        ...state,
+        task: state.tasks.filter((t) => t.id !== action.payload),
+        selectedTask: { id:0, title:"", created_at:"", updated_at:"",},
+      }
+    })
   }
 })
+
+export const selectSelectedTask = (state: RootState) => state.task.selectedTask
+export const selectEditedTask = (state: RootState) => state.task.editedTask
+export const selectTasks = (state: RootState) => state.task.tasks
+
+export default taskSlice.reducer
