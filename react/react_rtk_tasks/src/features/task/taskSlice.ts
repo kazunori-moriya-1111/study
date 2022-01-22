@@ -29,31 +29,30 @@ export interface taskState{
 
 }
 
-const initialState:taskState ={
-  tasks: [
-    {
+const taskSlice = createSlice({
+  name: "task",
+  initialState : { 
+    tasks: [
+      {
+        id: 0,
+        title: "",
+        created_at: "",
+        updated_at: "",
+      }
+    ],
+    editedTask: {
       id: 0,
       title: "",
       created_at: "",
-      updated_at: "",
+      updated_at: ""
+    },
+    selectedTask: {
+      id: 0,
+      title: "",
+      created_at: "",
+      updated_at: ""
     }
-  ],
-  editedTask: {
-    id: 0,
-    title: "",
-    created_at: "",
-    updated_at: ""
-  },
-  selectedTask: {
-    id: 0,
-    title: "",
-    created_at: "",
-    updated_at: ""
-  }
-}
-const taskSlice = createSlice({
-  name: "task",
-  initialState,
+  } as taskState,
   reducers: {
     editTask(state, action){
       state.editedTask = action.payload
