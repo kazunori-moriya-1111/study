@@ -2,9 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from "axios"
 import { RootState } from '../../app/store';
 
+// グローバル変数定義
 const apiurl = "http://localhost:8000/api/tasks";
 const token = localStorage.localJWT;
 
+// 非同期関数定義
 export const fetchAsyncGet = createAsyncThunk<any, any>('task/get', async() => {
   const res = await axios.get(apiurl, {
     headers: {
@@ -44,6 +46,7 @@ export const fetchAsyncDelete = createAsyncThunk<any, any>('task/delete', async(
   return id
 })
 
+// initialStateの型定義
 export interface taskState{
   tasks: [
     {
@@ -68,6 +71,7 @@ export interface taskState{
 
 }
 
+// slice作成
 const taskSlice = createSlice({
   name: "task",
   initialState : { 
@@ -133,6 +137,7 @@ const taskSlice = createSlice({
   }
 })
 
+// export対応
 export const selectSelectedTask = (state: RootState) => state.task.selectedTask
 export const selectEditedTask = (state: RootState) => state.task.editedTask
 export const selectTasks = (state: RootState) => state.task.tasks
