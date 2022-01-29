@@ -68,7 +68,6 @@ export interface taskState{
     created_at: string,
     updated_at: string
   }
-
 }
 
 // slice作成
