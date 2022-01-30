@@ -23,7 +23,7 @@ export const fetchAsyncRegister = createAsyncThunk<any, any>('login/register', a
   return res.data
 })
 
-export const fetchAsyncProf = createAsyncThunk<any, any>('login/get', async() => {
+export const fetchAsyncProf = createAsyncThunk('login/get', async() => {
   const res = await axios.get(`${apiurl}api/myself/`, {
     headers: {
       Authorization: `JWT ${token}`, 

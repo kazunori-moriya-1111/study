@@ -7,7 +7,7 @@ const apiurl = "http://localhost:8000/api/tasks";
 const token = localStorage.localJWT;
 
 // 非同期関数定義
-export const fetchAsyncGet = createAsyncThunk<any, any>('task/get', async() => {
+export const fetchAsyncGet = createAsyncThunk('task/get', async() => {
   const res = await axios.get(apiurl, {
     headers: {
       Authorization: `JWT ${token}`, 
@@ -16,7 +16,7 @@ export const fetchAsyncGet = createAsyncThunk<any, any>('task/get', async() => {
   return res.data
 })
 
-export const fetchAsyncCreate = createAsyncThunk<any, any>('task/post', async(task) => {
+export const fetchAsyncCreate = createAsyncThunk<Array<any>>('task/post', async(task) => {
   const res = await axios.post(apiurl, task, {
     headers: {
       "Content-Type": "application/json",
@@ -106,9 +106,10 @@ const taskSlice = createSlice({
   // createAsyncThunk処理が成功した後の処理を記載
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncGet.fulfilled, (state, action) => {
+      console.log(action)
       return {
         ...state,
-        task: action.payload
+        tasks: action.payload
       }
     })
     builder.addCase(fetchAsyncCreate.fulfilled, (state, action) => {

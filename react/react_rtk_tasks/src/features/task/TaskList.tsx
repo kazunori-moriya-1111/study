@@ -12,8 +12,8 @@ const TaskList = () => {
 
   useEffect(() => {
     const fetchTaskProf = async () => {
-      await dispatch(fetchAsyncGet)
-      await dispatch(fetchAsyncProf)
+      await dispatch(fetchAsyncGet())
+      await dispatch(fetchAsyncProf())
     }
     fetchTaskProf()
   }, [dispatch])
