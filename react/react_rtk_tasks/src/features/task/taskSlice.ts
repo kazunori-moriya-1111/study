@@ -104,6 +104,9 @@ const taskSlice = createSlice({
     }
   },
   // createAsyncThunk処理が成功した後の処理を記載
+  // 他のaddCaseもtasksに定義する必要があるが型推論が使用できないのでtaskの形を定義する必要がありそう
+  // https://zenn.dev/luvmini511/articles/c9cdb77a145f4d
+  // https://redux-toolkit.js.org/usage/usage-with-typescript
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncGet.fulfilled, (state, action) => {
       console.log(action)
