@@ -118,13 +118,13 @@ const taskSlice = createSlice({
     builder.addCase(fetchAsyncCreate.fulfilled, (state, action) => {
       return {
         ...state,
-        task: [action.payload, ...state.tasks]
+        tasks: [action.payload, ...state.tasks]
       }
     })
     builder.addCase(fetchAsyncUpdate.fulfilled, (state, action) => {
       return {
         ...state,
-        task: state.tasks.map((t) => 
+        tasks: state.tasks.map((t) => 
           t.id === action.payload.id ? action.payload : t
         ),
         selectedTask: action.payload
@@ -133,7 +133,7 @@ const taskSlice = createSlice({
     builder.addCase(fetchAsyncDelete.fulfilled, (state, action) => {
       return {
         ...state,
-        task: state.tasks.filter((t) => t.id !== action.payload),
+        tasks: state.tasks.filter((t) => t.id !== action.payload),
         selectedTask: { id:0, title:"", created_at:"", updated_at:"",},
       }
     })
