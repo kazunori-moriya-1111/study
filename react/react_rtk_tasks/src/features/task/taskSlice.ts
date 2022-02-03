@@ -16,7 +16,7 @@ export const fetchAsyncGet = createAsyncThunk('task/get', async() => {
   return res.data
 })
 
-export const fetchAsyncCreate = createAsyncThunk<Array<any>>('task/post', async(task) => {
+export const fetchAsyncCreate = createAsyncThunk('task/post', async(task) => {
   const res = await axios.post(apiurl, task, {
     headers: {
       "Content-Type": "application/json",
