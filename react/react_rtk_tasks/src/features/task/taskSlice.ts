@@ -16,7 +16,7 @@ export const fetchAsyncGet = createAsyncThunk('task/get', async() => {
   return res.data
 })
 
-export const fetchAsyncCreate = createAsyncThunk('task/post', async(task) => {
+export const fetchAsyncCreate = createAsyncThunk<taskState, taskState>('task/post', async(task) => {
   const res = await axios.post(apiurl, task, {
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export const fetchAsyncCreate = createAsyncThunk('task/post', async(task) => {
   return res.data
 })
 
-export const fetchAsyncUpdate = createAsyncThunk<any, any>('task/put', async(task) => {
+export const fetchAsyncUpdate = createAsyncThunk<taskState, taskState>('task/put', async(task) => {
   const res = await axios.put(`${apiurl}${task.id}/`, task, {
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export const fetchAsyncUpdate = createAsyncThunk<any, any>('task/put', async(tas
   return res.data
 })
 
-export const fetchAsyncDelete = createAsyncThunk<any, any>('task/delete', async(id) => {
+export const fetchAsyncDelete = createAsyncThunk<number, number>('task/delete', async(id) => {
   await axios.delete(`${apiurl}${id}/`, {
     headers: {
       "Content-Type": "application/json",
@@ -48,14 +48,14 @@ export const fetchAsyncDelete = createAsyncThunk<any, any>('task/delete', async(
 
 // initialStateの型定義
 export interface taskState{
-  tasks: [
-    {
-      id: number,
-      title: string,
-      created_at: string,
-      updated_at: string,
-    }
-  ],
+  id: number,
+  title: string,
+  created_at: string,
+  updated_at: string,
+}
+
+export interface tasksState{
+  tasks: Array<taskState>,
   editedTask: {
     id: number,
     title: string,
@@ -94,7 +94,7 @@ const taskSlice = createSlice({
       created_at: "",
       updated_at: ""
     }
-  } as taskState,
+  } as tasksState,
   reducers: {
     editTask(state, action){
       state.editedTask = action.payload
@@ -103,13 +103,8 @@ const taskSlice = createSlice({
       state.selectedTask = action.payload
     }
   },
-  // createAsyncThunk処理が成功した後の処理を記載
-  // 他のaddCaseもtasksに定義する必要があるが型推論が使用できないのでtaskの形を定義する必要がありそう
-  // https://zenn.dev/luvmini511/articles/c9cdb77a145f4d
-  // https://redux-toolkit.js.org/usage/usage-with-typescript
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncGet.fulfilled, (state, action) => {
-      console.log(action)
       return {
         ...state,
         tasks: action.payload
