@@ -3,7 +3,7 @@ import axios from "axios"
 import { RootState } from '../../app/store';
 
 // グローバル変数定義
-const apiurl = "http://localhost:8000/api/tasks";
+const apiurl = "http://localhost:8000/api/tasks/";
 const token = localStorage.localJWT;
 
 // 非同期関数定義
