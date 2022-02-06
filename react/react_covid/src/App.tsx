@@ -4,15 +4,17 @@ import BubblePlot from './features/chart/BubblePlot';
 import LinePlot from './features/chart/LinePlot';
 import PiePlot from './features/chart/PiePlot';
 import RadarPlot from './features/chart/RadarPlot';
+import MaterialUI from './features/MaterialUI/MaterialUI';
 
 function App() {
   return (
     <div className="App">
-      <LinePlot />
+      {/* <LinePlot />
       <PiePlot />
       <BarPlot />
       <RadarPlot />
-      <BubblePlot />
+      <BubblePlot /> */}
+      <MaterialUI />
     </div>
   );
 }
