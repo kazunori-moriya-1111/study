@@ -2,6 +2,7 @@ import './App.css';
 import BarPlot from './features/chart/BarPlot';
 import LinePlot from './features/chart/LinePlot';
 import PiePlot from './features/chart/PiePlot';
+import RadarPlot from './features/chart/RadarPlot';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <LinePlot />
       <PiePlot />
       <BarPlot />
+      <RadarPlot />
     </div>
   );
 }
