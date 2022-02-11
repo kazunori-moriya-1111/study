@@ -68,6 +68,31 @@ const MaterialUI : React.FC = () => {
           <Paper className={classes.paperStyle}>xs=1</Paper>
         </Grid>
       </Grid>
+
+      <Grid container spacing={3} direction="column">
+        <Grid item xs={12} container>
+          <Grid item xs={2}>Demo</Grid>
+          <Grid item xs={8}></Grid>
+          <Grid item xs={2}>Test</Grid>
+        </Grid>
+        <Grid item xs={12} container justifyContent="space-around">
+          <Grid item xs={3}>
+            Grid with multiple breakpoints
+            Components may have multiple widths defined, causing the layout to change at the defined breakpoint. Width values given to larger breakpoints override those given to smaller breakpoints.
+            For example, xs={12} sm={6} sizes a component to occupy half of the viewport width (6 columns) when viewport width is 600 or more pixels. For smaller viewports, the component fills all 12 available columns.
+          </Grid>
+          <Grid item xs={3}>
+            Grid with multiple breakpoints
+            Components may have multiple widths defined, causing the layout to change at the defined breakpoint. Width values given to larger breakpoints override those given to smaller breakpoints.
+            For example, xs={12} sm={6} sizes a component to occupy half of the viewport width (6 columns) when viewport width is 600 or more pixels. For smaller viewports, the component fills all 12 available columns.
+          </Grid>
+          <Grid item xs={3}>
+            Grid with multiple breakpoints
+            Components may have multiple widths defined, causing the layout to change at the defined breakpoint. Width values given to larger breakpoints override those given to smaller breakpoints.
+            For example, xs={12} sm={6} sizes a component to occupy half of the viewport width (6 columns) when viewport width is 600 or more pixels. For smaller viewports, the component fills all 12 available columns.
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 };
