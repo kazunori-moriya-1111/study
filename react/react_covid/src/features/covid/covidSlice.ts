@@ -81,17 +81,17 @@ const initialState: covidState = {
     ]
 }
 
-const fetchAsyncGet = createAsyncThunk("covid/get", async() => {
+export const fetchAsyncGet = createAsyncThunk("covid/get", async() => {
   const { data } = await axios.get<APIDATA>(apiUrl)
   return data
 })
 
-const fetchAsyncGetDaily = createAsyncThunk("covid/getDaily", async() => {
+export const fetchAsyncGetDaily = createAsyncThunk("covid/getDaily", async() => {
   const { data } = await axios.get<APIDATADAILY>(`${apiUrl}/daily`)
   return data
 })
 
-const fetchAsyncGetCountry = createAsyncThunk("covid/getCountry", async(country: string) => {
+export const fetchAsyncGetCountry = createAsyncThunk("covid/getCountry", async(country: string) => {
   let dynamicUrl = apiUrl
   if (country){
     dynamicUrl = `${dynamicUrl}/countries/${country}`
