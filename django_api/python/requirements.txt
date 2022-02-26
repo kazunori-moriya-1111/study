@@ -6,4 +6,5 @@ djoser
 uwsgi
 mysqlclient
 django-cors-headers
+Pillow
 uuid
