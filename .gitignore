@@ -36,6 +36,8 @@ django_api/python/api/__pycache__/
 django_api/python/app/__pycache__/
 django_api/python/insta/__pycache__/
 django_insta_api/python/src/api_insta/__pycache__/
+django_insta_api/python/src/api/__pycache__/
+django_insta_api/python/src/api/migrations/__pycache__/
 django_insta_api/python/src/db.sqlite3
 django_api/python/app/migrations/
 django_api/python/db.sqlite3
