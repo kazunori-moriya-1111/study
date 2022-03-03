@@ -15,8 +15,8 @@ class UserManager(BaseUserManager):
   # BaseUserManagerの持っているcreate_userメソッドをemailが扱える様にオーバーライドする
   def create_user(self, email, password=None):
     if not email:
-      raise('email is must')
-    
+      raise ValueError('email is must')
+
     user = self.model(email=self.normalize_email(email))
     user.set_password(password)
     user.save(using=self._db)
@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
   is_active = models.BooleanField(default=True)
   is_staff = models.BooleanField(default=False)
   # ネストしたクラス定義 Userクラスのインスタンスでobject.create_userの様にUserManagerクラスのメソッドが使用可能になる
-  object = UserManager()
+  objects = UserManager()
 
   USERNAME_FIELD = 'email'
 
