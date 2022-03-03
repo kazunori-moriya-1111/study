@@ -7,9 +7,9 @@ class UserSerializer(serializers.ModelSerializer):
   class Meta:
     # get_user_model() django標準のuser modelを取得する関数。今回はカスタムしたUserモデルを読んでいる
     model = get_user_model()
-    fileds = ('id', 'email', 'password')
+    fields = ('id', 'email', 'password')
     extra_kwargs = {'password': {'write_only': True}}
-  
+
   def create(self, validated_data):
     user = get_user_model().objects.create_user(**validated_data)
     return user

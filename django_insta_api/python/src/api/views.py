@@ -29,9 +29,9 @@ class PostViewSet(viewsets.ModelViewSet):
   def perform_create(self, serializer):
     serializer.save(userPost=self.request.user)
 
-class CommentViewSer(viewsets.ModelViewSet):
+class CommentViewSet(viewsets.ModelViewSet):
   queryset = Comment.objects.all()
   serializer_class = serializers.CommentSerializer
   # コメントを新規で作成するときはログインしてるユーザを使用する
   def perform_create(self, serializer):
-    serializer.save(usercontent=self.request.user)
+    serializer.save(userComment=self.request.user)

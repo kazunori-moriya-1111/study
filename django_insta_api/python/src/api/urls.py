@@ -2,7 +2,7 @@ from django.urls import path, include
 from . import views
 from rest_framework.routers import DefaultRouter
 
-app_name = 'django'
+app_name = 'user'
 
 router = DefaultRouter()
 # router.registerではviewsetsを継承したクラスが登録できる
