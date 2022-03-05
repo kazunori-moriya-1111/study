@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^)p%hic62h)hsv)-!7u_(w#0c0pi9=!jtrdi)!09)n$49a3-$r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'djoser',
     'api.apps.ApiConfig',
     'corsheaders',
-    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -56,24 +56,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'api_insta.urls'
-
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000"
-]
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-}
-
-SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('JWT',),
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-}
 
 TEMPLATES = [
     {
@@ -92,6 +74,24 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'api_insta.wsgi.application'
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000"
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+}
 
 
 # Database
