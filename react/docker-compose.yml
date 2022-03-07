@@ -23,11 +23,12 @@ services:
       - ./react_stepup:/usr/src/react_stepup
       - ./react_covid:/usr/src/react_covid
       - ./react_covid_api:/usr/src/react_covid_api
+      - ./react_insta:/usr/src/react_insta
     # Tele-TYpewriter、コンテナ起動後に終了させないための設定
     tty: true
     stdin_open: true
     # コンテナが立ち上がらない場合commandをコメントアウトしてコンテナを立ち上げてnpm installを実行する
-    command: sh -c "cd react_covid_api && yarn start"
+    command: sh -c "cd react_insta && yarn start"
     # ホットリロードの有効化
     environment:
       - CHOKIDAR_USEPOLLING=true
