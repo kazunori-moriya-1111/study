@@ -145,7 +145,31 @@ export const authSlice = createSlice({
       state.myprofile.nickName = action.payload
     },
   },
-  
+  extraReducers: (builder) => {
+    // jwtトークンを取得する関数が成功した後はローカルストレージにJWTトークンをsetする
+    builder.addCase(fetchAsyncLogin.fulfilled, (state, action) => {
+      localStorage.setItem('localJWT', action.payload.access);
+    });
+    // 新規アカウント作成する関数が成功した時はmyprofileのstateを更新する
+    builder.addCase(fetchAsyncCreateProf.fulfilled, (state, action) => {
+      state.myprofile = action.payload;
+    });
+    // ログインしているユーザのプロフィールを取得する関数が成功した時はmyprofileのstateを更新する
+    builder.addCase(fetchAsyncGetMyProf.fulfilled, (state, action) => {
+      state.myprofile = action.payload;
+    });
+    // 全ユーザのプロフィールを取得する関数が成功した時はprofilesのstateを更新する
+    builder.addCase(fetchAsyncGetProfs.fulfilled, (state, action) => {
+      state.profiles = action.payload;
+    });
+    // プロフィールを更新する関数が成功した時は
+    builder.addCase(fetchAsyncUpdateProf.fulfilled, (state, action) => {
+      state.myprofile = action.payload;
+      state.profiles = state.profiles.map((prof) => 
+        prof.id === action.payload.id ? action.payload : prof
+      )
+    });
+  },
 });
 
 export const {
@@ -160,6 +184,11 @@ export const {
   editNickname
 } = authSlice.actions;
 
-export const selectCount = (state: RootState) => state.counter.value;
+export const selectIsLoadingAuth = (state: RootState) => state.auth.isLoadingAuth
+export const selectOpenSignIn = (state: RootState) => state.auth.openSignIn;
+export const selectOpenSignUp = (state: RootState) => state.auth.openSignUp;
+export const selectOpenProfile = (state: RootState) => state.auth.openProfile;
+export const selectProfile = (state: RootState) => state.auth.myprofile;
+export const selectProfiles = (state: RootState) => state.auth.profiles;
 
 export default authSlice.reducer;
