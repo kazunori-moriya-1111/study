@@ -62,6 +62,7 @@ export const fetchAsyncUpdateProf = createAsyncThunk(
         },
       }
     );
+    return res.data
   }
 )
 
