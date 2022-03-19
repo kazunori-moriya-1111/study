@@ -50,6 +50,7 @@ const Auth: React.FC = () => {
   
   return (
     <>
+      {/* 新規登録用のモーダル */}
       <Modal
        isOpen={openSignUp}
        // モーダル以外の箇所をクリックしたとき呼び出す関数（openSignUp=falseになるのでモーダルが閉じる）
