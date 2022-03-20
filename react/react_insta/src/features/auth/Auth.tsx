@@ -229,6 +229,9 @@ const Auth: React.FC = () => {
                     onBlur={handleBlur} //validationを実行する
                     value={values.password}
                   />
+                  {touched.password && errors.password ? (
+                    <div className={styles.auth_error}>{errors.password}</div>
+                  ) : null}
                   <br />
                   <Button
                     variant="contained"
