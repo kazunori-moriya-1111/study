@@ -17,3 +17,29 @@ export interface PROPS_PROFILE {
 export interface PROPS_NICKNAME {
   nickName: string;
 }
+// *postSlice.tsで使用
+export interface PROPS_NERPOST {
+  title: string;
+  img: File | null;
+}
+
+export interface PROPS_LIKED {
+  id: number;
+  titile: string;
+  current: number[];
+  new: number
+}
+
+export interface PROPS_COMMENT {
+  text: string;
+  post: number;
+}
+// Post.tsxで使用
+export interface PROPS_POST {
+  postId: number;
+  loginId: number;
+  userPost: number;
+  title: string;
+  imageUrl: string;
+  liked: number;
+}
