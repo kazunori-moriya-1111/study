@@ -18,7 +18,7 @@ export interface PROPS_NICKNAME {
   nickName: string;
 }
 // *postSlice.tsで使用
-export interface PROPS_NERPOST {
+export interface PROPS_NEWPOST {
   title: string;
   img: File | null;
 }
