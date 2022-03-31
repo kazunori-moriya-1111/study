@@ -118,6 +118,7 @@ const Core: React.FC = () => {
               <MdAddAPhoto />
             </button>
             <div className={styles.core_logout}>
+              {(isLoadingPost || isLoadingAuth) && <CircularProgress />}
               <Button
                 onClick={() => {
                   localStorage.removeItem('localJWT')
@@ -129,9 +130,47 @@ const Core: React.FC = () => {
               >
                 Logout
               </Button>
+              <button
+                className={styles.core_btnModal}
+                onClick={() => {
+                  dispatch(setOpenProfile())
+                  dispatch(resetOpenNewPost())
+                }}
+              >
+                <StyledBadge
+                  overlap="circle"
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  variant="dot"
+                >
+                  <Avatar alt="who?" src={profile.img} />{" "}
+                </StyledBadge>
+              </button>
             </div>
           </>
-        ) : (<div></div>)}
+        ) : (
+          // ログインしていない時
+          <div>
+            <Button
+              onClick={() => {
+                dispatch(setOpenSignIn())
+                dispatch(resetOpenSignUp())
+              }}
+            >
+              Login
+            </Button>
+            <Button
+              onClick={() => {
+                dispatch(setOpenSignUp())
+                dispatch(resetOpenSignIn())
+              }}
+            >
+              SignUp
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   )
