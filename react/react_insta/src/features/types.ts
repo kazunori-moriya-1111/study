@@ -41,5 +41,5 @@ export interface PROPS_POST {
   userPost: number;
   title: string;
   imageUrl: string;
-  liked: number;
+  liked: number[];
 }
