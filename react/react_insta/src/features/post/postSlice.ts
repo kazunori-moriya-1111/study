@@ -54,7 +54,7 @@ export const fetchAsyncPatchLiked = createAsyncThunk(
       uploadData.append("liked", String(liked.new));
     } else if (currentLiked.length === 1) {
       // いいねした人をブランクにしたい場合
-      uploadData.append("title", liked.titile);
+      uploadData.append("title", liked.title);
       const res = await  axios.put(`${apiUrlPost}${liked.id}/`, uploadData, {
         headers: {
           'Content-Type': 'application/json',

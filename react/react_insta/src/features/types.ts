@@ -25,7 +25,7 @@ export interface PROPS_NEWPOST {
 
 export interface PROPS_LIKED {
   id: number;
-  titile: string;
+  title: string;
   current: number[];
   new: number
 }
