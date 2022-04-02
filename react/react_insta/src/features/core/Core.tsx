@@ -38,7 +38,7 @@ import {
   fetchAsyncGetComments,
 } from '../post/postSlice'
 
-// import Post from "../post/Post";1
+import Post from "../post/Post";
 import EditProfile from "./EditProfile";
 import NewPost from "./NewPost";
 
@@ -172,6 +172,30 @@ const Core: React.FC = () => {
           </div>
         )}
       </div>
+      {profile?.nickName && (
+        <>
+          <div className={styles.core_posts}>
+            <Grid container spacing={4}>
+              {posts
+                .slice(0)
+                .reverse()
+                .map((post) => (
+                  <Grid key={post.id} item xs={12} md={4}>
+                    <Post
+                      postId={post.id}
+                      title={post.title}
+                      loginId={profile.userProfile}
+                      userPost={post.userPost}
+                      imageUrl={post.img}
+                      liked={post.liked}
+                    />
+                  </Grid>
+                ))
+              }
+            </Grid>
+          </div>
+        </>
+      )}
     </div>
   )
 }
