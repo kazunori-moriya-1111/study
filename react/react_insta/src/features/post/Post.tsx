@@ -73,9 +73,85 @@ const Post : React.FC<PROPS_POST>= ({
     await dispatch(fetchAsyncPatchLiked(packet));
     await dispatch(fetchPostEnd());
   }
-  return (
-    <div>Post</div>
-  )
+  // 投稿が存在する時に中身を返却する
+  if (title){
+    return (
+      <div className={styles.post}>
+        {/* 投稿者アバターと投稿者nicknameと投稿画像 */}
+        <div className={styles.post_header}>
+          <Avatar className={styles.post_avatar} src={prof[0]?.img} />
+          <h3>{prof[0]?.nickName}</h3>
+        </div>
+        <img className={styles.post_img} src={imageUrl} alt="" />
+        {/* いいねボタンとアバターグループ */}
+        <h4 className={styles.post_text}>
+          <Checkbox
+            className={styles.post_checkBox}
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite />}
+            checked={liked.some((like) => like === loginId)}
+            onChange={hendlerLiked}
+          />
+          <strong>{prof[0]?.nickName}</strong> {title}
+          <AvatarGroup max={7}>
+            {liked.map((like) => (
+              <Avatar 
+                className={styles.post_avatarGroup}
+                key={like}
+                src={profiles.find((prof) => prof.userProfile === like)?.img}
+              />
+            ))}
+          </AvatarGroup>
+        </h4>
+
+        <Divider />
+        {/* コメント部分 */}
+        <div className={styles.post_comments}>
+          {commentsOnPost.map((comment) => (
+            <div key={comment.id} className={styles.post_comment}>
+              <Avatar
+                src={
+                  profiles.find(
+                    (prof) => prof.userProfile === comment.userComment
+                  )?.img
+                }
+                className={classes.small}
+              />
+              <p>
+                <strong className={styles.post_strong}>
+                  {
+                    profiles.find(
+                      (prof) => prof.userProfile === comment.userComment
+                    )?.nickName
+                  }
+                </strong>
+                {comment.text}
+              </p>
+            </div>
+          ))}
+        </div>
+        {/* コメント投稿部分 */}
+        <form className={styles.post_commentBox}>
+          <input
+            className={styles.post_input}
+            type="text"
+            placeholder="add a comment"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <button
+            disabled={!text.length}
+            className={styles.post_button}
+            type="submit"
+            onClick={postComment}
+          >
+            Post
+          </button>
+        </form>
+      </div>
+    )
+  }
+  return null
 }
 
 export default Post
