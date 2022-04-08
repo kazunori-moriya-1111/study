@@ -34,8 +34,67 @@ const customStyles = {
 };
 
 const EditProfile:React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const openProfile = useSelector(selectOpenProfile);
+  const profile = useSelector(selectProfile);
+  const [image, setImage] = useState<File | null>(null);
+
+  const updateProfile = async (e: React.MouseEvent<HTMLElement>) => {
+    const packet = { id: profile.id, nickName: profile.nickName, img: image }
+
+    await dispatch(fetchCredStart());
+    await dispatch(fetchAsyncUpdateProf(packet));
+    await dispatch(fetchCredEnd());
+    await dispatch(resetOpenProfile())
+  }
+
+  const handlerEditPicture = () => {
+    const fileInput = document.getElementById('imageInput');
+    fileInput?.click();
+  }
   return (
-    <div>EditProfile</div>
+    <>
+      <Modal
+        isOpen={openProfile}
+        onRequestClose={async () => {
+          await dispatch(resetOpenProfile());
+        }}
+        style={customStyles}
+      >
+        <form className={styles.core_signUp}>
+          <h1 className={styles.core_title}>SNS clone</h1>
+          <br />
+          <TextField
+            placeholder="nickName"
+            type="text"
+            value={profile?.nickName}
+            onChange={(e) => dispatch(editNickname(e.target.value))}
+          />
+
+          <input
+            type="file"
+            id="imageInput"
+            hidden={true}
+            onChange={(e) => setImage(e.target.files![0])}
+          />
+          <br />
+          {/* Iconをクリックしたときに上のinputフォームを機能させる */}
+          <IconButton onClick={handlerEditPicture}>
+            <MdAddAPhoto />
+          </IconButton>
+          <br />
+          <Button
+            disabled={!profile?.nickName}
+            variant="contained"
+            color="primary"
+            type="submit"
+            onClick={updateProfile}
+          >
+            Update
+          </Button>
+        </form>
+      </Modal>
+    </>
   )
 }
 
