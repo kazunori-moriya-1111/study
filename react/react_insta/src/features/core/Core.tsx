@@ -103,6 +103,7 @@ const Core: React.FC = () => {
     <div>
       <Auth />
       <EditProfile />
+      <NewPost />
       <div className={styles.core_header}>
         <h1 className={styles.core_title}>SNS clone</h1>
         {/* profile?はprofileが存在する時に式の評価を行う */}
