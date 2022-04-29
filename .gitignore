@@ -45,3 +45,5 @@ django_api/python/db.sqlite3
 django_nextjs_api/python/src/db.sqlite3
 django_nextjs_api/python/src/.env
 django_nextjs_api/python/src/rest_api/__pycache__/
+django_nextjs_api/python/src/api/__pycache__
+django_nextjs_api/python/src/api/migrations/
