@@ -6,3 +6,4 @@ djoser==2.0.3
 django-cors-headers==3.4.0
 dj-database-url
 dj_static
+python-decouple
