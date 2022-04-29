@@ -43,4 +43,5 @@ django_insta_api/python/src/media/
 django_api/python/app/migrations/
 django_api/python/db.sqlite3
 django_nextjs_api/python/src/db.sqlite3
+django_nextjs_api/python/src/.env
 django_nextjs_api/python/src/rest_api/__pycache__/
