@@ -10,18 +10,18 @@ class UserSerializer(serializers.ModelSerializer):
     extra_kwargs = {'password': {'write_only': True, 'required': True}}
   
   def create(self, validated_data):
-    user = User.object.create_user(**validated_data)
+    user = User.objects.create_user(**validated_data)
     return user
   
 class PostSerializer(serializers.ModelSerializer):
-  created_ad = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
+  created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
 
   class Meta:
     model = Post
     fields = ('id', 'title', 'content', 'created_at')
 
 class TaskSerializer(serializers.ModelSerializer):
-  created_ad = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
+  created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
 
   class Meta:
     model = Task
