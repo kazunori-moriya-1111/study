@@ -12,7 +12,7 @@ class CreateUserView(generics.CreateAPIView):
 class PostListView(generics.ListAPIView):
   queryset = Post.objects.all()
   serializer_class = PostSerializer
-  permisson_classes = (AllowAny,)
+  permission_classes = (AllowAny,)
 
 class PostRetrieveView(generics.RetrieveAPIView):
   queryset = Post.objects.all()
@@ -22,12 +22,12 @@ class PostRetrieveView(generics.RetrieveAPIView):
 class TaskListView(generics.ListAPIView):
   queryset = Task.objects.all()
   serializer_class = TaskSerializer
-  permisson_classes = (AllowAny,)
+  permission_classes = (AllowAny,)
 
 class TaskRetrieveView(generics.RetrieveAPIView):
   queryset = Task.objects.all()
   serializer_class = TaskSerializer
-  permisson_classes = (AllowAny,)
+  permission_classes = (AllowAny,)
 
 class TaskViewSet(viewsets.ModelViewSet):
   queryset = Task.objects.all()
