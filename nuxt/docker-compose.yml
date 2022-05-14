@@ -9,4 +9,4 @@ services:
       - ./app:/usr/src/app
     tty: true
     stdin_open: true
-    command: /bin/sh
+    command: sh -c "cd  nuxt-blog-app && npm run dev"
