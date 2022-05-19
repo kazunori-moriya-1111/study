@@ -1,4 +1,9 @@
 import Head from "next/head";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Cookie from "universal-cookie";
+
+const cookie = new Cookie();
 
 export default function Auth() {
   return (
