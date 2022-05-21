@@ -9,12 +9,12 @@ export default function Auth() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLogin, setLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
 
   const login = async () => {
     try{
       await fetch(
-        `S{process.env.NEXT_PUBLIC_RESTAPI_URL}api/auth/jwt/create/`,
+        `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/auth/jwt/create/`,
         {
           method: "POST",
           body: JSON.stringify({ username: username, password: password}),
@@ -74,7 +74,7 @@ export default function Auth() {
             </button>
           </div>
         </form>
-      </div>1
+      </div>
     </>
   );
 }
