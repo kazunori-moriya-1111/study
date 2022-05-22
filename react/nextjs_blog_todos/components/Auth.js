@@ -11,6 +11,7 @@ export default function Auth() {
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
 
+  // ログイン処理
   const login = async () => {
     try{
       await fetch(
