@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <label for="show">表示/非表示</label>
+            <input type="checkbox" id="show" v-model="show" />
+        </form>
+        <div id="panel" v-if="show">
+            <h3>RSSフィールドについて</h3>
+            <div>WINGSでは.....</div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
+    <script src="js/if.js"></script>
+</body>
+</html>
