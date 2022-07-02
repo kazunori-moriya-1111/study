@@ -8,7 +8,8 @@ Vue.createApp({
   },
   methods: {
     onclick(){
-      this.list[1] = '茶パジャマ'
+      // 配列の先頭の要素を削除
+      this.list.shift()
     }
   }
 }).mount('#app');
