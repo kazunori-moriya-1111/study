@@ -8,11 +8,11 @@
 </head>
 <body>
     <div id="app">
-        <div id="parent" v-on:click="onParentClick">
+        <div id="parent" v-on:click.capture="onParentClick">
             親要素
-            <div id="my" v-on:click.self="onMyClick">
+            <div id="my" v-on:click.capture="onMyClick">
                 現在要素
-                <div id="child" v-on:click="onChildClick">
+                <div id="child" v-on:click.capture="onChildClick">
                     子要素
                 </div>
             </div>
