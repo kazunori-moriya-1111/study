@@ -23,17 +23,26 @@ Vue.createApp({
       components: ['member','new','env']
     }
   },
+  provide(){
+    return {
+      // currentの値をリアクティブに提供
+      current: Vue.computed(() => this.current)
+    }
+  }
 })
   // バナーメンバー要素を定義
   .component('banner-member',{
-    template: `<div>こんにちは、メンバーを募集していいます</div>`,
+    inject: ['current'],
+    template: `<div>こんにちは、メンバーを募集していいます{{ current }}</div>`,
   })
   // バナーニュー要素を定義
   .component('banner-new',{
-    template: `<div>こんにちは、新しいバナーです</div>`,
+    inject: ['current'],
+    template: `<div>こんにちは、新しいバナーです{{ current }}</div>`,
   })
   // バナーエンブ要素を定義
   .component('banner-env',{
-    template: `<div>こんにちは、応募情報です</div>`,
+    inject: ['current'],
+    template: `<div>こんにちは、応募情報です{{ current }}</div>`,
   })
   .mount('#app');
