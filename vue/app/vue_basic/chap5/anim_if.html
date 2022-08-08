@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/anim.css">
+  <title>Vue.js</title>
+</head>
+<body>
+  <div id="app">
+    <!-- ボタンクリックで表示/非表示を切り替え -->
+    <input type="button" value="表示/非表示" v-on:click="onclick" />
+    <!-- アニメーションの対象領域 -->
+    <transition>
+      <div id="panel" v-if="flag">WINGSプロジェクト</div>
+      <div id="empty" v-else key="p2">非常時です</div>
+    </transition>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
+  <script src="js/anim.js"></script>
+</body>
+</html>
