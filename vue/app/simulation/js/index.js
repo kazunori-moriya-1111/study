@@ -48,10 +48,12 @@ Vue.createApp({
       // 表示するデータを算出してdata変数へ格納
       while(remainMoney > 0){
         remainMoney += interestMoney
-        remainMoney -= PaidMoney
-        // 残金がマイナスの場合、数値を更新する
-        if(remainMoney <= 0){
+        // 残り金額より支払い金額が大きい場合、数値を調整する
+        if(remainMoney <= PaidMoney){
+          PaidMoney = remainMoney
           remainMoney = 0
+        }else{
+          remainMoney -= PaidMoney
         }
         // 日付更新
         date.setMonth(date.getMonth() + 1)
