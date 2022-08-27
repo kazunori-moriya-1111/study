@@ -17,12 +17,14 @@
                     <th>支払い金額</th>
                     <th>利息</th>
                     <th>残金</th>
+                    <th>追加支払い</th>
                 </tr>
                 <tr v-for="row in data" :key="row.ym">
                     <td>{{ row.ym }}</td>
                     <td>{{ row.paid }}</td>
                     <td>{{ row.interest }}</td>
                     <td>{{ row.remaining }}</td>
+                    <td><input type="text" v-model="addPay"/>円</td>
                 </tr>
             </table>
         </template>

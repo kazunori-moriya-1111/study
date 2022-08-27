@@ -2,9 +2,10 @@ Vue.createApp({
   data() {
     return{
       remaining: '',
-      rate:'',
-      isShow:false,
-      data:[]
+      rate: '',
+      addPay: 0,
+      isShow: false,
+      data: []
     };
   },
   methods: {
@@ -15,11 +16,12 @@ Vue.createApp({
     },
     // クリック時に関数をまとめて動作
     onclick(){
+      // data変数の初期化
+      this.data = []
       this.toInt()
       this.createTable()
       // 残金と利率が正常に数値変化できていれば後続処理を実施する
       if(!this.remaining || !this.rate){ return; }
-      console.log("後続処理実施")
     },
     // 数値変換
     toInt(){
