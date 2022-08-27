@@ -30,14 +30,14 @@ Vue.createApp({
     },
     // table作成
     // 残金から支払い金額を返却する
-    getPaidMoney(){
-      if(this.remaining >= 400001){
+    getPaidMoney(remainMoney){
+      if(remainMoney >= 400001){
         return 25000
-      }else if(this.remaining >= 300001){
+      }else if(remainMoney >= 300001){
         return 20000
-      }else if(this.remaining >= 200001){
+      }else if(remainMoney >= 200001){
         return 15000
-      }else if(this.remaining >= 100001){
+      }else if(remainMoney >= 100001){
         return 10000
       }else{
         return 0
