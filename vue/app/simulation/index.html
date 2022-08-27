@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        残金<input type="text" v-model="remaining">円<br />
+        利率<input type="text" v-model="rate">%<br />
+        <input type="button" value="計算する" v-on:click="onclick" />
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
