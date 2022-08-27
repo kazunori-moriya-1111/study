@@ -45,7 +45,7 @@ Vue.createApp({
     },
     // 残金と利率から利息を返却する
     getInterestMoney(remainMoney){
-      return remainMoney * this.ratex / 100 / 12
+      return remainMoney * this.rate / 100 / 12
     }
   }
 }).mount('#app');
