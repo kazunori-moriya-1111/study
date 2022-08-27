@@ -21,6 +21,11 @@ Vue.createApp({
     };
   },
   methods: {
+    // テストデータ入力用関数
+    insertTestData(){
+      this.remaining = 500000
+      this.rate = 18
+    },
     // クリック時に関数をまとめて動作
     onclick(){
       this.toInt()
@@ -80,7 +85,6 @@ Vue.createApp({
     },
     // 残金と利率から利息を返却する
     getInterestMoney(remainMoney){
-      return remainMoney * this.rate / 100 / 12
       return Math.round(remainMoney * this.rate / 100 / 12)
     }
   }

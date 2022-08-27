@@ -6,6 +6,7 @@
 </head>
 <body>
     <div id="app">
+        <input type="button" value="テストデータ入力" v-on:click="insertTestData" /><br />
         残金<input type="text" v-model="remaining">円<br />
         利率<input type="text" v-model="rate">%<br />
         <input type="button" value="計算する" v-on:click="onclick" /><br />
