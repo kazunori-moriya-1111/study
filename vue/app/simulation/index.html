@@ -8,7 +8,29 @@
     <div id="app">
         残金<input type="text" v-model="remaining">円<br />
         利率<input type="text" v-model="rate">%<br />
-        <input type="button" value="計算する" v-on:click="onclick" />
+        <input type="button" value="計算する" v-on:click="onclick" /><br />
+        <template v-if="isShow">
+            <table border="1">
+                <tr>
+                    <th>支払い月</th>
+                    <th>支払い金額</th>
+                    <th>利息</th>
+                    <th>残金</th>
+                </tr>
+                <tr>
+                    <td>2022/09</td>
+                    <td>1,400</td>
+                    <td>1,300</td>
+                    <td>1,300</td>
+                </tr>
+                <tr>
+                    <td>2022/10</td>
+                    <td>750</td>
+                    <td>920</td>
+                    <td>920</td>
+                </tr>
+            </table>
+        </template>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
     <script src="js/index.js"></script>
