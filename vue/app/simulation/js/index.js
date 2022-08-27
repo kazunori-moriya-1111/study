@@ -4,20 +4,7 @@ Vue.createApp({
       remaining: '',
       rate:'',
       isShow:false,
-      data:[
-        {
-          ym: '2022/09',
-          paid: 30000,
-          interest: 3000,
-          remaining: 50000,
-        },
-        {
-          ym: '2022/10',
-          paid: 40000,
-          interest: 4000,
-          remaining: 40000,
-        }
-      ]
+      data:[]
     };
   },
   methods: {
@@ -51,22 +38,35 @@ Vue.createApp({
     // tableで表示するデータ作成
     createTable(){
       this.isShow = true
-      const date = new Date()
-      const startMonth = date.getMonth() + 2
-      const startYear = date.getFullYear()
+      // 計算に必要な変数を定義
+      var date = new Date()
+      // 月計算の帳尻を合わせ
+      date.setMonth(date.getMonth() + 1)
       var remainMoney = this.remaining
       var PaidMoney = this.getPaidMoney(remainMoney)
       var interestMoney = this.getInterestMoney(remainMoney)
-      // 残金を更新
-      for (let i = 1; i < 10; i++){
+      // 表示するデータを算出してdata変数へ格納
+      while(remainMoney > 0){
         remainMoney += interestMoney
         remainMoney -= PaidMoney
-        console.log("残金",remainMoney)
-        console.log("利息",interestMoney)
-        console.log("支払い金額",PaidMoney)
-        // 利息と支払い金額を再定義
-        PaidMoney = this.getPaidMoney(remainMoney)
-        interestMoney = this.getInterestMoney(remainMoney)
+        // 残金がマイナスの場合、数値を更新する
+        if(remainMoney <= 0){
+          remainMoney = 0
+        }
+        // 日付更新
+        date.setMonth(date.getMonth() + 1)
+        // dataへ格納
+        this.data.push(
+          {
+            ym : date.getFullYear() + "/" + date.getMonth(),
+            paid: PaidMoney,
+            interest: interestMoney,
+            remaining: remainMoney,
+          }
+        )
+          // 利息と支払い金額を再定義
+          PaidMoney = this.getPaidMoney(remainMoney)
+          interestMoney = this.getInterestMoney(remainMoney)
       }
     },
     // 残金から支払い金額を返却する
@@ -77,7 +77,7 @@ Vue.createApp({
         return 20000
       }else if(remainMoney >= 200001){
         return 15000
-      }else if(remainMoney >= 100001){
+      }else if(remainMoney >= 1){
         return 10000
       }else{
         return 0
