@@ -17,17 +17,11 @@
                     <th>利息</th>
                     <th>残金</th>
                 </tr>
-                <tr>
-                    <td>2022/09</td>
-                    <td>1,400</td>
-                    <td>1,300</td>
-                    <td>1,300</td>
-                </tr>
-                <tr>
-                    <td>2022/10</td>
-                    <td>750</td>
-                    <td>920</td>
-                    <td>920</td>
+                <tr v-for="row in data" :key="row.ym">
+                    <td>{{ row.ym }}</td>
+                    <td>{{ row.paid }}</td>
+                    <td>{{ row.interest }}</td>
+                    <td>{{ row.remaining }}</td>
                 </tr>
             </table>
         </template>
