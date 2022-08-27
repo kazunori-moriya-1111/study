@@ -3,7 +3,7 @@ Vue.createApp({
     return{
       remaining: '',
       rate:'',
-      ishow:false,
+      isShow:false,
     };
   },
   methods: {
