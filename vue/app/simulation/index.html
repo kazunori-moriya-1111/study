@@ -10,6 +10,7 @@
         残金<input type="text" v-model="remaining">円<br />
         利率<input type="text" v-model="rate">%<br />
         <input type="button" value="計算する" v-on:click="onclick" /><br />
+        <input type="button" value="追加支払いの値取得" v-on:click="onget" /><br />
         <template v-if="isShow">
             <table border="1">
                 <tr>
@@ -24,7 +25,7 @@
                     <td>{{ row.paid }}</td>
                     <td>{{ row.interest }}</td>
                     <td>{{ row.remaining }}</td>
-                    <td><input type="text" v-model="addPay"/>円</td>
+                    <td><input type="text" v-model="row.addPay"/>円</td>
                 </tr>
             </table>
         </template>

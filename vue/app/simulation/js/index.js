@@ -1,3 +1,4 @@
+// todo 残金利息グラフ化、追加支払い処理
 Vue.createApp({
   data() {
     return{
@@ -13,6 +14,9 @@ Vue.createApp({
     insertTestData(){
       this.remaining = 500000
       this.rate = 18
+    },
+    onget(){
+      console.log(this.data)
     },
     // クリック時に関数をまとめて動作
     onclick(){
@@ -63,9 +67,10 @@ Vue.createApp({
         this.data.push(
           {
             ym : date.getFullYear() + "/" + date.getMonth(),
-            paid: PaidMoney,
-            interest: interestMoney,
-            remaining: remainMoney,
+            paid: PaidMoney.toLocaleString(),
+            interest: interestMoney.toLocaleString(),
+            remaining: remainMoney.toLocaleString(),
+            addPay: 0
           }
         )
           // 利息と支払い金額を再定義
