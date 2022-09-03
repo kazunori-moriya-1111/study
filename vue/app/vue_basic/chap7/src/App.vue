@@ -1,5 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
+  <!-- eslint-disable-next-line -->
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
