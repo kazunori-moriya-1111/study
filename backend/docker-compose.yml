@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: extra
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - my_volume:/var/lib/mysql
+      - ./mysql/logs:/var/log/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/sql:/docker-entrypoint-initdb.d
+  
+  backend:
+    build: ./express
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/usr/src
+    tty: true
+    stdin_open: true
+    command: /bin/sh -c "npm run start"
+
+volumes: 
+  my_volume:
