@@ -1,8 +1,9 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <!-- eslint-disable-next-line -->
-  <MyCounter init='0'/>
-  <p>こんにちは、vue.js！</p>
+  <div>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <MyCounter init='0'/>
+    <p>こんにちは、vue.js！</p>
+  </div>
 </template>
 
 <script>
