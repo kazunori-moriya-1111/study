@@ -2,18 +2,21 @@
   <div>
     <img alt="Vue logo" src="./assets/logo.png">
     <MyCounter init='0'/>
-    <p>こんにちは、vue.js！</p>
+    <p class="highlight">こんにちは、vue.js!</p>
+    <MyChild />
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
+import MyChild from './components/MyChild.vue'
 import MyCounter from './components/MyCounter.vue'
 
 export default {
   name: 'App',
   components: {
-    MyCounter
+    MyCounter,
+    MyChild
   }
 }
 </script>
@@ -27,7 +30,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-p {
+:deep(.highlight) {
   border: 1px solid red;
   background-color: yellow;
 }
