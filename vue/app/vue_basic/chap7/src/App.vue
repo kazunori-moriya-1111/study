@@ -3,7 +3,9 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <MyCounter init='0'/>
     <p class="highlight">こんにちは、vue.js!</p>
-    <MyChild />
+    <MyChild>
+      <span class="highlight">スロットを用いて親コンポーネントから子コンポーネントへ差し込み</span>
+    </MyChild>
   </div>
 </template>
 
@@ -29,9 +31,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-:deep(.highlight) {
-  border: 1px solid red;
-  background-color: yellow;
 }
 </style>

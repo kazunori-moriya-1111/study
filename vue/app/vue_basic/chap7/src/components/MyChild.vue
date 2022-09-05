@@ -1,6 +1,7 @@
 <template>
   <div>
     <p class="highlight">よろしくお願いします</p>
+    <div>こんにちは、<slot>機能</slot>さん</div>
   </div>
 </template>
 
@@ -11,5 +12,8 @@ export default {
 </script>
 
 <style scoped>
-
+:slotted(.highlight) {
+  border: 1px solid red;
+  background-color: yellow;
+}
 </style>
