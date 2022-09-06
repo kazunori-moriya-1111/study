@@ -32,4 +32,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+:global(p) {
+  border: 1px solid red;
+  background-color: yellow;
+}
 </style>

@@ -12,8 +12,5 @@ export default {
 </script>
 
 <style scoped>
-:slotted(.highlight) {
-  border: 1px solid red;
-  background-color: yellow;
-}
+
 </style>
