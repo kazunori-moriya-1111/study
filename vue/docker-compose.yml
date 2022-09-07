@@ -9,4 +9,4 @@ services:
       - ./app:/usr/src/app
     tty: true
     stdin_open: true
-    command: /bin/sh -c "cd vue_basic/chap7 && npm run serve"
+    command: /bin/sh -c "cd vue_basic/vue-typescript && npm run serve"
