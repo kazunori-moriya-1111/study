@@ -4,9 +4,9 @@ services:
   app:
     build: ./vue3
     ports:
-      - 8080:8080
+      - 5173:5173
     volumes:
       - ./app:/usr/src/app
     tty: true
     stdin_open: true
-    command: /bin/sh -c "cd vue_basic/vue-typescript && npm run serve"
+    command: /bin/sh -c "cd vue_basic/my-vite && npm run dev"
