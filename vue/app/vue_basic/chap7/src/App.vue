@@ -3,22 +3,33 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <MyCounter init='0'/>
     <p class="highlight">こんにちは、vue.js!</p>
-    <MyChild>
+    <input type="button" value="変更" @click="onclick" />
+    <!-- <MyChild>
       <span class="highlight">スロットを用いて親コンポーネントから子コンポーネントへ差し込み</span>
-    </MyChild>
+    </MyChild> -->
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import MyChild from './components/MyChild.vue'
-import MyCounter from './components/MyCounter.vue'
+// import MyChild from './components/MyChild.vue'
+// import MyCounter from './components/MyCounter.vue'
 
 export default {
   name: 'App',
-  components: {
-    MyCounter,
-    MyChild
+  data(){
+    return{
+      color: 'lightBlue'
+    }
+  },
+  methods:{
+    onclick(){
+      if (this.color === 'lightBlue'){
+        this.color = 'yellow'
+      }else{
+        this.color = 'lightBlue'
+      }
+    }
   }
 }
 </script>
@@ -34,6 +45,6 @@ export default {
 }
 :global(p) {
   border: 1px solid red;
-  background-color: yellow;
+  background-color: v-bind(color)
 }
 </style>
