@@ -5,6 +5,8 @@
     <router-link to="/article/108">記事NO.108488</router-link>
   </div>
   <router-view/>
+  <hr>
+  <router-view name="sub"/>
 </template>
 
 <style>
