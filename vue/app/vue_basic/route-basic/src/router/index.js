@@ -20,7 +20,8 @@ const routes = [
     // aidパラメータを受け取るArticleルート
     path: '/article/:aid',
     name: 'Article',
-    component: Article
+    component: Article,
+    props: true
   }
 ]
 
