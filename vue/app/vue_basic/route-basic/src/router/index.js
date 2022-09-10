@@ -22,6 +22,12 @@ const routes = [
     name: 'Article',
     component: Article,
     props: true
+  },
+  {
+    // リダイレクト先を記載
+    path: '/:paths(.*)*',
+    name: 'nothing',
+    redirect: '/'
   }
 ]
 
