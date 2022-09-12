@@ -9,4 +9,4 @@ services:
       - ./app:/usr/src/app
     tty: true
     stdin_open: true
-    command: /bin/sh -c "cd vue_basic/route-basic && npm run serve"
+    command: /bin/sh -c "cd vue_basic/route-nest && yarn serve"
