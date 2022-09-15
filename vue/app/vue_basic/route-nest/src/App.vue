@@ -2,8 +2,9 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about" active-class="current">About</router-link> |
+    <router-link to="/article/13">13</router-link> |
     <router-link to="/article/108">108</router-link> |
-    <router-link to="/article/13">13</router-link>
+    <router-link to="/article/108/pages/2">108(2p)</router-link>
   </div>
   <router-view/>
 </template>
@@ -32,5 +33,9 @@ nav a.router-link-exact-active {
 
 .current {
   color: red;
+}
+
+#nav a.router-link-exact-active {
+  background-color: yellow
 }
 </style>
