@@ -10,29 +10,30 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import { useStore } from 'vuex'
+import { computed } from "vue";
 
 export default {
   name: 'App',
-  computed:{
-    // 現在のカウントの値を取得
-    count(){
-      return this.$store.state.count
-    }
-  },
-  methods:{
-    minus(){
-      this.$store.commit('minus')
-    },
-    plus(){
-      this.$store.commit('plus')
-    }
-  },
+  // setup(){
+  //   const store = useStore()
+  //   const count = computed(() => store.state.count)
+  //   const minus = () => { store.commit('minus') }
+  //   const plus = () => { store.commit('plus') }
+  //   return { count, minus, plus }
+  // },
   components: {
     HelloWorld
   }
 }
 </script>
 
+<script setup>
+  const store = useStore()
+  const count = computed(() => store.state.count)
+  const minus = () => { store.commit('minus') }
+  const plus = () => { store.commit('plus') }
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
