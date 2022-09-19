@@ -1,8 +1,9 @@
 <template>
   <div>
-    <input type="button" value="-" v-on:click="minus" />
-    {{ count }}
-    <input type="button" value="+" v-on:click="plus" />
+    <p>書籍は全部で{{bookCount}}冊あります</p>
+    <ul v-for="b of getBookByPrice(2500)" v-bind:key="b.isbn">
+      <li>{{ b.title }} {{ b.price }}<br />ISBN:{{ b.isbn }}</li>
+    </ul>
   </div>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
@@ -10,30 +11,17 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import { useStore } from 'vuex'
-import { computed } from "vue";
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'App',
-  // setup(){
-  //   const store = useStore()
-  //   const count = computed(() => store.state.count)
-  //   const minus = () => { store.commit('minus') }
-  //   const plus = () => { store.commit('plus') }
-  //   return { count, minus, plus }
-  // },
+  computed: mapGetters(['bookCount', 'getBookByPrice']),
   components: {
     HelloWorld
   }
 }
 </script>
 
-<script setup>
-  const store = useStore()
-  const count = computed(() => store.state.count)
-  const minus = () => { store.commit('minus') }
-  const plus = () => { store.commit('plus') }
-</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
