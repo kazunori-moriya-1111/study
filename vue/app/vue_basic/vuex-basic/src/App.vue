@@ -39,7 +39,8 @@ export default {
   methods:{
     // [登録]ボタンクリックでストアに反映
     onclick(){
-      this.$store.commit('addBook',{
+      this.$store.commit({
+        type: 'addBook',
         book:{
           isbn: this.isbn,
           title: this.title,
