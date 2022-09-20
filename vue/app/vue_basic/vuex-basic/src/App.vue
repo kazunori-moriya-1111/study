@@ -5,6 +5,15 @@
       <li>{{ b.title }} {{ b.price }}<br />ISBN:{{ b.isbn }}</li>
     </ul>
   </div>
+  <form v-on:submit.prevent="onclick">
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" v-model="isbn" /><br />
+    <label for="title">書籍:</label>
+    <input type="text" id="title" v-model="title" /><br />
+    <label for="price">価格:</label>
+    <input type="text" id="price" v-model="price" /><br />
+    <input type="submit" value="登録" />
+  </form>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
@@ -18,6 +27,26 @@ export default {
   computed: mapGetters(['bookCount', 'getBookByPrice']),
   components: {
     HelloWorld
+  },
+  data(){
+    // フォーム内で扱う情報を定義
+    return{
+      isbn: '',
+      title: '',
+      price: 0
+    }
+  },
+  methods:{
+    // [登録]ボタンクリックでストアに反映
+    onclick(){
+      this.$store.commit('addBook',{
+        book:{
+          isbn: this.isbn,
+          title: this.title,
+          price: this.price
+        }
+      })
+    }
   }
 }
 </script>

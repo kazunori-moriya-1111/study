@@ -41,6 +41,9 @@ export default createStore({
     }
   },
   mutations: {
+    addBook(state, payload){
+      state.books.push(payload.book)
+    }
   },
   actions: {
   },
