@@ -28,7 +28,8 @@ export default createStore({
         title: 'Javaポケットリファレンス',
         price: 3278
       },
-    ]
+    ],
+    name: ''
   },
   getters: {
     bookCount(state){
@@ -43,6 +44,9 @@ export default createStore({
   mutations: {
     addBook(state, payload){
       state.books.push(payload.book)
+    },
+    updateName(state, payload){
+      state.name = payload
     }
   },
   actions: {
