@@ -1,5 +1,10 @@
 <template>
   <div>
+    メイン：{{ mainUpdated }}<br />
+    サブ：{{ subUpdated }}<br />
+    <input type="button" value="更新" v-on:click="setUpdated" />
+  </div>
+  <div>
     <form>
       <label for="name">氏名：</label>
       <input id="name" type="text" v-model="name" />
@@ -42,6 +47,12 @@ export default {
       set(value){
         this.$store.commit('updateName', value)
       }
+    },
+    mainUpdated(){
+      return this.$store.state.main.updated
+    },
+    subUpdated(){
+      return this.$store.state.sub.updated
     }
   },
   components: {
@@ -65,6 +76,11 @@ export default {
           price: this.price
         }
       })
+    },
+    // main/subモジュールの時刻を更新
+    setUpdated(){
+      this.$store.commit('main/setUpdated')
+      this.$store.commit('sub/setUpdated')
     }
   }
 }

@@ -1,5 +1,7 @@
 import { createStore } from 'vuex'
 import myLog from './my-log'
+import MainModule from './main-store'
+import SubModule from './sub-store'
 
 export default createStore({
   state: {
@@ -59,6 +61,8 @@ export default createStore({
     }
   },
   modules: {
+    main: MainModule,
+    sub: SubModule
   },
   plugins:[myLog]
 })
