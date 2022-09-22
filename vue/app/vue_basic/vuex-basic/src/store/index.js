@@ -50,6 +50,12 @@ export default createStore({
     }
   },
   actions: {
+    addAsync(context, payload){
+      // 5000ミリ秒後にミューテーションをコミット
+      setTimeout(() => {
+        context.commit('addBook', payload)
+      }, 5000)
+    }
   },
   modules: {
   }

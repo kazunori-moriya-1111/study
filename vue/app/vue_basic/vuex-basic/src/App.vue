@@ -58,8 +58,7 @@ export default {
   methods:{
     // [登録]ボタンクリックでストアに反映
     onclick(){
-      this.$store.commit({
-        type: 'addBook',
+      this.$store.dispatch('addAsync',{
         book:{
           isbn: this.isbn,
           title: this.title,
