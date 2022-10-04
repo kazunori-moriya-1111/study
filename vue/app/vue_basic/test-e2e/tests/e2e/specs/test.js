@@ -2,6 +2,7 @@
 // https://nightwatchjs.org/guide
 
 module.exports = {
+  // テストを記述する（複数記述可能）
   'default e2e tests': browser => {
     browser
       .init()
