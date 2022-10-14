@@ -15,3 +15,41 @@ var person = {
     },
     age: 21
 };
+// 要素を取り出した時も型が有効、any union型で複数の型を配列に組み込める。
+var fruits = ['Apple', 'Banana', 'Grape'];
+// Tuple型を使用して要素の型を決めた配列を定義する
+var book = ['business', 1500, false];
+// Enum型
+var CoffeeSize;
+(function (CoffeeSize) {
+    CoffeeSize["SHORT"] = "SHORT";
+    CoffeeSize["TALL"] = "TALL";
+    CoffeeSize["GRANDE"] = "GRANDE";
+    CoffeeSize["VENTI"] = "VENTI";
+})(CoffeeSize || (CoffeeSize = {}));
+var coffee = {
+    hot: true,
+    size: CoffeeSize.SHORT
+};
+// any型
+var anything = true;
+anything = 'hello';
+anything = ['hello', 33, true];
+anything = {};
+anything.abc = 'abc';
+// string型にany型を代入可能
+var banana = 'banana';
+banana = anything;
+// union型 複数の型を受け入れる
+var unionType = 10;
+unionType = 'hello';
+unionType.toUpperCase();
+// 配列でunion型を定義
+var unionTypes = [21, 'hello'];
+// リテラル型を用いて特定の値のみを扱う
+var apple = 'apple';
+var clothSize = 'medium';
+var cloth = {
+    color: 'white',
+    size: 'medium'
+};
