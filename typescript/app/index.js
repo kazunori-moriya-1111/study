@@ -46,7 +46,6 @@ unionType = 'hello';
 unionType.toUpperCase();
 // 配列でunion型を定義
 var unionTypes = [21, 'hello'];
-// リテラル型を用いて特定の値のみを扱う
 var apple = 'apple';
 var clothSize = 'medium';
 var cloth = {

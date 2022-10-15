@@ -52,11 +52,12 @@ unionType.toUpperCase()
 // 配列でunion型を定義
 let unionTypes: (number | string)[] = [21, 'hello']
 // リテラル型を用いて特定の値のみを扱う
+type ClothSize = 'samll' | 'medium' | 'large'
 const apple: 'apple' =  'apple'
-let clothSize: 'samll' | 'medium' | 'large' = 'medium'
+let clothSize: ClothSize = 'medium'
 const cloth: {
   color: string,
-  size: 'samll' | 'medium' | 'large'
+  size: ClothSize
 } = {
   color: 'white',
   size: 'medium'
