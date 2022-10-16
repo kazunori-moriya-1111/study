@@ -52,3 +52,14 @@ var cloth = {
     color: 'white',
     size: 'medium'
 };
+// 関数に型を付与する
+function add(num1, num2) {
+    return num1 + num2;
+}
+// 関数の戻り値にvoidを使う
+function sayHello() {
+    console.log('Hello');
+}
+// 関数型の付与
+var anotherAdd = add;
+var doubleNumber = function (number) { return number * 2; };

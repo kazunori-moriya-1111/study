@@ -62,3 +62,14 @@ const cloth: {
   color: 'white',
   size: 'medium'
 }
+// 関数に型を付与する
+function add(num1: number, num2: number): number {
+  return num1 + num2
+}
+// 関数の戻り値にvoidを使う
+function sayHello(): void{
+  console.log('Hello')
+}
+// 関数型の付与
+const anotherAdd: (n1: number, n2: number) => number = add
+const doubleNumber: (num: number) => number = number => number * 2
