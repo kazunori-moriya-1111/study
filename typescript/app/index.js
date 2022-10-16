@@ -82,3 +82,9 @@ text = anyInput;
 if (typeof unknownInput === 'string') {
     text = unknownInput;
 }
+// never型
+function error(message) {
+    throw new Error(message);
+}
+// watchモード tsc index.ts -w
+var hen = '1';
