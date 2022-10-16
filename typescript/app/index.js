@@ -63,3 +63,11 @@ function sayHello() {
 // 関数型の付与
 var anotherAdd = add;
 var doubleNumber = function (number) { return number * 2; };
+// コールバック関数に型付与
+function doubleAndHandle(num, cb) {
+    var doubleNum = cb(num * 2);
+    console.log(num * 2);
+}
+doubleAndHandle(21, function (doubleNum) {
+    return doubleNum + 1;
+});

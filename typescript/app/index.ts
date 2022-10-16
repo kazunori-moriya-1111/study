@@ -73,3 +73,11 @@ function sayHello(): void{
 // 関数型の付与
 const anotherAdd: (n1: number, n2: number) => number = add
 const doubleNumber: (num: number) => number = number => number * 2
+// コールバック関数に型付与
+function doubleAndHandle(num: number, cb: (num: number) => number): void{
+  const doubleNum = cb(num * 2)
+  console.log(num * 2)
+}
+doubleAndHandle(21, doubleNum => {
+  return doubleNum + 1
+})
