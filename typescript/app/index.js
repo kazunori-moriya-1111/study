@@ -1,14 +1,14 @@
-var hello = 'hello';
+let hello = 'hello';
 console.log(hello);
-var hasValue = true;
-var float = 3.14;
-var cnout = 10;
-var negative = -0.12;
-var single = 'hello';
-var double = "hello";
-var back = "hello";
+let hasValue = true;
+let float = 3.14;
+let cnout = 10;
+let negative = -0.12;
+let single = 'hello';
+let double = "hello";
+let back = `hello`;
 // 推論型、object型も存在する。object型はキーにアクセスできない
-var person = {
+const person = {
     name: {
         first: 'Jack',
         last: 'Smith'
@@ -16,9 +16,9 @@ var person = {
     age: 21
 };
 // 要素を取り出した時も型が有効、any union型で複数の型を配列に組み込める。
-var fruits = ['Apple', 'Banana', 'Grape'];
+const fruits = ['Apple', 'Banana', 'Grape'];
 // Tuple型を使用して要素の型を決めた配列を定義する
-var book = ['business', 1500, false];
+const book = ['business', 1500, false];
 // Enum型
 var CoffeeSize;
 (function (CoffeeSize) {
@@ -27,28 +27,28 @@ var CoffeeSize;
     CoffeeSize["GRANDE"] = "GRANDE";
     CoffeeSize["VENTI"] = "VENTI";
 })(CoffeeSize || (CoffeeSize = {}));
-var coffee = {
+const coffee = {
     hot: true,
     size: CoffeeSize.SHORT
 };
 // any型
-var anything = true;
+let anything = true;
 anything = 'hello';
 anything = ['hello', 33, true];
 anything = {};
 anything.abc = 'abc';
 // string型にany型を代入可能
-var banana = 'banana';
+let banana = 'banana';
 banana = anything;
 // union型 複数の型を受け入れる
-var unionType = 10;
+let unionType = 10;
 unionType = 'hello';
 unionType.toUpperCase();
 // 配列でunion型を定義
-var unionTypes = [21, 'hello'];
-var apple = 'apple';
-var clothSize = 'medium';
-var cloth = {
+let unionTypes = [21, 'hello'];
+const apple = 'apple';
+let clothSize = 'medium';
+const cloth = {
     color: 'white',
     size: 'medium'
 };
@@ -61,20 +61,20 @@ function sayHello() {
     console.log('Hello');
 }
 // 関数型の付与
-var anotherAdd = add;
-var doubleNumber = function (number) { return number * 2; };
+const anotherAdd = add;
+const doubleNumber = number => number * 2;
 // コールバック関数に型付与
 function doubleAndHandle(num, cb) {
-    var doubleNum = cb(num * 2);
+    const doubleNum = cb(num * 2);
     console.log(num * 2);
 }
-doubleAndHandle(21, function (doubleNum) {
+doubleAndHandle(21, doubleNum => {
     return doubleNum + 1;
 });
 // unknown型
-var unknownInput;
-var anyInput;
-var text;
+let unknownInput;
+let anyInput;
+let text;
 unknownInput = 'hello';
 unknownInput = 21;
 unknownInput = true;
