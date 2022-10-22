@@ -12,6 +12,12 @@
     // outDir: ""
     // コンパイル元のディレクトリを指定
     // rootDir: ""
+    // 使用していないローカル変数への警告
+    // "noUnusedLocals" : true
+    // 使用していない引数への警告
+    // "noUnusedParameters" : true
+    // 暗黙的なreturnを許可しない
+    // "noImplicitReturns"
   },
   // コンパイル対象を指定する
   "include": [
