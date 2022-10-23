@@ -9,7 +9,7 @@
     // jsファイルもtsファイルのようにチェックするか
     // "checkJs": true
     // コンパイル後のjsファイルの出力先
-    // outDir: ""
+    "outDir": "./dist"
     // コンパイル元のディレクトリを指定
     // rootDir: ""
     // 使用していないローカル変数への警告
@@ -20,15 +20,15 @@
     // "noImplicitReturns"
   },
   // コンパイル対象を指定する
-  "include": [
-    "index.ts",
-    "tmp/compiler.ts"
-  ],
-  "exclude": [
-    // "**/compiler.ts", /*どのディテクトでもコンパイル対象外にする*/
-    "*.spec.ts",
-    "node_modules"
-  ],
+  // "include": [
+  //   "index.ts",
+  //   "tmp/compiler.ts"
+  // ],
+  // "exclude": [
+  //   // "**/compiler.ts", /*どのディテクトでもコンパイル対象外にする*/
+  //   "*.spec.ts",
+  //   "node_modules"
+  // ],
   // 相対パス or 絶対パスでファイルを指定する excludeに指定されたファイルでもコンパイルできる
   // "files": []
 }
