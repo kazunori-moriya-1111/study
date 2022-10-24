@@ -2,6 +2,14 @@ class Person {
     constructor(initName) {
         this.name = initName;
     }
+    greeting() {
+        console.log(`hello My name is ${this.name}`);
+    }
 }
 const xxx = new Person('xxx');
-console.log(xxx);
+xxx.greeting();
+const anotherxxx = {
+    name: 'anotherxxx',
+    anotherGreeting: xxx.greeting
+};
+anotherxxx.anotherGreeting();
