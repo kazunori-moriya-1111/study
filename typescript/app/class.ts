@@ -3,7 +3,7 @@ class Person {
   constructor(initName: string) {
     this.name = initName
   }
-  greeting(this: { name: string }) {
+  greeting(this: Person) {
     console.log(`hello My name is ${this.name}`)
   }
 }
@@ -12,6 +12,6 @@ const xxx = new Person('xxx')
 xxx.greeting()
 const anotherxxx = {
   name: 'anotherxxx',
-  anotherGreeting: xxx.greeting
+  greeting: xxx.greeting
 }
-anotherxxx.anotherGreeting()
+anotherxxx.greeting()

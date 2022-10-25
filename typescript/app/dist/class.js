@@ -10,6 +10,6 @@ const xxx = new Person('xxx');
 xxx.greeting();
 const anotherxxx = {
     name: 'anotherxxx',
-    anotherGreeting: xxx.greeting
+    greeting: xxx.greeting
 };
-anotherxxx.anotherGreeting();
+anotherxxx.greeting();
