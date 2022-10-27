@@ -1,7 +1,7 @@
 class Person {
-    constructor(initName, initAge) {
-        this.name = initName;
-        this.age = initAge;
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
     }
     incrementAge() {
         this.age += 1;
