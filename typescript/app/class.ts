@@ -1,4 +1,4 @@
-class Person {
+abstract class Person {
   static species = 'Homo sapiens'
   static isAdult(age: number) {
     if (age > 17) return true
@@ -11,14 +11,16 @@ class Person {
   }
   greeting(this: Person) {
     console.log(`hello My name is ${this.name}. I am ${this.age} years old`)
+    this.explainJob()
   }
+  abstract explainJob(): void;
 }
 
-const xxx = new Person('xxx', 33)
-xxx.incrementAge()
-xxx.greeting()
 
 class Teacher extends Person {
+  explainJob(): void {
+    console.log(`I am teacher I teach ${this.subject}`)
+  }
   get subject() {
     if (!this._subject) {
       throw new Error('no subject')
@@ -34,15 +36,7 @@ class Teacher extends Person {
   constructor(name: string, age: number, private _subject: string) {
     super(name, age)
   }
-  greeting() {
-    console.log(`hello My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`)
-  }
 }
 const teacher = new Teacher('abc', 35, 'math')
 teacher.subject = 'Music'
 teacher.greeting()
-
-console.log(Person.species)
-console.log(Person.isAdult(37))
-console.log(Teacher.species)
-console.log(Teacher.isAdult(37))
