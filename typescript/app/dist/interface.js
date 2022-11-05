@@ -15,5 +15,16 @@ const human = {
         console.log(message);
     }
 };
+const tmpDeveloper = {
+    name: 'def',
+    age: 99,
+    experience: 10,
+    greeting(message) {
+        console.log(message);
+    }
+};
 // 構造的部分型を定義
-const user = new Developer('abc', 33, 7);
+const user = tmpDeveloper;
+const developer = new Developer('abc', 33, 7);
+// user.name = 'xxx' Human型なので変更できない
+developer.name = 'xxx';
