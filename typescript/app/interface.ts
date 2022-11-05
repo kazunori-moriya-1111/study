@@ -5,9 +5,9 @@ interface Human {
 }
 
 class Developer implements Human {
-  constructor(public name: string, public age: number) { }
+  constructor(public name: string, public age: number, public experience: number) { }
   greeting(message: string): void {
-    console.log('Hello')
+    console.log(message)
   }
 }
 const human: Human = {
@@ -17,3 +17,5 @@ const human: Human = {
     console.log(message)
   }
 }
+// 構造的部分型を定義
+const user: Human = new Developer('abc', 33, 7)

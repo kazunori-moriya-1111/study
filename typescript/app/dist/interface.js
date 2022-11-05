@@ -1,10 +1,11 @@
 class Developer {
-    constructor(name, age) {
+    constructor(name, age, experience) {
         this.name = name;
         this.age = age;
+        this.experience = experience;
     }
     greeting(message) {
-        console.log('Hello');
+        console.log(message);
     }
 }
 const human = {
@@ -14,3 +15,5 @@ const human = {
         console.log(message);
     }
 };
+// 構造的部分型を定義
+const user = new Developer('abc', 33, 7);
