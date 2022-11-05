@@ -3,6 +3,13 @@ interface Human {
   age: number
   greeting(message: string): void;
 }
+
+class Developer implements Human {
+  constructor(public name: string, public age: number) { }
+  greeting(message: string): void {
+    console.log('Hello')
+  }
+}
 const human: Human = {
   name: 'abc',
   age: 33,
@@ -10,4 +17,3 @@ const human: Human = {
     console.log(message)
   }
 }
-let developer: Human
