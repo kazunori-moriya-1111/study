@@ -1,5 +1,7 @@
-interface Human {
+interface Nameable {
   readonly name: string,
+}
+interface Human extends Nameable {
   age: number
   greeting(message: string): void;
 }
