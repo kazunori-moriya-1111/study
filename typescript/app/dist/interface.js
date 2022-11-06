@@ -1,3 +1,7 @@
+let addFunc;
+addFunc = (n1, n2) => {
+    return n1 + n2;
+};
 class Developer {
     constructor(name, age, experience) {
         this.name = name;
