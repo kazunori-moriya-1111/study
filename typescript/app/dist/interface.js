@@ -3,11 +3,12 @@ addFunc = (n1, n2) => {
     return n1 + n2;
 };
 class Developer {
-    constructor(name, age, experience) {
-        this.name = name;
+    constructor(age, experience, name) {
         this.age = age;
         this.experience = experience;
+        this.name = name;
     }
+    // オプショナルパラメータ
     greeting(message) {
         console.log(message);
     }
@@ -15,7 +16,8 @@ class Developer {
 const human = {
     name: 'abc',
     age: 33,
-    greeting(message) {
+    // デフォルトパラメータ
+    greeting(message = 'Hello') {
         console.log(message);
     }
 };
@@ -29,6 +31,6 @@ const tmpDeveloper = {
 };
 // 構造的部分型を定義
 const user = tmpDeveloper;
-const developer = new Developer('abc', 33, 7);
+const developer = new Developer(33, 7, 'abc');
 // user.name = 'xxx' Human型なので変更できない
 developer.name = 'xxx';

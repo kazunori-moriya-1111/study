@@ -8,7 +8,8 @@ addFunc = (n1: number, n2: number) => {
 }
 
 interface Nameable {
-  readonly name: string,
+  readonly name?: string,
+  nickName?: string //オプショナルパラメータ
 }
 interface Human extends Nameable {
   age: number
@@ -16,15 +17,17 @@ interface Human extends Nameable {
 }
 
 class Developer implements Human {
-  constructor(public name: string, public age: number, public experience: number) { }
-  greeting(message: string): void {
+  constructor(public age: number, public experience: number, public name?: string) { }
+  // オプショナルパラメータ
+  greeting(message?: string) {
     console.log(message)
   }
 }
 const human: Human = {
   name: 'abc',
   age: 33,
-  greeting(message: string) {
+  // デフォルトパラメータ
+  greeting(message: string = 'Hello') {
     console.log(message)
   }
 }
@@ -38,6 +41,6 @@ const tmpDeveloper = {
 }
 // 構造的部分型を定義
 const user: Human = tmpDeveloper
-const developer = new Developer('abc', 33, 7)
+const developer = new Developer(33, 7, 'abc')
 // user.name = 'xxx' Human型なので変更できない
 developer.name = 'xxx'
