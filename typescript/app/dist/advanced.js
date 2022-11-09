@@ -21,11 +21,17 @@ function describeProfile(nomadWorker) {
 }
 // type guard instanceof演算子
 class Dog {
+    constructor() {
+        this.kind = 'dog';
+    }
     speak() {
         console.log('bow-bow');
     }
 }
 class Bird {
+    constructor() {
+        this.kind = 'bird';
+    }
     speak() {
         console.log('tweet-tweet');
     }
@@ -35,7 +41,12 @@ class Bird {
 }
 function havePet(pet) {
     pet.speak();
+    switch (pet.kind) {
+        case 'bird':
+            pet.fly();
+    }
     if (pet instanceof Bird) {
         pet.fly();
     }
 }
+havePet(new Bird());
