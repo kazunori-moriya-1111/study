@@ -50,3 +50,6 @@ function havePet(pet) {
     }
 }
 havePet(new Bird());
+// 型アサーションを使用して型を上書きする
+const input = document.getElementById('input');
+input.value = 'initial input value';

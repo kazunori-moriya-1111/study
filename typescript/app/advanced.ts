@@ -59,3 +59,7 @@ function havePet(pet: Pet) {
   }
 }
 havePet(new Bird())
+
+// 型アサーションを使用して型を上書きする
+const input = <HTMLInputElement>document.getElementById('input')
+input.value = 'initial input value'
