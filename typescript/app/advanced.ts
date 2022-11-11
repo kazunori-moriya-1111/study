@@ -61,5 +61,5 @@ function havePet(pet: Pet) {
 havePet(new Bird())
 
 // 型アサーションを使用して型を上書きする
-const input = <HTMLInputElement>document.getElementById('input')
+const input = <HTMLInputElement>document.getElementById('input')! //Non-null assertion operator
 input.value = 'initial input value'
