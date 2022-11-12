@@ -63,3 +63,16 @@ havePet(new Bird())
 // 型アサーションを使用して型を上書きする
 const input = <HTMLInputElement>document.getElementById('input')! //Non-null assertion operator
 input.value = 'initial input value'
+
+
+interface Designer {
+  name: string
+  // インデックスシグネチャの定義
+  [index: string]: string
+  // インデックスシグネチャの制約でstring以外の型は定義できない
+  // age: number
+}
+const designer: Designer = {
+  name: 'abc',
+  role: 'web'
+}

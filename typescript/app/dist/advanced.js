@@ -51,5 +51,9 @@ function havePet(pet) {
 }
 havePet(new Bird());
 // 型アサーションを使用して型を上書きする
-const input = document.getElementById('input');
+const input = document.getElementById('input'); //Non-null assertion operator
 input.value = 'initial input value';
+const designer = {
+    name: 'abc',
+    role: 'web'
+};
