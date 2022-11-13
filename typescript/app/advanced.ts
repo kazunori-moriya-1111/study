@@ -13,13 +13,18 @@ const men: EngineerBloger = {
   role: 'front-end',
   follower: 10
 }
+// オーバーロードを使用して、関数の返り値の型を伝える
+function toUpperCase(x: string): string;
+function toUpperCase(x: number): number;
 // type guard typeof演算子
-function toUpperCase(x: string | number) {
+function toUpperCase(x: string | number): string | number {
   if (typeof x === 'string') {
     return x.toUpperCase()
   }
-  return '';
+  return x;
 }
+const upperHello = toUpperCase('hello')
+
 // type guard in演算子
 type NomadWorker = Engineer | Bloger;
 function describeProfile(nomadWorker: NomadWorker) {
