@@ -81,3 +81,17 @@ const designer: Designer = {
   name: 'abc',
   role: 'web'
 }
+interface DownloadesData {
+  id: number;
+  user?: {
+    name?: {
+      first: string;
+      last: string;
+    }
+  }
+}
+const downloadedData: DownloadesData = {
+  id: 1
+}
+// Optional Chaining
+console.log(downloadedData.user?.name?.first)
