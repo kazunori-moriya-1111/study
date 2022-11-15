@@ -95,3 +95,5 @@ const downloadedData: DownloadesData = {
 }
 // Optional Chaining
 console.log(downloadedData.user?.name?.first)
+// Nullish Coalescing
+const userData = downloadedData.user ?? 'no-user'
