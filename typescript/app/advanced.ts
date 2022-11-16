@@ -97,3 +97,5 @@ const downloadedData: DownloadesData = {
 console.log(downloadedData.user?.name?.first)
 // Nullish Coalescing
 const userData = downloadedData.user ?? 'no-user'
+// LookUp型を用いたオブジェクトメンバーの型を取得
+type id = DownloadesData["id"]
