@@ -99,3 +99,7 @@ console.log(downloadedData.user?.name?.first)
 const userData = downloadedData.user ?? 'no-user'
 // LookUp型を用いたオブジェクトメンバーの型を取得
 type id = DownloadesData["id"]
+// 型の互換性
+let target = 'hello'
+let source: 'hello' = 'hello'
+target = source
