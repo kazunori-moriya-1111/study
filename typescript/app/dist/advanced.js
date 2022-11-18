@@ -11,7 +11,7 @@ function toUpperCase(x) {
     }
     return x;
 }
-const upperHello = toUpperCase('hello');
+const upperHello = function (x) { return 0; };
 function describeProfile(nomadWorker) {
     console.log(nomadWorker.name);
     if ('role' in nomadWorker) {
@@ -66,6 +66,7 @@ const downloadedData = {
 console.log((_b = (_a = downloadedData.user) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.first);
 // Nullish Coalescing
 const userData = (_c = downloadedData.user) !== null && _c !== void 0 ? _c : 'no-user';
+// 型の互換性
 let target = 'hello';
 let source = 'hello';
 target = source;
