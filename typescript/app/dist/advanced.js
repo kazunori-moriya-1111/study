@@ -12,6 +12,8 @@ function toUpperCase(x) {
     return x;
 }
 const upperHello = function (x) { return 0; };
+let intersectionFunc;
+intersectionFunc = function (a, b) { return 0; };
 function describeProfile(nomadWorker) {
     console.log(nomadWorker.name);
     if ('role' in nomadWorker) {
