@@ -72,3 +72,7 @@ const userData = (_c = downloadedData.user) !== null && _c !== void 0 ? _c : 'no
 let target = 'hello';
 let source = 'hello';
 target = source;
+// レストパラメータに型を指定する記法
+function advancedFn(...args) {
+}
+advancedFn(0, 'hi', true, 3, 3, 3);
