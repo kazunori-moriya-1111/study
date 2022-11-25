@@ -125,6 +125,6 @@ let target = 'hello'
 let source: 'hello' = 'hello'
 target = source
 // レストパラメータに型を指定する記法
-function advancedFn(...args: [number, string, boolean, ...number[]]) {
+function advancedFn(...args: readonly [number, string, boolean, ...number[]]) {
 }
 advancedFn(0, 'hi', true, 3, 3, 3)
