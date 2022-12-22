@@ -128,3 +128,11 @@ target = source
 function advancedFn(...args: readonly [number, string, boolean, ...number[]]) {
 }
 advancedFn(0, 'hi', true, 3, 3, 3)
+// コンストアサーション
+const milk = 'milk' as const
+let drink = milk
+const array = [10, 20] as const
+const peter = {
+  name: 'Peter',
+  age: 38
+} as const

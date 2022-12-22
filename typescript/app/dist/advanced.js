@@ -76,3 +76,11 @@ target = source;
 function advancedFn(...args) {
 }
 advancedFn(0, 'hi', true, 3, 3, 3);
+// コンストアサーション
+const milk = 'milk';
+let drink = milk;
+const array = [10, 20];
+const peter = {
+    name: 'Peter',
+    age: 38
+};
