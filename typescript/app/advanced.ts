@@ -136,3 +136,5 @@ const peter = {
   name: 'Peter',
   age: 38
 } as const
+// typeofを用いた型定義
+type PeterType = typeof peter
