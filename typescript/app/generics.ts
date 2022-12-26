@@ -1,4 +1,5 @@
-function copy<T>(value: T): T {
+function copy<T extends { name: string }>(value: T): T {
+  value.name
   return value
 }
-console.log(copy<string>('string'))
+console.log(copy({ name: 'abc' }))

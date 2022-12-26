@@ -1,4 +1,5 @@
 function copy(value) {
+    value.name;
     return value;
 }
-console.log(copy('string'));
+console.log(copy({ name: 'abc' }));
