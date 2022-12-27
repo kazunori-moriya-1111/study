@@ -24,3 +24,12 @@ stringLightDatabase.add('Banana')
 stringLightDatabase.add('Grape')
 stringLightDatabase.remove('Banana')
 console.log(stringLightDatabase.get())
+
+interface TmpDataabase<T> {
+  id: number
+  data: T[]
+}
+const tmpDatabase: TmpDataabase<number> = {
+  id: 3,
+  data: [32]
+}
