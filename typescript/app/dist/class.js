@@ -1,12 +1,12 @@
 class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
     static isAdult(age) {
         if (age > 17)
             return true;
         return false;
+    }
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
     }
     incrementAge() {
         this.age += 1;
@@ -18,10 +18,6 @@ class Person {
 }
 Person.species = 'Homo sapiens';
 class Teacher extends Person {
-    constructor(name, age, _subject) {
-        super(name, age);
-        this._subject = _subject;
-    }
     explainJob() {
         console.log(`I am teacher I teach ${this.subject}`);
     }
@@ -36,6 +32,10 @@ class Teacher extends Person {
             throw new Error('no subject');
         }
         this._subject = value;
+    }
+    constructor(name, age, _subject) {
+        super(name, age);
+        this._subject = _subject;
     }
     static getInstance() {
         if (Teacher.instance) {
