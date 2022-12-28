@@ -33,3 +33,11 @@ const tmpDatabase: TmpDataabase<number> = {
   id: 3,
   data: [32]
 }
+
+interface Todo {
+  title: string;
+  text: string
+}
+
+type Todoable = Partial<Todo>
+type ReadTodo = Readonly<Todo>
