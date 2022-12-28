@@ -4,9 +4,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-function Logging(constructor) {
-    console.log('Logging...');
-    console.log(constructor);
+function Logging(message) {
+    return function Logging(constructor) {
+        console.log(message);
+        console.log(constructor);
+    };
 }
 let User = class User {
     constructor() {
@@ -15,5 +17,5 @@ let User = class User {
     }
 };
 User = __decorate([
-    Logging
+    Logging('Logging User')
 ], User);
