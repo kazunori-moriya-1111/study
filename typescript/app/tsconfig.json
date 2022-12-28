@@ -9,7 +9,7 @@
     // jsファイルもtsファイルのようにチェックするか
     // "checkJs": true
     // コンパイル後のjsファイルの出力先
-    "outDir": "./dist"
+    "outDir": "./dist",
     // コンパイル元のディレクトリを指定
     // rootDir: ""
     // 使用していないローカル変数への警告
@@ -18,6 +18,7 @@
     // "noUnusedParameters" : true
     // 暗黙的なreturnを許可しない
     // "noImplicitReturns"
+    "experimentalDecorators": true
   },
   // コンパイル対象を指定する
   // "include": [
