@@ -20,9 +20,16 @@ function Component(template: string, selector: string) {
   }
 }
 
+function PropertyLogging(target: any, propertyKey: string) {
+  console.log('propertyLogging')
+  console.log(target)
+  console.log(propertyKey)
+}
 @Component('<h1>{{ name }}</h1>', '#app')
 @Logging('Logging User')
 class User {
+  @PropertyLogging
+  static name2 = 'def'
   name = 'abc';
   constructor(public age: number) {
     console.log('User was created')
