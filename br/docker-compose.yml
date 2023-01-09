@@ -13,3 +13,15 @@ services:
     volumes:
       - ./test-app:/opt/app
     tty: true
+  db:
+    container_name: postgres_br
+    image: postgres:14
+    ports:
+      - 5432:5432
+    volumes:
+      - db-store:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=passw0rd
+      - POSTGRES_USER=postgres
+volumes:
+  db-store:
