@@ -66,7 +66,7 @@ if __name__ == '__main__':
     # driver.get("https://www.boatrace.jp/owpc/pc/race/pay?hd=20220106")
     # 3連単不成立がある日
     # driver.get("https://www.boatrace.jp/owpc/pc/race/pay?hd=20220616")
-    driver.get("https://www.boatrace.jp/owpc/pc/race/pay?hd=20221231")
+    driver.get("https://www.boatrace.jp/owpc/pc/race/pay?hd={}".format('20221231'))
     
     # divタグのtable1クラスに分解する
     soup = BeautifulSoup(driver.page_source, "html.parser")
@@ -86,12 +86,17 @@ if __name__ == '__main__':
     # インサート用クラスのインスタンス化
     ins = InsertData()
 
-    # ボートレース場の設定
+    # インスタンス変数の設定
     ins.set_boatrace_filed(fileds)
     ins.clac_boatrace_filed_size()
     ins.set_tyaku(tyaku)
     ins.set_price(price)
     ins.set_pop(pop)
-    ins.check()
+    ins.set_grades(grades)
+    # ins.check()
+
+    # sqlの生成実行
+    ins.create_insert_sql()
+    ins.insert_data()
 
     driver.quit()
