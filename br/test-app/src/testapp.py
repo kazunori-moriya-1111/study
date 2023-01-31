@@ -4,6 +4,9 @@ from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 import os
 from insert_data import InsertData
+from datetime import date
+from datetime import timedelta
+import time
 
 # 開催レース場を取得する関数
 def get_boatrace_filed(text):
@@ -101,57 +104,64 @@ if __name__ == '__main__':
     )
     driver.implicitly_wait(10) #seconds
 
-    # 払い戻し金一覧ページからhtmlを取得
-    # レース中止がある日
-    # driver.get("https://www.boatrace.jp/owpc/pc/race/pay?hd=20220106")
-    # 3連単不成立がある日
-    # driver.get("https://www.boatrace.jp/owpc/pc/race/pay?hd=20220616")
-    print('アクセス前')
-    yyyymmdd = '20230127'
-    URL = "https://www.boatrace.jp/owpc/pc/race/pay?hd={}".format(yyyymmdd)
-    driver.get(URL)
-    print('アクセス後')
-    # divタグのtable1クラスに分解する
-    soup = BeautifulSoup(driver.page_source, "html.parser")
-    table1_list = soup.find_all('div', class_='table1')
+    # データを取得する日付を設定する
+    dt = date(2022, 1, 1)
+    period = 30
+    date_list = []
+    for _ in range(0, period+1):
+        date_list.append(dt.strftime('%Y%m%d'))
+        dt += timedelta(days=1)
+    print('データ取得日程', date_list)
 
-    for table1 in table1_list:
-        # 開催レース場を取得する
-        fileds = get_boatrace_filed(table1)
 
-        # レースグレードを取得する
-        grades = get_boatrace_grade(table1)
+    for date in date_list:
+        print('アクセス前')
+        yyyymmdd = date
+        URL = "https://www.boatrace.jp/owpc/pc/race/pay?hd={}".format(yyyymmdd)
+        driver.get(URL)
+        print('アクセス後')
+        # divタグのtable1クラスに分解する
+        soup = BeautifulSoup(driver.page_source, "html.parser")
+        table1_list = soup.find_all('div', class_='table1')
 
-        # 着順、払戻金、人気順を取得する
-        tyaku, price, pop = get_boatrace_result(table1)
-        
-        # レース開催時刻を取得する
-        area_time = get_areatime(table1)
+        for table1 in table1_list:
+            # 開催レース場を取得する
+            fileds = get_boatrace_filed(table1)
 
-        # 節日程を取得する
-        area_date = get_areadate(table1)
+            # レースグレードを取得する
+            grades = get_boatrace_grade(table1)
 
-        # レースシリーズを取得する
-        race_series = get_series(table1)
-        # インサート用クラスのインスタンス化
-        ins = InsertData()
+            # 着順、払戻金、人気順を取得する
+            tyaku, price, pop = get_boatrace_result(table1)
+            
+            # レース開催時刻を取得する
+            area_time = get_areatime(table1)
 
-        # インスタンス変数の設定
-        ins.set_boatrace_filed(fileds)
-        ins.clac_boatrace_filed_size()
-        ins.set_tyaku(tyaku)
-        ins.set_price(price)
-        ins.set_pop(pop)
-        ins.set_grades(grades)
-        ins.set_area_time(area_time)
-        ins.set_area_date(area_date)
-        ins.set_race_series(race_series)
-        ins.set_url(URL)
-        ins.set_yyyymmdd(yyyymmdd)
-        # ins.check()
+            # 節日程を取得する
+            area_date = get_areadate(table1)
 
-        # sqlの生成実行
-        ins.create_insert_sql()
-        ins.insert_data()
+            # レースシリーズを取得する
+            race_series = get_series(table1)
+            # インサート用クラスのインスタンス化
+            ins = InsertData()
 
+            # インスタンス変数の設定
+            ins.set_boatrace_filed(fileds)
+            ins.clac_boatrace_filed_size()
+            ins.set_tyaku(tyaku)
+            ins.set_price(price)
+            ins.set_pop(pop)
+            ins.set_grades(grades)
+            ins.set_area_time(area_time)
+            ins.set_area_date(area_date)
+            ins.set_race_series(race_series)
+            ins.set_url(URL)
+            ins.set_yyyymmdd(yyyymmdd)
+            # ins.check()
+
+            # sqlの生成実行
+            ins.create_insert_sql()
+            ins.insert_data()
+        # 負荷対策
+        time.sleep(10)
     driver.quit()
