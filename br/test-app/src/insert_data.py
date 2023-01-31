@@ -71,11 +71,25 @@ class InsertData:
       for i in range(0, 12 * self.boatrace_filed_size, self.boatrace_filed_size):
         # 着を一文字づつ分解
         tmp_tyaku = list(self.tyaku[i + index])
+        #　3連単不成立の場合（2艇ゴール）
+        if len(tmp_tyaku) < 3:
+          while len(tmp_tyaku) < 3:
+            tmp_tyaku.append(0)
+          self.pop[i + index] = 0
+          self.price[i + index] = '0'
+        # レース中止もしくは3連単不成立の場合の場合
+        if self.tyaku[i + index] == 'レース中止' or self.tyaku[i + index] == '不成立':
+          tmp_tyaku[0] = 0
+          tmp_tyaku[1] = 0
+          tmp_tyaku[2] = 0
+          self.pop[i + index] = 0
+          self.price[i + index] = '0'
         # 人気が返還だった時にNULLへ変更する処理
         if self.pop[i + index] == '返':
           self.pop[i + index] = 0
-        tmp_sql = "('{}', '{}', {}, '{}', 'デイ', '初日', 'NULL', {}, {}, {}, {}, {}, 'http://'),".format(self.yyyymmdd, 
-        boatrace_filed, int(i/self.boatrace_filed_size + 1), self.grades[index], tmp_tyaku[0], tmp_tyaku[1], tmp_tyaku[2], self.price[i + index].replace('¥','').replace(',',''), self.pop[i + index])
+        tmp_sql = "('{}', '{}', {}, '{}', '{}', '{}', '{}', {}, {}, {}, {}, {}, '{}'),".format(self.yyyymmdd, 
+        boatrace_filed, int(i/self.boatrace_filed_size + 1), self.grades[index], self.area_time[index], self.area_date[index], self.race_series[index],
+        tmp_tyaku[0], tmp_tyaku[1], tmp_tyaku[2], self.price[i + index].replace('¥','').replace(',',''), self.pop[i + index], self.url)
         base_sql += tmp_sql
     
     # 末尾の「,」を「;」へ変換
