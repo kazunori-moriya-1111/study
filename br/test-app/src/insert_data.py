@@ -8,8 +8,12 @@ class InsertData:
     self.price = []
     self.pop = []
     self.grades = []
-    self.yyyymmdd = '20221231'
+    self.yyyymmdd = ''
     self.sql = ''
+    self.area_time = []
+    self.area_date = []
+    self.race_series = []
+    self.url = ''
   
   def set_boatrace_filed(self, boatrace_filed):
     self.boatrace_filed = boatrace_filed
@@ -32,6 +36,21 @@ class InsertData:
   def set_grades(self, grades):
     self.grades = grades
   
+  def set_area_time(self, area_time):
+    self.area_time = area_time
+  
+  def set_area_date(self, area_date):
+    self.area_date = area_date
+  
+  def set_race_series(self, race_series):
+    self.race_series = race_series
+  
+  def set_url(self, url):
+    self.url = url
+  
+  def set_yyyymmdd(self, yyyymmdd):
+    self.yyyymmdd = yyyymmdd
+  
   # todo データの個数に異常がないかチェックする boatrace_filed_size*12R分 tyaku, price, popが存在するか
   def check(self):
     print(self.boatrace_filed)
@@ -52,6 +71,9 @@ class InsertData:
       for i in range(0, 12 * self.boatrace_filed_size, self.boatrace_filed_size):
         # 着を一文字づつ分解
         tmp_tyaku = list(self.tyaku[i + index])
+        # 人気が返還だった時にNULLへ変更する処理
+        if self.pop[i + index] == '返':
+          self.pop[i + index] = 0
         tmp_sql = "('{}', '{}', {}, '{}', 'デイ', '初日', 'NULL', {}, {}, {}, {}, {}, 'http://'),".format(self.yyyymmdd, 
         boatrace_filed, int(i/self.boatrace_filed_size + 1), self.grades[index], tmp_tyaku[0], tmp_tyaku[1], tmp_tyaku[2], self.price[i + index].replace('¥','').replace(',',''), self.pop[i + index])
         base_sql += tmp_sql
