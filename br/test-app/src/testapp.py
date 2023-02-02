@@ -80,9 +80,24 @@ def get_series(text):
 
 # レース結果詳細(着順、払戻金、人気順)を取得する関数
 def get_boatrace_result(text):
+    # 同着対策（片方の結果のみ取得方針）
     tmp = []
-    for a in text.find_all('td'):
-        tmp.append(a.text)
+    for index, a in enumerate(text.find_all('td')):
+        # 同着判定（着順取得の時）
+        if index%3 == 0 and len(a.find_all('div')) == 3:
+            # 最初の結果のみ取得
+            tmp.append(a.find('div', class_="numberSet1_row").text)
+        # 同着判定（金額取得の時）
+        elif index%3 == 1 and len(a.find_all('div')) == 2:
+            # 最初の結果のみ取得
+            tmp.append(a.find('div', class_="is-lineH20").text)
+        # 同着判定（人気順取得の時）
+        elif index%3 == 2 and len(a.find_all('div')) == 2:
+            # 最初の結果のみ取得
+            tmp.append(a.find('div', class_="is-lineH20").text)
+        # 通常の場合
+        else:
+            tmp.append(a.text)
     tyaku = []
     price = []
     pop = []
