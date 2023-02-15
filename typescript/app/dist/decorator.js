@@ -30,14 +30,26 @@ function PropertyLogging(target, propertyKey) {
     console.log(target);
     console.log(propertyKey);
 }
+function MethodLogging(target, propertyKey, descriptor) {
+    console.log('MethodLogging');
+    console.log(descriptor);
+    console.log(target);
+    console.log(propertyKey);
+}
 let User = class User {
     constructor(age) {
         this.age = age;
         this.name = 'abc';
         console.log('User was created');
     }
+    greeting() {
+        console.log('Hello');
+    }
 };
 User.name2 = 'def';
+__decorate([
+    MethodLogging
+], User.prototype, "greeting", null);
 __decorate([
     PropertyLogging
 ], User, "name2", void 0);
