@@ -120,7 +120,7 @@ if __name__ == '__main__':
     driver.implicitly_wait(10) #seconds
 
     # データを取得する日付を設定する
-    dt = date(2022, 1, 1)
+    dt = date(2023, 1, 1)
     period = 30
     date_list = []
     for _ in range(0, period+1):
@@ -178,5 +178,5 @@ if __name__ == '__main__':
             ins.create_insert_sql()
             ins.insert_data()
         # 負荷対策
-        time.sleep(10)
+        time.sleep(5)
     driver.quit()
