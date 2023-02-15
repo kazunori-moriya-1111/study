@@ -44,6 +44,12 @@ function AccessorLogging(target: any, propertyKey: string, descriptor: PropertyD
   console.log(target)
   console.log(propertyKey)
 }
+function ParameterLogging(target: any, propertyKey: string, parameterIndex: number) {
+  console.log('ParameterLogging')
+  console.log(parameterIndex)
+  console.log(target)
+  console.log(propertyKey)
+}
 @Component('<h1>{{ name }}</h1>', '#app')
 @Logging('Logging User')
 class User {
@@ -62,7 +68,7 @@ class User {
   }
   @enumerable(false)
   @MethodLogging
-  greeting() {
+  greeting(@ParameterLogging message: string) {
     console.log('Hello')
   }
 }
