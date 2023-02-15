@@ -36,17 +36,32 @@ function MethodLogging(target, propertyKey, descriptor) {
     console.log(target);
     console.log(propertyKey);
 }
+function AccessorLogging(target, propertyKey, descriptor) {
+    console.log('AccessorLogging');
+    console.log(descriptor);
+    console.log(target);
+    console.log(propertyKey);
+}
 let User = class User {
-    constructor(age) {
-        this.age = age;
+    constructor(_age) {
+        this._age = _age;
         this.name = 'abc';
         console.log('User was created');
+    }
+    get age() {
+        return this._age;
+    }
+    set set(value) {
+        this._age = value;
     }
     greeting() {
         console.log('Hello');
     }
 };
 User.name2 = 'def';
+__decorate([
+    AccessorLogging
+], User.prototype, "age", null);
 __decorate([
     MethodLogging
 ], User.prototype, "greeting", null);
