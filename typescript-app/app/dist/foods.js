@@ -1,4 +1,7 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Foods = void 0;
+const food_js_1 = require("./food.js");
 class Foods {
     get activeElements() {
         this._activeElements = [];
@@ -24,7 +27,7 @@ class Foods {
         this._activeElements = [];
         this._activeElementsScore = [];
         this.elements.forEach(element => {
-            new Food(element);
+            new food_js_1.Food(element);
         });
     }
     static getInstance() {
@@ -34,3 +37,4 @@ class Foods {
         return Foods.instance;
     }
 }
+exports.Foods = Foods;
