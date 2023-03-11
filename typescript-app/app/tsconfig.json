@@ -72,7 +72,7 @@
   //   "node_modules"
   // ],
   "files": [
-    "./src/library.ts",
-    "./src/lodash.d.ts"
+    "./src/library.ts"
+    // "./src/lodash.d.ts"
   ]
 }
