@@ -71,7 +71,8 @@
   //   "*.spec.ts",
   //   "node_modules"
   // ],
-  // "files": [
-  //   "tmp/compiler.ts"
-  // ]
+  "files": [
+    "./src/library.ts",
+    "./src/lodash.d.ts"
+  ]
 }
