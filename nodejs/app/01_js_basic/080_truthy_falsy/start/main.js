@@ -25,15 +25,15 @@ const resultA = "" && "foo";
 const resultB = 2 && 1 && 0 && 3;
 const resultC = "foo" && 4;
 
-// console.log(resultA);
-// console.log(resultB);
-// console.log(resultC);
+console.log("resultA", resultA);
+console.log("resultB", resultB);
+console.log("resultC", resultC);
 
 // 理論和 (||) について
 const resultD = "" || "foo";
 const resultE = 0 || 2 || 0;
 const resultF = "foo" || 4;
 
-console.log(resultD);
-console.log(resultE);
-console.log(resultF);
+console.log("resultD", resultD);
+console.log("resultE", resultE);
+console.log("resultF", resultF);
