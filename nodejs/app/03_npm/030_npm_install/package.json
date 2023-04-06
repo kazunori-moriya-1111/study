@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "is-odd": "^3.0.1"
+    "is-odd": "^3.0.1",
+    "jquery": "^3.6.4"
   },
   "devDependencies": {
     "webpack": "^5.77.0"
