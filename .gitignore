@@ -57,3 +57,5 @@ nodejs/app/03_npm/010_intro/start/node_modules/
 nodejs/app/03_npm/020_dep_vs_devDep/start/node_modules/
 nodejs/app/03_npm/030_npm_install/node_modules/
 nodejs/app/03_npm/040_npm_script/start/node_modules/
+nodejs/app/04_automation/999_demo/node_modules
+nodejs/app/04_automation/999_demo/.next
