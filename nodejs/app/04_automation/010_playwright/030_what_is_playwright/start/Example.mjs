@@ -5,9 +5,9 @@ import { chromium } from "@playwright/test";
   const page = await browser.newPage()
   await page.goto("http://localhost:3000")
   // CSSセレクターで要素を取得
-  const pageTitleLocator = await page.locator('.navbar-brand')
+  const pageTitleLocator = await page.locator('.cards.list-group-item > a >> nth=2')
   const pageTitle = await pageTitleLocator.innerText()
-  // console.log(pageTitle)
+  console.log(pageTitle)
 
   //文字列で要素を取得
   const textLocator = await page.locator('text=名刺管理アプリ')
@@ -17,6 +17,6 @@ import { chromium } from "@playwright/test";
   //xpathで要素を取得
   const xpathLocator = await page.locator('xpath=//*[@id="__next"]/nav/div/a')
   const xpathText = await xpathLocator.innerText()
-  console.log(xpathText)
+  // console.log(xpathText)
   await browser.close()
 })()
