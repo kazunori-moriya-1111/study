@@ -4,6 +4,11 @@ import { chromium } from "@playwright/test";
   const browser = await chromium.launch()
   const page = await browser.newPage()
   await page.goto("http://localhost:3000")
+
+  const inputLocator = page.locator('//*[@id="__next"]/div/div[1]/label/input')
+  await page.waitForTimeout(2000)
+  await inputLocator.type('美穂')
+
   // CSSセレクターで要素を取得
   const pageTitleLocator = await page.locator('.cards.list-group-item > a >> nth=2')
   const pageTitle = await pageTitleLocator.innerText()
@@ -18,5 +23,6 @@ import { chromium } from "@playwright/test";
   const xpathLocator = await page.locator('xpath=//*[@id="__next"]/nav/div/a')
   const xpathText = await xpathLocator.innerText()
   // console.log(xpathText)
+
   await browser.close()
 })()
