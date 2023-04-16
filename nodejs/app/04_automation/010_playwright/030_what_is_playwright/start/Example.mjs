@@ -6,13 +6,14 @@ import { chromium } from "@playwright/test";
   await page.goto("http://localhost:3000")
 
   const inputLocator = page.locator('//*[@id="__next"]/div/div[1]/label/input')
-  await page.waitForTimeout(2000)
-  await inputLocator.type('美穂')
+  await inputLocator.type('美')
 
-  // CSSセレクターで要素を取得
-  const pageTitleLocator = await page.locator('.cards.list-group-item > a >> nth=2')
-  const pageTitle = await pageTitleLocator.innerText()
-  console.log(pageTitle)
+  const pager3Locator = page.locator('.page-link.page-number >> nth=2')
+  await pager3Locator.click()
+
+  const cardLocator = await page.locator('.cards.list-group-item')
+  const cardCount = await cardLocator.count()
+  console.log(cardCount)
 
   //文字列で要素を取得
   const textLocator = await page.locator('text=名刺管理アプリ')
