@@ -12,13 +12,21 @@ import { Parser } from 'json2csv'
 
   const fetchedCards = [];
   for (let i = 0; i < cardCount; i++) {
-    const cardLocator = cardLocators.locator(`nth=${i}`);
+    const cardLocator = cardLocators.locator(`nth=${i} >> a`);
     const cardText = await cardLocator.textContent();
-    fetchedCards.push({
-      name: cardText
-    })
-  }
 
+    await cardLocator.click()
+    const companyLocator = page.locator('.card-title.company')
+    const companyText = await companyLocator.textContent()
+
+    fetchedCards.push({
+      company: companyText,
+      name: cardText
+    });
+
+    const backLocator = page.locator("text=戻る");
+    await backLocator.click()
+  }
   await browser.close();
 
   const parser = new Parser();
