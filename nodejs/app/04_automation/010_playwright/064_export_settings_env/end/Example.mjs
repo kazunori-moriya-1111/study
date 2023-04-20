@@ -5,7 +5,7 @@ import env from "dotenv";
 env.config();
 
 (async () => {
-  const browser = await chromium.launch({ headless: false, slowMo: 500 });
+  const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto(process.env.TARGET_URL);
 
@@ -13,10 +13,10 @@ env.config();
   const cardCount = await cardLocators.count();
 
   const fetchedCards = [];
-  for(let i = 0; i < cardCount; i++) {
+  for (let i = 0; i < cardCount; i++) {
     const cardLocator = cardLocators.locator(`nth=${i} >> a`);
     const cardText = await cardLocator.textContent();
-    
+
     await cardLocator.click();
     const companyLocator = page.locator('.card-title.company');
     const companyText = await companyLocator.textContent();
@@ -35,6 +35,6 @@ env.config();
 
   const parser = new Parser();
   const csv = parser.parse(fetchedCards);
-  
+
   fs.writeFileSync(process.env.OUTPUT_FILE, csv);
 })();

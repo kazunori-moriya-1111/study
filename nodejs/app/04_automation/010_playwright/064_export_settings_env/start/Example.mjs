@@ -1,20 +1,23 @@
 import { chromium } from "@playwright/test";
 import * as fs from "fs";
 import { Parser } from "json2csv";
+import env from "dotenv"
+env.config();
 
 (async () => {
-  const browser = await chromium.launch({ headless: false, slowMo: 500 });
+  const browser = await chromium.launch();
   const page = await browser.newPage();
-  await page.goto("http://localhost:3000");
+  console.log(process.env.TARGET_URL)
+  await page.goto(process.env.TARGET_URL);
 
   const cardLocators = page.locator(".cards.list-group-item");
   const cardCount = await cardLocators.count();
 
   const fetchedCards = [];
-  for(let i = 0; i < cardCount; i++) {
+  for (let i = 0; i < cardCount; i++) {
     const cardLocator = cardLocators.locator(`nth=${i} >> a`);
     const cardText = await cardLocator.textContent();
-    
+
     await cardLocator.click();
     const companyLocator = page.locator('.card-title.company');
     const companyText = await companyLocator.textContent();
@@ -33,6 +36,6 @@ import { Parser } from "json2csv";
 
   const parser = new Parser();
   const csv = parser.parse(fetchedCards);
-  
-  fs.writeFileSync("./text-data.csv", csv);
+
+  fs.writeFileSync(process.env.OUTPUT_FILE, csv);
 })();
