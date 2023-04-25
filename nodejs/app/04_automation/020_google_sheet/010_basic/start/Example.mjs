@@ -1,6 +1,6 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import env from 'dotenv';
-env.config();
+env.config({ path: '../../../.env' });
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const secrets = require('../../udemy-spread-sheet-f5eada302ada.json');
