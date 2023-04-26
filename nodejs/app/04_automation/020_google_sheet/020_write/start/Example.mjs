@@ -1,9 +1,9 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import env from 'dotenv';
-env.config();
+env.config({ path: '../../../.env' });
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-const secrets = require('../../../google_secrets.json');
+const secrets = require('../../udemy-spread-sheet-f5eada302ada.json');
 
 
 (async () => {
@@ -13,17 +13,23 @@ const secrets = require('../../../google_secrets.json');
         client_email: secrets.client_email,
         private_key: secrets.private_key
     });
-    
+
     await doc.loadInfo();
 
     const sheet = doc.sheetsByIndex[0];
-    await sheet.loadCells('A1:C4');
+    await sheet.loadCells('A1:C5');
 
-    const a1 = sheet.getCell(0,0);
-    const b1 = sheet.getCell(0,1);
+    const a1 = sheet.getCell(0, 0);
+    const a5 = sheet.getCell(4, 0);
+    const b1 = sheet.getCell(0, 1);
     const b2 = sheet.getCellByA1('B2');
 
-    console.log('a1', a1.value);
-    console.log('b1', b1.value);
-    console.log('b2', b2.value);
+    console.log(typeof (a1));
+
+
+    a1.value = 11
+    b1.value = 12
+    b1.textFormat = { fontSize: 18 }
+    a5.value = '=SUM(A1:B1)'
+    await sheet.saveUpdatedCells()
 })();
