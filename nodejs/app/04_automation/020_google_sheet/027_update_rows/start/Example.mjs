@@ -1,9 +1,9 @@
-import { GoogleSpreadsheet } from 'google-spreadsheet';
+import { GoogleSpreadsheet } from "google-spreadsheet";
 import env from 'dotenv';
-env.config();
-import { createRequire } from 'module';
+env.config({ path: '../../../.env' });
+import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-const secrets = require('../../../google_secrets.json');
+const secrets = require('../../udemy-spread-sheet-f5eada302ada.json');
 
 (async () => {
   const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
@@ -16,25 +16,10 @@ const secrets = require('../../../google_secrets.json');
   await doc.loadInfo();
 
   const personSheet = doc.sheetsByTitle['persons'];
-  const rows = await personSheet.addRows([
-    {
-      name: 'Tom',
-      age: 18,
-      gender: 'M',
-    },
-    {
-      name: 'Hanako',
-      age: 20,
-      gender: 'F',
-    },
-    {
-      name: 'John',
-      age: 25,
-      gender: 'M',
-    },
-  ]);
+  const rows = await personSheet.getRows();
 
-  rows.forEach(row => async () => {
-    await row.save();
-  });
+  console.log(rows[0].age)
+
+  rows[0].age = 50
+  rows[0].save()
 })();
