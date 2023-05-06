@@ -16,16 +16,20 @@ const server = http.createServer(function (req, res) {
   res.writeHead(200, { "content-type": "text/html; charaset=UTF-8" });
   console.log(req.url);
   if (req.url === "/") {
-    res.write(`<a href="/result">Get Method Link</a>`);
+    res.write(
+      `<a href="/result?param1=パラメータ1&param2=パラメータ2">Get Method Link</a>`
+    );
     res.end(`
     <form action="/result" method="POST">
       <input type="text" name="title">
       <input type="submit">
     </form>
     `);
-  } else if (req.url === "/bye") {
-    res.end("bye");
   } else {
+    if (res.method === "GET") {
+      const queryString = req.url.split("?")[1];
+      const params = new URLSearchParams(queryString);
+    }
     res.end(req.url);
   }
 });
