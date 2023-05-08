@@ -22,13 +22,24 @@ const server = http.createServer(function (req, res) {
     res.end(`
     <form action="/result" method="POST">
       <input type="text" name="title">
+      <input type="text" name="description">
       <input type="submit">
     </form>
     `);
   } else {
-    if (res.method === "GET") {
+    if (req.method === "GET") {
       const queryString = req.url.split("?")[1];
       const params = new URLSearchParams(queryString);
+      console.log(params);
+    } else if (req.method === "POST") {
+      let data = "";
+      req.on("data", (chunk) => {
+        data += chunk;
+      });
+      req.on("end", () => {
+        const params = new URLSearchParams(data);
+        console.log(params);
+      });
     }
     res.end(req.url);
   }
