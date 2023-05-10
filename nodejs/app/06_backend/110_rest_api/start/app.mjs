@@ -15,7 +15,12 @@ app.get("/products", function (req, res) {
   res.json(products);
 });
 
-app.post("/create-product", function (req, res) {
+app.get("/products/:id", function (req, res) {
+  const targetId = req.params.id;
+  res.json(products[targetId]);
+});
+
+app.post("/products", function (req, res) {
   const newProduct = req.body;
   console.log(newProduct);
   products.push(newProduct);
@@ -23,21 +28,21 @@ app.post("/create-product", function (req, res) {
   res.json(newProduct);
 });
 
-app.post("/delete-product", function (req, res) {
-  const deleteId = req.body.id;
+app.delete("/products/:id", function (req, res) {
+  const deleteId = req.params.id;
   products.splice(deleteId, 1);
   console.log(products);
   res.json({ deleteId });
 });
 
-app.post("/update-product", function (req, res) {
-  const updateId = req.body.id;
+app.patch("/products/:id", function (req, res) {
+  const updateId = req.params.id;
   const targetProduct = products[updateId];
   if (req.body.hasOwnProperty("price")) {
-    targetProduct.price = req.body.price;
+    targetProduct.price = req.params.price;
   }
   if (req.body.hasOwnProperty("name")) {
-    targetProduct.price = req.body.name;
+    targetProduct.price = req.params.name;
   }
   console.log(products);
   res.json(targetProduct);
