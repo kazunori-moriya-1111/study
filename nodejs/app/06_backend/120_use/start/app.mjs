@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 
 /*
 # useとexpress
@@ -19,13 +19,19 @@ const app = express();
 app.use(express.json());
 
 // ミドルウェア：ルートハンドラの前後に行われる処理
-app.use('/', function(req, res, next) {
+app.use("/", function (req, res, next) {
+  console.log("/ start");
+  next();
+});
 
+app.use("/", function (req, res, next) {
+  console.log("/ middle");
+  next();
 });
 
 // ルートハンドラ：パスとメソッドに紐付くメインの処理
-app.get('/', function(req, res) {
-
+app.get("/", function (req, res) {
+  console.log("/ get");
 });
 app.listen(PORT, function () {
   console.log(`Server start: http://localhost:${PORT}`);
