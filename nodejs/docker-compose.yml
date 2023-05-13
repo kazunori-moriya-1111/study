@@ -11,3 +11,16 @@ services:
     tty: true
     stdin_open: true
     command: /bin/sh
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rishipippi
+      MONGO_INITDB_ROOT_PASSWORD: rishipippi
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-store:/data/db
+volumes:
+  mongodb-store:
