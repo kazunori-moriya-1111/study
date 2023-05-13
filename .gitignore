@@ -65,4 +65,5 @@ nodejs/app/04_automation/.env
 nodejs/app/05_frontend/010_browser_module/start/node_modules
 nodejs/app/05_frontend/020_webpack_basic/start/node_modules
 nodejs/app/06_backend/node_modules
-/Users/kazunori_moriya/Desktop/study/nodejs/app/07_mongodb/.env
+nodejs/app/07_mongodb/.env
+nodejs/app/07_mongodb/node_modules
