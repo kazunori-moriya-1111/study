@@ -68,3 +68,5 @@ nodejs/app/06_backend/node_modules
 nodejs/app/07_mongodb/.env
 nodejs/app/07_mongodb/node_modules
 .vscode/settings.json
+br/test-app/src/genius/__pycache__
+br/test-app/src/genius/.env
