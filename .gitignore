@@ -70,3 +70,4 @@ nodejs/app/07_mongodb/node_modules
 .vscode/settings.json
 br/test-app/src/genius/__pycache__
 br/test-app/src/genius/.env
+br/test-app/src/genius/udemy-spread-sheet-f5eada302ada.json
