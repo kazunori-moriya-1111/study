@@ -34,7 +34,9 @@ class parser:
         )
         driver.implicitly_wait(10)
         for index, url in enumerate(self.racer_detail_page_url):
+            print("アクセス前", url.replace("profile", "course"))
             driver.get(url.replace("profile", "course"))
+            print("アクセス後", url.replace("profile", "course"))
             soup = BeautifulSoup(driver.page_source, "html.parser")
             self.scrap_tyaku_per(index, soup)
         driver.quit()
