@@ -71,3 +71,4 @@ nodejs/app/07_mongodb/node_modules
 br/test-app/src/genius/__pycache__
 br/test-app/src/genius/.env
 br/test-app/src/genius/udemy-spread-sheet-f5eada302ada.json
+nodejs/app/08_bookshelf_backend/.env
