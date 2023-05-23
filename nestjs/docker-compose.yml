@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  app:
+    build: ./node
+    ports:
+      - 3000:3000
+      - 8080:8080
+    volumes:
+      - ./app:/usr/src/app
+    tty: true
+    stdin_open: true
+    command: /bin/sh
+  db:
+    container_name: postgresql_nest
+    build: ./postgresql
+    ports:
+      - 5432:5432
+    volumes:
+      - nestjs-db:/var/lib/postgresql/data
+      # - ./postgresql/init:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=passw0rd
+      - POSTGRES_USER=postgres
+volumes:
+  nestjs-db:
