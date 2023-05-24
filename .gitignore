@@ -73,3 +73,4 @@ br/test-app/src/genius/.env
 br/test-app/src/genius/udemy-spread-sheet-f5eada302ada.json
 nodejs/app/08_bookshelf_backend/.env
 nestjs/app/flea-market/node_modules
+nestjs/app/flea-market/dist
