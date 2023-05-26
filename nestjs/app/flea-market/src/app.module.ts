@@ -1,20 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ItemsModule } from './items/items.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppDataSource } from './data-source';
 
 @Module({
-  imports: [
-    ItemsModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'postgresql_nest',
-      port: 5432,
-      username: 'postgres',
-      password: 'passw0rd',
-      database: 'postgres',
-      autoLoadEntities: true,
-    }),
-  ],
+  imports: [ItemsModule, TypeOrmModule.forRoot(AppDataSource.options)],
   controllers: [],
   providers: [],
 })
