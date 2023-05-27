@@ -75,3 +75,4 @@ nodejs/app/08_bookshelf_backend/.env
 nestjs/app/flea-market/node_modules
 nestjs/app/flea-market/dist
 nestjs/app/flea-market/src/migration
+nestjs/app/flea-market/src/auth/constants.ts
