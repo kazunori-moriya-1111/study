@@ -4,6 +4,7 @@ import { User } from '../entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { v4 as uuid } from 'uuid';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -13,9 +14,14 @@ export class AuthService {
   ) {}
 
   async singUp(createUserDto: CreateUserDto): Promise<User> {
+    const { username, password, status } = createUserDto;
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(password, salt);
     const user: User = {
       id: uuid(),
-      ...createUserDto,
+      username,
+      password: hashPassword,
+      status,
     };
     return await this.userRepository.save(user);
   }
