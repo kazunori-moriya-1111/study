@@ -1,4 +1,5 @@
 import { Item } from './entities/item.entity';
+import { User } from './entities/user.entity';
 import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({
@@ -11,7 +12,7 @@ export const AppDataSource = new DataSource({
   // autoLoadEntities: true,
   logging: true,
   synchronize: false,
-  entities: [Item],
+  entities: [Item, User],
   migrations: ['../dist/migration/*.js'],
   // cli: {
   //   entitiesDir: 'src/entities',
