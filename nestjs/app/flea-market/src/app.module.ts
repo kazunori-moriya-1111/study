@@ -5,7 +5,11 @@ import { AppDataSource } from './data-source';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [ItemsModule, TypeOrmModule.forRoot(AppDataSource.options), AuthModule],
+  imports: [
+    ItemsModule,
+    TypeOrmModule.forRoot(AppDataSource.options),
+    AuthModule,
+  ],
   controllers: [],
   providers: [],
 })
