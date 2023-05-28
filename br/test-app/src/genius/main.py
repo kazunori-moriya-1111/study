@@ -4,6 +4,7 @@ from Parser import parser
 from Odds import odds
 from WriteSpreadsheet import WriteSpreadsheet
 from create_url import create_url
+from get_tyakuper import check_spread_sheet
 
 if __name__ == "__main__":
     # Selenium サーバへ接続
@@ -14,32 +15,26 @@ if __name__ == "__main__":
     driver.implicitly_wait(10)  # seconds
 
     URL = create_url()
-    print("アクセス前")
-    driver.get(URL)
-    print("アクセス後")
-    # divタグのtable1クラスに分解する
-    soup = BeautifulSoup(driver.page_source, "html.parser")
+    # 対象スプレッドシートにtyakuperが記載されていれば値を取得
+    # 値が存在しなければからのdictを返却
+    racer_tyakuper_dict = check_spread_sheet()
+    # スプレッドシートにtyakuperが記載されていない場合スクレイピングして取得
+    if not (any(racer_tyakuper_dict)):
+        driver.get(URL)
+        # divタグのtable1クラスに分解する
+        soup = BeautifulSoup(driver.page_source, "html.parser")
 
-    # parserクラスをインスタンス化
-    parser_ins = parser(soup)
-    parser_ins.get_racer_detail_page_url()
-    driver.quit()
-    parser_ins.get_tyaku_per()
-    print(parser_ins.result)
-    racer_result = parser_ins.result
+        # parserクラスをインスタンス化
+        parser_ins = parser(soup)
+        parser_ins.get_racer_detail_page_url()
+        driver.quit()
+        parser_ins.get_tyaku_per()
+        racer_tyakuper_dict = parser_ins.result
 
     # オッズの取得
     odds_ins = odds(URL)
     odds_ins.get_odds()
-    # print(odds_ins.odds_result)
 
-    # racer_result = {
-    #     "1": {"racer_name": "濱崎\u3000\u3000直矢", "tyakuper": [0.6, 0.25, 0.05]},
-    #     "2": {"racer_name": "福島\u3000\u3000勇樹", "tyakuper": [0.154, 0.308, 0.231]},
-    #     "3": {"racer_name": "藤生\u3000\u3000雄人", "tyakuper": [0.053, 0.421, 0.211]},
-    #     "4": {"racer_name": "本多\u3000\u3000宏和", "tyakuper": [0.167, 0.208, 0.167]},
-    #     "5": {"racer_name": "松尾\u3000\u3000\u3000拓", "tyakuper": [0.15, 0.1, 0.05]},
-    #     "6": {"racer_name": "岡村\u3000\u3000慶太", "tyakuper": [0, 0.125, 0.312]},
-    # }
-    ws_ins = WriteSpreadsheet(parser_ins.result, odds_ins.odds_result)
+    # スプレッドシートへ書き込み
+    ws_ins = WriteSpreadsheet(racer_tyakuper_dict, odds_ins.odds_result)
     ws_ins.sp_update()
