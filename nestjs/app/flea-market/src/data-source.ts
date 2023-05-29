@@ -13,7 +13,7 @@ export const AppDataSource = new DataSource({
   logging: true,
   synchronize: false,
   entities: [Item, User],
-  migrations: ['../dist/migration/*.js'],
+  migrations: ['./dist/migration/*.js'],
   // cli: {
   //   entitiesDir: 'src/entities',
   //   migrationsDir: 'src/migrations',
