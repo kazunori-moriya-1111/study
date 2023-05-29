@@ -4,7 +4,6 @@ import { ItemStatus } from './item-status.enum';
 import { CreateItemDto } from './dto/create-item.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class ItemsService {
@@ -26,8 +25,8 @@ export class ItemsService {
   }
 
   async create(createItemDto: CreateItemDto): Promise<Item> {
-    const item: Item = {
-      id: uuid(),
+    const item = {
+      // id: uuid(),
       ...createItemDto,
       status: ItemStatus.ON_SALE,
       createAt: new Date().toISOString(),
