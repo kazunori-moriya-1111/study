@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { ItemsService } from './items.service';
 import { Repository } from 'typeorm';
-import { Item } from 'src/entities/item.entity';
+import { Item } from '../entities/item.entity';
 
 const mockItemRepository = () => ({});
 
