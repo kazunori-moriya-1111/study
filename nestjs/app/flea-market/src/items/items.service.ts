@@ -16,7 +16,6 @@ export class ItemsService {
     @InjectRepository(Item)
     private itemRepository: Repository<Item>,
   ) {}
-  private items: Item[] = [];
   async findAll(): Promise<Item[]> {
     return await this.itemRepository.find();
   }
