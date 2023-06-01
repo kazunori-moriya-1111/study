@@ -1,4 +1,3 @@
-FROM node:18.15
+FROM node:16.20.0
 WORKDIR /usr/src/app
 RUN npm i -g @nestjs/cli
-# RUN npm i -g yarn
