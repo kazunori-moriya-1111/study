@@ -35,3 +35,18 @@ export class AuthService {
       throw error;
     }
   }
+  async generateJwt(userId: number, email: string) {
+    const payload = {
+      sub: userId,
+      email,
+    };
+    const secret = this.config.get('JWT_SECRET');
+    const token = await this.jwt.signAsync(payload, {
+      expiresIn: '5m',
+      secret: secret,
+    });
+    return {
+      accessToken: token,
+    };
+  }
+}
