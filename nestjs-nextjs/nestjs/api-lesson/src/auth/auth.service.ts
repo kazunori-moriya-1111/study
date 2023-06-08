@@ -35,6 +35,18 @@ export class AuthService {
       throw error;
     }
   }
+  async login(dto: AuthDto): Promise<Jwt> {
+    const user = await this.prisam.user.findUnique({
+      where: {
+        email: dto.email,
+      },
+    });
+    if (!user) throw new ForbiddenException('Email or password incorrect');
+    const isValid = await bctypt.compare(dto.password, user.hashedPassword);
+    if (!isValid) throw new ForbiddenException('Email or password incorrect');
+    return this.generateJwt(user.id, user.email);
+  }
+
   async generateJwt(userId: number, email: string) {
     const payload = {
       sub: userId,
