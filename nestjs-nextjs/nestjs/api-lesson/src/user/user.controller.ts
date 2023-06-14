@@ -14,4 +14,12 @@ export class UserController {
   getLoginUser(@Req() req: Request): Omit<User, 'hashedPassword'> {
     return req.user;
   }
+
+  @Patch()
+  updateUser(
+    @Req() req: Request,
+    @Body() dto: UpdateUserDto,
+  ): Promise<Omit<User, 'hashedPassword'>> {
+    return this.userService.updateUser(req.user.id, dto);
+  }
 }
