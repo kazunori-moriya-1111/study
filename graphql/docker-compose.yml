@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  graghql:
+    build: ./node
+    ports:
+      - 4000:4000
+    volumes:
+      - ./server:/usr/server
+    # exec -itの部分
+    tty: true
+    stdin_open: true
+    command: /bin/sh
+  db:
+    container_name: postgresql_graghql
+    build: ./postgresql
+    ports:
+      - 5432:5432
+    volumes:
+      - graghql-db:/var/lib/postgresql/data
+      # - ./postgresql/init:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=passw0rd
+      - POSTGRES_USER=postgres
+volumes:
+  graghql-db:

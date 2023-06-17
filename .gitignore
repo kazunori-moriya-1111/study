@@ -84,3 +84,4 @@ nestjs-nextjs/nextjs/todo-nextjs/node_modules
 nestjs-nextjs/nextjs/todo-nextjs/.env
 nestjs-nextjs/nextjs/todo-nextjs/.next
 nestjs-nextjs/nextjs/todo-nextjs/.env.local
+graphql/server/node_modules
