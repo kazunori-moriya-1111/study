@@ -23,7 +23,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     info: () => 'HackerNewsクローン',
-    fedd: () => links,
+    feed: () => links,
   },
 };
 
