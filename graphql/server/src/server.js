@@ -7,10 +7,16 @@ let links = [
     url: 'abc.com',
   },
 ];
+
+// スキーマ定義
 const typeDefs = gql`
   type Query {
     info: String!
     feed: [Link]!
+  }
+
+  type Mutation {
+    post(url: String!, description: String!): Link!
   }
 
   type Link {
@@ -20,10 +26,27 @@ const typeDefs = gql`
   }
 `;
 
+// リゾルバ関数
 const resolvers = {
   Query: {
     info: () => 'HackerNewsクローン',
     feed: () => links,
+  },
+
+  Mutation: {
+    post: (parent, args) => {
+      let idCount = links.length;
+
+      const link = {
+        id: `link-${idCount++}`,
+        description: args.description,
+        url: args.url,
+      };
+
+      links.push(link);
+
+      return link;
+    },
   },
 };
 
