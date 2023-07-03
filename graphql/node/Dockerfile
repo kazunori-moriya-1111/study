@@ -1,2 +1,2 @@
-FROM node:18.15
+FROM node:16.20.0
 WORKDIR /usr/server/src
