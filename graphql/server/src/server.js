@@ -1,4 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
+const fs = require('fs');
+const path = require('path');
 
 let links = [
   {
@@ -7,24 +9,6 @@ let links = [
     url: 'abc.com',
   },
 ];
-
-// スキーマ定義
-const typeDefs = gql`
-  type Query {
-    info: String!
-    feed: [Link]!
-  }
-
-  type Mutation {
-    post(url: String!, description: String!): Link!
-  }
-
-  type Link {
-    id: ID!
-    description: String!
-    url: String!
-  }
-`;
 
 // リゾルバ関数
 const resolvers = {
@@ -51,7 +35,7 @@ const resolvers = {
 };
 
 const server = new ApolloServer({
-  typeDefs,
+  typeDefs: fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8'),
   resolvers,
 });
 
