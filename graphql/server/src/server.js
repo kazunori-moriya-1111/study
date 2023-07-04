@@ -2,6 +2,9 @@ const { ApolloServer, gql } = require('apollo-server');
 const fs = require('fs');
 const path = require('path');
 
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
 let links = [
   {
     id: 'link-0',
@@ -14,22 +17,21 @@ let links = [
 const resolvers = {
   Query: {
     info: () => 'HackerNewsクローン',
-    feed: () => links,
+    feed: async (parent, args, context) => {
+      return context.prisma.link.findMany();
+    },
   },
 
   Mutation: {
-    post: (parent, args) => {
-      let idCount = links.length;
+    post: (parent, args, context) => {
+      const newLink = context.prisma.link.create({
+        data: {
+          url: args.url,
+          description: args.description,
+        },
+      });
 
-      const link = {
-        id: `link-${idCount++}`,
-        description: args.description,
-        url: args.url,
-      };
-
-      links.push(link);
-
-      return link;
+      return newLink;
     },
   },
 };
@@ -37,6 +39,9 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs: fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8'),
   resolvers,
+  context: {
+    prisma,
+  },
 });
 
 server.listen().then(({ url }) => console.log(`${url}でサーバを起動中`));
