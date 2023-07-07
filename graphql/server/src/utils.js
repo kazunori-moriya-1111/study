@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-APP_SECRET = 'abc';
+APP_SECRET = 'abc@1231qazxsw2ZX';
 // トークンを複合するための関数
 function getTokenPayload(token) {
   // トークン化された物の前の情報
