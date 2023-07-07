@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const APP_SECRET = require('../utils');
+const { APP_SECRET } = require('../utils');
 // ユーザ新規登録のリゾルバ
 async function signup(parent, args, context) {
   // パスワードの設定
@@ -23,7 +23,7 @@ async function signup(parent, args, context) {
 }
 
 // ユーザログイン
-async function login(parent, args, ccontext) {
+async function login(parent, args, context) {
   const user = await context.prisma.user.findUnique({
     where: { email: args.email },
   });
