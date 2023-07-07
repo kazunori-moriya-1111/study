@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const APP_SECRET = require('../utils');
 // ユーザ新規登録のリゾルバ
-async function singup(parent, args, context) {
+async function signup(parent, args, context) {
   // パスワードの設定
   const password = await bcrypt.hash(args.password, 10);
 
@@ -56,7 +56,7 @@ async function post(parent, args, context) {
 }
 
 module.exports = {
-  singup,
+  signup,
   login,
   post,
 };
