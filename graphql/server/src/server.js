@@ -8,9 +8,10 @@ const { getUserId } = require('./utils');
 // リゾルバ関係のファイル
 const Query = require('./resolvers/Query');
 const Mutation = require('./resolvers/Mutation');
+const Subscription = require('./resolvers/Subscription');
 const Link = require('./resolvers/Link');
 const User = require('./resolvers/User');
-const Subscription = require('./resolvers/Subscription');
+const Vote = require('./resolvers/Vote');
 
 // サブスクリプションの実装
 const { PubSub } = require('apollo-server');
@@ -25,6 +26,7 @@ const resolvers = {
   Subscription,
   Link,
   User,
+  Vote,
 };
 
 const server = new ApolloServer({
