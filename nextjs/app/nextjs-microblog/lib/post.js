@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import matter from 'matter';
+import matter from 'gray-matter';
 
 const postDirectory = path.join(process.cwd(), 'posts');
 
@@ -19,7 +19,8 @@ export function getPostsData() {
     // idとデータを返す
     return {
       id,
-      ...matterResult,
+      ...matterResult.data,
     };
   });
+  return allPostsData;
 }
