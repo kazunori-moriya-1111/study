@@ -27,58 +27,18 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2>エンジニアのブログ</h2>
         <div className={styles.grid}>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link href="/">
-              <div className={utilStyles.boldText}>記事のタイトル</div>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>July 28, 2023</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link href="/">
-              <div className={utilStyles.boldText}>記事のタイトル</div>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>July 28, 2023</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link href="/">
-              <div className={utilStyles.boldText}>記事のタイトル</div>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>July 28, 2023</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link href="/">
-              <div className={utilStyles.boldText}>記事のタイトル</div>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>July 28, 2023</small>
-          </article>
+          {allPostsData.map(({ id, title, date, thumbnail }) => (
+            <article key={id}>
+              <Link href={`/posts/${id}`}>
+                <img src={`${thumbnail}`} className={styles.thumbnailImage} />
+              </Link>
+              <Link href={`/posts/${id}`}>
+                <div className={utilStyles.boldText}>{title}</div>
+              </Link>
+              <br />
+              <small className={utilStyles.lightText}>{date}</small>
+            </article>
+          ))}
         </div>
       </section>
     </Layout>
