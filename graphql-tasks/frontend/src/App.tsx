@@ -1,11 +1,18 @@
 import './App.css'
+import Main from './compunents/Main'
+import NotFound from './compunents/NotFound'
+import SignIn from './compunents/SignIn'
+import SignUp from './compunents/SignUp'
 
 function App() {
   
 
   return (
     <div className='App'>
-      <h1>HelloWorld</h1>
+      <SignIn />
+      <SignUp />
+      <Main />
+      <NotFound />
     </div>
   )
 }
