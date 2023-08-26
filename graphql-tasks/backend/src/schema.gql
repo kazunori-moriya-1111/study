@@ -40,7 +40,7 @@ type Mutation {
   updateTask(updateTaskInput: UpdateTaskInput!): Task!
   deleteTask(id: Int!): Task!
   createUser(createUserInput: CreateUserInput!): User!
-  singIn(signInInput: SignInInput!): SignInResponse!
+  signIn(signInInput: SignInInput!): SignInResponse!
 }
 
 input CreateTaskInput {

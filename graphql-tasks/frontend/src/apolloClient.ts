@@ -2,7 +2,7 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-  uri: 'http://graphql-tasks-backend-1:3000/graphql',
+  uri: 'http://localhost:3000/graphql',
 });
 
 const authLink = setContext((_, prevContext) => {
@@ -10,7 +10,7 @@ const authLink = setContext((_, prevContext) => {
   return {
     headers: {
       ...prevContext.headers,
-      authorization: token ? `Dearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : '',
     },
   };
 });
