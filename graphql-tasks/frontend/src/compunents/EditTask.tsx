@@ -16,6 +16,10 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 import { Task } from '../types/task';
 import { TaskStatus } from '../types/taskStatus';
+import { useMutation } from '@apollo/client';
+import { UPDATE_TASK } from '../mutations/taskMutations';
+import { GET_TASKS } from '../queries/taskQueries';
+import { useNavigate } from 'react-router-dom';
 
 export default function EditTask({
   task,
@@ -31,12 +35,70 @@ export default function EditTask({
   const [description, setDescription] = useState(task.description);
   const [isInvalidName, setIsInvalidName] = useState(false);
   const [isInvalidDueDate, setIsInvalidDueDate] = useState(false);
+  const navigate = useNavigate();
+  const [updateTask] = useMutation<{ updateTask: Task }>(UPDATE_TASK);
+
+  const resetState = () => {
+    setName(task.name);
+    setDueDate(task.dueDate);
+    setStatus(task.status);
+    setDescription(task.description);
+    setIsInvalidName(false);
+    setIsInvalidDueDate(false);
+  };
+
+  const handleEditTask = async () => {
+    let canEdit = true;
+
+    if (name.length === 0) {
+      canEdit = false;
+      setIsInvalidName(true);
+    } else {
+      setIsInvalidName(false);
+    }
+
+    if (!Date.parse(dueDate)) {
+      canEdit = false;
+      setIsInvalidDueDate(true);
+    } else {
+      setIsInvalidDueDate(false);
+    }
+
+    if (canEdit) {
+      const updateTaskInput = {
+        id: task.id,
+        name,
+        dueDate,
+        status,
+        description,
+      };
+      try {
+        await updateTask({
+          variables: { updateTaskInput },
+          refetchQueries: [{ query: GET_TASKS, variables: { userId } }],
+        });
+        resetState();
+        setOpen(false);
+      } catch (err: any) {
+        if (err.message === 'Unauthorized') {
+          localStorage.removeItem('token');
+          alert('トークンの有効期限が切れました。サインイン画面に遷移します');
+          navigate('/signin');
+          return;
+        }
+        console.log(err);
+        alert('タスクの編集に失敗しました');
+      }
+    }
+  };
 
   const handleClickOpen = () => {
+    resetState();
     setOpen(true);
   };
 
   const handleClose = () => {
+    resetState();
     setOpen(false);
   };
 
@@ -103,7 +165,7 @@ export default function EditTask({
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Update</Button>
+          <Button onClick={handleEditTask}>Update</Button>
         </DialogActions>
       </Dialog>
     </div>
