@@ -1,0 +1,17 @@
+.parent{
+  color: blue;
+
+  & > .element{
+    color: purple;
+
+    &.second-child{
+      color: black;
+    }
+  }
+}
+.element{
+  color: red;
+}
+// .child{
+//   color: purple;
+// }
