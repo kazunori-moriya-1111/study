@@ -1,0 +1,9 @@
+@use "global";
+
+h1{
+  color: global.$cBlue;
+}
+
+h2{
+  color: global.$cRed;
+}
