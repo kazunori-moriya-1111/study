@@ -1,0 +1,57 @@
+@use 'mixin';
+
+body{
+  margin: 0;
+}
+
+#container{
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: teal;
+}
+
+.animate-title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0;
+
+  &.inview{
+    opacity: 1;
+
+    & .char{
+      display: inline-block;
+
+      // @include mixin.animation($name: kf-animate-chars,
+      //   $duration: 0.5s,
+      //   // $timing-function: ease,
+      //   $fill-mode: both
+      // );
+      animation-name: kf-animate-chars;
+      animation-duration: 0.5s;
+      animation-timing-function: ease;
+      animation-fill-mode: both;
+
+      @for $i from 1 through 9{
+        &:nth-child(#{$i}){
+          animation-delay: $i * 0.04s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes kf-animate-chars{
+  0%{
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
