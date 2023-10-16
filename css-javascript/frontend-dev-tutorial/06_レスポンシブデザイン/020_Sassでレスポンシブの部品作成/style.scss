@@ -1,0 +1,18 @@
+@use "mq" as *;
+// モバイル用のスタイル
+h1 {
+  color: red;
+  background: yellow;
+  @include mq(sm) {
+    color: blue;
+  }
+  @include mq(md) {
+    color: purple;
+  }
+  @include mq(lg) {
+    color: green;
+  }
+  @include mq(xl) {
+    color: orange;
+  }
+}
