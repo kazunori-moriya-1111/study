@@ -643,7 +643,7 @@ img {
   vertical-align: bottom;
 }
 
-.mb-sm {
+.mb-sm, .sub-title {
   margin-bottom: 16px !important;
 }
 
