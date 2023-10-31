@@ -89,3 +89,4 @@ graphql-tasks/backend/node_modules
 graphql-tasks/backend/dist
 php/
 gm-project/feature.txt
+gm-project/backend/.env
