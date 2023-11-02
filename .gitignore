@@ -90,3 +90,4 @@ graphql-tasks/backend/dist
 php/
 gm-project/feature.txt
 gm-project/backend/.env
+gm-project/backend/prisma/migrations
