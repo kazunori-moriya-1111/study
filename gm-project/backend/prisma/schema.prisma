@@ -28,6 +28,7 @@ enum Status {
 
 model Racer{
   registrationNumber Int @id
+  name String @db.VarChar(10)
   birthday DateTime @db.Date 
   height Int
   weight Int

@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { RacerService } from './racer.service';
 import { Racer as RacerModel } from './models/racer.model';
 import { Racer } from '@prisma/client';
@@ -10,5 +10,12 @@ export class RacerResolver {
   @Query(() => [RacerModel], { nullable: 'items' })
   async getRacers(): Promise<Racer[]> {
     return await this.racerService.getRacers();
+  }
+
+  @Mutation(() => RacerModel)
+  async insertRacer(
+    @Args('registrationNumber', { type: () => Int }) registrationNumber: number,
+  ): Promise<Racer> {
+    return await this.racerService.insertRacer(registrationNumber);
   }
 }

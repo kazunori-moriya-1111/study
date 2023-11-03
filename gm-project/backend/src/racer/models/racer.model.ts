@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { RacerGrade } from '@prisma/client';
+import { GraphQLDate } from 'graphql-scalars';
 
 @ObjectType()
 export class Racer {
@@ -7,6 +8,9 @@ export class Racer {
   registrationNumber: number;
 
   @Field()
+  name: string;
+
+  @Field(() => GraphQLDate)
   birthday: Date;
 
   @Field(() => Int)
