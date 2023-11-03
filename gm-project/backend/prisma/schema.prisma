@@ -25,3 +25,24 @@ enum Status {
   IN_PROGRESS
   COMPLETED
 }
+
+model Racer{
+  registrationNumber Int @id
+  birthday DateTime @db.Date 
+  height Int
+  weight Int
+  bloodType String @db.VarChar(1)
+  branch String @db.VarChar(4)
+  birthPlace String @db.VarChar(4)
+  registrationPeriod Int
+  racerGrade RacerGrade
+  createdAt DateTime @default(now()) @db.Timestamp(0) 
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+}
+
+enum RacerGrade {
+  A1
+  A2
+  B1
+  B2
+}
