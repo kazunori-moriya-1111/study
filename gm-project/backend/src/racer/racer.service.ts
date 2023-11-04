@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Racer, RacerGrade } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
+import getRacerInfo from 'src/scraping/racer';
 
 @Injectable()
 export class RacerService {
@@ -13,7 +14,8 @@ export class RacerService {
   async insertRacer(registrationNumber: number): Promise<Racer> {
     // 登録番号を主軸にしたスクレイピング情報を取得
     const url: String = `https://www.boatrace.jp/owpc/pc/data/racersearch/profile?toban=${registrationNumber}`;
-
+    const ta = new getRacerInfo();
+    console.log(ta.scraping(2));
     const name: string = '池田浩二';
     const birthday: Date = new Date(2023, 1, 1);
     const height: number = 11;
