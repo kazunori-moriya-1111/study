@@ -15,7 +15,7 @@ export class RacerService {
     // 登録番号を主軸にしたスクレイピング情報を取得
     const url: String = `https://www.boatrace.jp/owpc/pc/data/racersearch/profile?toban=${registrationNumber}`;
     const ta = new getRacerInfo();
-    console.log(ta.scraping(2));
+    await ta.scraping(3941);
     const name: string = '池田浩二';
     const birthday: Date = new Date(2023, 1, 1);
     const height: number = 11;
