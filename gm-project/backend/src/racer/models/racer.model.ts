@@ -10,6 +10,9 @@ export class Racer {
   @Field()
   name: string;
 
+  @Field()
+  nameKana: string;
+
   @Field(() => GraphQLDate)
   birthday: Date;
 

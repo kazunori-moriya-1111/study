@@ -20,6 +20,7 @@ scalar DateTime
 type Racer {
   registrationNumber: Int!
   name: String!
+  nameKana: String!
   birthday: Date!
   height: Int!
   weight: Int!
