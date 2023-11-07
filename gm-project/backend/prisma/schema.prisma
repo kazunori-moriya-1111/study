@@ -28,12 +28,12 @@ enum Status {
 
 model Racer{
   registrationNumber Int @id
-  name String @db.VarChar(10)
-  nameKana String @db.VarChar(10)
+  name String @db.VarChar(20)
+  nameKana String @db.VarChar(20)
   birthday DateTime @db.Date 
   height Int
   weight Int
-  bloodType String @db.VarChar(1)
+  bloodType String @db.VarChar(2)
   branch String @db.VarChar(4)
   birthPlace String @db.VarChar(4)
   registrationPeriod Int
