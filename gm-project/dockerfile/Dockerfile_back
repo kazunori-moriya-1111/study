@@ -1,4 +1,4 @@
-# playwrightが使えるイメージ（node.js導入済み）を利用
-FROM mcr.microsoft.com/playwright:focal
+# image再作成後push
+FROM node:16.20.0
 WORKDIR /usr/src/app
 RUN npm i -g @nestjs/cli
