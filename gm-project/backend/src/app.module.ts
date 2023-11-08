@@ -5,6 +5,7 @@ import { join } from 'path';
 import { TaskModule } from './task/task.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RacerModule } from './racer/racer.module';
+import { ResultModule } from './result/result.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { RacerModule } from './racer/racer.module';
     TaskModule,
     PrismaModule,
     RacerModule,
+    ResultModule,
   ],
 })
 export class AppModule {}

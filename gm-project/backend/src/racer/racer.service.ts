@@ -12,23 +12,25 @@ export class RacerService {
   }
 
   async insertRacer(registrationNumber: number): Promise<Racer> {
-    // 登録番号を主軸にしたスクレイピング情報を取得
-    const url: String = `https://www.boatrace.jp/owpc/pc/data/racersearch/profile?toban=${registrationNumber}`;
-    const ta = new getRacerInfo();
-    const result = await ta.scraping(3941);
-    const name: string = '池田浩二';
-    const birthday: Date = new Date(2023, 1, 1);
-    const height: number = 11;
-    const weight: number = 11;
-    const bloodType: string = 'A';
-    const branch: string = '埼玉';
-    const birthPlace: string = '埼玉';
-    const registrationPeriod: number = 11;
-    const racerGrade: RacerGrade = 'A1';
+    const gRI = new getRacerInfo();
+    const {
+      name,
+      nameKana,
+      birthday,
+      height,
+      weight,
+      bloodType,
+      branch,
+      birthPlace,
+      registrationPeriod,
+      racerGrade,
+    } = await gRI.scraping(registrationNumber);
+
     return await this.prismaService.racer.create({
       data: {
         registrationNumber,
         name,
+        nameKana,
         birthday,
         height,
         weight,
