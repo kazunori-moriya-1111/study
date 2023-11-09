@@ -27,7 +27,7 @@ enum Status {
 }
 
 model Racer{
-  registrationNumber Int @id
+  registrationNumber Int @id @unique
   name String @db.VarChar(20)
   nameKana String @db.VarChar(20)
   birthday DateTime @db.Date 
@@ -47,4 +47,92 @@ enum RacerGrade {
   A2
   B1
   B2
+}
+
+model Result{
+  fieldName String @db.VarChar(4)
+  fieldNo Int
+  raceGrade RaceGrade
+  yyyymmdd DateTime @db.Date
+  //開催日
+  raceEventDate String  @db.VarChar(4)
+  raceNo Int
+  raceSeries String  @db.VarChar(10)
+  //例）準優勝戦 1800m, winwin5
+  raceTitle String
+  //例）安定版使用
+  raceLabel String
+  // 1着
+  firstPlace Int
+  firstRacerRegistrationNumber Int
+  firstRacerName String
+  // 2着
+  secondPlace Int
+  secondRacerRegistrationNumber Int
+  secondRacerName String
+  // 3着
+  thirdPlace Int
+  thirdRacerRegistrationNumber Int
+  thirdRacerName String
+  // 4着
+  fourthPlace Int
+  fourthRacerRegistrationNumber Int
+  fourthRacerName String
+  // 5着
+  fifthPlace Int
+  fifthRacerRegistrationNumber Int
+  fifthRacerName String
+  // 6着
+  sixthPlace Int
+  sixthRacerRegistrationNumber Int
+  sixthRacerName String
+  // 1コース
+  startFirstCourse Int
+  startTimingFirstCourse Int
+  // 2コース
+  startSecondCourse Int
+  startTimingSecondCourse Int
+  // 3コース
+  startThirdCourse Int
+  startTimingThirdCourse Int
+  // 4コース
+  startFourthCourse Int
+  startTimingFourthCourse Int
+  // 5コース
+  startFifthCourse Int
+  startTimingFifthCourse Int
+  // 6コース
+  startSixthCourse Int
+  startTimingSixthCourse Int
+  // 結果
+  sanrentanPrice Int
+  sanrentanPopular Int
+  sanrenpukuPrice Int
+  sanrenpukuPopular Int
+  nirentanPrice Int
+  nirentanPopular Int
+  nirenpukuPrice Int
+  nirenpukuPopular Int
+  // 水面気象
+  temperature Int
+  weather String
+  wind Int
+  windDirection String
+  waterTemperature Int
+  wave Int
+  url String  @db.VarChar(4)
+  // 備考
+  return String
+  decision String
+  createdAt DateTime @default(now()) @db.Timestamp(0) 
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+  @@unique(fields:[yyyymmdd, fieldName, raceNo], name : "result_identifier")
+}
+
+enum RaceGrade {
+  SG
+  G1
+  G2
+  G3
+  NORMAL
 }
