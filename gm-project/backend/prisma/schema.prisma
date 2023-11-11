@@ -120,7 +120,7 @@ model Result{
   windDirection String
   waterTemperature Int
   wave Int
-  url String  @db.VarChar(4)
+  url String  @db.VarChar(100)
   // 備考
   return String
   decision String
