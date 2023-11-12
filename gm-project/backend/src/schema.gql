@@ -110,6 +110,7 @@ type Mutation {
   updateTask(updateTaskInput: UpdateTaskInput!): Task!
   deleteTask(id: Int!): Task!
   insertRacer(registrationNumber: Int!): Racer!
+  insertResult: Result!
 }
 
 input CreateTaskInput {

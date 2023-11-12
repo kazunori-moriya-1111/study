@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Mutation } from '@nestjs/graphql';
 import { ResultService } from './result.service';
 import { Result as ResultModel } from './models/result.model';
 import { Result } from '@prisma/client';
@@ -10,5 +10,10 @@ export class ResultResolver {
   @Query(() => [ResultModel], { nullable: 'items' })
   async getResult(): Promise<Result[]> {
     return await this.resultService.getResult();
+  }
+
+  @Mutation(() => ResultModel)
+  async insertResult(): Promise<Result> {
+    return await this.resultService.insertResult();
   }
 }
