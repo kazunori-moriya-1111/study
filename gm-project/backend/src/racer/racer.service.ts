@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Racer, RacerGrade } from '@prisma/client';
+import { Racer } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import getRacerInfo from 'src/scraping/racer';
 
