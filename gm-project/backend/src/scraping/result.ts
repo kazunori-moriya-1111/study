@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { ResultType } from './types/ResultType';
+import { ResultType } from './types/resultType';
 
 export default class insertResult {
   async scraping(registrationNumber: number): Promise<any> {

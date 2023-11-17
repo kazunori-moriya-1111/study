@@ -1,6 +1,6 @@
 import { RacerGrade } from '@prisma/client';
 
-export interface racerInfoType {
+export interface RacerInfoType {
   name: string;
   nameKana: string;
   birthday: Date;

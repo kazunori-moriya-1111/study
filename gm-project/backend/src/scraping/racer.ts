@@ -1,9 +1,9 @@
 import { JSDOM } from 'jsdom';
 import { RacerGrade } from '@prisma/client';
-import { racerInfoType } from './types/RacerInfoType';
+import { RacerInfoType } from './types/racerInfoType';
 
 export default class getRacerInfo {
-  async scraping(registrationNumber: number): Promise<racerInfoType> {
+  async scraping(registrationNumber: number): Promise<RacerInfoType> {
     const url = `https://www.boatrace.jp/owpc/pc/data/racersearch/profile?toban=${registrationNumber}`;
 
     // dom取得
@@ -22,7 +22,7 @@ export default class getRacerInfo {
     );
 
     console.log('elementsArray', elementsArray);
-    const racerInfo: racerInfoType = {
+    const racerInfo: RacerInfoType = {
       // スペース削除
       name: name.replace(/\s/g, ''),
       // スペース削除
