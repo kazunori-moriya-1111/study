@@ -1,18 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { RacerGrade } from '@prisma/client';
-
-interface racerInfoType {
-  name: string;
-  nameKana: string;
-  birthday: Date;
-  height: number;
-  weight: number;
-  bloodType: string;
-  branch: string;
-  birthPlace: string;
-  registrationPeriod: number;
-  racerGrade: RacerGrade;
-}
+import { racerInfoType } from './types/RacerInfoType';
 
 export default class getRacerInfo {
   async scraping(registrationNumber: number): Promise<racerInfoType> {

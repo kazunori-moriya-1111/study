@@ -1,18 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { RacerGrade } from '@prisma/client';
-
-interface ResultType {
-  name: string;
-  nameKana: string;
-  birthday: Date;
-  height: number;
-  weight: number;
-  bloodType: string;
-  branch: string;
-  birthPlace: string;
-  registrationPeriod: number;
-  racerGrade: RacerGrade;
-}
+import { ResultType } from './types/ResultType';
 
 export default class insertResult {
   async scraping(registrationNumber: number): Promise<any> {
