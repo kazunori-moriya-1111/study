@@ -15,13 +15,10 @@ export default class getRacerInfo {
     const nameKana = document.querySelector('.racer1_bodyKana').innerHTML;
 
     // 選手情報取得
-    const elementsArray = [...document.querySelectorAll('.list3 dd')].map(
-      (node) => {
-        return node.innerHTML;
-      },
-    );
+    const elementsArray = [...document.querySelectorAll('.list3 dd')].map((node) => {
+      return node.innerHTML;
+    });
 
-    console.log('elementsArray', elementsArray);
     const racerInfo: RacerInfoType = {
       // スペース削除
       name: name.replace(/\s/g, ''),
