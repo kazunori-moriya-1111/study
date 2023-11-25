@@ -58,9 +58,9 @@ model Result{
   raceEventDate String  @db.VarChar(4)
   raceNo Int
   raceSeries String  @db.VarChar(10)
-  //例）準優勝戦 1800m, winwin5
+  //例）第２６回チャレンジカップ／Ｇ２レディースＣＣ
   raceTitle String
-  //例）安定版使用
+  //例）予選 1800m 安定版使用
   raceLabel String
   // 1着
   firstPlace Int
