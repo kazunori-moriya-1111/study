@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ResultService } from './result.service';
 import { Result as ResultModel } from './models/result.model';
 import { Result } from '@prisma/client';
@@ -13,7 +13,12 @@ export class ResultResolver {
   }
 
   @Mutation(() => ResultModel)
-  async insertResult(): Promise<Result> {
-    return await this.resultService.insertResult();
+  // todo dto作成する
+  async insertResult(
+    @Args('raceNo', { type: () => Int }) raceNo: number,
+    @Args('fieldName') fieldName: string,
+    @Args('yyyymmdd') yyyymmdd: string,
+  ): Promise<Result> {
+    return await this.resultService.insertResult(raceNo, fieldName, yyyymmdd);
   }
 }

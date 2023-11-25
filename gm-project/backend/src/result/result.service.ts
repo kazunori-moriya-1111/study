@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Result } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import insertResult from 'src/scraping/result';
+import { dict } from './fieldNameTofieldNo';
 
 @Injectable()
 export class ResultService {
@@ -11,18 +12,23 @@ export class ResultService {
     return await this.prismaService.result.findMany();
   }
 
-  async insertResult(): Promise<Result> {
+  async insertResult(raceNo: number, fieldName: string, yyyymmdd: string): Promise<Result> {
     const iR = new insertResult();
-    iR.scraping(1);
+    const fieldNo: string = dict[fieldName].toString().padStart(2, '0');
+    const yyyymmdd_list = yyyymmdd.match(/.{1,4}/g);
+    const yyyy: number = Number(yyyymmdd_list[0]);
+    const mm: number = Number(yyyymmdd_list[1].match(/.{1,2}/g)[0]);
+    const dd: number = Number(yyyymmdd_list[1].match(/.{1,2}/g)[1]);
+    const { raceGrade } = await iR.scraping(raceNo, fieldNo, yyyymmdd);
     return await this.prismaService.result.create({
       data: {
-        fieldName: '常滑',
-        fieldNo: 10,
-        raceGrade: 'SG',
-        yyyymmdd: new Date(2023, 11, 11),
+        fieldName: fieldName,
+        fieldNo: Number(fieldNo),
+        raceGrade: raceGrade,
+        yyyymmdd: new Date(yyyy, mm, dd),
         //開催日
         raceEventDate: '2日',
-        raceNo: 1,
+        raceNo: raceNo,
         raceSeries: '',
         //例）準優勝戦 1800m, winwin5
         raceTitle: 'winwin5',
