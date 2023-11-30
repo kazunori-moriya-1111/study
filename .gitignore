@@ -87,7 +87,6 @@ nestjs-nextjs/nextjs/todo-nextjs/.env.local
 graphql/server/node_modules
 graphql-tasks/backend/node_modules
 graphql-tasks/backend/dist
-php/
 gm-project/feature.txt
 gm-project/backend/.env
 gm-project/backend/prisma/migrations
