@@ -43,3 +43,19 @@ if (1 === '1') {
 } else {
     echo 'false';
 }
+
+// issetとempty
+echo "<br>";
+$a = null;
+$b = 1;
+if (isset($c)) {
+    echo 'true';
+} else {
+    echo 'false';
+}
+echo "<br>";
+if (empty($a)) {
+    echo 'true';
+} else {
+    echo 'false';
+}
