@@ -59,3 +59,33 @@ if (empty($a)) {
 } else {
     echo 'false';
 }
+
+// 配列＆ループ
+echo "<br>";
+echo "配列＆ループ<br>";
+$arry = ['tato', 'kesan', 'toshiya'];
+$arry[1] = 'xsw';
+$arry[] = 'kesan';
+// var_dump(($arry));
+// echo $arry[1];
+for ($i = 0; $i < count($arry); $i++) {
+    echo '<div>', $arry[$i], '</div>';
+}
+foreach ($arry as $i => $v) {
+    echo '<div>', $i, $v, '</div>';
+}
+// 配列操作
+echo "<br>";
+echo "配列操作<br>";
+$arry = [
+    ['table', 1000], ['chiar', 100], ['bed', 5000]
+];
+
+// $arry[1][1] = 500;
+// array_shift($arry);
+// array_pop($arry);
+array_splice($arry, 1, 1);
+
+foreach ($arry as $val) {
+    echo "{$val[0]}は{$val[1]}円です";
+}
