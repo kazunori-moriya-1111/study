@@ -89,3 +89,13 @@ array_splice($arry, 1, 1);
 foreach ($arry as $val) {
     echo "{$val[0]}は{$val[1]}円です";
 }
+
+// 連想配列
+echo "<br>";
+echo "連想配列<br>";
+
+$arry = ['name' => 'Bob', 'age' => 12, 'sports' => ['baseball', 'swimming']];
+echo $arry['name'];
+$arry['age'] += 24;
+echo $arry['age'];
+echo $arry['sports'][1];
