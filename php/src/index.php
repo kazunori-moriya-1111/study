@@ -99,3 +99,15 @@ echo $arry['name'];
 $arry['age'] += 24;
 echo $arry['age'];
 echo $arry['sports'][1];
+
+// 正規表現
+echo "<br>";
+echo "正規表現<br>";
+
+$char = 'ZAabd1_sscc';
+if (preg_match("/[a-zA-z]{1,3}/i", $char, $result)) {
+    echo '検索成功';
+    print_r($result[0]);
+} else {
+    echo '検索失敗';
+}
