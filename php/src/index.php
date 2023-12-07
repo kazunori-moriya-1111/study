@@ -111,3 +111,35 @@ if (preg_match("/[a-zA-z]{1,3}/i", $char, $result)) {
 } else {
     echo '検索失敗';
 }
+
+// 関数作成
+echo "<br>";
+echo "関数作成<br>";
+
+$numbers = [1, 2, 3, 4];
+$numbers2 = [1, 2, 3];
+
+function sum($nums)
+{
+    $sum = 0;
+    foreach ($nums as $num) {
+        $sum += $num;
+    }
+    return $sum;
+}
+
+$result =  sum($numbers);
+echo "合計：{$result}<br>";
+sum($numbers2);
+
+$price = 1000;
+function with_tax($base_price, $tax_rate = 0.1)
+{
+    $sum_price = $base_price + ($base_price * $tax_rate);
+    $sum_price = round($sum_price);
+    return $sum_price;
+}
+$fn = "with_tax";
+$price = $fn($price, 0.2);
+echo $price;
+echo "<be>";
