@@ -158,3 +158,17 @@ $fn = "with_tax";
 $price = $fn($price, 0.2);
 echo $price;
 echo "<be>";
+
+// 条件分岐省略記法
+echo "<br>";
+echo "条件分岐省略記法<br>";
+$arry = ['' => 10];
+
+// if (isset($arry['key'])) {
+//     $arry['key'] *= 10;
+// } else {
+//     $arry['key'] = 1;
+// }
+// $arry['key'] = $arry['key'] ?? 1;
+$arry['key'] = isset($arry['key']) ? $arry['key'] *= 10 : $arry['key'] = 1;
+echo $arry['key'];
