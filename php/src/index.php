@@ -185,3 +185,20 @@ function with_tax($base_price, $tax_rate = TAX_RATE)
     $sum_price = round($sum_price);
     return $sum_price;
 }
+
+// ファイル分割
+echo "<br>";
+echo "ファイル分割<br>";
+
+$arry = [
+    'num' => 0
+];
+
+require('file1.php');
+require('file1.php');
+require('file1.php');
+include('file1.php');
+require('file2.php');
+fn1();
+
+echo ($arry['num']);
