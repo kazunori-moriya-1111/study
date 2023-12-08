@@ -199,6 +199,15 @@ require('file1.php');
 require('file1.php');
 include('file1.php');
 require('file2.php');
-fn1();
+// fn1();
 
 echo ($arry['num']);
+
+// パスの書き方
+echo "<br>";
+echo "パスの書き方<br>";
+require('file1.php');
+require('second/koko.php');
+echo __DIR__;
+echo __FILE__;
+echo dirname(__FILE__, 2);
