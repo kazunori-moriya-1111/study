@@ -148,12 +148,12 @@ $price = 1000;
  * 
  * @return int 税込金額
  */
-function with_tax($base_price, $tax_rate = 0.1)
-{
-    $sum_price = $base_price + ($base_price * $tax_rate);
-    $sum_price = round($sum_price);
-    return $sum_price;
-}
+// function with_tax($base_price, $tax_rate = 0.1)
+// {
+//     $sum_price = $base_price + ($base_price * $tax_rate);
+//     $sum_price = round($sum_price);
+//     return $sum_price;
+// }
 $fn = "with_tax";
 $price = $fn($price, 0.2);
 echo $price;
@@ -172,3 +172,16 @@ $arry = ['' => 10];
 // $arry['key'] = $arry['key'] ?? 1;
 $arry['key'] = isset($arry['key']) ? $arry['key'] *= 10 : $arry['key'] = 1;
 echo $arry['key'];
+
+// 定数
+echo "<br>";
+echo "定数<br>";
+// const TAX_RATE = 0.1;
+if (!defined('TAX_RATE'))
+    define('TAX_RATE', 0.1);
+function with_tax($base_price, $tax_rate = TAX_RATE)
+{
+    $sum_price = $base_price + ($base_price * $tax_rate);
+    $sum_price = round($sum_price);
+    return $sum_price;
+}
