@@ -154,10 +154,10 @@ $price = 1000;
 //     $sum_price = round($sum_price);
 //     return $sum_price;
 // }
-$fn = "with_tax";
-$price = $fn($price, 0.2);
-echo $price;
-echo "<be>";
+// $fn = "with_tax";
+// $price = $fn($price, 0.2);
+// echo $price;
+// echo "<be>";
 
 // 条件分岐省略記法
 echo "<br>";
@@ -177,14 +177,14 @@ echo $arry['key'];
 echo "<br>";
 echo "定数<br>";
 // const TAX_RATE = 0.1;
-if (!defined('TAX_RATE'))
-    define('TAX_RATE', 0.1);
-function with_tax($base_price, $tax_rate = TAX_RATE)
-{
-    $sum_price = $base_price + ($base_price * $tax_rate);
-    $sum_price = round($sum_price);
-    return $sum_price;
-}
+// if (!defined('TAX_RATE'))
+//     define('TAX_RATE', 0.1);
+// function with_tax($base_price, $tax_rate = TAX_RATE)
+// {
+//     $sum_price = $base_price + ($base_price * $tax_rate);
+//     $sum_price = round($sum_price);
+//     return $sum_price;
+// }
 
 // ファイル分割
 echo "<br>";
@@ -211,3 +211,15 @@ require('second/koko.php');
 echo __DIR__;
 echo __FILE__;
 echo dirname(__FILE__, 2);
+
+// 名前空間
+echo "<br>";
+echo "名前空間<br>";
+require_once 'lib.php';
+
+use function lib\with_tax;
+use const lib\sub\TAX_RATE;
+
+$price = with_tax(1000);
+echo $price;
+echo TAX_RATE;
