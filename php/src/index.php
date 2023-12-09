@@ -223,3 +223,27 @@ use const lib\sub\TAX_RATE;
 $price = with_tax(1000);
 echo $price;
 echo TAX_RATE;
+
+// クラスの基礎
+echo "<br>";
+echo "クラスの基礎<br>";
+class Person
+{
+    public $name;
+    public $age;
+
+    function __construct($name, $age)
+    {
+        $this->name = $name;
+        $this->age = $age;
+    }
+    function hello()
+    {
+        echo 'hello, ' . $this->name;
+    }
+}
+
+$bob = new Person('Bob', 18);
+echo $bob->name;
+echo $bob->age;
+$bob->hello();
