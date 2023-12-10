@@ -231,6 +231,7 @@ class Person
 {
     public $name;
     public $age;
+    public static $whereToLive = 'earth';
 
     function __construct($name, $age)
     {
@@ -240,12 +241,13 @@ class Person
     function hello()
     {
         echo 'hello, ' . $this->name;
+        echo static::$whereToLive;
+        static::bye();
         return $this;
     }
-    function bye()
+    static function bye()
     {
-        echo 'bey, ' . $this->name;
-        return $this;
+        echo 'bey';
     }
 }
 
@@ -253,3 +255,4 @@ $bob = new Person('Bob', 18);
 echo $bob->name;
 echo $bob->age;
 $bob->hello()->bye();
+Person::bye();
