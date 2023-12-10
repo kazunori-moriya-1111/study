@@ -240,10 +240,16 @@ class Person
     function hello()
     {
         echo 'hello, ' . $this->name;
+        return $this;
+    }
+    function bye()
+    {
+        echo 'bey, ' . $this->name;
+        return $this;
     }
 }
 
 $bob = new Person('Bob', 18);
 echo $bob->name;
 echo $bob->age;
-$bob->hello();
+$bob->hello()->bye();
