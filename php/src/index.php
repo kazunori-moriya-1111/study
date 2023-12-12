@@ -229,7 +229,7 @@ echo "<br>";
 echo "クラスの基礎<br>";
 class Person
 {
-    public $name;
+    protected $name;
     public $age;
     public static $whereToLive = 'earth';
 
@@ -252,7 +252,28 @@ class Person
 }
 
 $bob = new Person('Bob', 18);
-echo $bob->name;
+// echo $bob->name;
 echo $bob->age;
 $bob->hello()->bye();
 Person::bye();
+
+// クラス継承
+echo "<br>";
+echo "クラス継承<br>";
+
+class Japanese extends Person
+{
+    function __construct($name, $age)
+    {
+        $this->name = $name;
+        $this->age = 30;
+    }
+    function hello()
+    {
+        echo 'こんにちは, ' . $this->name;
+        return $this;
+    }
+}
+$taro = new Japanese('太郎', 18);
+$taro->hello();
+echo $taro->age;
