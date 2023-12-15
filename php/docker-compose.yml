@@ -2,6 +2,7 @@ services:
   php:
     image: php:7.2-apache
     volumes:
+      - ./apache/apache2.conf:/etc/apache2/apache2.conf
       - ./src:/var/www/html
     ports:
       - 8000:80
