@@ -16,6 +16,7 @@ services:
     platform: linux/x86_64 #Mac M1
     volumes:
       - php-db:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/my.cnf
     ports:
       - 3306:3306
     environment:
