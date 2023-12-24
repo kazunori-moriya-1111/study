@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+/* HelloController クラスの名前空間のインポート文を追加する */
+use App\Http\Controllers\HelloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+/* hello world page（ルーティングを追加する） */
+Route::get('/hello', [HelloController::class, "index"]);
