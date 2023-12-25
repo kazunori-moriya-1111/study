@@ -7,6 +7,7 @@ use PDO;
 class DataSource
 {
     private $conn;
+    private $sqlResult;
 
     public function __construct($host = 'mysql5.7-trial2', $port = '3306', $dbName = 'test_phpdb', $username = 'test_user', $password = 'pwd')
     {
@@ -19,14 +20,41 @@ class DataSource
 
     public function select($sql = "", $params = [])
     {
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute($params);
+        $stmt = $this->executeSql($sql, $params);
         return $stmt->fetchAll();
+    }
+
+    public function execute($sql = "", $params = [])
+    {
+        $this->executeSql($sql, $params);
+        return $this->sqlResult;
     }
 
     public function selectOne($sql = "", $params = [])
     {
         $result = $this->select($sql, $params);
         return count($result) > 0 ? $result[0] : false;
+    }
+
+    public function begin()
+    {
+        $this->conn->beginTransaction();
+    }
+
+    public function commit()
+    {
+        $this->conn->commit();
+    }
+
+    public function rollback()
+    {
+        $this->conn->rollback();
+    }
+
+    private function executeSql($sql, $params)
+    {
+        $stmt = $this->conn->prepare($sql);
+        $this->sqlResult = $stmt->execute($params);
+        return $stmt;
     }
 }
