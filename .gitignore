@@ -90,3 +90,4 @@ graphql-tasks/backend/dist
 gm-project/feature.txt
 gm-project/backend/.env
 gm-project/backend/prisma/migrations
+laravel/phpMyAdmin/sessions
