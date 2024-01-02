@@ -91,4 +91,3 @@ gm-project/feature.txt
 gm-project/backend/.env
 gm-project/backend/prisma/migrations
 laravel/phpMyAdmin/sessions
-laravel/src/task_test/database/migrations
