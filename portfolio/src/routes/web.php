@@ -22,6 +22,18 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/contents/jobcareer', function () {
+    return view('contents.jobcareer');
+});
+
+Route::get('/contents/resume', function () {
+    return view('contents.resume');
+});
+
+Route::get('/contents/boatrace', function () {
+    return view('contents.boatrace');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
