@@ -10,30 +10,29 @@
 
 <body>
     <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto flex flex-col">
+        <div class="container px-5 py-6 mx-auto flex flex-col">
             <div class="lg:w-4/6 mx-auto">
                 <div class="flex flex-col sm:flex-row mt-10">
                     <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
                         <img src=" {{ asset('img/profile.png') }}" class="w-30 h-30" />
                         <div class=" flex flex-col items-center text-center justify-center">
-                            <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">森谷和徳</h2>
+                            <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">森谷 和徳</h2>
                             <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
                             <p class="text-base">moriya kazunori</p>
+                            <p class="text-base">H1 11.11 barth 34yaers</p>
+                            <p class="text-base">from Saitama live in Tokyo</p>
+                            <p class="text-base">web engineer data scientist</p>
                         </div>
                     </div>
                     <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                        <p class="leading-relaxed text-lg mb-4">このサイトでは〜〜</p>
+                        <p class="leading-relaxed text-lg mb-4">このサイトでは私の職務経歴やWEBアプリを公開しています</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">森谷和徳のポートフォリオ</h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">このサイトではでは私の職務経歴やWEBアプリを公開しています</p>
-            </div>
+        <div class="container px-5 py-6 mx-auto">
             <div class="flex flex-wrap">
                 <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
                     <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">職務経歴</h2>
