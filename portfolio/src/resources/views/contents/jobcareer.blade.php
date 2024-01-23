@@ -9,7 +9,27 @@
 </head>
 
 <body>
-    職務経歴ページ
+    <div class="flex h-60 min-h-screen flex-col">
+        <header class="bg-blue-200 p-4">Header</header>
+        <div class="flex">
+            <aside class="w-32 flex-none bg-blue-200 p-4">森谷和徳</aside>
+            <main class="min-w-0 flex-1 overflow-auto bg-blue-50 p-4">
+                <div class="flex h-60">
+                    <aside class="w-32 flex-none bg-blue-200 p-4">日付</aside>
+                    <main class="min-w-0 flex-1 overflow-auto bg-blue-50 p-4">職務内容</main>
+                </div>
+                <div class="flex h-60">
+                    <aside class="w-32 flex-none bg-blue-200 p-4">日付</aside>
+                    <main class="min-w-0 flex-1 overflow-auto bg-blue-50 p-4">職務内容</main>
+                </div>
+                <div class="flex h-60">
+                    <aside class="w-32 flex-none bg-blue-200 p-4">日付</aside>
+                    <main class="min-w-0 flex-1 overflow-auto bg-blue-50 p-4">職務内容</main>
+                </div>
+            </main>
+        </div>
+        <footer class="bg-blue-200 p-4">Footer</footer>
+    </div>
 </body>
 
 </html>
