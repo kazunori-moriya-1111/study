@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/chartjs', function () {
+    return view('chartjs');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
