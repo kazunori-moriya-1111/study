@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             // 
             $table->boolean('guest_flg');
-            $table->string('session_id');
+            $table->string('session_id')->nullable();
         });
     }
 
@@ -28,9 +28,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
-            Schema::dropColumns('guest_flg');
-            Schema::dropColumns('session_id');
+            $table->dropColumn(['guest_flg', 'session_id']);
         });
     }
 };
