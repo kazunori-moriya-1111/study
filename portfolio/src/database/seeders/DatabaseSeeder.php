@@ -14,10 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // ユーザデータ作成
         $this->call([
             UserSeeder::class
         ]);
-        // \App\Models\User::factory(10)->create();
+
+        // タグデータ（ダミー）作成
+        \App\Models\Tag::factory(10)->create();
+
+        // レコードデータ（ダミー）作成
+        \App\Models\Record::factory(10)->create();
+
+        // レコードタグデータ（ダミー）作成
+        \App\Models\RecordTag::factory()->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
