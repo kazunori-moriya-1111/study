@@ -13,6 +13,10 @@
     <div>
         <canvas id="myChart"></canvas>
     </div>
+    <script>
+        data = <?php echo json_encode($data) ?>;
+    </script>
+
 </body>
 
 </html>
