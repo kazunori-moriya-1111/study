@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ChartjsController;
+use App\Http\Controllers\ManegementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/chartjs', [ChartjsController::class, 'index']);
-
+Route::get('/manegement', [ManegementController::class, 'index']);
 
 Route::get('/welcome', function () {
     return view('welcome');
