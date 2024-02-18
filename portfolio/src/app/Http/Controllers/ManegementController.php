@@ -19,4 +19,18 @@ class ManegementController extends Controller
         $data = [1, 2, 3, 4, 5, 6];
         return view('manegement.create', compact('data'));
     }
+
+    public function store(Request $request)
+    {
+        $user_id = 1;
+        Record::create([
+            'user_id' => $user_id,
+            'date' => $request->date,
+            'bet' => $request->bet,
+            'payout' => $request->payout,
+            'memo' => $request->memo,
+        ]);
+
+        return to_route('manegement.index');
+    }
 }

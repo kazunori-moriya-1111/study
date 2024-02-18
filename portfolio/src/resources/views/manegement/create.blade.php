@@ -11,12 +11,22 @@
 <body>
     <div>ボートレース収支管理アプリ_create</div>
     <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
-    <div class="w-80">
-        <canvas id="myChart"></canvas>
-    </div>
-    <script>
-        data = <?php echo json_encode($data) ?>;
-    </script>
+    <form method="post" action="{{ route('manegement.store') }}">
+        @csrf
+        <label for="date">日付</label>
+        <input type="date" id="date" name="date" />
+        <br>
+        <label for="bet">掛け金</label>
+        <input type="text" id="bet" name="bet" />
+        <br>
+        <label for="payout">払戻金</label>
+        <input type="text" id="payout" name="payout" />
+        <br>
+        <label for="memo">メモ</label>
+        <input type="text" id="memo" name="memo" />
+        <br>
+        <button>登録する</button>
+    </form>
 </body>
 
 </html>
