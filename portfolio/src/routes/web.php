@@ -19,8 +19,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-Route::get('/manegement', [ManegementController::class, 'index']);
+Route::prefix('manegement')
+    ->controller(ManegementController::class)
+    ->name('manegement.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+    });
 
 Route::get('/welcome', function () {
     return view('welcome');

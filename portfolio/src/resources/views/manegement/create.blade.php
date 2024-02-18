@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <div>ボートレース収支管理アプリ</div>
-    <a href="{{ route('manegement.create') }}" class="text-blue-500 underline">新規登録</a><br>
+    <div>ボートレース収支管理アプリ_create</div>
+    <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
     <div class="w-80">
         <canvas id="myChart"></canvas>
     </div>
