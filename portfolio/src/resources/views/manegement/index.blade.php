@@ -14,8 +14,11 @@
     <div class="w-80">
         <canvas id="myChart"></canvas>
     </div>
+    @foreach($data as $row)
+    <p>{{ $row }}</p>
+    @endforeach
     <script>
-        data = <?php echo json_encode($data) ?>;
+        data = <?php echo json_encode($graph) ?>;
     </script>
 </body>
 
