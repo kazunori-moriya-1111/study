@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('date');
             $table->integer('bet');
             $table->integer('payout');
-            $table->string('memo');
+            $table->string('memo')->nullable();
             $table->timestamps();
         });
     }
