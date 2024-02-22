@@ -15,7 +15,8 @@
         <canvas id="myChart"></canvas>
     </div>
     @foreach($data as $row)
-    <p>{{ $row }}</p>
+    <p>日付:{{ $row->date }} 掛け金:{{ $row->bet }} 払い戻し金:{{ $row->payout }}</p>
+    <a class="text-blue-500 underline" href="{{ route('manegement.show', ['id' => $row->id ]) }}">詳細確認</a>
     @endforeach
     <script>
         data = <?php echo json_encode($graph) ?>;

@@ -16,7 +16,7 @@ class ManegementController extends Controller
         } else {
             // クエリパラメータが埋め込まれていない場合
         }
-        $data = Record::select('date', 'bet', 'payout')->get();
+        $data = Record::select('id', 'date', 'bet', 'payout')->get();
         $collection = Record::select('bet')->where('user_id', 1)->limit(6)->get();
         $graph = $collection->pluck('bet')->all();
         return view('manegement.index', compact('data', 'graph'));
@@ -39,5 +39,12 @@ class ManegementController extends Controller
         ]);
 
         return to_route('manegement.index');
+    }
+
+    public function show($id)
+    {
+        $record = Record::find($id);
+
+        return view('manegement.show', compact('record'));
     }
 }
