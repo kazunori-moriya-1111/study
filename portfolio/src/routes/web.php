@@ -32,17 +32,19 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/contents/jobcareer', function () {
-    return view('contents.jobcareer');
-});
-
-Route::get('/contents/resume', function () {
-    return view('contents.resume');
-});
-
-Route::get('/contents/boatrace', function () {
-    return view('contents.boatrace');
-});
+Route::prefix('contents')
+    ->name('contents.')
+    ->group(function () {
+        Route::get('/jobcareer', function () {
+            return view('contents.jobcareer');
+        })->name('jobcareer');
+        Route::get('/resume', function () {
+            return view('contents.resume');
+        })->name('resume');
+        Route::get('/boatrace', function () {
+            return view('contents.boatrace');
+        })->name('boatrace');
+    });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
