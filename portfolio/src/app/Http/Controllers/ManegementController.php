@@ -16,10 +16,9 @@ class ManegementController extends Controller
         } else {
             // クエリパラメータが埋め込まれていない場合
         }
-        $collection = Record::select('date', 'bet', 'payout')->get();
-        $data = $collection->all();
-        $collection_tmp = Record::select('bet')->where('user_id', 1)->limit(6)->get();
-        $graph = $collection_tmp->pluck('bet')->all();
+        $data = Record::select('date', 'bet', 'payout')->get();
+        $collection = Record::select('bet')->where('user_id', 1)->limit(6)->get();
+        $graph = $collection->pluck('bet')->all();
         return view('manegement.index', compact('data', 'graph'));
     }
     public function create()
