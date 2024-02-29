@@ -25,6 +25,9 @@
     <div>{{ $record->memo }}</div>
     <br>
     @endif
+    <form method="get" action="{{ route('manegement.edit', ['id' => $record->id ]) }}">
+        <button class="text-blue-500 underline">編集する</button>
+    </form>
 
 </body>
 

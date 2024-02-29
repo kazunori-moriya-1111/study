@@ -47,4 +47,23 @@ class ManegementController extends Controller
 
         return view('manegement.show', compact('record'));
     }
+
+    public function edit($id)
+    {
+        $record = Record::find($id);
+
+        return view('manegement.edit', compact('record'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $record = Record::find($id);
+        $record->date = $request->date;
+        $record->bet = $request->bet;
+        $record->payout = $request->payout;
+        $record->memo = $request->memo;
+        $record->save();
+
+        return to_route('manegement.index');
+    }
 }
