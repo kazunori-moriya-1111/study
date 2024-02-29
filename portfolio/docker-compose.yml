@@ -70,6 +70,8 @@ services:
       - ./src:/var/www
     # コンテナ起動後のカレントディレクトリを設定
     working_dir: /var/www
+    # コンテナでalpine.js起動
+    command: [npm, run, dev]
 
 # サービスレベルで名前付きボリュームを命名する
 volumes:
