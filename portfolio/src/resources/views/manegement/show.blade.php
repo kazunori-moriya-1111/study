@@ -28,7 +28,19 @@
     <form method="get" action="{{ route('manegement.edit', ['id' => $record->id ]) }}">
         <button class="text-blue-500 underline">編集する</button>
     </form>
+    <form id="delete_{{ $record->id }}" method="post" action="{{ route('manegement.destroy', ['id' => $record->id ]) }}">
+        @csrf
+        <a href="#" data-id="{{ $record->id }}" onclick="deletePost(this)" class="text-red-500 underline">削除する</a>
+    </form>
 
 </body>
+<script>
+    function deletePost(e) {
+        if (confirm('本当に削除してもよいですか？')) {
+            console.log("aa", e.dataset.id)
+            document.getElementById('delete_' + e.dataset.id).submit()
+        }
+    }
+</script>
 
 </html>
