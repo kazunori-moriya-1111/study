@@ -14,8 +14,16 @@
     <div class="w-80">
         <canvas id="myChart"></canvas>
     </div>
+    <!-- データ一覧表示 -->
     @foreach($data as $row)
     <p>日付:{{ $row->date }} 掛け金:{{ $row->bet }} 払い戻し金:{{ $row->payout }}</p>
+    <!-- タグデータ所持判定 -->
+    @if(!($row->tags->isEmpty()))
+    <!-- タグデータ一覧表示 -->
+    @foreach($row->tags as $tag)
+    <p>{{ $tag->name }}</p>
+    @endforeach
+    @endif
     <a class="text-blue-500 underline" href="{{ route('manegement.show', ['id' => $row->id ]) }}">詳細確認</a>
     @endforeach
     <script>
