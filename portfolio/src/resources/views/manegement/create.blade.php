@@ -11,6 +11,10 @@
 <body>
     <div>ボートレース収支管理アプリ_create</div>
     <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
+    <x-input-error :messages="$errors->get('date')" class="mt-2" />
+    <x-input-error :messages="$errors->get('bet')" class="mt-2" />
+    <x-input-error :messages="$errors->get('payout')" class="mt-2" />
+    <x-input-error :messages="$errors->get('memo')" class="mt-2" />
     <form method="post" action="{{ route('manegement.store') }}">
         @csrf
         <label for="date">日付</label>

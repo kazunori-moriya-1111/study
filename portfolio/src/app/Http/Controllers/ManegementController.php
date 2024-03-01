@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Record;
+use App\Http\Requests\StoreRecordRequest;
 
 class ManegementController extends Controller
 {
@@ -27,7 +28,7 @@ class ManegementController extends Controller
         return view('manegement.create', compact('data'));
     }
 
-    public function store(Request $request)
+    public function store(StoreRecordRequest $request)
     {
         $user_id = 1;
         Record::create([

@@ -13,7 +13,7 @@ class StoreRecordRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreRecordRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'date' => ['required', 'date'],
+            'bet' => ['required', 'numeric'],
+            'payout' => ['required', 'numeric'],
+            'memo' => ['nullable', 'string'],
         ];
     }
 }
