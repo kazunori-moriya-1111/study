@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Record;
-use App\Http\Requests\StoreRecordRequest;
+use App\Http\Requests\PostRecordRequest;
 
 class ManegementController extends Controller
 {
@@ -28,7 +28,7 @@ class ManegementController extends Controller
         return view('manegement.create', compact('data'));
     }
 
-    public function store(StoreRecordRequest $request)
+    public function store(PostRecordRequest $request)
     {
         $user_id = 1;
         Record::create([
@@ -56,7 +56,7 @@ class ManegementController extends Controller
         return view('manegement.edit', compact('record'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PostRecordRequest $request, $id)
     {
         $record = Record::find($id);
         $record->date = $request->date;
