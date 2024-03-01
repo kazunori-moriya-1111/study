@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ManegementController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,13 @@ Route::prefix('manegement')
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::post('/{id}', 'update')->name('update');
         Route::post('/{id}/destroy', 'destroy')->name('destroy');
+    });
+
+Route::prefix('tag')
+    ->controller(TagController::class)
+    ->name('tag.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
     });
 
 Route::get('/welcome', function () {
