@@ -41,6 +41,6 @@ class TagController extends Controller
         $record->delete();
 
         // record_tagテーブルにも値が存在する場合は先にrecord_tagテーブルの削除が必要
-        return to_route('manegement.index');
+        return to_route('tag.index');
     }
 }

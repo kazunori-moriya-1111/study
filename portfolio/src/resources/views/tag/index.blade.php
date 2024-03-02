@@ -19,6 +19,8 @@
     <p>{{ $row->name }}</p>
     <!-- タグ編集モーダル -->
     <livewire:update-tag-modal :tag_id="$row->id" :name="$row->name" />
+    <!-- タグ削除モーダル -->
+    <livewire:destroy-tag-modal :tag_id="$row->id" :name="$row->name" />
     @endforeach
     @livewireScripts
 </body>
