@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Modal extends Component
+class CreateTagModal extends Component
 {
     // モーダル内で使用するパラメータ名を定義
     public $showModal = false;
@@ -12,7 +12,7 @@ class Modal extends Component
 
     public function render()
     {
-        return view('livewire.modal');
+        return view('livewire.create-tag-modal');
     }
 
     public function openModal()

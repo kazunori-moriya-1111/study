@@ -25,4 +25,22 @@ class TagController extends Controller
 
         return to_route('tag.index');
     }
+
+    public function update(Request $request, $id)
+    {
+        $tag = Tag::find($id);
+        $tag->name = $request->name;
+        $tag->save();
+
+        return to_route('tag.index');
+    }
+
+    public function destroy($id)
+    {
+        $record = Tag::find($id);
+        $record->delete();
+
+        // record_tagテーブルにも値が存在する場合は先にrecord_tagテーブルの削除が必要
+        return to_route('manegement.index');
+    }
 }

@@ -1,6 +1,6 @@
 <div>
     <button wire:click="openModal()" type="button" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-        名前を変更する
+        タグを編集する
     </button>
 
     @if($showModal)
@@ -11,15 +11,15 @@
             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        タグ名編集
+                        タグ登録
                     </h3>
                     <div class="mt-2">
                         <!-- 新規登録機能になっている -->
-                        <form method="post" action="{{ route('tag.store') }}">
+                        <form method="post" action="{{ route('tag.update', ['id' => $tag_id]) }}">
                             @csrf
                             <label for="bet">タグ名</label>
                             <input type="text" id="name" name="name" value="{{ $name }}" />
-                            <button>登録する</button>
+                            <button>更新する</button>
                         </form>
                     </div>
                 </div>
