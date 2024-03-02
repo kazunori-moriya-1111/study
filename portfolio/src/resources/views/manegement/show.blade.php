@@ -20,6 +20,15 @@
     <label for="payout">払戻金</label>
     <div>{{ $record->payout }}</div>
     <br>
+    <label for="memo">tag</label>
+    <livewire:record-tag-edit-modal />
+    <!-- タグデータ所持判定 -->
+    @if(!($record->tags->isEmpty()))
+    @foreach($record->tags as $tag)
+    <p>{{ $tag->name }}</p>
+    @endforeach
+    @endif
+    <br>
     @if($record->memo)
     <label for="memo">メモ</label>
     <div>{{ $record->memo }}</div>
