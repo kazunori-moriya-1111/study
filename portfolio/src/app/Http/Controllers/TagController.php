@@ -15,4 +15,14 @@ class TagController extends Controller
 
         return view('tag.index', compact('data'));
     }
+    public function store(Request $request)
+    {
+        $user_id = 1;
+        Tag::create([
+            'user_id' => $user_id,
+            'name' => $request->name,
+        ]);
+
+        return to_route('tag.index');
+    }
 }

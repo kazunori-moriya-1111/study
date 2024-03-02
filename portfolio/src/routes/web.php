@@ -38,6 +38,7 @@ Route::prefix('tag')
     ->name('tag.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
     });
 
 Route::get('/welcome', function () {
