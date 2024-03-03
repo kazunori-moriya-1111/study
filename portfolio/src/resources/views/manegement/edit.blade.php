@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Laravel</title>
+    @livewireStyles
 </head>
 
 <body>
@@ -26,11 +27,22 @@
         <label for="payout">払戻金</label>
         <input type="text" id="payout" name="payout" value="{{ $record->payout }}" />
         <br>
+        <label>tag</label>
+        <!-- タグデータ所持判定 -->
+        @if(!($record->tags->isEmpty()))
+        <!-- タグデータ一覧表示 -->
+        <livewire:record-tag-edit-modal :record="$record" :tags="$tags" />
+        @foreach($record->tags as $tag)
+        <p>{{ $tag->name }}</p>
+        @endforeach
+        @endif
+        <br>
         <label for="memo">メモ</label>
         <input type="text" id="memo" name="memo" value="{{ $record->memo }}" />
         <br>
         <button class="text-blue-500 underline">更新する</button>
     </form>
+    @livewireScripts
 </body>
 
 </html>

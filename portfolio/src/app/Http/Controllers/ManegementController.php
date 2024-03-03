@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Record;
+use App\Models\Tag;
 use App\Http\Requests\PostRecordRequest;
 
 class ManegementController extends Controller
@@ -52,8 +53,9 @@ class ManegementController extends Controller
     public function edit($id)
     {
         $record = Record::find($id);
-
-        return view('manegement.edit', compact('record'));
+        // ログインユーザの所持してるタグを渡す
+        $tags = Tag::where('user_id', 1)->get();
+        return view('manegement.edit', compact('record', 'tags'));
     }
 
     public function update(PostRecordRequest $request, $id)
