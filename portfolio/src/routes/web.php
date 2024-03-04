@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ManegementController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\RecordTagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,8 @@ Route::prefix('tag')
         Route::post('/{id}', 'update')->name('update');
         Route::post('/{id}/destroy', 'destroy')->name('destroy');
     });
+
+Route::post('record-tag/{id}', [RecordTagController::class, 'update'])->name('record-tag.update');
 
 Route::get('/welcome', function () {
     return view('welcome');

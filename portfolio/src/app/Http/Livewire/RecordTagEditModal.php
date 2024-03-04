@@ -10,6 +10,7 @@ class RecordTagEditModal extends Component
     public $showModal = false;
     public $record;
     public $tags;
+    public $recordTagIdCollection;
 
     public function render()
     {

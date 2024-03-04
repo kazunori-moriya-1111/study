@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class RecordTag extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'record_id',
+        'tag_id',
+    ];
+
     protected $table = 'record_tag';
 }

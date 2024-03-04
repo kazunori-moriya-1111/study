@@ -1,6 +1,6 @@
 <div>
     <button wire:click="openModal" type="button" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-        タグを追加する
+        タグを編集する
     </button>
 
     @if($showModal)
@@ -13,11 +13,14 @@
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
                         タグ登録
                     </h3>
-                    <!-- ここにチェックボックスを入れて「追加ボタンで」タグ更新する -->
-                    {{ $record }}
-                    @foreach($tags as $tag)
-                    <p>{{ $tag->id }}:{{ $tag->name }}</p>
-                    @endforeach
+                    <form method="post" action="{{ route('record-tag.update', ['id' => $record->id]) }}">
+                        @csrf
+                        @foreach($tags as $tag)
+                        <p><input type="checkbox" name="updateTagIdArray[]" value="{{ $tag->id }}" {{ $recordTagIdCollection->contains($tag->id) ? 'checked' : ''}}>{{ $tag->name }}</p>
+                        @endforeach
+                        <br>
+                        <button class="text-blue-500 underline">更新する</button>
+                    </form>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <button wire:click="closeModal()" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700">

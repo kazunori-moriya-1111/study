@@ -28,10 +28,10 @@
         <input type="text" id="payout" name="payout" value="{{ $record->payout }}" />
         <br>
         <label>tag</label>
+        <livewire:record-tag-edit-modal :record="$record" :tags="$tags" :recordTagIdCollection="$recordTagIdCollection" />
         <!-- タグデータ所持判定 -->
         @if(!($record->tags->isEmpty()))
         <!-- タグデータ一覧表示 -->
-        <livewire:record-tag-edit-modal :record="$record" :tags="$tags" />
         @foreach($record->tags as $tag)
         <p>{{ $tag->name }}</p>
         @endforeach

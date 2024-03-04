@@ -55,7 +55,9 @@ class ManegementController extends Controller
         $record = Record::find($id);
         // ログインユーザの所持してるタグを渡す
         $tags = Tag::where('user_id', 1)->get();
-        return view('manegement.edit', compact('record', 'tags'));
+        // checkbox用recordに付与されているtag_idの配列を渡す
+        $recordTagIdCollection = $record->tags->pluck('id');
+        return view('manegement.edit', compact('record', 'tags', 'recordTagIdCollection'));
     }
 
     public function update(PostRecordRequest $request, $id)
