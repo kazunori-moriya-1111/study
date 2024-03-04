@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();;
             $table->date('date');
             $table->integer('bet');
             $table->integer('payout');
