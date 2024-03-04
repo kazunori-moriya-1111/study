@@ -77,7 +77,6 @@ class ManegementController extends Controller
         $record = Record::find($id);
         $record->delete();
 
-        // record_tagテーブルにも値が存在する場合は先にrecord_tagテーブルの削除が必要
         return to_route('manegement.index');
     }
 }
