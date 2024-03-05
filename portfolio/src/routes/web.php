@@ -26,6 +26,7 @@ Route::prefix('manegement')
     ->name('manegement.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/calendar', 'calendar')->name('calendar');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
         Route::get('/{id}', 'show')->name('show');

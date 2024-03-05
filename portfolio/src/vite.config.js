@@ -6,6 +6,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/calendar.css',
                 'resources/js/app.js',
                 'resources/js/chartjs.js',
                 'resources/js/calendar.js',

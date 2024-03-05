@@ -23,6 +23,13 @@ class ManegementController extends Controller
         $graph = $collection->pluck('bet')->all();
         return view('manegement.index', compact('data', 'graph'));
     }
+
+    public function calendar(Request $request)
+    {
+        $calendar_items = 1;
+        return view('manegement.calendar', compact('calendar_items'));
+    }
+
     public function create()
     {
         $data = [1, 2, 3, 4, 5, 6];
