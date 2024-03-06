@@ -11,6 +11,7 @@
 <body>
     <div>ボートレース収支管理アプリ</div>
     <a href="{{ route('manegement.create') }}" class="text-blue-500 underline">新規登録</a><br>
+    <a href="{{ route('manegement.calendar') }}" class="text-blue-500 underline">収支</a><br>
     <a href="{{ route('tag.index') }}" class="text-blue-500 underline">タグ一覧</a><br>
     <div class="w-80">
         <canvas id="myChart"></canvas>

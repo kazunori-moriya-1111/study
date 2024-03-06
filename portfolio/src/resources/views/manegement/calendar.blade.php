@@ -10,6 +10,7 @@
 
 <body>
     <div>ボートレース収支管理アプリ_calendar</div>
+    <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
     <div id="calendar" class="w-90"></div>
     <script>
         calendar_items = <?php echo json_encode($calendar_items) ?>;
