@@ -20,15 +20,20 @@ class ManegementController extends Controller
             // クエリパラメータが埋め込まれていない場合
         }
         $data = Record::select('id', 'date', 'bet', 'payout')->get();
-        $collection = Record::select('bet')->where('user_id', 1)->limit(6)->get();
-        $graph = $collection->pluck('bet')->all();
-        return view('manegement.index', compact('data', 'graph'));
+        return view('manegement.index', compact('data'));
     }
 
     public function calendar(Request $request)
     {
         $json_array = CalenderJson::getCalenderJson();
         return view('manegement.calendar', compact('json_array'));
+    }
+
+    public function totalling(Request $request)
+    {
+        $collection = Record::select('bet')->where('user_id', 1)->limit(6)->get();
+        $graph = $collection->pluck('bet')->all();
+        return view('manegement.totalling', compact('graph'));
     }
 
     public function create()
