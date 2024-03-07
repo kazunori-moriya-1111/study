@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Record;
 use App\Models\Tag;
 use App\Http\Requests\PostRecordRequest;
+use App\Services\CalenderJson;
 
 class ManegementController extends Controller
 {
@@ -26,8 +27,8 @@ class ManegementController extends Controller
 
     public function calendar(Request $request)
     {
-        $calendar_items = 1;
-        return view('manegement.calendar', compact('calendar_items'));
+        $json_array = CalenderJson::getCalenderJson();
+        return view('manegement.calendar', compact('json_array'));
     }
 
     public function create()

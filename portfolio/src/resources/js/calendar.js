@@ -12,22 +12,6 @@ let calendar = new Calendar(calendarEl, {
     center: 'title',
     right: 'dayGridMonth,timeGridWeek,listWeek'
   },
-  events: [
-    {
-      title: calendar_items,
-      start: '2024-02-04',
-      classNames: ['minus']
-    },
-    {
-      title: calendar_items,
-      start: '2024-03-02',
-      classNames: ['plus']
-    },
-    {
-      title: calendar_items,
-      start: '2024-03-04',
-      classNames: ['minus']
-    },
-  ]
+  events: json_array.map(function (row){return JSON.parse(row)})
 });
 calendar.render();

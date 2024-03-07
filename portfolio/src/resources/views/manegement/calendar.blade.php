@@ -1,3 +1,10 @@
+<?php
+
+use Illuminate\Support\Js;
+
+$json_array = Js::from($json_array);
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +20,7 @@
     <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
     <div id="calendar" class="w-90"></div>
     <script>
-        calendar_items = <?php echo json_encode($calendar_items) ?>;
+        json_array = <?php echo $json_array ?>;
     </script>
 </body>
 
