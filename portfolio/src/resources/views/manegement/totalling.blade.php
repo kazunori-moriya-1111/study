@@ -11,11 +11,14 @@
 <body>
     <div>ボートレース収支管理アプリ_totalling</div>
     <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
+
     <div class="mx-atuo w-1/2">
         <canvas class="" id="myChart"></canvas>
     </div>
     <script>
-        data = <?php echo json_encode($graph) ?>;
+        title = <?php echo json_encode($title) ?>;
+        total_bet = <?php echo json_encode($total_bet) ?>;
+        total_payout = <?php echo json_encode($total_payout) ?>;
     </script>
 </body>
 

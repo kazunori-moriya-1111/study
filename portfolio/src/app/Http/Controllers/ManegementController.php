@@ -29,11 +29,20 @@ class ManegementController extends Controller
         return view('manegement.calendar', compact('json_array'));
     }
 
-    public function totalling(Request $request)
+    public function totalling($type)
     {
-        $collection = Record::select('bet')->where('user_id', 1)->limit(6)->get();
-        $graph = $collection->pluck('bet')->all();
-        return view('manegement.totalling', compact('graph'));
+        // type別の集計、6期間分の補完ロジック
+        $record = null;
+        $user_id = 1;
+        // 一週間での集計
+        $record = Record::selectRaw('SUM(bet) as total_bet, SUM(payout) as total_payout, subdate(date, weekday(date)) as week')
+            ->where('user_id', $user_id)
+            ->groupBy('week')
+            ->get();
+        $title = $record->pluck('week')->all();
+        $total_bet = $record->pluck('total_bet')->all();
+        $total_payout = $record->pluck('total_payout')->all();
+        return view('manegement.totalling', compact('title', 'total_bet', 'total_payout'));
     }
 
     public function create()
