@@ -12,7 +12,12 @@
     <div>ボートレース収支管理アプリ</div>
     <a href="{{ route('manegement.create') }}" class="text-blue-500 underline">新規登録</a><br>
     <a href="{{ route('manegement.calendar') }}" class="text-blue-500 underline">カレンダー</a><br>
-    <a href="{{ route('manegement.totalling', ['type' => 'day']) }}" class="text-blue-500 underline">収支</a><br>
+    <form name="form1" method="post" action="{{ route('manegement.totalling') }}">
+        @csrf
+        <input type="hidden" name="type" value="day">
+        <a class="text-blue-500 underline" href="javascript:form1.submit()">収支</a>
+    </form>
+    <!-- <a href="{{ route('manegement.totalling', ['type' => 'day']) }}" class="text-blue-500 underline">収支</a><br> -->
     <a href="{{ route('tag.index') }}" class="text-blue-500 underline">タグ一覧</a><br>
     <!-- データ一覧表示 -->
     @foreach($data as $row)

@@ -29,7 +29,7 @@ class ManegementController extends Controller
         return view('manegement.calendar', compact('json_array'));
     }
 
-    public function totalling($type)
+    public function totalling(Request $request)
     {
         // type別の集計、7期間分の補完ロジック
         $record = null;

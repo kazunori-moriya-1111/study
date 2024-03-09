@@ -11,7 +11,16 @@
 <body>
     <div>ボートレース収支管理アプリ_totalling</div>
     <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
-
+    <form method="post" action="{{ route('manegement.totalling') }}">
+        @csrf
+        <p>集計単位</p>
+        <select name='type'>
+            <option value="day" {{ $type == 'day' ? "selected='selected'" : ''}}>日次</option>
+            <option value="week" {{ $type == 'week' ? "selected='selected'" : ''}}>週次</option>
+            <option value="year" {{ $type == 'year' ? "selected='selected'" : ''}}>年次</option>
+        </select>
+        <button type="submit">再表示</button>
+    </form>
     <div class="mx-atuo w-1/2">
         <canvas class="" id="myChart"></canvas>
     </div>
