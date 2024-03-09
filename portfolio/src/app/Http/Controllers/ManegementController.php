@@ -37,7 +37,11 @@ class ManegementController extends Controller
         $from = null;
         $to = null;
         $sordedTmp = null;
-        $type = 'week';
+        $title = null;
+        $total_bet = null;
+        $total_payout = null;
+        $type = $request->type;
+        // todo periodNoを使用して表示する期間を変数で変更できるようにする
         // 日単位での集計
         if ($type == 'day') {
             // DBからデータ取得
@@ -148,8 +152,60 @@ class ManegementController extends Controller
         }
         // 年単位での集計
         if ($type == 'year') {
+            // DBからデータ取得
+            $to = date('Y-m-d');
+            $year = date('Y', strtotime('-6 year'));
+            $from = date('Y-m-d', strtotime("{$year}-01-01"));
+            $record = Record::select('bet', 'payout', 'date')
+                ->where('user_id', $user_id)
+                ->whereBetween('date', [$from, $to])
+                ->get();
+            // dateからyaerを算出
+            $recordAddYaer = $record->map(function ($row) {
+                $yaer = date('Y', strtotime($row->date));
+                return [
+                    'yaer' => $yaer,
+                    'bet' => $row->bet,
+                    'payout' => $row->payout
+                ];
+            })->groupBy('yaer');
+            //groupby sum
+            $tmp = collect();
+            $recordAddYaer->each(function ($row, $key) use ($tmp) {
+                $tmp->push([
+                    'yaer' => $key,
+                    'total_bet' => $row->sum('bet'),
+                    'total_payout' => $row->sum('payout')
+                ]);
+            });
+            // データ補完
+            if ($tmp->count() <= 6) {
+                // 期間配列作る
+                $period = collect();
+                $year = date('Y', strtotime($from));
+                for ($i = 0; $i <= 6; $i++) {
+                    $period->push($year + $i);
+                }
+                // eachで一つ一つの期間の有無を確認。なければ期間とtotal_bet => 0, total_payout => 0を埋める
+                $getDataYaer = $tmp->pluck('yaer');
+                $period->each(function ($yaer) use ($getDataYaer, $tmp) {
+                    if (!($getDataYaer->contains($yaer))) {
+                        $tmp->push([
+                            'yaer' => $yaer,
+                            'total_bet' => 0,
+                            'total_payout' => 0
+                        ]);
+                    }
+                });
+            }
+            // 日付順にソート
+            $sortedData = $tmp->sortBy('yaer');
+            // グラフ表示用に成形
+            $title = $sortedData->pluck('yaer')->all();
+            $total_bet = $sortedData->pluck('total_bet')->all();
+            $total_payout = $sortedData->pluck('total_payout')->all();
         }
-        return view('manegement.totalling', compact('title', 'total_bet', 'total_payout'));
+        return view('manegement.totalling', compact('title', 'total_bet', 'total_payout', 'type'));
     }
 
     public function create()
