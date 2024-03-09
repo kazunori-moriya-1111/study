@@ -92,8 +92,9 @@ class ManegementController extends Controller
         if ($type == 'week') {
             // DBからデータ取得
             $to = date('Y-m-d');
-            // TODO 6週前の日曜日からにする
-            $from = date('Y-m-d', strtotime('-6 week'));
+            $fromDay = date('Y-m-d', strtotime('-6 week'));
+            $fromDayNo = date('w', strtotime($fromDay));
+            $from = date('Y-m-d', strtotime("-{$fromDayNo} day", strtotime($fromDay)));
             $record = Record::select('bet', 'payout', 'date')
                 ->where('user_id', $user_id)
                 ->whereBetween('date', [$from, $to])
