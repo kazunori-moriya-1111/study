@@ -10,6 +10,7 @@
 
 <body>
     <div>ボートレース収支管理アプリ</div>
+    <x-nav-bar />
     <a href="{{ route('manegement.create') }}" class="text-blue-500 underline">新規登録</a><br>
     <a href="{{ route('manegement.calendar') }}" class="text-blue-500 underline">カレンダー</a><br>
     <form name="form1" method="post" action="{{ route('manegement.totalling') }}">
