@@ -13,12 +13,9 @@
     <form method="post" action="{{ route('manegement.totalling') }}">
         @csrf
         <p>集計単位</p>
-        <select name='type'>
-            <option value="day" {{ $type == 'day' ? "selected='selected'" : ''}}>日次</option>
-            <option value="week" {{ $type == 'week' ? "selected='selected'" : ''}}>週次</option>
-            <option value="year" {{ $type == 'year' ? "selected='selected'" : ''}}>年次</option>
-        </select>
-        <button type="submit">再表示</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" name="type" value="day">日次</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" name="type" value="week">週次</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" name="type" value="year">年次</button>
     </form>
     <div class="mx-atuo w-1/2">
         <canvas class="" id="myChart"></canvas>
