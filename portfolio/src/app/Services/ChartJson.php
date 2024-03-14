@@ -6,6 +6,12 @@ use App\Models\Record;
 
 class ChartJson
 {
+    /**
+     * 日次,週次,月次別にグラフに表示するデータをDBから取得、成形
+     *
+     * @param string type 
+     * @return array{ title: string[], total_bet: int[], total_payout: int[]}
+     */
     public static function getChartJson($type)
     {
         // type別の集計、7期間分の補完ロジック
