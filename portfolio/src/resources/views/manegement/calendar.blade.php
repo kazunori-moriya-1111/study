@@ -16,9 +16,7 @@ $json_array = Js::from($json_array);
 </head>
 
 <body>
-    <div>ボートレース収支管理アプリ_calendar</div>
     <x-nav-bar />
-    <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
     <div id="calendar" class="w-90"></div>
     <script>
         json_array = <?php echo $json_array ?>;

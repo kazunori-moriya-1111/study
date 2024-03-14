@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    <div>ボートレース収支管理アプリ_show</div>
-    <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
+    <x-nav-bar />
     <label for="date">日付</label>
     <div>{{ $record->date }}</div>
     <br>

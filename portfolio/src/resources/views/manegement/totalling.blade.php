@@ -9,8 +9,7 @@
 </head>
 
 <body>
-    <div>ボートレース収支管理アプリ_totalling</div>
-    <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
+    <x-nav-bar />
     <form method="post" action="{{ route('manegement.totalling') }}">
         @csrf
         <p>集計単位</p>

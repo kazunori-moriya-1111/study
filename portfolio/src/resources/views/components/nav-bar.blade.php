@@ -12,14 +12,24 @@
     </div>
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div class="text-sm lg:flex-grow">
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                Docs
+            <a href="{{ route('manegement.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                TOP
             </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                Examples
+            <a href="{{ route('manegement.create') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                新規登録
             </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
-                Blog
+            <a href="{{ route('manegement.calendar') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                カレンダー
+            </a>
+            <form class="block mt-4 lg:inline-block lg:mt-0" name="form1" method="post" action="{{ route('manegement.totalling') }}">
+                @csrf
+                <input type="hidden" name="type" value="day">
+                <a href="javascript:form1.submit()" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                    収支
+                </a>
+            </form>
+            <a href="{{ route('tag.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                タグ一覧
             </a>
         </div>
         <div>

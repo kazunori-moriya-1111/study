@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    <div>ボートレース収支管理アプリ_タグ一覧</div>
-    <a href="{{ route('manegement.index') }}" class="text-blue-500 underline">TOPへ</a><br>
+    <x-nav-bar />
     <!-- タグ作成モーダル -->
     <livewire:create-tag-modal />
     <!-- データ一覧表示 -->
