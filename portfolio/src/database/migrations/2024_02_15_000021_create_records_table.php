@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('records', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();;
+            $table->uuid('id')->primary();
+            $table->foreignUuid('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();;
             $table->date('date');
             $table->integer('bet');
             $table->integer('payout');
