@@ -42,8 +42,7 @@ class ManegementController extends Controller
 
     public function create()
     {
-        $data = [1, 2, 3, 4, 5, 6];
-        return view('manegement.create', compact('data'));
+        return view('manegement.create');
     }
 
     public function store(PostRecordRequest $request)
