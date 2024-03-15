@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use App\Models\User;
 
 class TagController extends Controller
 {
     //
     public function index(Request $request)
     {
-
-        $data = Tag::where('user_id', 1)->get();
+        $user_id = User::select('id')->where('name', 'test_user')->first()->id;
+        $data = Tag::where('user_id', $user_id)->get();
 
         return view('tag.index', compact('data'));
     }

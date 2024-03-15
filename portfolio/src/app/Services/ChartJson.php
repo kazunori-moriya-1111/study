@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Record;
+use App\Models\User;
 
 class ChartJson
 {
@@ -16,7 +17,7 @@ class ChartJson
     {
         // type別の集計、7期間分の補完ロジック
         $record = null;
-        $user_id = 1;
+        $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         $from = null;
         $to = null;
         $title = null;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Record;
 use App\Models\Tag;
+use App\Models\User;
 use App\Http\Requests\PostRecordRequest;
 use App\Services\CalenderJson;
 use App\Services\ChartJson;
@@ -47,7 +48,7 @@ class ManegementController extends Controller
 
     public function store(PostRecordRequest $request)
     {
-        $user_id = 1;
+        $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         Record::create([
             'user_id' => $user_id,
             'date' => $request->date,
@@ -69,8 +70,9 @@ class ManegementController extends Controller
     public function edit($id)
     {
         $record = Record::find($id);
+        $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         // ログインユーザの所持してるタグを渡す
-        $tags = Tag::where('user_id', 1)->get();
+        $tags = Tag::where('user_id', $user_id)->get();
         // checkbox用recordに付与されているtag_idの配列を渡す
         $recordTagIdCollection = $record->tags->pluck('id');
         return view('manegement.edit', compact('record', 'tags', 'recordTagIdCollection'));
