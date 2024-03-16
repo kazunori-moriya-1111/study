@@ -10,18 +10,32 @@
 
 <body>
     <x-nav-bar />
+    <p>総額掛け金:{{ $total_bet }}</p>
+    <p>総額払い戻し金:{{ $total_payout }}</p>
+    <p>回収率:{{ $recovery_rate }}%</p>
     <!-- データ一覧表示 -->
-    @foreach($data as $row)
-    <p>日付:{{ $row->date }} 掛け金:{{ $row->bet }} 払い戻し金:{{ $row->payout }}</p>
-    <!-- タグデータ所持判定 -->
-    @if(!($row->tags->isEmpty()))
-    <!-- タグデータ一覧表示 -->
-    @foreach($row->tags as $tag)
-    <p>{{ $tag->name }}</p>
-    @endforeach
-    @endif
-    <a class="text-blue-500 underline" href="{{ route('manegement.show', ['id' => $row->id ]) }}">詳細確認</a>
-    @endforeach
+    <!-- 横にn列 タグが多い時は縦に伸ばす感じ -->
+    <div class="container mx-auto">
+        <div class="grid grid-cols-3 gap-4">
+            @foreach($data as $row)
+            <div class="m-1 border-solid border border-indigo-600">
+                <p class="m-1">{{ $row->date }}</p>
+                <p class="m-1">掛け金:{{ $row->bet }} 払い戻し金:{{ $row->payout }}</p>
+                <p class="m-1">回収率:{{ round(($row->payout / $row->bet) * 100, 1) }}%</p>
+                <!-- タグデータ所持判定 -->
+                @if(!($row->tags->isEmpty()))
+                <!-- タグデータ一覧表示 -->
+                @foreach($row->tags as $tag)
+                <div>
+                    <div class="m-1 bg-slate-100">{{ $tag->name }}</div>
+                </div>
+                @endforeach
+                @endif
+                <a class="text-blue-500 underline" href="{{ route('manegement.show', ['id' => $row->id ]) }}">詳細確認</a>
+            </div>
+            @endforeach
+        </div>
+    </div>
 </body>
 
 </html>
