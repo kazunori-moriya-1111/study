@@ -23,10 +23,11 @@ class ManegementController extends Controller
         }
         $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         $data = Record::select('id', 'date', 'bet', 'payout')->where('user_id', $user_id)->get();
+        $tags = Tag::select('name')->where('user_id', $user_id)->get();
         $total_bet = $data->sum('bet');
         $total_payout = $data->sum('payout');
         $recovery_rate = $total_bet == 0 ? 0 : round(($total_payout / $total_bet) * 100, 1);
-        return view('manegement.index', compact('data', 'total_bet', 'total_payout', 'recovery_rate'));
+        return view('manegement.index', compact('data', 'tags', 'total_bet', 'total_payout', 'recovery_rate'));
     }
 
     public function calendar(Request $request)

@@ -13,12 +13,18 @@
     <p>総額掛け金:{{ $total_bet }}</p>
     <p>総額払い戻し金:{{ $total_payout }}</p>
     <p>回収率:{{ $recovery_rate }}%</p>
+    <p>タグ一覧</p>
+    @foreach($tags as $tag)
+    <div class="grid">
+        <button class="border-solid border border-indigo-600">{{ $tag->name }}</button>
+    </div>
+    @endforeach
     <!-- データ一覧表示 -->
     <!-- 横にn列 タグが多い時は縦に伸ばす感じ -->
     <div class="container mx-auto">
         <div class="grid grid-cols-3 gap-4">
             @foreach($data as $row)
-            <div class="m-1 border-solid border border-indigo-600">
+            <div class="m-1 border-solid border border-indigo-600 rounded-md">
                 <p class="m-1">{{ $row->date }}</p>
                 <p class="m-1">掛け金:{{ $row->bet }} 払い戻し金:{{ $row->payout }}</p>
                 <p class="m-1">回収率:{{ round(($row->payout / $row->bet) * 100, 1) }}%</p>
