@@ -14,9 +14,11 @@
     <p>総額払い戻し金:{{ $total_payout }}</p>
     <p>回収率:{{ $recovery_rate }}%</p>
     <p>タグ一覧</p>
+    <a href="{{ route('manegement.index') }}">全て</a>
+    <a>タグ複数選択</a>
     @foreach($tags as $tag)
     <div class="grid">
-        <button class="border-solid border border-indigo-600">{{ $tag->name }}</button>
+        <a href="{{ route('manegement.index', ['tagid' => $tag->id ]) }}" class="border-solid border border-indigo-600">{{ $tag->name }}</a>
     </div>
     @endforeach
     <!-- データ一覧表示 -->
