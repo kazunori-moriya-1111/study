@@ -15,14 +15,15 @@ class ManegementController extends Controller
     //
     public function index(Request $request)
     {
+        $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         $query_param = $request->query();
         if ($query_param) {
             // クエリパラメータが埋め込まれている場合
+            $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')->select('id', 'date', 'bet', 'payout', 'record_tag.tag_id')->where('record_tag.tag_id', $query_param['tagid'])->get();
         } else {
             // クエリパラメータが埋め込まれていない場合
+            $data = Record::select('id', 'date', 'bet', 'payout')->where('user_id', $user_id)->get();
         }
-        $user_id = User::select('id')->where('name', 'test_user')->first()->id;
-        $data = Record::select('id', 'date', 'bet', 'payout')->where('user_id', $user_id)->get();
         $tags = Tag::select('id', 'name')->where('user_id', $user_id)->get();
         $total_bet = $data->sum('bet');
         $total_payout = $data->sum('payout');
