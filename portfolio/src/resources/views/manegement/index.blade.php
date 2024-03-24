@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Laravel</title>
+    @livewireStyles
 </head>
 
 <body>
@@ -15,7 +16,9 @@
     <p>回収率:{{ $recovery_rate }}%</p>
     <p>タグ一覧</p>
     <a href="{{ route('manegement.index') }}">全て</a>
-    <a>タグ複数選択</a>
+    <!-- 複数タグ選択用モーダル -->
+    <livewire:select-tag-modal />
+    <!-- TODO 選択されてるタグの色を変更する機能 -->
     @foreach($tags as $tag)
     <div class="grid">
         <a href="{{ route('manegement.index', ['tagid' => $tag->id ]) }}" class="border-solid border border-indigo-600">{{ $tag->name }}</a>
@@ -44,6 +47,7 @@
             @endforeach
         </div>
     </div>
+    @livewireScripts
 </body>
 
 </html>
