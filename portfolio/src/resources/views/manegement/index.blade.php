@@ -17,7 +17,7 @@
     <p>タグ一覧</p>
     <a href="{{ route('manegement.index') }}">全て</a>
     <!-- 複数タグ選択用モーダル -->
-    <livewire:select-tag-modal />
+    <livewire:select-tag-modal :tags="$tags" />
     <!-- TODO 選択されてるタグの色を変更する機能 -->
     @foreach($tags as $tag)
     <div class="grid">
@@ -49,5 +49,17 @@
     </div>
     @livewireScripts
 </body>
+<script>
+    function getCheckboxValues() {
+        const form = document.getElementById('checkboxForm');
+        const checkboxs = form.querySelectorAll('input[name="selectedTags"]:checked');
+        const values = Array.from(checkboxs).map(checkbox => checkbox.value)
+        const queryParams = new URLSearchParams({
+            tagid: values
+        }).toString();
+        console.log(queryParams);
+        window.location.href = "http://localhost/manegement?" + queryParams
+    }
+</script>
 
 </html>

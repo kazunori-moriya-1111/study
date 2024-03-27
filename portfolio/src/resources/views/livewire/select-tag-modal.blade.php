@@ -14,7 +14,12 @@
                         タグ選択
                     </h3>
                     <div class="mt-2">
-
+                        <form id="checkboxForm">
+                            @foreach($tags as $tag)
+                            <p><input type="checkbox" name="selectedTags" value="{{ $tag->id }}">{{ $tag->name }}</p>
+                            @endforeach
+                            <button type='button' onclick="getCheckboxValues()">選択する</button>
+                        </form>
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
