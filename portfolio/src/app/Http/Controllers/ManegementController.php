@@ -17,13 +17,23 @@ class ManegementController extends Controller
     {
         $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         $query_param = $request->query();
+        // クエリパラメータが存在する場合
         if ($query_param) {
-            $tagids = explode(',', $query_param["tagid"]);
-            // クエリパラメータが埋め込まれている場合
-            $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')->select('id', 'date', 'bet', 'payout', 'record_tag.tag_id')->whereIn('record_tag.tag_id', $tagids)->get();
+            // tagidクエリパラメータが存在する場合
+            if ($query_param["tagid"]) {
+                $tagids = explode(',', $query_param["tagid"]);
+                // クエリパラメータが埋め込まれている場合
+                $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')
+                    ->select('id', 'date', 'bet', 'payout', 'recovery_rate', 'record_tag.tag_id')
+                    ->whereIn('record_tag.tag_id', $tagids)
+                    ->get();
+            }
+            // sordクエリパラメータが存在する場合
         } else {
             // クエリパラメータが埋め込まれていない場合
-            $data = Record::select('id', 'date', 'bet', 'payout')->where('user_id', $user_id)->get();
+            $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
+                ->where('user_id', $user_id)
+                ->get();
         }
         $tags = Tag::select('id', 'name')->where('user_id', $user_id)->get();
         $total_bet = $data->sum('bet');

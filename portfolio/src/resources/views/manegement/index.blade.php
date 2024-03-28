@@ -32,7 +32,7 @@
             <div class="m-1 border-solid border border-indigo-600 rounded-md">
                 <p class="m-1">{{ $row->date }}</p>
                 <p class="m-1">掛け金:{{ $row->bet }} 払い戻し金:{{ $row->payout }}</p>
-                <p class="m-1">回収率:{{ round(($row->payout / $row->bet) * 100, 1) }}%</p>
+                <p class="m-1">回収率:{{ $row->recovery_rate }}%</p>
                 <!-- タグデータ所持判定 -->
                 @if(!($row->tags->isEmpty()))
                 <!-- タグデータ一覧表示 -->

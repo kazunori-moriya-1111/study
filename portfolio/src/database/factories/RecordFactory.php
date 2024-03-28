@@ -23,6 +23,7 @@ class RecordFactory extends Factory
             'date' => $this->faker->dateTimeThisMonth,
             'bet' => $this->faker->randomNumber(3) * 100,
             'payout' => $this->faker->randomNumber(3) * 10,
+            'recovery_rate' => $this->faker->randomFloat(1, 0, 100),
             'memo' => $this->faker->realText(10),
             'created_at' => $this->faker->dateTimeThisMonth(),
             'updated_at' => $this->faker->dateTimeThisMonth(),

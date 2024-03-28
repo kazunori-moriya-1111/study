@@ -16,6 +16,7 @@ class Record extends Model
         'date',
         'bet',
         'payout',
+        'recovery_rate',
         'memo',
     ];
 
