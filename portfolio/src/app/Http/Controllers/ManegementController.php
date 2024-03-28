@@ -18,9 +18,9 @@ class ManegementController extends Controller
         $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         $query_param = $request->query();
         if ($query_param) {
+            $tagids = explode(',', $query_param["tagid"]);
             // クエリパラメータが埋め込まれている場合
-            $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')->select('id', 'date', 'bet', 'payout', 'record_tag.tag_id')->where('record_tag.tag_id', $query_param['tagid'])->get();
-            // 複数の時はwhereInを使用する
+            $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')->select('id', 'date', 'bet', 'payout', 'record_tag.tag_id')->whereIn('record_tag.tag_id', $tagids)->get();
         } else {
             // クエリパラメータが埋め込まれていない場合
             $data = Record::select('id', 'date', 'bet', 'payout')->where('user_id', $user_id)->get();
