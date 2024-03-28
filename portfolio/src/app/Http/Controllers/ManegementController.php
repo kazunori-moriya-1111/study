@@ -71,6 +71,7 @@ class ManegementController extends Controller
             'date' => $request->date,
             'bet' => $request->bet,
             'payout' => $request->payout,
+            'recovery_rate' => $request->bet == 0 ? 0 : round(($request->payout / $request->bet) * 100, 1),
             'memo' => $request->memo,
         ]);
 
@@ -101,6 +102,7 @@ class ManegementController extends Controller
         $record->date = $request->date;
         $record->bet = $request->bet;
         $record->payout = $request->payout;
+        $record->recovery_rate = $request->bet == 0 ? 0 : round(($request->payout / $request->bet) * 100, 1);
         $record->memo = $request->memo;
         $record->save();
 
