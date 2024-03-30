@@ -20,7 +20,7 @@ class ManegementController extends Controller
         // クエリパラメータが存在する場合
         if ($query_param) {
             // tagidクエリパラメータが存在する場合
-            if ($query_param["tagid"]) {
+            if (array_key_exists('tagid', $query_param)) {
                 $tagids = explode(',', $query_param["tagid"]);
                 // クエリパラメータが埋め込まれている場合
                 $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')
@@ -29,6 +29,12 @@ class ManegementController extends Controller
                     ->get();
             }
             // sordクエリパラメータが存在する場合
+            if (array_key_exists('sort', $query_param)) {
+                $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
+                    ->where('user_id', $user_id)
+                    ->orderBy($query_param["sort"], 'desc')
+                    ->get();
+            }
         } else {
             // クエリパラメータが埋め込まれていない場合
             $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')

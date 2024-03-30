@@ -11,6 +11,10 @@
 
 <body>
     <x-nav-bar />
+    <a href="{{ route('manegement.index', ['sort' => 'date']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">日付順</a>
+    <a href="{{ route('manegement.index', ['sort' => 'recovery_rate']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">回収率順</a>
+    <a href="{{ route('manegement.index', ['sort' => 'bet']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">掛け金順</a>
+    <a href="{{ route('manegement.index', ['sort' => 'payout']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">払戻金順</a>
     <p>総額掛け金:{{ $total_bet }}</p>
     <p>総額払い戻し金:{{ $total_payout }}</p>
     <p>回収率:{{ $recovery_rate }}%</p>
