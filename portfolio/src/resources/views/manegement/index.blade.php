@@ -50,6 +50,7 @@
             </div>
             @endforeach
         </div>
+        {{ $data->links() }}
     </div>
     @livewireScripts
 </body>

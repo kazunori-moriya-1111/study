@@ -18,7 +18,7 @@ class ManegementController extends Controller
         $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         $query_param = $request->query();
         // クエリパラメータが存在する場合
-        if ($query_param) {
+        if ($query_param and array_key_exists('tagid', $query_param) and array_key_exists('sort', $query_param)) {
             // tagidクエリパラメータが存在する場合
             if (array_key_exists('tagid', $query_param)) {
                 $tagids = explode(',', $query_param["tagid"]);
@@ -39,7 +39,7 @@ class ManegementController extends Controller
             // クエリパラメータが埋め込まれていない場合
             $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
                 ->where('user_id', $user_id)
-                ->get();
+                ->paginate(5);
         }
         $tags = Tag::select('id', 'name')->where('user_id', $user_id)->get();
         $total_bet = $data->sum('bet');
