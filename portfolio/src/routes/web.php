@@ -34,6 +34,14 @@ Route::prefix('manegement')
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::post('/{id}', 'update')->name('update');
         Route::post('/{id}/destroy', 'destroy')->name('destroy');
+        Route::prefix('/sort')
+            ->name('sort.')
+            ->group(function () {
+                Route::get('/date', 'index')->name('date');
+                Route::get('/recovery_rate', 'index')->name('recovery_rate');
+                Route::get('/bet', 'index')->name('bet');
+                Route::get('/payout', 'index')->name('payout');
+            });
     });
 
 Route::prefix('tag')
