@@ -19,7 +19,7 @@
     <p>総額払い戻し金:{{ $total_payout }}</p>
     <p>回収率:{{ $recovery_rate }}%</p>
     <p>タグ一覧</p>
-    <a href="{{ route('manegement.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">全て</a>
+    <a href="{{ url()->current() }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">タグフィルターを解除</a>
     <!-- 複数タグ選択用モーダル -->
     <livewire:select-tag-modal :tags="$tags" />
     <!-- TODO 選択されてるタグの色を変更する機能 -->
