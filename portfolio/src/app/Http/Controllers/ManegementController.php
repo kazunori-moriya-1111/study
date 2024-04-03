@@ -12,40 +12,74 @@ use App\Services\ChartJson;
 
 class ManegementController extends Controller
 {
-    //
-    public function index(Request $request)
+    // indexの基本メソッドを定義
+    private function base_index(Request $request, $sort_param)
     {
         $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         $query_param = $request->query();
-        // クエリパラメータが存在する場合
-        if ($query_param and array_key_exists('tagid', $query_param) and array_key_exists('sort', $query_param)) {
-            // tagidクエリパラメータが存在する場合
-            if (array_key_exists('tagid', $query_param)) {
-                $tagids = explode(',', $query_param["tagid"]);
-                // クエリパラメータが埋め込まれている場合
+        if ($query_param) {
+            // tagidURLパラメータが存在する場合
+            $tagids = explode(',', $query_param["tagid"]);
+            if ($sort_param == '') {
+                // ソートが不要な場合
                 $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')
                     ->select('id', 'date', 'bet', 'payout', 'recovery_rate', 'record_tag.tag_id')
                     ->whereIn('record_tag.tag_id', $tagids)
-                    ->get();
-            }
-            // sordクエリパラメータが存在する場合
-            if (array_key_exists('sort', $query_param)) {
-                $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
-                    ->where('user_id', $user_id)
-                    ->orderBy($query_param["sort"], 'desc')
-                    ->get();
+                    ->paginate(5);
+            } else {
+                // ソートが必要な場合
+                $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')
+                    ->select('id', 'date', 'bet', 'payout', 'recovery_rate', 'record_tag.tag_id')
+                    ->whereIn('record_tag.tag_id', $tagids)
+                    ->orderBy($sort_param)
+                    ->paginate(5);
             }
         } else {
-            // クエリパラメータが埋め込まれていない場合
-            $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
-                ->where('user_id', $user_id)
-                ->paginate(5);
+            // tagidクエリパラメータが存在しない場合
+            if ($sort_param == '') {
+                // ソートが不要な場合
+                $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
+                    ->where('user_id', $user_id)
+                    ->paginate(5);
+            } else {
+                // ソートが必要な場合
+                $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
+                    ->where('user_id', $user_id)
+                    ->orderBy($sort_param)
+                    ->paginate(5);
+            }
         }
         $tags = Tag::select('id', 'name')->where('user_id', $user_id)->get();
+        // TODO ページネーションした値ごとの計算になっている
         $total_bet = $data->sum('bet');
         $total_payout = $data->sum('payout');
         $recovery_rate = $total_bet == 0 ? 0 : round(($total_payout / $total_bet) * 100, 1);
         return view('manegement.index', compact('data', 'tags', 'total_bet', 'total_payout', 'recovery_rate'));
+    }
+
+    public function index(Request $request)
+    {
+        return $this->base_index($request, '');
+    }
+
+    public function sort_date_index(Request $request)
+    {
+        return $this->base_index($request, 'date');
+    }
+
+    public function sort_recovery_rate_index(Request $request)
+    {
+        return $this->base_index($request, 'recovery_rate');
+    }
+
+    public function sort_bet_index(Request $request)
+    {
+        return $this->base_index($request, 'bet');
+    }
+
+    public function sort_payout_index(Request $request)
+    {
+        return $this->base_index($request, 'payout');
     }
 
     public function calendar(Request $request)

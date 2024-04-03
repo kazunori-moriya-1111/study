@@ -37,10 +37,10 @@ Route::prefix('manegement')
         Route::prefix('/sort')
             ->name('sort.')
             ->group(function () {
-                Route::get('/date', 'index')->name('date');
-                Route::get('/recovery_rate', 'index')->name('recovery_rate');
-                Route::get('/bet', 'index')->name('bet');
-                Route::get('/payout', 'index')->name('payout');
+                Route::get('/date', 'sort_date_index')->name('date');
+                Route::get('/recovery_rate', 'sort_recovery_rate_index')->name('recovery_rate');
+                Route::get('/bet', 'sort_bet_index')->name('bet');
+                Route::get('/payout', 'sort_payout_index')->name('payout');
             });
     });
 
