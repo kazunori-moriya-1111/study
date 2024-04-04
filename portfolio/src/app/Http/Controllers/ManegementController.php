@@ -17,6 +17,12 @@ class ManegementController extends Controller
     {
         $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         $query_param = $request->query();
+        // ソートパラム判定配列定義
+        $sort_isActive = array('date' => False, 'recovery_rate' => False, 'bet' => False, 'payout' => False);
+        if ($sort_param != '') {
+            $sort_isActive[$sort_param] = True;
+        }
+
         if ($query_param) {
             // tagidURLパラメータが存在する場合
             $tagids = explode(',', $query_param["tagid"]);
@@ -64,7 +70,7 @@ class ManegementController extends Controller
         $total_bet = $data->sum('bet');
         $total_payout = $data->sum('payout');
         $recovery_rate = $total_bet == 0 ? 0 : round(($total_payout / $total_bet) * 100, 1);
-        return view('manegement.index', compact('data', 'tags', 'total_bet', 'total_payout', 'recovery_rate'));
+        return view('manegement.index', compact('data', 'tags', 'total_bet', 'total_payout', 'recovery_rate', 'sort_isActive'));
     }
 
     public function index(Request $request)

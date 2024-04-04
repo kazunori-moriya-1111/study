@@ -11,10 +11,14 @@
 
 <body>
     <x-nav-bar />
-    <a href="{{ route('manegement.sort.date') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">日付順</a>
-    <a href="{{ route('manegement.sort.recovery_rate') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">回収率順</a>
-    <a href="{{ route('manegement.sort.bet') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">掛け金順</a>
-    <a href="{{ route('manegement.sort.payout') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">払戻金順</a>
+    <a href="{{ route('manegement.sort.date') }}" @class(['bg-blue-500'=> !$sort_isActive['date'], 'bg-red-500' => $sort_isActive['date'],
+        'hover:bg-blue-700' => !$sort_isActive['date'], 'hover:bg-red-700' => $sort_isActive['date'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>日付順</a>
+    <a href="{{ route('manegement.sort.recovery_rate') }}" @class(['bg-blue-500'=> !$sort_isActive['recovery_rate'], 'bg-red-500' => $sort_isActive['recovery_rate'],
+        'hover:bg-blue-700' => !$sort_isActive['recovery_rate'], 'hover:bg-red-700' => $sort_isActive['recovery_rate'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>回収率順</a>
+    <a href="{{ route('manegement.sort.bet') }}" @class(['bg-blue-500'=> !$sort_isActive['bet'], 'bg-red-500' => $sort_isActive['bet'],
+        'hover:bg-blue-700' => !$sort_isActive['bet'], 'hover:bg-red-700' => $sort_isActive['bet'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>掛け金順</a>
+    <a href="{{ route('manegement.sort.payout') }}" @class(['bg-blue-500'=> !$sort_isActive['payout'], 'bg-red-500' => $sort_isActive['payout'],
+        'hover:bg-blue-700' => !$sort_isActive['payout'], 'hover:bg-red-700' => $sort_isActive['payout'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>払戻金順</a>
     <p>総額掛け金:{{ $total_bet }}</p>
     <p>総額払い戻し金:{{ $total_payout }}</p>
     <p>回収率:{{ $recovery_rate }}%</p>
