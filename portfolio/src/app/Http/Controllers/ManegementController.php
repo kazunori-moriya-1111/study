@@ -50,6 +50,16 @@ class ManegementController extends Controller
             }
         }
         $tags = Tag::select('id', 'name')->where('user_id', $user_id)->get();
+        // URLパラメータに含まれているidの判別カラムを追加
+        $tags = $tags->map(function ($tag) use ($query_param) {
+            if ($query_param and in_array($tag->id, explode(',', $query_param["tagid"]))) {
+                $tag['isActive'] = True;
+            } else {
+                $tag['isActive'] = False;
+            }
+            return $tag;
+        });
+
         // TODO ページネーションした値ごとの計算になっている
         $total_bet = $data->sum('bet');
         $total_payout = $data->sum('payout');

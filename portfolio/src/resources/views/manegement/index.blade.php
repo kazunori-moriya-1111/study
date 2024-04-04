@@ -22,10 +22,11 @@
     <a href="{{ url()->current() }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">タグフィルターを解除</a>
     <!-- 複数タグ選択用モーダル -->
     <livewire:select-tag-modal :tags="$tags" />
-    <!-- TODO 選択されてるタグの色を変更する機能 -->
     @foreach($tags as $tag)
     <div class="grid">
-        <a href="{{ url()->current(). '?' . http_build_query(['tagid' => $tag->id ]) }}" class="border-solid border border-indigo-600">{{ $tag->name }}</a>
+        <a href="{{ url()->current(). '?' . http_build_query(['tagid' => $tag->id ]) }}" @class(['border-solid border'=> $tag->isActive,
+            'border-indigo-600' => $tag->isActive])>
+            {{ $tag->name }}</a>
     </div>
     @endforeach
     <!-- データ一覧表示 -->
