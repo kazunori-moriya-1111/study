@@ -27,7 +27,13 @@ Route::prefix('manegement')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/calendar', 'calendar')->name('calendar');
-        Route::post('/totalling', 'totalling')->name('totalling');
+        Route::prefix('/totalling')
+            ->name('totalling.')
+            ->group(function () {
+                Route::get('/date', 'totalling_date')->name('date');
+                Route::get('/week', 'totalling_week')->name('week');
+                Route::get('/year', 'totalling_year')->name('year');
+            });
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
         Route::get('/{id}', 'show')->name('show');

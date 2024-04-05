@@ -21,13 +21,9 @@
             <a href="{{ route('manegement.calendar') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                 カレンダー
             </a>
-            <form class="block mt-4 lg:inline-block lg:mt-0" name="form1" method="post" action="{{ route('manegement.totalling') }}">
-                @csrf
-                <input type="hidden" name="type" value="day">
-                <a href="javascript:form1.submit()" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                    収支
-                </a>
-            </form>
+            <a href="{{ route('manegement.totalling.date') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                収支
+            </a>
             <a href="{{ route('tag.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                 タグ一覧
             </a>

@@ -104,14 +104,31 @@ class ManegementController extends Controller
         return view('manegement.calendar', compact('json_array'));
     }
 
-    public function totalling(Request $request)
+    private function base_totalling(Request $request, $period_param)
     {
-        $type = $request->type;
-        $data = ChartJson::getChartJson($type);
+        // 選択された期間は判別する配列を定義
+        $selected_period = array('day' => False, 'week' => False, 'year' => False);
+        $selected_period[$period_param] = True;
+        $data = ChartJson::getChartJson($period_param);
         $title = $data['title'];
         $total_bet = $data['total_bet'];
         $total_payout = $data['total_payout'];
-        return view('manegement.totalling', compact('title', 'total_bet', 'total_payout', 'type'));
+        return view('manegement.totalling', compact('title', 'total_bet', 'total_payout', 'selected_period'));
+    }
+
+    public function totalling_date(Request $request)
+    {
+        return $this->base_totalling($request, 'day');
+    }
+
+    public function totalling_week(Request $request)
+    {
+        return $this->base_totalling($request, 'week');
+    }
+
+    public function totalling_year(Request $request)
+    {
+        return $this->base_totalling($request, 'year');
     }
 
     public function create()

@@ -10,13 +10,9 @@
 
 <body>
     <x-nav-bar />
-    <form method="post" action="{{ route('manegement.totalling') }}">
-        @csrf
-        <p>集計単位</p>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" name="type" value="day">日次</button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" name="type" value="week">週次</button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" name="type" value="year">年次</button>
-    </form>
+    <a href="{{ route('manegement.totalling.date') }}" @class(['bg-blue-500'=> !$selected_period['day'], 'bg-red-500' => $selected_period['day'], 'hover:bg-blue-700' => !$selected_period['day'], 'hover:bg-red-700' => $selected_period['day'], 'text-white' , 'font-bold' , 'py-2' , 'px-4' , 'rounded' ])>日次</a>
+    <a href="{{ route('manegement.totalling.week') }}" @class(['bg-blue-500'=> !$selected_period['week'], 'bg-red-500'=> $selected_period['week'] , 'hover:bg-blue-700' => !$selected_period['week'], 'hover:bg-red-700'=> $selected_period['week'] , 'text-white' , 'font-bold' , 'py-2' , 'px-4' , 'rounded' ])>週次</a>
+    <a href="{{ route('manegement.totalling.year') }}" @class(['bg-blue-500'=> !$selected_period['year'], 'bg-red-500'=> $selected_period['year'] , 'hover:bg-blue-700' => !$selected_period['year'], 'hover:bg-red-700'=> $selected_period['year'] , 'text-white' , 'font-bold' , 'py-2' , 'px-4' , 'rounded' ])>年次</a>
     <div class="mx-atuo w-1/2">
         <canvas class="" id="myChart"></canvas>
     </div>
