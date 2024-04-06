@@ -18,7 +18,7 @@ class TagController extends Controller
     }
     public function store(Request $request)
     {
-        $user_id = 1;
+        $user_id = User::select('id')->where('name', 'test_user')->first()->id;
         Tag::create([
             'user_id' => $user_id,
             'name' => $request->name,
