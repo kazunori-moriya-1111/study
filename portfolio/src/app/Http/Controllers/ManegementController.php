@@ -23,53 +23,49 @@ class ManegementController extends Controller
             $sort_isActive[$sort_param] = True;
         }
 
-        if ($query_param) {
+        if ($query_param and array_key_exists('tagid', $query_param)) {
             // tagidURLパラメータが存在する場合
             $tagids = explode(',', $query_param["tagid"]);
             if ($sort_param == '') {
                 // ソートが不要な場合
-                $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')
+                $total_data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')
                     ->select('id', 'date', 'bet', 'payout', 'recovery_rate', 'record_tag.tag_id')
-                    ->whereIn('record_tag.tag_id', $tagids)
-                    ->paginate(5);
+                    ->whereIn('record_tag.tag_id', $tagids);
             } else {
                 // ソートが必要な場合
-                $data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')
+                $total_data = Record::join('record_tag', 'records.id', '=', 'record_tag.record_id')
                     ->select('id', 'date', 'bet', 'payout', 'recovery_rate', 'record_tag.tag_id')
                     ->whereIn('record_tag.tag_id', $tagids)
-                    ->orderBy($sort_param)
-                    ->paginate(5);
+                    ->orderBy($sort_param);
             }
         } else {
             // tagidクエリパラメータが存在しない場合
             if ($sort_param == '') {
                 // ソートが不要な場合
-                $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
-                    ->where('user_id', $user_id)
-                    ->paginate(5);
+                $total_data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
+                    ->where('user_id', $user_id);
             } else {
                 // ソートが必要な場合
-                $data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
+                $total_data = Record::select('id', 'date', 'bet', 'payout', 'recovery_rate')
                     ->where('user_id', $user_id)
-                    ->orderBy($sort_param)
-                    ->paginate(5);
+                    ->orderBy($sort_param);
             }
         }
         $tags = Tag::select('id', 'name')->where('user_id', $user_id)->get();
         // URLパラメータに含まれているidの判別カラムを追加
         $tags = $tags->map(function ($tag) use ($query_param) {
-            if ($query_param and in_array($tag->id, explode(',', $query_param["tagid"]))) {
+            if ($query_param and array_key_exists('tagid', $query_param) and in_array($tag->id, explode(',', $query_param["tagid"]))) {
                 $tag['isActive'] = True;
             } else {
                 $tag['isActive'] = False;
             }
             return $tag;
         });
-
-        // TODO ページネーションした値ごとの計算になっている
-        $total_bet = $data->sum('bet');
-        $total_payout = $data->sum('payout');
+        // レコードの合計を取得
+        $total_bet = $total_data->sum('bet');
+        $total_payout = $total_data->sum('payout');
         $recovery_rate = $total_bet == 0 ? 0 : round(($total_payout / $total_bet) * 100, 1);
+        $data = $total_data->paginate(5);
         return view('manegement.index', compact('data', 'tags', 'total_bet', 'total_payout', 'recovery_rate', 'sort_isActive'));
     }
 
