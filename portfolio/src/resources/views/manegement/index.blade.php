@@ -25,14 +25,14 @@
     <p>タグ一覧</p>
     <a href="{{ url()->current() }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">タグフィルターを解除</a>
     <!-- 複数タグ選択用モーダル -->
-    <livewire:select-tag-modal :tags="$tags" />
-    @foreach($tags as $tag)
-    <div class="grid">
+    <div class='flex overflow-x-auto m-1'>
+        @foreach($tags as $tag)
         <a href="{{ url()->current(). '?' . http_build_query(['tagid' => $tag->id ]) }}" @class(['border-solid border'=> $tag->isActive,
-            'border-indigo-600' => $tag->isActive])>
+            'border-indigo-600' => $tag->isActive, 'flex-none', 'mb-5'])>
             {{ $tag->name }}</a>
+        @endforeach
     </div>
-    @endforeach
+    <livewire:select-tag-modal :tags="$tags" />
     <!-- データ一覧表示 -->
     <!-- 横にn列 タグが多い時は縦に伸ばす感じ -->
     <div class="container mx-auto">
