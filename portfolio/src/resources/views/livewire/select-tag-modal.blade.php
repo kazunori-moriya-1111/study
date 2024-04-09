@@ -1,5 +1,5 @@
 <div>
-    <button wire:click="openModal()" type="button" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
+    <button wire:click="openModal()" type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         複数タグ選択
     </button>
 

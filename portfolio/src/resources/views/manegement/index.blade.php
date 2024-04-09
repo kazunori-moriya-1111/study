@@ -11,28 +11,63 @@
 
 <body>
     <x-nav-bar />
-    <a href="{{ route('manegement.sort.date') }}" @class(['bg-blue-500'=> !$sort_isActive['date'], 'bg-red-500' => $sort_isActive['date'],
-        'hover:bg-blue-700' => !$sort_isActive['date'], 'hover:bg-red-700' => $sort_isActive['date'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>日付順</a>
-    <a href="{{ route('manegement.sort.recovery_rate') }}" @class(['bg-blue-500'=> !$sort_isActive['recovery_rate'], 'bg-red-500' => $sort_isActive['recovery_rate'],
-        'hover:bg-blue-700' => !$sort_isActive['recovery_rate'], 'hover:bg-red-700' => $sort_isActive['recovery_rate'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>回収率順</a>
-    <a href="{{ route('manegement.sort.bet') }}" @class(['bg-blue-500'=> !$sort_isActive['bet'], 'bg-red-500' => $sort_isActive['bet'],
-        'hover:bg-blue-700' => !$sort_isActive['bet'], 'hover:bg-red-700' => $sort_isActive['bet'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>掛け金順</a>
-    <a href="{{ route('manegement.sort.payout') }}" @class(['bg-blue-500'=> !$sort_isActive['payout'], 'bg-red-500' => $sort_isActive['payout'],
-        'hover:bg-blue-700' => !$sort_isActive['payout'], 'hover:bg-red-700' => $sort_isActive['payout'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>払戻金順</a>
-    <p>総掛け金:{{ $total_bet }}</p>
-    <p>総払い戻し金:{{ $total_payout }}</p>
-    <p>回収率:{{ $recovery_rate }}%</p>
+    <!-- ソートボタン一覧 -->
+    <div class="flex justify-end">
+        <a href="{{ route('manegement.sort.date') }}" @class(['bg-blue-500'=> !$sort_isActive['date'], 'bg-red-500' => $sort_isActive['date'],
+            'hover:bg-blue-700' => !$sort_isActive['date'], 'hover:bg-red-700' => $sort_isActive['date'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>日付順</a>
+        <a href="{{ route('manegement.sort.recovery_rate') }}" @class(['bg-blue-500'=> !$sort_isActive['recovery_rate'], 'bg-red-500' => $sort_isActive['recovery_rate'],
+            'hover:bg-blue-700' => !$sort_isActive['recovery_rate'], 'hover:bg-red-700' => $sort_isActive['recovery_rate'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>回収率順</a>
+        <a href="{{ route('manegement.sort.bet') }}" @class(['bg-blue-500'=> !$sort_isActive['bet'], 'bg-red-500' => $sort_isActive['bet'],
+            'hover:bg-blue-700' => !$sort_isActive['bet'], 'hover:bg-red-700' => $sort_isActive['bet'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>掛け金順</a>
+        <a href="{{ route('manegement.sort.payout') }}" @class(['bg-blue-500'=> !$sort_isActive['payout'], 'bg-red-500' => $sort_isActive['payout'],
+            'hover:bg-blue-700' => !$sort_isActive['payout'], 'hover:bg-red-700' => $sort_isActive['payout'] , 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded'])>払戻金順</a>
+    </div>
+    <!-- フィルタータグ一覧 -->
     <p>タグ一覧</p>
-    <a href="{{ url()->current() }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">タグフィルターを解除</a>
-    <!-- 複数タグ選択用モーダル -->
     <div class='flex overflow-x-auto m-1'>
+        <a href="{{ url()->current() }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-none">タグフィルターを解除</a>
+        <!-- 複数タグ選択用モーダル -->
+        <div class="flex-none bg-blue-500 hover:bg-blue-700 rounded">
+            <livewire:select-tag-modal :tags="$tags" />
+        </div>
         @foreach($tags as $tag)
-        <a href="{{ url()->current(). '?' . http_build_query(['tagid' => $tag->id ]) }}" @class(['border-solid border'=> $tag->isActive,
-            'border-indigo-600' => $tag->isActive, 'flex-none', 'mb-5'])>
+        <a href="{{ url()->current(). '?' . http_build_query(['tagid' => $tag->id ]) }}" @class(['border-indigo-600'=> !$tag->isActive, 'border-red-600' => $tag->isActive,
+            'border-solid border', 'flex-none', 'mb-5', 'mx-1', 'px-1', 'rounded' ])>
             {{ $tag->name }}</a>
         @endforeach
     </div>
-    <livewire:select-tag-modal :tags="$tags" />
+    <!-- 成績表 -->
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        総掛け金
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        総払い戻し金
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        回収率
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $total_bet }}
+                    </th>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $total_payout }}
+                    </td>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $recovery_rate }}%
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <!-- データ一覧表示 -->
     <!-- 横にn列 タグが多い時は縦に伸ばす感じ -->
     <div class="container mx-auto">
