@@ -14,12 +14,11 @@
                         タグ登録
                     </h3>
                     <div class="mt-2">
-                        <!-- 新規登録機能になっている -->
                         <form method="post" action="{{ route('tag.update', ['id' => $tag_id]) }}">
                             @csrf
                             <label for="bet">タグ名</label>
                             <input type="text" id="name" name="name" value="{{ $name }}" />
-                            <button>更新する</button>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">更新する</button>
                         </form>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
                             @foreach($tags as $tag)
                             <p><input type="checkbox" name="selectedTags" value="{{ $tag->id }}">{{ $tag->name }}</p>
                             @endforeach
-                            <button type='button' onclick="getCheckboxValues()">選択する</button>
+                            <button type='button' onclick="getCheckboxValues()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">選択する</button>
                         </form>
                     </div>
                 </div>
