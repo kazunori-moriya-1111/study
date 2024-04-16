@@ -51,7 +51,7 @@
                 </table>
             </section>
             <!-- タグ作成モーダル -->
-            <section class="col-span-1">
+            <section class="col-span-1 text-right">
                 <livewire:create-tag-modal />
             </section>
         </section>
