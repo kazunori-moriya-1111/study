@@ -38,7 +38,7 @@
                                 <p>{{ $row->name }}</p>
                             </th>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <!-- タグ作成モーダル -->
+                                <!-- タグ更新モーダル -->
                                 <livewire:update-tag-modal :tag_id="$row->id" :name="$row->name" />
                             </td>
                             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
