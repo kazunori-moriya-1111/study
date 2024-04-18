@@ -16,9 +16,11 @@
                     <div class="mt-2">
                         <form method="post" action="{{ route('tag.update', ['id' => $tag_id]) }}">
                             @csrf
-                            <label for="bet">タグ名</label>
-                            <input type="text" id="name" name="name" value="{{ $name }}" />
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">更新する</button>
+                            <div class="flex flex-wrap -mx-3 mb-2">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">タグ名</label>
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" id="name" name="name" value="{{ $name }}" />
+                                <button class="px-4 py-2 my-1 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">更新する</button>
+                            </div>
                         </form>
                     </div>
                 </div>

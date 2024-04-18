@@ -17,9 +17,11 @@
                         <!-- 新規登録機能になっている -->
                         <form method="post" action="{{ route('tag.destroy', ['id' => $tag_id]) }}">
                             @csrf
-                            <label for="bet">タグ名</label>
-                            <div>{{ $name }}</div>
-                            <button>削除する</button>
+                            <div class="flex flex-wrap -mx-3 mb-2">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">タグ名</label>
+                                <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">{{ $name }}</div>
+                                <button class="px-4 py-2 my-1 font-bold text-white bg-red-500 rounded hover:bg-red-700">削除する</button>
+                            </div>
                         </form>
                     </div>
                 </div>
