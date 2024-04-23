@@ -1,10 +1,3 @@
-<?php
-
-use Illuminate\Support\Js;
-
-$json_array = Js::from($json_array);
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +11,7 @@ $json_array = Js::from($json_array);
 
 <body>
     <x-nav-bar />
+    <input id="result" type="button" onclick="renderFunc()">
     <article class="container mx-auto">
         <section class="my-1">
             <livewire:calendar-result />
@@ -27,6 +21,10 @@ $json_array = Js::from($json_array);
     @livewireScripts
 </body>
 <script>
+    var renderFunc = function() {
+        newData = sessionStorage.getItem("currentStart");
+        livewire.emit('refreshComponentWithData', newData);
+    }
     json_array = <?php echo $json_array ?>;
 </script>
 
