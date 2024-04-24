@@ -14,7 +14,7 @@ let calendar = new Calendar(calendarEl, {
   },
   events: json_array.map(function (row){return JSON.parse(row)}),
   datesSet: function(info){
-    // fullcalendarのprev/nextボタンがクリックされた時
+    // fullcalendarのprev/next/todayボタンがクリックされた時
     sessionStorage.setItem('currentStart',info.view.currentStart)
     document.getElementById('result').click()
   }
