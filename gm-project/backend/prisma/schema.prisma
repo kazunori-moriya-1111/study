@@ -63,56 +63,56 @@ model Result{
   //例）予選 1800m 安定版使用
   raceLabel String
   // 1着
-  firstPlace Int
-  firstRacerRegistrationNumber Int
-  firstRacerName String
+  firstPlace Int?
+  firstRacerRegistrationNumber Int?
+  firstRacerName String?
   // 2着
-  secondPlace Int
-  secondRacerRegistrationNumber Int
-  secondRacerName String
+  secondPlace Int?
+  secondRacerRegistrationNumber Int?
+  secondRacerName String?
   // 3着
-  thirdPlace Int
-  thirdRacerRegistrationNumber Int
-  thirdRacerName String
+  thirdPlace Int?
+  thirdRacerRegistrationNumber Int?
+  thirdRacerName String?
   // 4着
-  fourthPlace Int
-  fourthRacerRegistrationNumber Int
-  fourthRacerName String
+  fourthPlace Int?
+  fourthRacerRegistrationNumber Int?
+  fourthRacerName String?
   // 5着
-  fifthPlace Int
-  fifthRacerRegistrationNumber Int
-  fifthRacerName String
+  fifthPlace Int?
+  fifthRacerRegistrationNumber Int?
+  fifthRacerName String?
   // 6着
-  sixthPlace Int
-  sixthRacerRegistrationNumber Int
-  sixthRacerName String
+  sixthPlace Int?
+  sixthRacerRegistrationNumber Int?
+  sixthRacerName String?
   // 1コース
-  startFirstCourse Int
-  startTimingFirstCourse Int
+  startFirstCourse Int?
+  startTimingFirstCourse Int?
   // 2コース
-  startSecondCourse Int
-  startTimingSecondCourse Int
+  startSecondCourse Int?
+  startTimingSecondCourse Int?
   // 3コース
-  startThirdCourse Int
-  startTimingThirdCourse Int
+  startThirdCourse Int?
+  startTimingThirdCourse Int?
   // 4コース
-  startFourthCourse Int
-  startTimingFourthCourse Int
+  startFourthCourse Int?
+  startTimingFourthCourse Int?
   // 5コース
-  startFifthCourse Int
-  startTimingFifthCourse Int
+  startFifthCourse Int?
+  startTimingFifthCourse Int?
   // 6コース
-  startSixthCourse Int
-  startTimingSixthCourse Int
+  startSixthCourse Int?
+  startTimingSixthCourse Int?
   // 結果
-  sanrentanPrice Int
-  sanrentanPopular Int
-  sanrenpukuPrice Int
-  sanrenpukuPopular Int
-  nirentanPrice Int
-  nirentanPopular Int
-  nirenpukuPrice Int
-  nirenpukuPopular Int
+  sanrentanPrice Int?
+  sanrentanPopular Int?
+  sanrenpukuPrice Int?
+  sanrenpukuPopular Int?
+  nirentanPrice Int?
+  nirentanPopular Int?
+  nirenpukuPrice Int?
+  nirenpukuPopular Int?
   // 水面気象
   temperature Int
   weather String
