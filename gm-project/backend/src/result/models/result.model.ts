@@ -1,5 +1,5 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { RaceGrade } from '@prisma/client';
+import { Field, Int, Float, ObjectType } from '@nestjs/graphql';
+import { RaceGrade, DisqualificationFlag } from '@prisma/client';
 import { GraphQLDate } from 'graphql-scalars';
 
 @ObjectType()
@@ -35,159 +35,161 @@ export class Result {
   raceLabel: string;
 
   // 1着
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   firstPlace: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   firstRacerRegistrationNumber: number;
 
-  @Field()
+  @Field({ nullable: true })
   firstRacerName: string;
 
+  @Field({ nullable: true })
+  firstRacerDisqualification: DisqualificationFlag;
   // 2着
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   secondPlace: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   secondRacerRegistrationNumber: number;
 
-  @Field()
+  @Field({ nullable: true })
   secondRacerName: string;
 
   // 3着
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   thirdPlace: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   thirdRacerRegistrationNumber: number;
 
-  @Field()
+  @Field({ nullable: true })
   thirdRacerName: string;
 
   // 4着
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   fourthPlace: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   fourthRacerRegistrationNumber: number;
 
-  @Field()
+  @Field({ nullable: true })
   fourthRacerName: string;
 
   // 5着
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   fifthPlace: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   fifthRacerRegistrationNumber: number;
 
-  @Field()
+  @Field({ nullable: true })
   fifthRacerName: string;
 
   // 6着
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   sixthPlace: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   sixthRacerRegistrationNumber: number;
 
-  @Field()
+  @Field({ nullable: true })
   sixthRacerName: string;
 
   // 1コース
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   startFirstCourse: number;
 
-  @Field(() => Int)
-  startTimingFirstCourse: number;
+  @Field({ nullable: true })
+  startTimingFirstCourse: string;
 
   // 2コース
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   startSecondCourse: number;
 
-  @Field(() => Int)
-  startTimingSecondCourse: number;
+  @Field({ nullable: true })
+  startTimingSecondCourse: string;
 
   // 3コース
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   startThirdCourse: number;
 
-  @Field(() => Int)
-  startTimingThirdCourse: number;
+  @Field({ nullable: true })
+  startTimingThirdCourse: string;
 
   // 4コース
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   startFourthCourse: number;
 
-  @Field(() => Int)
-  startTimingFourthCourse: number;
+  @Field({ nullable: true })
+  startTimingFourthCourse: string;
 
   // 5コース
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   startFifthCourse: number;
 
-  @Field(() => Int)
-  startTimingFifthCourse: number;
+  @Field({ nullable: true })
+  startTimingFifthCourse: string;
 
   // 6コース
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   startSixthCourse: number;
 
-  @Field(() => Int)
-  startTimingSixthCourse: number;
+  @Field({ nullable: true })
+  startTimingSixthCourse: string;
 
   // 結果
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   sanrentanPrice: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   sanrentanPopular: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   sanrenpukuPrice: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   sanrenpukuPopular: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   nirentanPrice: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   nirentanPopular: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   nirenpukuPrice: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   nirenpukuPopular: number;
 
   // 水面気象
-  @Field(() => Int)
+  @Field(() => Float, { nullable: true })
   temperature: number;
 
-  @Field()
+  @Field({ nullable: true })
   weather: string;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   wind: number;
 
-  @Field()
+  @Field({ nullable: true })
   windDirection: string;
 
-  @Field(() => Int)
+  @Field(() => Float, { nullable: true })
   waterTemperature: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   wave: number;
 
-  @Field()
+  @Field({ nullable: true })
   url: string;
 
   // 備考
-  @Field()
-  return: string;
+  @Field({ nullable: true })
+  return_boat: string;
 
-  @Field()
+  @Field({ nullable: true })
   decision: string;
 
   @Field()

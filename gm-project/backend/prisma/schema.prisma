@@ -49,6 +49,36 @@ enum RacerGrade {
   B2
 }
 
+// 失格フラグ
+enum DisqualificationFlag {
+  // フライング
+  Flying
+  // 出遅れ
+  LateStart
+  // 転覆
+  Subversion
+  // 落水
+  FallingWater
+  // エンスト
+  EngineStop
+  // 沈没
+  Sinking
+  // 不完走
+  IncompleteRun
+  // 妨害
+  Obstruction
+  // 周回誤認
+  CircularMisidentification
+  // 救助作業妨害
+  ObstructingRescueWork
+  // 緊急避譲義務違反
+  ViolationOfEmergencyEvacuationObligation
+  // 航路指示灯違反
+  ViolationOfNavigationalLights
+  // 危険な転舵
+  DangerousSteering
+}
+
 model Result{
   fieldName String @db.VarChar(4)
   fieldNo Int
@@ -66,44 +96,50 @@ model Result{
   firstPlace Int?
   firstRacerRegistrationNumber Int?
   firstRacerName String?
+  firstRacerDisqualification DisqualificationFlag?
   // 2着
   secondPlace Int?
   secondRacerRegistrationNumber Int?
   secondRacerName String?
+  secondRacerDisqualification DisqualificationFlag?
   // 3着
   thirdPlace Int?
   thirdRacerRegistrationNumber Int?
   thirdRacerName String?
+  thirdRacerDisqualification DisqualificationFlag?
   // 4着
   fourthPlace Int?
   fourthRacerRegistrationNumber Int?
   fourthRacerName String?
+  fourthRacerDisqualification DisqualificationFlag?
   // 5着
   fifthPlace Int?
   fifthRacerRegistrationNumber Int?
   fifthRacerName String?
+  fifthRacerDisqualification DisqualificationFlag?
   // 6着
   sixthPlace Int?
   sixthRacerRegistrationNumber Int?
   sixthRacerName String?
+  sixthRacerDisqualification DisqualificationFlag?
   // 1コース
   startFirstCourse Int?
-  startTimingFirstCourse Int?
+  startTimingFirstCourse String?
   // 2コース
   startSecondCourse Int?
-  startTimingSecondCourse Int?
+  startTimingSecondCourse String?
   // 3コース
   startThirdCourse Int?
-  startTimingThirdCourse Int?
+  startTimingThirdCourse String?
   // 4コース
   startFourthCourse Int?
-  startTimingFourthCourse Int?
+  startTimingFourthCourse String?
   // 5コース
   startFifthCourse Int?
-  startTimingFifthCourse Int?
+  startTimingFifthCourse String?
   // 6コース
   startSixthCourse Int?
-  startTimingSixthCourse Int?
+  startTimingSixthCourse String?
   // 結果
   sanrentanPrice Int?
   sanrentanPopular Int?
@@ -114,16 +150,16 @@ model Result{
   nirenpukuPrice Int?
   nirenpukuPopular Int?
   // 水面気象
-  temperature Int
-  weather String
-  wind Int
-  windDirection String
-  waterTemperature Int
-  wave Int
-  url String  @db.VarChar(100)
+  temperature Float?
+  weather String?
+  wind Int?
+  windDirection String?
+  waterTemperature Float?
+  wave Int?
+  url String? @db.VarChar(100)
   // 備考
-  return String
-  decision String
+  return_boat String?
+  decision String?
   createdAt DateTime @default(now()) @db.Timestamp(0) 
   updatedAt DateTime @updatedAt @db.Timestamp(0)
   @@unique(fields:[yyyymmdd, fieldName, raceNo], name : "result_identifier")
