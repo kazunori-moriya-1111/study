@@ -5,6 +5,7 @@ import Graphql from "./components/Graphql";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import client from "./apolloClient";
 import { ApolloProvider } from "@apollo/client";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/graphql" element={<Graphql />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </ApolloProvider>
   );
 }
