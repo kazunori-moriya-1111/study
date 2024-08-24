@@ -1,38 +1,41 @@
 import { useQuery, gql } from "@apollo/client";
+import { Result } from "../types/Result";
+import { Key } from "react";
 
 const GET_RESULT = gql`
   query GetResult {
     getResult {
       fieldName
       fieldNo
+      raceGrade
     }
   }
 `;
 
-interface Result {
-  fieldName: string;
-  fieldNo: string;
-}
-
 const Graphql = () => {
   const { data } = useQuery(GET_RESULT);
-  //   console.log(data?.getResult[0].fieldName);
 
-  data?.getResult.map((row: Result) => {
-    console.log(row.fieldName);
-    console.log("とおった");
-  });
   return (
-    <div>
-      {data?.getResult.map((row: Result, index: any) => {
-        return (
-          <p key={index}>
-            {row.fieldName}
-            {row.fieldNo}
-          </p>
-        );
-      })}
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>fieldName</th>
+          <th>fieldNo</th>
+          <th>raceGrade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data?.getResult.map((row: Result, index: Key) => {
+          return (
+            <tr key={index}>
+              <td>{row.fieldName}</td>
+              <td>{row.fieldNo}</td>
+              <td>{row.raceGrade}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 };
 
