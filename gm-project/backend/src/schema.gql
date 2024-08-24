@@ -103,6 +103,7 @@ type Result {
 type Query {
   getTasks: [Task]!
   getRacers: [Racer]!
+  getRacer(registrationNumber: Int!): Racer!
   getResult: [Result]!
 }
 

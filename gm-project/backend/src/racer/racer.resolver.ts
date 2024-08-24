@@ -12,6 +12,13 @@ export class RacerResolver {
     return await this.racerService.getRacers();
   }
 
+  @Query(() => RacerModel)
+  async getRacer(
+    @Args('registrationNumber', { type: () => Int }) registrationNumber: number,
+  ): Promise<Racer> {
+    return await this.racerService.getRacer(registrationNumber);
+  }
+
   @Mutation(() => RacerModel)
   async insertRacer(
     @Args('registrationNumber', { type: () => Int }) registrationNumber: number,

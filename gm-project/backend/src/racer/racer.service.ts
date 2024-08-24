@@ -11,6 +11,14 @@ export class RacerService {
     return await this.prismaService.racer.findMany();
   }
 
+  async getRacer(registrationNumber: number): Promise<Racer> {
+    return await this.prismaService.racer.findUniqueOrThrow({
+      where: {
+        registrationNumber,
+      },
+    });
+  }
+
   async insertRacer(registrationNumber: number): Promise<Racer> {
     const gRI = new getRacerInfo();
     const {
