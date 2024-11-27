@@ -1,11 +1,12 @@
 import "./App.css";
 import Racer from "./components/Racer";
 import Result from "./components/Result";
-import Graphql from "./components/Graphql";
+import GetResult from "./components/GetResult";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import client from "./apolloClient";
 import { ApolloProvider } from "@apollo/client";
 import Footer from "./components/Footer";
+import GetRacer from "./components/GetRacer";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Routes>
           <Route path="/racer" element={<Racer />} />
           <Route path="/result" element={<Result />} />
-          <Route path="/graphql" element={<Graphql />} />
+          <Route path="/get_result" element={<GetResult />} />
+          <Route path="/get_racer" element={<GetRacer />} />
         </Routes>
       </BrowserRouter>
       <Footer />

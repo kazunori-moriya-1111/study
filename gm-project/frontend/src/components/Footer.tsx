@@ -8,7 +8,10 @@ const Footer = () => {
         <a href="./racer">recer</a>
       </div>
       <div>
-        <a href="./graphql">graphql</a>
+        <a href="./get_result">get_result</a>
+      </div>
+      <div>
+        <a href="./get_racer">get_racer</a>
       </div>
     </>
   );

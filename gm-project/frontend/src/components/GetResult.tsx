@@ -12,7 +12,7 @@ const GET_RESULT = gql`
   }
 `;
 
-const Graphql = () => {
+const GetResult = () => {
   const { data } = useQuery(GET_RESULT);
 
   return (
@@ -39,4 +39,4 @@ const Graphql = () => {
   );
 };
 
-export default Graphql;
+export default GetResult;
