@@ -1,22 +1,20 @@
-# 選手名をスプシに出力
-# 選手コース成績をスクレイピングして出力
 # レース結果を取得する
 # レーサー情報を取得する
-# オッズをスプレッドシートに表示
-# 1着、2着、3着比率をレース結果から算出
 # racelistテーブル、oddsテーブル、resultテーブル、racerテーブル
+# 複数回取得しなくて良い情報を一度のみ取得するように
 
 import requests # type: ignore
 from bs4 import BeautifulSoup # type: ignore
 from google.oauth2.service_account import Credentials # type: ignore
 import gspread # type: ignore
 from const import race_field_no2race_field_name_dict, WORKBOOK_KEY
+import re
 
 # スクレイピング対象のレースを設定
-race_no = "12"
-race_field_no = "22"
-date = "20241209"
-target_url = "https://www.boatrace.jp/owpc/pc/race/racelist?rno={}&jcd={}&hd={}".format(race_no, race_field_no, date)
+race_no = "08"
+race_field_no = "19"
+date = "20241213"
+racelist_url = "https://www.boatrace.jp/owpc/pc/race/racelist?rno={}&jcd={}&hd={}".format(race_no, race_field_no, date)
 odds_url = "https://www.boatrace.jp/owpc/pc/race/odds3t?rno={}&jcd={}&hd={}".format(race_no, race_field_no, date)
 
 # スプレッドシートの初期枠作成
@@ -64,4 +62,50 @@ worksheet.update(odds_list[4], 'AA4:AA23')
 worksheet.update(odds_list[5], 'AG4:AG23')
 
 # 選手情報を取得
+res = requests.get(racelist_url)
+soup = BeautifulSoup(res.text, 'html.parser')
+
+# 選手情報を抽出
+racer_info_dict = {}
+tbody = soup.find_all('tbody', class_="is-fs12")
+for index, el in enumerate(tbody):
+    toban = el.find('div', class_="is-fs11").text[:4]
+    name = el.find('div', class_="is-fs18 is-fBold").text
+    name = re.sub('　+', ' ', name).replace('\n', '')
+    racer_info_dict[index + 1] = {
+        "toban": toban,
+        "name": name,
+        "1着率":"0.1%",
+        "2着率":"0.1%",
+        "3着率":"0.1%"
+    }
+# 選手情報をスプレッドシートに出力
+for index, (racer_info_key, culumn) in enumerate(zip(racer_info_dict, ["A", "G", "M", "S", "Y", "AE"])):
+    worksheet.update_acell(culumn + '3', str(racer_info_key) + " " + racer_info_dict[racer_info_key]["name"])
+    worksheet.update_acell("AL" + str(index + 4), racer_info_dict[racer_info_key]["name"])
+
 # 選手コース別成績を取得
+for racer_info_key in racer_info_dict:
+    racer_course_url = "https://www.boatrace.jp/owpc/pc/data/racersearch/course?toban={}".format(racer_info_dict[racer_info_key]["toban"])
+    res = requests.get(racer_course_url)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    table = soup.find('div', class_="grid is-type13 h-clear").find('div', class_="grid_unit").find_all('div', class_="table1")[1].find('table')
+    tbody = table.find_all('tbody')[int(racer_info_key) - 1]
+    span = tbody.find_all('span', class_="is-progress")
+    # 選手コース別成績を辞書に格納
+    for el in span:
+        racer_info_dict[racer_info_key][el.find("span")["class"][0][-1] + "着率"] = el["style"].split()[1]
+
+print(racer_info_dict)
+# 選手コース別成績をスプレッドシートに出力
+for racer_info_key in racer_info_dict:
+    worksheet.update(
+        [
+            [
+                racer_info_dict[racer_info_key]["1着率"],
+                racer_info_dict[racer_info_key]["2着率"],
+                racer_info_dict[racer_info_key]["3着率"]
+            ],
+        ],
+        'AM{}:AO{}'.format(str(racer_info_key + 3), str(racer_info_key + 3))
+    )
