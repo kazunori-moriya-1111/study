@@ -12,13 +12,16 @@ import re
 
 # コマンドライン引数を取得
 parser = argparse.ArgumentParser(description="インサートするファイル名を取得")
+parser.add_argument("race_no", type=str, help="レース番号")
+parser.add_argument("race_field_no", type=str, help="レース場番号")
+parser.add_argument("date", type=str, help="レース日付")
 parser.add_argument("-f", "--field", action='store_true', help="場別のスプレッドシートに出力")
 args = parser.parse_args()
 
 # スクレイピング対象のレースを設定
-race_no = "12"
-race_field_no = "19"
-date = "20241213"
+race_no = args.race_no
+race_field_no = args.race_field_no
+date = args.date
 racelist_url = "https://www.boatrace.jp/owpc/pc/race/racelist?rno={}&jcd={}&hd={}".format(race_no, race_field_no, date)
 odds_url = "https://www.boatrace.jp/owpc/pc/race/odds3t?rno={}&jcd={}&hd={}".format(race_no, race_field_no, date)
 
