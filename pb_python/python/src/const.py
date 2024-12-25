@@ -39,7 +39,7 @@ race_field_no2KRY = {
     "09":"津",
     "10":"三国",
     "11":"びわこ",
-    "12":"住之江",
+    "12":"1Qe7snbAOtUkyUmV2pm-_-wCr5q_ULBPU9QgjFmET2GA",
     "13":"尼崎",
     "14":"鳴門",
     "15":"丸亀",
