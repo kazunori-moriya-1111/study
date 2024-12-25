@@ -3,6 +3,8 @@ from sqlalchemy import Column, Integer, String, Enum, SmallInteger, ForeignKey #
 from setting import Base
 
 class DisqualificationFlag(enum.Enum):
+    # 欠場
+    Absent = 'Absent'
     # フライング
     Flying = 'Flying'
     # 出遅れ
