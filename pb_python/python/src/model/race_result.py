@@ -39,17 +39,17 @@ class RaceGrade(enum.Enum):
     G3 = 'G3'
     NORMAL = 'NORMAL'
 
-class Result(Base):
+class RaceResult(Base):
     """
     レース結果モデル
     """
 
-    __tablename__ = 'result'
+    __tablename__ = 'race_result'
     __table_args__ = {
-        'comment': 'レース結果のマスターテーブル'
+        'comment': 'レース結果テーブル'
     }
-
-    url = Column(String(100), primary_key=True)
+    rn_fn_yysyymmdd = Column(String(20), primary_key=True) # 出走票テーブルとのjoinに必要
+    url = Column(String(100), nullable=False)
     race_grade = Column(Enum(RaceGrade), nullable=False)
     race_event_date = Column(String(20), nullable=False)
     race_title = Column(String(100), nullable=False)
