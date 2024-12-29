@@ -3,6 +3,8 @@ from sqlalchemy import Column, Integer, String, Enum, SmallInteger, ForeignKey #
 from setting import Base
 
 class DisqualificationFlag(enum.Enum):
+    # 不成立
+    NotEstablished = 'NotEstablished'
     # 欠場
     Absent = 'Absent'
     # フライング
@@ -48,7 +50,9 @@ class RaceResult(Base):
     __table_args__ = {
         'comment': 'レース結果テーブル'
     }
-    rn_fn_yysyymmdd = Column(String(20), primary_key=True) # 出走票テーブルとのjoinに必要
+    race_number = Column(String(20), primary_key=True)
+    race_field_number = Column(String(4), primary_key=True)
+    yyyymmdd = Column(String(20), primary_key=True)
     url = Column(String(100), nullable=False)
     race_grade = Column(Enum(RaceGrade), nullable=False)
     race_event_date = Column(String(20), nullable=False)
@@ -74,22 +78,16 @@ class RaceResult(Base):
     sixth_racer_disqualification = Column(Enum(DisqualificationFlag))
     start_first_course = Column(SmallInteger)
     start_timing_first_course = Column(SmallInteger)
-    start_violation_first_course = Column(Enum(DisqualificationFlag))
     start_second_course = Column(SmallInteger)
     start_timing_second_course = Column(SmallInteger)
-    start_violation_second_course = Column(Enum(DisqualificationFlag))
     start_third_course = Column(SmallInteger)
     start_timing_third_course = Column(SmallInteger)
-    start_violation_third_course = Column(Enum(DisqualificationFlag))
     start_fourth_course = Column(SmallInteger)
     start_timing_fourth_course = Column(SmallInteger)
-    start_violation_fourth_course = Column(Enum(DisqualificationFlag))
     start_fifth_course = Column(SmallInteger)
     start_timing_fifth_course = Column(SmallInteger)
-    start_violation_fifth_course = Column(Enum(DisqualificationFlag))
     start_sixth_course = Column(SmallInteger)
     start_timing_sixth_course = Column(SmallInteger)
-    start_violation_sixth_course = Column(Enum(DisqualificationFlag))
     sanrentan_price = Column(Integer)
     sanrentan_popular = Column(SmallInteger)
     sanrenpuku_price = Column(Integer)
