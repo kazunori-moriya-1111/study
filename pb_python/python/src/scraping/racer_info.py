@@ -9,7 +9,7 @@ import argparse
 from setting import session
 from model.racer_info import RacerInfo
 
-class ScrapeRaceResult:
+class ScrapeRacerInfo:
     def __init__(self, toban):
         self.toban = toban
     
@@ -45,5 +45,5 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="登録番号を取得")
     parser.add_argument("toban", type=str, help="登録番号")
     args = parser.parse_args()
-    rr = ScrapeRaceResult(args.toban)
+    rr = ScrapeRacerInfo(args.toban)
     rr.insert_racer_info()
