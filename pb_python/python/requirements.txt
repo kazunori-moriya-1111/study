@@ -8,3 +8,5 @@ gspread
 sqlalchemy
 PyMySQL
 cryptography
+fastapi
+uvicorn
