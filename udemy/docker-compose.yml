@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  app:
+    build: ./node
+    ports:
+      - 3001:3001
+    volumes:
+      - ./ts:/ts
+    tty: true
+    stdin_open: true
+
+  react:
+    container_name: react
+    build: ./node
+    ports:
+      - 5173:5173
+    volumes:
+      - ./react:/react
+    working_dir: /react
+    tty: true
+    stdin_open: true
