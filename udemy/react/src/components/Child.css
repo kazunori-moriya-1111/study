@@ -1,0 +1,9 @@
+.component {
+  color: blue;
+  border: 5px solid blue;
+}
+
+.component.red {
+  color: red;
+  border: 5px solid red;
+}
