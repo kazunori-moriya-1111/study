@@ -6,12 +6,14 @@ import { List } from "./components/List";
 import Expression from "./components/Expression";
 import Child from "./components/Child";
 import Container from "./components/Container";
+import Example from "./components/Example";
 
 function App() {
   const hello = (arg) => `${arg} Function`;
   return (
     <>
-      <div className="component">
+      {/* react基礎 */}
+      {/* <div className="component">
         <h3>Hello Component</h3>
         <List />
       </div>
@@ -19,7 +21,9 @@ function App() {
       <Child color="red" num={1} fn={hello} bool obj={{ a: 1, b: 2 }} />
       <Container>
         <p>button name</p>
-      </Container>
+      </Container> */}
+      {/* イベントリスナ状態管理 */}
+      <Example />
     </>
   );
 }
