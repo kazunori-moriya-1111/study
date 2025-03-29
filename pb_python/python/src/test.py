@@ -123,3 +123,7 @@ if worksheet.acell('A3').value is None:
             ],
             'AM{}:AO{}'.format(str(racer_info_key + 3), str(racer_info_key + 3))
         )
+
+# 最終更新日時を追加
+# dajngo rest framework or fastAPIとreact.jsで作成
+# AIとかやりたいからバックエンドはpythonがいい。フロントはreact.jsがいい
