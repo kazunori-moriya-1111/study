@@ -18,3 +18,13 @@ services:
     working_dir: /react
     tty: true
     stdin_open: true
+  next:
+    container_name: next
+    build: ./node
+    ports:
+      - 3000:3000
+    volumes:
+      - ./next:/next
+    working_dir: /next
+    tty: true
+    stdin_open: true
