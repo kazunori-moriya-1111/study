@@ -1,4 +1,5 @@
 import ClientComponent from '@/components/ClientComponent'
+import Link from 'next/link'
 
 export default function RSCPage() {
     console.log('RSCPage')
@@ -6,6 +7,7 @@ export default function RSCPage() {
     <div>
         <h1>RSCPage</h1>
         <ClientComponent />
+        <Link href="/about">About</Link>
     </div>
     )
 }
