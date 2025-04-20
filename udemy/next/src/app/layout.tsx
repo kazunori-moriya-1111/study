@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +17,8 @@ export default function RootLayout({
       <body>
         <header className="bg-blue-200 p-4">Rootヘッダー</header>
         {children}
+        {/* GTMタグ挿入 */}
+        <GoogleTagManager gtmId="GTM-MFH6LJR8" />
       </body>
     </html>
   );
