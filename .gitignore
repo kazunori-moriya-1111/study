@@ -91,3 +91,6 @@ gm-project/feature.txt
 gm-project/backend/.env
 gm-project/backend/prisma/migrations
 laravel/phpMyAdmin/sessions
+udemy/next/prisma/migrations
+udemy/next/src/generated/prisma
+udemy/.env
