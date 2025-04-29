@@ -3,9 +3,5 @@ export default function AboutLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <div className="bg-gray-100 h-screen">
-      {children}
-    </div>
-  );
+  return <div className="bg-gray-100 h-screen">{children}</div>;
 }
