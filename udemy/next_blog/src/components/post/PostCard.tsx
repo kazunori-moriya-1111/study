@@ -8,7 +8,7 @@ import { ja } from "date-fns/locale";
 export default function PostCard({ post }: PostCardProps) {
   return (
     <Card className="py-0 hover:shadow-lg transition-shadow">
-      <Link href="/posts/${post.id}">
+      <Link href={`/posts/${post.id}`}>
         {post.topImage && (
           <div className="relative w-full h-48 mb-4">
             <Image
