@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from '@/lib/prisma';
 
 export async function getOwnPosts(userId: string) {
   return await prisma.post.findMany({
@@ -12,7 +12,25 @@ export async function getOwnPosts(userId: string) {
       updatedAt: true,
     },
     orderBy: {
-      updatedAt: "desc",
+      updatedAt: 'desc',
+    },
+  });
+}
+
+export async function getOwnPost(userId: string, postId: string) {
+  return await prisma.post.findFirst({
+    where: {
+      AND: [{ authorId: userId }, { id: postId }],
+    },
+    select: {
+      id: true,
+      title: true,
+      content: true,
+      topImage: true,
+      author: true,
+      published: true,
+      createdAt: true,
+      updatedAt: true,
     },
   });
 }
