@@ -1,42 +1,42 @@
 services:
-  app:
-    build: ./node
-    ports:
-      - 3001:3001
-    volumes:
-      - ./ts:/ts
-    tty: true
-    stdin_open: true
-  react:
-    container_name: react
-    build: ./node
-    ports:
-      - 5173:5173
-    volumes:
-      - ./react:/react
-    working_dir: /react
-    tty: true
-    stdin_open: true
-  # next:
-  #   container_name: next
+  # app:
   #   build: ./node
   #   ports:
-  #     - 3000:3000
+  #     - 3001:3001
   #   volumes:
-  #     - ./next:/next
-  #   working_dir: /next
+  #     - ./ts:/ts
   #   tty: true
   #   stdin_open: true
-  next-blog:
-    container_name: next-blog
+  # react:
+  #   container_name: react
+  #   build: ./node
+  #   ports:
+  #     - 5173:5173
+  #   volumes:
+  #     - ./react:/react
+  #   working_dir: /react
+  #   tty: true
+  #   stdin_open: true
+  next:
+    container_name: next
     build: ./node
     ports:
       - 3000:3000
     volumes:
-      - ./next_blog:/next
+      - ./next:/next
     working_dir: /next
     tty: true
     stdin_open: true
+  # next-blog:
+  #   container_name: next-blog
+  #   build: ./node
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./next_blog:/next
+  #   working_dir: /next
+  #   tty: true
+  #   stdin_open: true
   db:
     image: postgres:17
     hostname: db

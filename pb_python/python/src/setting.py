@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine # type: ignore
-from sqlalchemy.orm import Session # type: ignore
-from sqlalchemy.ext.declarative import declarative_base # type: ignore
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+from sqlalchemy.ext.declarative import declarative_base
 
 # 接続先DBの設定
 DATABASE = "mysql+pymysql://user:password@db:3306/extra?charset=utf8"

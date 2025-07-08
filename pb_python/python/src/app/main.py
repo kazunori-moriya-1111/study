@@ -1,13 +1,12 @@
 import sys
 sys.path.append("/src/")
 
-import uvicorn # type: ignore
-from fastapi import FastAPI, HTTPException, Depends # type: ignore
-from pydantic import BaseModel # type: ignore
-from sqlalchemy import create_engine, Column, Integer, String # type: ignore
-from sqlalchemy.ext.declarative import declarative_base # type: ignore
-from sqlalchemy.orm import sessionmaker, Session # type: ignore
-
+import uvicorn
+from fastapi import FastAPI, HTTPException, Depends
+from pydantic import BaseModel
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
 from scraping.race_result import ScrapeRaceResult
 # # データベース設定
 # SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
@@ -35,9 +34,9 @@ app = FastAPI()
 #     description: str
 
 class Input(BaseModel):
-    race_no: str
-    race_field_no: str
-    date: str
+  race_no: str
+  race_field_no: str
+  date: str
 
 #     class Config:
 #         orm_mode = True
@@ -57,10 +56,10 @@ class Input(BaseModel):
 # アイテムを作成
 @app.post("/race_result/")
 def insert_race_result(input:Input):
-    srr = ScrapeRaceResult(input.race_no, input.race_field_no, input.date)
-    srr.insert_race_result()
-    
-    return {"message": "success"}
+  srr = ScrapeRaceResult(input.race_no, input.race_field_no, input.date)
+  srr.insert_race_result()
+  
+  return {"message": "success"}
 # # アイテムを取得
 # @app.get("/items/{item_id}", response_model=ItemOut)
 # def read_item(item_id: int, db: Session = Depends(get_db)):
@@ -92,5 +91,5 @@ def insert_race_result(input:Input):
 #     return {"detail": "Item deleted successfully"}
 
 if __name__ == '__main__':
-    # reloadは本番環境では使用しない
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+  # reloadは本番環境では使用しない
+  uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
