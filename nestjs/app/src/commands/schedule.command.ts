@@ -1,3 +1,4 @@
+import { PrismaService } from 'src/prisma/prisma.service';
 import { Command, CommandRunner, Option } from 'nest-commander';
 
 type CommandOptions = {
@@ -9,6 +10,9 @@ type CommandOptions = {
   options: { isDefault: false },
 })
 export class ScheduleCommand extends CommandRunner {
+  constructor(private readonly prismaService: PrismaService) {
+    super();
+  }
   @Option({
     flags: '-d --date [string]',
     description: '日付',
@@ -24,5 +28,10 @@ export class ScheduleCommand extends CommandRunner {
     );
     const json = await response.json();
     console.log(json['maindata']);
+    await this.prismaService.racecards.create({
+      data: {
+        date: new Date('2023-01-01'),
+      },
+    });
   }
 }

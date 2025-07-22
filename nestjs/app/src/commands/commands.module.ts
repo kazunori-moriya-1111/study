@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ScheduleCommand } from './schedule.command';
+import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
-  imports: [],
+  imports: [PrismaModule],
   providers: [ScheduleCommand],
-  exports: [],
+  exports: [ScheduleCommand],
 })
 export class CommandsModule {}
