@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Item, ItemStatus } from '../../generated/prisma';
 import { CreateItemDto } from './dto/create-item.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class ItemsService {
@@ -45,6 +46,18 @@ export class ItemsService {
   async delete(id: string): Promise<void> {
     await this.prismaService.item.delete({
       where: { id },
+    });
+  }
+
+  @Cron('*/10 * * * * *')
+  async handleCron() {
+    await this.prismaService.item.create({
+      data: {
+        name: 'test',
+        price: 1000,
+        description: 'test',
+        status: ItemStatus.ON_SALE,
+      },
     });
   }
 }
