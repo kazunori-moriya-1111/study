@@ -29,9 +29,39 @@ enum ItemStatus {
   SOLD_OUT
 }
 
-model Racecards {
+model RawRacecards {
   id String @id @default(uuid()) @db.Uuid
-  date DateTime @db.Timestamp(0)
+  updatetime String
+  beforeday String
+  beforedayflag Int
+  hd String
+  datamode Int
+  today String
+  nextday String
+  nextdayflag Int
+  presalelinkflag Int
+  presaleend String
+  jcd String
+  jname String
+  presaleflag Int?
+  favracerflag Int?
+  status Int
+  statusmessage1 String?
+  statusmessage2 String?
+  nowraceno Int?
+  deadline String?
+  gradeicon String?
+  racelistflag Int
+  womanicon String?
+  raceclscd String?
+  gradecode String?
+  nightflag Int?
+  kfrom String?
+  kto String?
+  nj String?
+  votedisplayflag Int?
+  votelinkurl String?
+  inpagelinkparam String?
   createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @updatedAt @db.Timestamp(0)
 }
