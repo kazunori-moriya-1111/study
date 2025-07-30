@@ -1,14 +1,23 @@
 version: "3"
 
 services:
-  app:
-    container_name: node_nest
+  front:
+    container_name: node_next
     build: ./node
     ports:
       - 3000:3000
-      - 8080:8080
     volumes:
-      - ./app:/usr/src/app
+      - ./front:/usr/src/app
+    tty: true
+    stdin_open: true
+    command: /bin/sh
+  back:
+    container_name: node_nest
+    build: ./node
+    ports:
+      - 8000:8000
+    volumes:
+      - ./back:/usr/src/app
     tty: true
     stdin_open: true
     command: /bin/sh
