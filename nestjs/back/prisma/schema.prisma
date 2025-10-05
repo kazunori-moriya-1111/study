@@ -65,3 +65,10 @@ model RawRacecards {
   createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @updatedAt @db.Timestamp(0)
 }
+
+model RawRacelist {
+  id String @id @default(uuid()) @db.Uuid
+  jid String
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+}
